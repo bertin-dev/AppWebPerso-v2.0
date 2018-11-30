@@ -17,7 +17,6 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
   ob_start();
 
   switch($page){
-
       case 1:
           require '../Pages/Home.php';
           break;
@@ -38,16 +37,8 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
           require '../Pages/Contact.php';
           break;
 
-      case 404:
-          require '../Pages/404.php';
-          break;
-
       default:
-          {
-              header("HTTP/1.0 404 Not Found");
-              header('Location:index.php?id_page=404');
-          }
-
+          require '../Pages/404.php';
   }
 
 $contenu = ob_get_clean();

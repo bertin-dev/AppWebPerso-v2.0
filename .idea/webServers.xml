@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="cb2ff961-75a9-406f-9dd0-25a704f62b53" name="Apache on Xampp" url="http://bertin.dev">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\AppWebPerso@Project-v2.0" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

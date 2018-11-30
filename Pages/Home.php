@@ -8,15 +8,11 @@
 
                 <div class="col-lg-6">
                    <!--- <img src="img/bertin.dev.jpg" title="Programmation" class="img-responsive well" width="379" />-->
-
-
-
                     <div class="cta large event-type center-element-container no-transition" style="background-color:#1b1b1b;">
                         <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30">Bienvenue</div>
                         <a href="#" title="Analyste Programmeur" class="transition">
-                            <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive" src="img/bertin.dev.jpg">
-                            <div class="mask"> </div>
-                            <!---<h4> INFORMATICIEN PROGRAMMEUR </h4>-->
+                            <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive well" src="img/bertin.dev.jpg">
+                            <!--<div class="mask"> </div>-->
                            <h3 class="text-left" style="font-size: 25px;">Bertin Mounok<br>Contact: →(+237) 694 048 925<br> </h3>
 
                             <div class="bottom">
@@ -39,8 +35,7 @@
 
 
                 </div>
-
-
+                
                 <div class="col-lg-6" style="text-align: center;">
                     <h1>Recherchez-vous un Informaticien Programmeur ???</h1>
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil vous intéresse n'hésitez pas à me

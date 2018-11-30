@@ -169,10 +169,6 @@
             $("#competences").click(function(){
                 var c=$(this).attr("class").replace("current","").replace("competence-","").trim();
             }
-
-
-
-
         });
     </script>
 </header>
