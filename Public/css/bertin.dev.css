@@ -195,7 +195,7 @@ Stylesheet: Call To Action
 .cta.event-type .border {
   background: #009BDE; 
 }
-.cta.cktv-type {
+.cta .cktv-type {
   background: #4e82a9;
   background: -moz-linear-gradient(45deg, #4e82a9 21%, #1c3048 86%, #1c3048 86%);
   background: -webkit-gradient(linear, left bottom, right top, color-stop(21%, #4e82a9), color-stop(86%, #1c3048), color-stop(86%, #1c3048));
@@ -1391,7 +1391,7 @@ Stylesheet: Flexible layout
   display: block;
   margin: 0 auto;
   background-image:none;
-  border-radius: none; 
+  border-radius: 0;
 }
 .form .mktoGutter, .marketoForm .mktoGutter {
   display: none; 
@@ -2057,7 +2057,7 @@ iframe[name="google_conversion_frame"]{
   height: 10px; 
 }
 .Formbox::-webkit-scrollbar-track {
-  background-color: none; 
+  background-color: initial;
 }
 .Formbox::-webkit-scrollbar-thumb {
   background-color: #747474; 
@@ -2932,7 +2932,7 @@ iframe[name="google_conversion_frame"]{
   display: block;
   margin: 0 auto;
   background-image: none;
-  border-radius: none;
+  border-radius: 0;
 
 }
 
@@ -4960,7 +4960,7 @@ TABLET & SMALLER LAPTOPS
   .sucess-stories .wrapper {
     width: 100%; 
   }
-  .sucess-stories .wrapper .temoignage::nth-last-child(5) {
+  .sucess-stories .wrapper .temoignage:nth-last-child {
     display: none; 
   }
   .simple .content .contenu {
@@ -5723,7 +5723,6 @@ TABLET & SMALLER LAPTOPS
 
 
 
-}  
 }
 /*********************
 VERY LARGER MOBILE DEVICES ON LANDSCAPE

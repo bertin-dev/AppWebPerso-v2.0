@@ -19,4 +19,3 @@ $id_page_accueil = 1;
 isset($_GET['id_page'])? $_ENV['id_page'] = intval($_GET['id_page']) : $_ENV['id_page'] = $id_page_accueil;
 $info_DB = new Controller(); $info_DB->extract_DB();
 
-?>
