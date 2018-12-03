@@ -126,7 +126,7 @@
 
 #msform .action-button{
     width: 100px;
-    background: #FF1200;
+    background: #FE1200;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -137,7 +137,7 @@
 }
 
 #msform .action-button:hover, #msform .action-button:focus{
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #FF1200 ;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #FE1200 ;
 }
 
 #progressbar{
@@ -195,15 +195,15 @@
 /*making active/completed steps green*/
 #progressbar li.active:before, #progressbar li.active:after
 {
-    background: #FF1200;
+    background: #FE1200;
     color: white;
 }
 
 
-/*---------------------------------------gestion du mot de bienvenue-----------------------------*/
+/*---------------------------------------Gestion du mot de bienvenue-----------------------------*/
 
-.cta .enTeteBienvenue::before {
-    border-top: 20px solid red;
+.enTeteBienvenue::before {
+    border-top: 20px solid #FE1200;
     z-index: 99999;
 }
 .enTeteBienvenue::before {
@@ -212,26 +212,25 @@
     border-right: 0px solid transparent;
     position: absolute;
     top: 40px;
-    left: 0;
+    left: -2px;
     z-index: 999999;
 }
-élément {
-}
+
 .backgroundColor2 {
-    background-color: red !important;
+    background-color: #FE1200 !important;
     z-index: 99999;
 }
 .couleurBlanc {
     color: white;
 }
 .enTeteBienvenue {
-    width: 270px;
-    padding-left: 50px;
+    width: 200px;
+    padding-left: 24px;
     height: 40px;
     line-height: 40px;
     position: absolute;
-    top: 0;
-    left: -7px;
+    top: 20px;
+    left: -9px;
     z-index: 9999999;
 }
 .openSans-extrabold {
@@ -245,7 +244,7 @@
 }
 
 
-/*--------------------------barre de chargement automatique-----*/
+/*--------------------------Barre de chargement automatique-----*/
 #progress-bar-container{
     position: fixed;
     top: 0;
@@ -256,11 +255,19 @@
 }
 
 #progress-bar{
-    position: relative;
+    /*position: relative;
     height: 100%;
-    background: red;
+    background: Red;
     box-shadow: 0 0 4px rgba(0, 0, 0, .5);
+    width: 0%;*/
+
+    position: relative;
     width: 0%;
+    height: 100%;
+    background-color: rgb(10, 141, 224);
+    z-index: 9999999;
+    transition: top 0.5s ease 0s;
+    box-shadow: rgb(10, 141, 224) 0px 2px 7px, rgba(0, 0, 0, 0.2) 0px 1px 2px inset;
 }
 
 #progress-bar-elements{

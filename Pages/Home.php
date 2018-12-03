@@ -5,14 +5,14 @@
     <div class="container">
         <div class="row">
             <article class="title-big col-lg-12">
-
                 <div class="col-lg-6">
+                    <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30">
+                        Bienvenue
+                    </div>
                     <!--- <img src="img/bertin.dev.jpg" title="Programmation" class="img-responsive well" width="379" />-->
                     <div class="cta large event-type center-element-container no-transition"
                          style="background-color:#1b1b1b;">
-                        <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30">
-                            Bienvenue
-                        </div>
+
                         <a href="#" title="Analyste Programmeur" class="transition">
                             <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive well"
                                  src="img/bertin.dev.jpg">
@@ -50,9 +50,41 @@
                     <a href="index.php?id_page=5" title="contactez-moi">Contacter</a> ou regardez <a
                             href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations →</a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
+                    <details>
+                        <summary><h1 title="Solutions Informatique">INNOVATION PAR L'EXPERIENCE</h1></summary>
+                        <summary><h2>Conseils</h2></summary>
+                        <summary><h3>Développent</h3></summary>
+                        <summary><h4>Intégration des Solutions</h4></summary>
+                    </details>
                 </div>
                 <!--<a class="btn btn-default page-scroll" href="#about" title="ppppppppppppppp">Click Me to Scroll Down!</a>-->
             </article>
+
+
+            <article class="col-lg-12" style="text-align: center;">
+
+                <div class="col-lg-3">
+                    <h1>PASSION</h1>
+                    <p>Plus qu'un métier, le développement est pour moi une passion qui me pousse à me dépasser.</p>
+                </div>
+
+                <div class="col-lg-3">
+                    <h1>QUALITE</h1>
+                    <p>Je respecte les derniers standards et les bonnes pratiques afin de produire un code de qualité</p>
+                </div>
+
+                <div class="col-lg-3">
+                    <h1>VEILLE</h1>
+                    <p>Je me tiens au courant des dernières nouveautés techniques grâce à une veille quotidienne.</p>
+                </div>
+
+                <div class="col-lg-3">
+                    <h1>POLYVALENCE</h1>
+                    <p>Familier avec plusieurs méthodes de travail et différentes technologies, je sais m'adapter aux projets.</p>
+                </div>
+
+            </article>
+
             <article class="title-big col-lg-12">
 
                 <div class="col-lg-6" style="text-align: center;">
@@ -67,9 +99,9 @@
 
 
                 <div class="right-sidebar col-lg-6" style="text-align: center;">
-                    <h4>Mon tarif</h4>
-                    Je suis actuellement Freelance sous le statut d'EURL.
-                    Mon tarif journalier est de 350€ HT/jours.
+                    <h4>Devis Dynamique en 5 Min</h4>
+                   <p>Votre offre sans engagement dans votre boîte mail sous 5 Min chrono!</p>
+                    <button class="btn btn-info">Demamder un Dévis</button>
                 </div>
             </article>
             <article class="title-big col-lg-12">
@@ -110,4 +142,6 @@
         </div>
     </div>
 </section>
+
+
 
