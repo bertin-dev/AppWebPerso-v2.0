@@ -26,7 +26,11 @@
 
 
 
-/* ------------------------------------------barre de séparation verticale et a droite*/
+/* ==========================================================================
+Barre de séparation verticale et a droite
+   ========================================================================== */
+
+
 .right-sidebar{
     margin-top:20px;
     border-left:none;
@@ -62,11 +66,13 @@
 
 
 
+/* ==========================================================================
+   GESTTON DE L'ENREGISTREMENT ETAPE PAR ETAPE
 
-/*-------------------------------GESTTON DE L'ENREGISTREMENT ETAPE PAR ETAPE ----------------------------*/
+   PROGRESSBAR STEP BY STEP
+   ========================================================================== */
 
 
-/*PROGRESSBAR STEP BY STEP*/
 
 #msform{
     width: 400px;
@@ -200,7 +206,10 @@
 }
 
 
-/*---------------------------------------Gestion du mot de bienvenue-----------------------------*/
+
+/* ==========================================================================
+   Gestion du mot de bienvenue
+   ========================================================================== */
 
 .enTeteBienvenue::before {
     border-top: 20px solid #FE1200;
@@ -243,8 +252,10 @@
     line-height: 30px;
 }
 
+/* ==========================================================================
+   Barre de chargement automatique
+   ========================================================================== */
 
-/*--------------------------Barre de chargement automatique-----*/
 #progress-bar-container{
     position: fixed;
     top: 0;
@@ -274,5 +285,37 @@
     display: none;
 }
 
+
+
+
+/* ==========================================================================
+Personnalisation du scrollbar
+   ========================================================================== */
+
+
+::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgb(10, 141, 224));
+    border-radius: 6px;
+    box-shadow: rgb(10, 141, 224) 0px 2px 7px, rgba(0, 0, 0, 0.2) 0px 1px 2px inset;
+}
+
+
+/* ==========================================================================
+GESTION DE L' OMBRAGE
+   ========================================================================== */
+
+.ombrage
+{
+    border-left: 1px solid rgb(10, 141, 224);
+    border-right: 1px solid rgb(10, 141, 224);
+    border-radius: 20px / 10px;
+    box-shadow: rgb(10, 141, 224) 0px 2px 7px, rgba(0, 0, 0, 0.2) 0px 1px 2px inset;
+}
 
 

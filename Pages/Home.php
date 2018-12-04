@@ -63,22 +63,22 @@
 
             <article class="col-lg-12" style="text-align: center;">
 
-                <div class="col-lg-3">
+                <div class="ombrage col-lg-3">
                     <h1>PASSION</h1>
                     <p>Plus qu'un métier, le développement est pour moi une passion qui me pousse à me dépasser.</p>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="ombrage col-lg-3">
                     <h1>QUALITE</h1>
                     <p>Je respecte les derniers standards et les bonnes pratiques afin de produire un code de qualité</p>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="ombrage col-lg-3">
                     <h1>VEILLE</h1>
                     <p>Je me tiens au courant des dernières nouveautés techniques grâce à une veille quotidienne.</p>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="ombrage col-lg-3">
                     <h1>POLYVALENCE</h1>
                     <p>Familier avec plusieurs méthodes de travail et différentes technologies, je sais m'adapter aux projets.</p>
                 </div>
@@ -139,6 +139,86 @@
                 endforeach;
                 ?>
             </article>
+
+
+
+
+            <article class="col-lg-9">
+
+            </article>
+
+            <style>
+
+
+                table {
+                    display: table;
+                    border-collapse: separate;
+                    border-spacing: 2px;
+                    border-color: grey;
+                }
+                tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .grey-light {
+                    background: #cecdcc;
+                    color: #6a6767;
+                    text-align: center;
+                }
+
+                .bordures
+                {
+                    border: 1px dashed #0f6296;
+                }
+
+                ul li
+                {
+                    list-style: none;
+                }
+
+
+
+            </style>
+
+            <aside class="col-lg-3">
+                <div class="bordures">
+                    <div class="grey-light ombrage">
+                    <h3>MON AGENDA <br>HEBDOMADAIRE</h3>
+
+                    </div>
+
+                    <table id="content" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <td width="">
+                                <div class="body_agenda">
+                                    <div class="caroufredsel_wrapper">
+                                        <div class="caroufredsel_wrapper">
+                                            <ul id="agenda">
+                                                <!--s_--><!--_s-->
+                                                <li><a rel="nofollow" href="#" target="blank">Salon Beauté Sélection – Lyon</a>
+                                                    <p>Du 25 au 26 nov. 2018<br>Salon Beauté Sélection – Lyon</p>
+                                                </li>
+                                                <li>
+                                                    <a rel="nofollow" href="#" target="blank">All4Pack – salon de la Manutention</a>
+                                                    <p>Du 26 au 29 nov. 2018<br>All4Pack – salon de la Manutention</p>
+                                                </li>
+                                                <li>
+                                                    <a rel="nofollow" href="#" target="blank">Affaire de Cadeaux – Paris</a>
+                                                    <p>Du 27 au 29 nov. 2018<br>Affaire de Cadeaux – Paris</p>
+                                                </li>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="position: relative; left: 25%; right: 25%;" >
+                <img src="../img/devis.gif" class="img-responsive" />
+                </div>
+            </aside>
         </div>
     </div>
 </section>
