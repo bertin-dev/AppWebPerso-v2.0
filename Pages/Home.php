@@ -193,7 +193,7 @@
                         <tbody>
                         <tr>
                             <td width="">
-                                <div class="body_agenda">
+                                <div class="body_agenda" >
                                     <div class="caroufredsel_wrapper">
                                         <div class="caroufredsel_wrapper">
                                             <ul id="agenda">
