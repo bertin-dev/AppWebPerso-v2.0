@@ -189,6 +189,8 @@
 
                     </div>
 
+
+
                     <table id="content" cellpadding="0" cellspacing="0">
                         <tbody>
                         <tr>
@@ -196,6 +198,7 @@
                                 <div class="body_agenda" >
                                     <div class="caroufredsel_wrapper">
                                         <div class="caroufredsel_wrapper">
+                                            <marquee behavior="" direction="UP" scrollamount="1" height="50">
                                             <ul id="agenda">
                                                 <!--s_--><!--_s-->
                                                 <li><a rel="nofollow" href="#" target="blank">Salon Beauté Sélection – Lyon</a>
@@ -209,15 +212,19 @@
                                                     <a rel="nofollow" href="#" target="blank">Affaire de Cadeaux – Paris</a>
                                                     <p>Du 27 au 29 nov. 2018<br>Affaire de Cadeaux – Paris</p>
                                                 </li>
+                                            </ul>
+                                            </marquee>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
 
                         </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div style="position: relative; left: 25%; right: 25%;" >
-                <img src="../img/devis.gif" class="img-responsive" />
-                </div>
+
             </aside>
         </div>
     </div>
