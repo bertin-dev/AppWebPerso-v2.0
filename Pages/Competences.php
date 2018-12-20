@@ -56,6 +56,12 @@ require_once('page_number.php'); ?>
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2017 . ' an d\'expérience'; ?></span>
                         </p><img class="img-responsive" src="../Public/img/competences/symfony.png" alt="Symfony"
                                  title="Symfony"></div>
+
+                    <div class="col-lg-3"><p><strong>XAMARIN</strong><br><span
+                                    title="<?= date("Y") - 2018 . ' an d\'expérience dans l\'utilisation de Xamarin'; ?>"
+                                    style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2018 . ' an d\'expérience'; ?></span>
+                        </p><img class="img-responsive" src="../Public/img/competences/xamarin.png" alt="XAMARIN"
+                                 title="Xamarin"></div>
                 </div>
 
                 <h1 align="center">CMS</h1>
@@ -90,7 +96,7 @@ require_once('page_number.php'); ?>
                     <div class="col-lg-3"><p><strong>SQL Server</strong><br><span
                                     title="<?= date("Y") - 2015 . ' ans d\'expérience dans l\'utilisation de SQL Server'; ?>"
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2015 . ' ans d\'expérience'; ?></span>
-                        </p><img class="img-responsive" src="../Public/img/competences/sql serveur.png" alt="SQL SERVER"
+                        </p><img class="img-responsive" src="../Public/img/competences/sql server.png" alt="SQL SERVER"
                                  title="SQL SERVER"></div>
                 </div>
 
@@ -143,7 +149,7 @@ require_once('page_number.php'); ?>
                                                                                  style="color: #8d8f92; font-size: 13px;">Editeur</span>
                     </p><img class="img-responsive" src="../Public/img/competences/intellij.png" alt="IntelliJ IDEA"
                              title="IntelliJ IDEA"></div>
-                <div class="col-lg-2"><p><strong>PHPSTORM 2017.1.1</strong><br><span title="PHPSTORM 2017.1.1"
+                <div class="col-lg-2"><p><strong>PHPSTORM 2017.1.4</strong><br><span title="PHPSTORM 2017.1.4"
                                                                                      style="color: #8d8f92; font-size: 13px;">Editeur</span>
                     </p><img class="img-responsive" src="../Public/img/competences/phpstorm.png" WIDTH="110"
                              alt="phpstorm" title="PHPSTORM 2017.1.1"></div>
@@ -151,13 +157,13 @@ require_once('page_number.php'); ?>
                                                                                       style="color: #8d8f92; font-size: 13px;">Editeur</span>
                     </p><img class="img-responsive" src="../Public/img/competences/ms_vs_code.png" WIDTH="110"
                              alt="ms_vs_code" title="MS VISUAL STUDIO CODE"></div>
-                <div class="col-lg-2"><p><strong>VISUAL STUDIO 2012</strong><br><span
-                                title="MS VISUAL STUDIO PREMIUM 2012"
+                <div class="col-lg-2"><p><strong>VS ENTERPRISE 2017</strong><br><span
+                                title="MS VISUAL STUDIO PREMIUM 2017"
                                 style="color: #8d8f92; font-size: 13px;">Editeur</span></p><img class="img-responsive"
                                                                                                 src="../Public/img/competences/ms_vs_studio.png"
                                                                                                 WIDTH="110"
                                                                                                 alt="ms_vs_studio"
-                                                                                                title="MS VISUAL STUDIO PREMIUM 2012">
+                                                                                                title="MS VISUAL STUDIO PREMIUM 2017">
                 </div>
                 <div class="col-lg-2"><p><strong>ECLIPSE LUMIA</strong><br><span title="ECLIPSE LUMIA"
                                                                                  style="color: #8d8f92; font-size: 13px;">Editeur</span>
@@ -165,7 +171,7 @@ require_once('page_number.php'); ?>
                              alt="eclipse_lumia" title="ECLIPSE LUMIA"></div>
                 <div class="col-lg-2"><p><strong>ANDROID STUDIO 2.0</strong><br><span title="ANDROID STUDIO 2.0"
                                                                                       style="color: #8d8f92; font-size: 13px;">Editeur</span>
-                    </p><img class="img-responsive" src="../Public/img/competences/android_studio.jpg" WIDTH="110"
+                    </p><img class="img-responsive" src="../Public/img/competences/android_studio.png" WIDTH="110"
                              alt="Android Studio" title="ANDROID STUDIO 2.0"></div>
             </article>
             <article class="col-lg-12 well" align="center" style="background: url('../Public/img/pattern15.png');">
@@ -175,7 +181,7 @@ require_once('page_number.php'); ?>
                              title="Google Chrome"></div>
                 <div class="col-lg-2"><p><strong>Firefox Developper</strong><br><span
                                 title="Mozilla Firefox Edition Developper" style="color: #8d8f92; font-size: 13px;">Navigateur</span>
-                    </p><img class="img-responsive" WIDTH="110" src="../Public/img/competences/mozilla.jpg"
+                    </p><img class="img-responsive" WIDTH="110" src="../Public/img/competences/mozilla.png"
                              alt="Mozilla Firefox Edition Developper" title="Mozilla Firefox Edition Developper"></div>
                 <div class="col-lg-2"><p><strong>XAMPP SERVEUR</strong><br><span title="XAMPP"
                                                                                  style="color: #8d8f92; font-size: 13px;">Serveur Locale</span>

@@ -318,4 +318,130 @@ GESTION DE L' OMBRAGE
     box-shadow: rgb(10, 141, 224) 0px 2px 7px, rgba(0, 0, 0, 0.2) 0px 1px 2px inset;
 }
 
+.ombrage2
+{
+   /* border-left: 1px solid rgb(10, 141, 224);*/
+    border: 1px solid rgb(10, 141, 224);
+    border-radius: 20px;
+    box-shadow: rgb(10, 141, 224) 10px 2px 17px, rgba(0, 0, 0, 0.2) 10px 1px 2px inset;
+}
 
+
+/* ==========================================================================
+GESTION DU PARALLAX
+   ========================================================================== */
+
+.parallax
+{
+    background: url('../img/Accueil/app.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 200px;
+    text-align: center;
+}
+
+
+
+
+/* ==========================================================================
+GESTION DYNAMIQUE DES DERNIERS POSTES
+   ========================================================================== */
+aside .titreWidget {
+    position: relative;
+    border-bottom: #e9e9e9 1px solid;
+    padding-bottom: 9px;
+}
+
+aside .widget {
+   margin: 0 7px;
+    text-align: justify;
+}
+h5.titreWidget {
+    font-size: 20px;
+}
+
+ul.space
+{
+    list-style: none;
+    margin: initial;
+    padding: initial;
+}
+.reduct1
+{
+    float: left!important;
+    margin-right: 5px;
+    padding: initial;
+}
+.reduct2
+{
+    padding: initial;
+    margin: initial;
+    font-size: 14px;
+}
+.reduct3
+{
+    padding: initial;
+    font-size: 12px;
+}
+
+
+
+
+/* ==========================================================================
+GESTION IMAGE AVEC RESTANGLE DECALE
+   ========================================================================== */
+/*
+.Verticalementcentre {
+   /* display: inline-block;
+    vertical-align: middle;*//*
+    background: #1f9bde;
+    padding: initial;
+    text-align: center;
+}
+
+.Verticalementcentre2 {
+   /* display: inline-block;
+    vertical-align: middle;*//*
+    background: #2b542c;
+    padding: initial;
+}
+
+
+
+
+
+
+
+*/
+
+.Verticalementcentre {
+height: 200px;
+margin: 25px 0 20px 0;
+padding: initial;
+text-align: center;
+}
+
+.Verticalementcentre2 {
+    height: 200px;
+    position: relative;
+    top: -5px;
+    left: -50px;
+    margin: 0 0 20px 0;
+    /*margin: -5px 0 0 -50px;*/
+    padding: initial;
+    opacity: 0.5%;
+    z-index: 9;
+    text-align: center;
+    background-color: white;
+}
+
+
+
+
+
+.blanc
+{
+    background-color: white;
+    color: black;
+    text-align: center;
+}

@@ -37,6 +37,14 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
           require '../Pages/Contact.php';
           break;
 
+      case 6:
+          require '../Pages/Apropos.php';
+          break;
+
+      case 7:
+          require '../Pages/Forum.php';
+          break;
+
       default:
           require '../Pages/404.php';
   }
