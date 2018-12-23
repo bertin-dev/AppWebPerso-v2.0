@@ -3,14 +3,18 @@
  */
 
 
-
-//------------------------------------------Gestion de l'infobulle
+/* ==========================================================================
+système de notification en lecture
+   ========================================================================== */
 $(function (){
     $('span').tooltip();
 });
 
 
-//Gestion du scrolling indicator
+/* ==========================================================================
+Gestion du scrolling indicator
+   ========================================================================== */
+
 $(function() {
 
     $("body").prognroll();
@@ -29,7 +33,11 @@ $(function() {
 
 });
 
-//gestion du survole de curseur sur les images de la rubrique portfolio
+
+/* ==========================================================================
+gestion du survole de curseur sur les images de la rubrique portfolio
+   ========================================================================== */
+
 $(function(){
   $('.info_app').css({"height":0});
   $('.info_screenshot').bind("mouseover", function(){
@@ -56,8 +64,10 @@ $(function(){
 
 
 
+/* ==========================================================================
+gestion inscription step by step
+   ========================================================================== */
 
-/*inscription step by step*/
 
 var current_fs, next_fs, previous_fs;
 var left, opacity, scale;// fieldset properties which we will animate
@@ -124,7 +134,12 @@ $('.previous').click(function(){
 
 
 
-/*-----------------------Barre de chargement automatique----*/
+
+
+/* ==========================================================================
+gestion Barre de chargement automatique avec prise en charge des images pendant le chargement
+   ========================================================================== */
+
 
 progressBar = {
     countElmt : 0,
@@ -186,3 +201,27 @@ progressBar.init();
 
 
 
+
+
+/* ==========================================================================
+Système de Navigation en Ajax c'est changer de page sans refraiche le navigateur malgré que j'ai déjà intégré le système de cache avec PHP
+   ========================================================================== */
+
+$(function(){
+    $('a').click(function(e){
+       var link = $(this).attr('href');
+        $.ajax({
+           url: link,
+        })
+            .done(function (html) {
+                $('#page-top').empty().append(html);
+            })
+            .fail(function () {
+                console.log('error');
+            })
+            .always(function(){
+                console.log('complete');
+            });
+        e.preventDefault();
+    });
+});
