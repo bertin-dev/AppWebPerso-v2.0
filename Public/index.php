@@ -42,7 +42,7 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
           break;
 
       case 7:
-          require '../Pages/Forum.php';
+          require '../Pages/Blog.php';
           break;
 
       default:
