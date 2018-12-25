@@ -456,24 +456,218 @@ text-align: center;
 GESTION DU BLOG
    ========================================================================== */
 
+.blog-section
+{
+    /*border: 5px dashed white;*/
+    margin-top: 60px;
+}
+
+.blog-article-1
+{
+    border-right: 1px solid #1b4159;
+    padding: 0;
+    margin: 20px 0 0 0;
+    /*opacity: 0.6;
+    filter: alpha(opacity=60);*/
+}
+
+.blog-article-1-h1
+{
+    color: #FFFFFF!important;
+    font-size: 23px;
+    text-align: center;
+    text-decoration: none;
+    font-variant: small-caps;
+    border-bottom: 1px solid #1b4159;
+    padding: 0 5px 10px 5px;
+    font-weight: bold;
+}
+
+.blog-article-1-h1 a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    -ms-transition: all .2s;
+    transition: all .2s;
+}
+
+#blog a:hover, #blog a:focus {
+    outline: 0;
+    color: #9ccdec;
+}
+
+#blog a:active, a:hover {
+    outline: 0;
+}
+#blog a:focus {
+    outline: thin dotted;
+}
+
+
+.blog-article-1-p-1
+{
+    text-align: justify;
+    color: #BBB;
+    overflow: hidden;
+    line-height: 1.4em;
+    margin: 0 0 0 2%;
+    padding: 0 15px 0 15px;
+    font-family: "Trebuchet MS",Helvetica,Verdana,sans-serif,serif;
+}
+
+.blog-article-1-p-2
+{
+    text-align: right;
+    margin: 2px 0 0;
+    padding: 0;
+    display: block;
+}
+
+.blog-article-1-p-2 a
+{
+    color: #767676;
+    font-variant: small-caps;
+    font-size: 18px;
+    text-decoration: none;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
 
 
 
 
 
+time
+{
+    color: #c9c9c9;
+    font-size: 24px;
+    width: 9%;
+    min-width: 120px;
+    margin: 0 0 0 -4.1%;
+}
 
+
+
+.date
+{
+    float: left;;
+}
+
+.date .day
+{
+float: left;
+}
+
+.month-year
+{
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    line-height: 9px;
+    float: right;
+    margin-top: 8px;
+}
+
+.time1
+{
+    float: right;
+    color: #4d4d4d;
+}
+
+
+
+
+
+.papou
+{
+    overflow: hidden;
+    border: 1px solid #1b4159;
+    background-color: #2F2F2E;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 240px;
+}
+
+
+.apropos
+{
+    text-align: right;
+    text-decoration: none;
+    color: #959595;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    width: 9%;
+    min-width: 120px;
+    margin: 10% 0 0 -4.1%;
+
+}
+
+.comments
+{
+    top: 115px;
+    text-align: right;
+    text-decoration: none;
+    color: #959595;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    width: 9%;
+    min-width: 120px;
+    margin: 0 0 0 -4.1%;
+}
+
+
+.tags-container
+{
+    color: #4b4b4b;
+    font-size: 11px;
+    display: block;
+    width: 9%;
+    min-width: 120px;
+    margin: 20% 0 0 -4.1%;
+    padding: 0;
+}
+
+.tags-container .tags a
+{
+    text-decoration: none;
+    color: #666;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    -ms-transition: all .2s;
+    transition: all .2s;
+}
 
 
 /*  3*/
 .illu-article
 {
     background-image: url('../img/Accueil/app.jpg');
-    position: absolute;
-    top: 40px;
-    right: 18%;
-    margin-right: -3px;
-    width: 70%;
-    height: 216px;
     overflow: hidden;
     border: 1px solid #1b4159;
     background-color: #1b4159;
@@ -482,12 +676,39 @@ GESTION DU BLOG
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
+    margin: 20px 0 0 0;
 }
 
 
 
 
 /*  4*/
+
+/*
+background: inherit;
+ z-index: 1000;
+ position: fixed;
+ left: 83%;
+ height: 100%;
+  overflow-y: auto;
+   border: 1px solid #087AC2;
+    display: block;
+    z-index: 5;
+    role="complementary
+
+*/
+
+#sidebar {
+    display: block;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background: #282828;
+    z-index: 5;
+}
+
 
 #vertical-bar-border {
     position: absolute;
@@ -504,6 +725,10 @@ GESTION DU BLOG
     margin: 40px 7% 0 11%;
     font-size: 14px;
     line-height: 18px;
+}
+
+#search input:active, #search input:focus {
+    outline: 0;
 }
 
 .sidebar-bloc .title {
@@ -608,6 +833,45 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     display: block;
     color: #5a5a5a;
     float: right;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    -ms-transition: all .2s;
+    transition: all .2s;
+}
+
+
+form input[type=text]:focus,
+form input[type=email]:focus,
+form input[type=password]:focus,
+form input[type=url]:focus,
+form input[type=number]:focus,
+form select:focus,
+form textarea:focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 3px #1073b2;
+    box-shadow: 0 0 3px #1073b2;
+    border-color: #1073b2;
+    background: rgba(255,255,255,.2);
+}
+
+
+form input[type=text],
+form input[type=email],
+form input[type=password],
+form input[type=url],
+form input[type=number],
+form textarea, form select,
+form input[type=text].neutral_input,
+form input[type=email].neutral_input,
+form input[type=password].neutral_input,
+form input[type=url].neutral_input,
+form input[type=number].neutral_input,
+form textarea.neutral_input {
+    background: rgba(255,255,255,.1);
+    border: 1px solid #555;
+    color: #DDD;
+    font-family: "Sansation","Trebuchet MS",Helvetica,Verdana,sans-serif,serif;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;

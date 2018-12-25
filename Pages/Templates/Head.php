@@ -28,13 +28,13 @@
 
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <div id="menu_head" class="collapse navbar-collapse navbar-ex1-collapse">
                     <?= Core\Controller\Controller::affiche_menu($id_page_accueil); ?>
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div id="notif_chemin_fer" class="container">
             <div id="inner-headline" class="row titre">
                 <div class="col-xs-12 col-md-12 col-lg-12">
                     <!--suppress Annotator, Annotator, Annotator -->
@@ -50,8 +50,9 @@
                                     else if ($_ENV['titre'] == "COMPETENCES") echo 'Mes ' . $_ENV['titre'] . ' → Ce que je sais faire';
                                     else if ($_ENV['titre'] == "CULTURE") echo $_ENV['titre'] . ' → Ce que J\'aime';
                                     else if ($_ENV['titre'] == 'CONTACT') echo $_ENV['titre'] . ' → M\'envoyer un Email';
+                                    else if ($_ENV['titre'] == 'A PROPOS') echo $_ENV['titre'] . ' → Je parle de moi';
                                     else if (!isset($_ENV['titre']) OR empty($_ENV['titre'])) echo ' → Page Introuvable';
-                                    else echo $_ENV['titre'] . ' → Je parle de moi';
+                                    else echo $_ENV['titre'] . ' → Bienvenue sur Mon Espace Interactif';
                                     ?>
 
                                 </em></small>

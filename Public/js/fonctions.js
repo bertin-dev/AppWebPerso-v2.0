@@ -207,9 +207,17 @@ progressBar.init();
 Système de Navigation en Ajax c'est changer de page sans refraiche le navigateur malgré que j'ai déjà intégré le système de cache avec PHP
    ========================================================================== */
 
+
 $(function(){
-    $('a').click(function(e){
-       var link = $(this).attr('href');
+
+
+   //
+
+    $('#menu_head a').click(function(e){
+        var link = $(this).attr('href');
+       /*Empeche d'éffectuer la navigation ajax pour le menu Blog qui a pour id=index.php?id_page=7*/
+        var tab = link.split('=');
+        if(tab[1] != 7){
         $.ajax({
            url: link,
         })
@@ -223,5 +231,8 @@ $(function(){
                 console.log('complete');
             });
         e.preventDefault();
+    }
     });
+
+
 });

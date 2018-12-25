@@ -1,3 +1,4 @@
+
 <footer>
 
     <!-- Navigation -->
@@ -124,6 +125,7 @@
 <!-- jQuery -->
 <script src="../Public/js/jquery.js"></script>
 
+
 <!-- Bootstrap Core JavaScript -->
 <script src="../Public/js/bootstrap.js"></script>
 
@@ -202,6 +204,34 @@
     });
 </script>
 
+
+<!--
+  ==========================================================================
+Empêche l'affichage du pied de page (footer) et (du chemin de fer + Notification) dans le blog
+   ==========================================================================
+  -->
+<?php
+if($_SESSION['id_page']==7)
+{
+?>
+<script>
+    $(function () {
+       // $('#notif_chemin_fer').addClass('collapse');
+       // $('#notif_chemin_fer').attr('style', 'display: none');
+        //$('footer').attr('style', 'display: none');
+
+        $('#notif_chemin_fer').addClass('collapse');
+        $('#notif_chemin_fer').remove();
+
+
+        $('footer').addClass('collapse');
+        $('footer').remove();
+    });
+
+</script>
+<?php
+}
+?>
 
 
 
