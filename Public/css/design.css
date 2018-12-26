@@ -343,6 +343,8 @@ GESTION DU PARALLAX
 
 
 
+
+
 /* ==========================================================================
 GESTION DYNAMIQUE DES DERNIERS POSTES
    ========================================================================== */
@@ -489,7 +491,6 @@ GESTION DU BLOG
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;
-    -ms-transition: all .2s;
     transition: all .2s;
 }
 
@@ -745,7 +746,6 @@ background: inherit;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;
-    -ms-transition: all .2s;
     transition: all .2s;
 }
 
@@ -755,7 +755,6 @@ a {
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;
-    -ms-transition: all .2s;
     transition: all .2s;
 }
 
@@ -787,7 +786,6 @@ a {
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;
-    -ms-transition: all .2s;
     transition: all .2s;
 }
 
@@ -819,7 +817,6 @@ form input[type="submit"], form input[type="reset"] {
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;
-    -ms-transition: all .2s;
     transition: all .2s;
 }
 
@@ -877,4 +874,25 @@ form textarea.neutral_input {
     -o-transition: all .2s;
     -ms-transition: all .2s;
     transition: all .2s;
+}
+
+
+
+
+
+
+/* ==========================================================================
+GESTION DE LA PAGE A PROPOS
+   ========================================================================== */
+
+.apropos-cover
+{
+    background: url('../img/Accueil/1103.sdt-microsoft-cloud-apis.jpg') no-repeat center;
+    /* background-color: #2F2F2E;*/
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 200px;
 }
