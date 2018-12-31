@@ -15,7 +15,7 @@
 
                         <a href="#" title="Analyste Programmeur" class="transition">
                             <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive well"
-                                 src="img/bertin.dev.jpg">
+                                 src="img/bertin.dev5.png">
                             <!--<div class="mask"> </div>-->
                             <h3 class="text-left" style="font-size: 25px;">Bertin Mounok<br>Contact: →(+237) 694 048 925<br>
                             </h3>

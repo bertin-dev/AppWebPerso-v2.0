@@ -48,16 +48,18 @@ if(isset($_POST['view'])){
     }
 
 
+
     $nbre = $connexion->rowCount('SELECT * FROM contenu');
     $output = '';
     if($nbre > 0){
-        foreach($connexion->query('SELECT * FROM contenu ORDER BY id_contenu DESC LIMIT 5') as $con):
-            $output .= ' <li>
-                         <a href="#">
-                         <strong>' .$con->activite. '</strong><br>
-                         <small><em>' .$con->travaux_effectue. '</em></small>
-                         </a> 
-                         </li>          
+        foreach($connexion->query('SELECT * FROM contenu ORDER BY id_contenu DESC LIMIT 4') as $con):
+            $output .= '<ul id="competences-speech">
+                         <li class="competence-java current">
+                         <h2>'.$con->app_dev.'</h2>
+                         <span class="exp-duration"><strong>' .$con->langage. '</strong></span> 
+                         <span><small><em>' .$con->travaux_effectue. '</em></small></span>   
+                         </li> 
+                         </ul>         
              ';
         endforeach;
 

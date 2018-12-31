@@ -63,11 +63,18 @@
 
                         <li class="dropdown" style="float: right;">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="label label-pill label-danger count"></span> Notification</a>
-                            <ul class="dropdown-menu menu"></ul>
+                                <span class="label count" style="font-size: 65%;position: absolute; left: 50%; background-color: #FF1300;"></span>
+                               <img src="img/icons8-sms-32.png" alt="Notification" title="Notification" class="img-circle" width="25" >
+                            </a>
+
+
+                            <div id="competences" class="page-container current aube menu">
+
+                            </div>
                         </li>
 
-                        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+                        <!--
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
                     </ul>
 
                     <!--<ul class="nav navbar-nav navbar-right">
@@ -83,137 +90,7 @@
 
                 </div>
 
-                <style>
-                    #competences.aube {
-                        background: -webkit-gradient(linear, 0 0, 0 100%, from(#3c5f75), color-stop(0.55, #9c5273), to(#34576c));
-                        background: -webkit-linear-gradient(#3c5f75, #9c5273 55%, #34576c);
-                        background: -moz-linear-gradient(#3c5f75, #9c5273 55%, #34576c);
-                        background: -o-linear-gradient(#3c5f75, #9c5273 55%, #34576c);
-                        background: linear-gradient(#3c5f75, #9c5273 55%, #34576c);
-                    }
 
-                    #competences {
-                        background: linear-gradient(#7ca6c1, #4a80a3);
-                    }
-
-                    .page-container.current {
-                        display: block;
-                    }
-
-                    .page-container {
-                        display: none;
-                        position: absolute;
-                        /*height: 100%;
-                        width: 100%;*/
-                        z-index: 1;
-                    }
-
-                    #competences-speech li.current {
-                        top: 0;
-                    }
-
-                    #competences-speech li {
-                        position: absolute;
-                        top: -300px;
-                        left: 700px;
-                        width: 450px;
-                        background: rgba(0, 0, 0, .5);
-                        padding: 10px 20px;
-                        -webkit-box-shadow: 0 0 17px rgba(0, 0, 0, .3);
-                        box-shadow: 0 0 17px rgba(0, 0, 0, .3);
-                        border: 1px solid #0f6296;
-                        -webkit-transition: top .5s;
-                        -moz-transition: top .5s;
-                        -o-transition: top .5s;
-                        -ms-transition: top .5s;
-                        transition: top .5s;
-                    }
-
-                    li {
-                        display: list-item;
-                        text-align: -webkit-match-parent;
-                    }
-
-                    #competences-speech {
-                        position: absolute;
-                        right: 20px;
-                        top: 50px;
-                        margin: 0;
-                        padding: 0;
-                        list-style: none;
-                        height: 160px;
-                    }
-
-                    #competences-speech li h2, #competences-job h2 {
-                        font-size: 24px;
-                        font-weight: normal;
-                        color: #EEE;
-                        width: 50%
-                    }
-
-                    #competences-speech li h2:after, .not-mobile #competences-job h2:after {
-                        content: " ";
-                        display: block;
-                        width: 3px;
-                        height: 24px;
-                        background: #EEE;
-                        position: absolute;
-                        top: 31px;
-                        left: 48%;
-                        -webkit-transform: rotate(20deg);
-                        -moz-transform: rotate(20deg);
-                        -o-transform: rotate(20deg);
-                        -ms-transform: rotate(20deg);
-                        transform: rotate(20deg)
-                    }
-
-                    .not-computer #competences-speech li h2:after {
-                        top: 2px
-                    }
-
-                    #competences-speech li h3 {
-                        margin: 25px 0 0;
-                        padding: 0
-                    }
-
-                    #competences-speech li .exp-duration, #competences-job .exp-duration {
-                        color: #FFF;
-                        position: absolute;
-                        top: 35px;
-                        left: 53%
-                    }
-
-                    #competences-speech li h3 + .exp-duration {
-                        top: auto;
-                        margin-top: -17px
-                    }
-
-                    .not-computer #competences-speech li .exp-duration {
-                        top: 6px;
-                        left: 51%
-                    }
-
-                    #competences-speech li p, #competences-speech li > a
-                    .competence-java {
-                        background-position: -210px 0
-                    }
-
-                    .competence-java:hover, .competence-java:focus, .competence-java.current, .not-computer .competence-java {
-                        background-position: -210px -70px
-                    }
-                </style>
-                <div id="competences" class="page-container current aube">
-                    <ul id="competences-speech">
-                        <li class="competence-java current">
-                            <h2>JAVA</h2>
-                            <span class="exp-duration">3 ans d'expérience</span>
-                            <p>
-                                Langage très répandu découvert au cours de ma formation scolaire. Il permet notamment de
-                                supporter des sites web à gros trafic.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
 
             </div>
         </div>
@@ -222,13 +99,6 @@
     </nav>
 
 
-    <script>
-        $(function () {
-            $("#competences").click(function () {
-                var c = $(this).attr("class").replace("current", "").replace("competence-", "").trim();
-            }
-        });
-    </script>
 </header>
 
 
