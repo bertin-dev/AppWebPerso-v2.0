@@ -410,12 +410,6 @@ GESTION IMAGE AVEC RESTANGLE DECALE
 
 
 
-
-
-
-
-*/
-
 .Verticalementcentre {
 height: 200px;
 margin: 25px 0 20px 0;
@@ -429,7 +423,7 @@ text-align: center;
     top: -5px;
     left: -50px;
     margin: 0 0 20px 0;
-    /*margin: -5px 0 0 -50px;*/
+
     padding: initial;
     opacity: 0.5%;
     z-index: 9;
@@ -437,7 +431,7 @@ text-align: center;
     background-color: white;
 }
 
-
+*/
 
 
 
@@ -1452,3 +1446,140 @@ li {
 }
 
 /*========================================================================================================================*/
+
+
+
+
+
+
+/***********************ANIMATION SUR LES IMAGES**********************************/
+.view {
+    margin: 10px;
+    float: left;
+    border: 10px solid #fff;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+    background: #fff url('../img/Accueil/1103.sdt-microsoft-cloud-apis.jpg') no-repeat center center
+}
+
+.view .mask,
+.view .content {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+
+.view img {
+    display: block;
+    position: relative
+}
+
+.view h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    font-family: Raleway, serif;
+    padding: 10px;
+    /*background: rgba(0, 0, 0, 0.8);*/
+    margin: 20px 0 0 0
+}
+
+.view p {
+    font-family: Merriweather, serif;
+    font-style: italic;
+    font-size: 14px;
+    position: relative;
+    color: #fff;
+    padding: 0px 20px 0px;
+    text-align: center
+}
+.view-tenth img {
+    transform: scaleY(1);
+    transition: all .7s ease-in-out;
+}
+
+.view-tenth .mask {
+    background-color: rgba(255, 231, 179, 0.3);
+    transition: all 0.5s linear;
+    opacity: 0;
+}
+
+.view-tenth h2 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: transparent;
+    margin: 20px 40px 0px 40px;
+    transform: scale(0);
+    color: #333;
+    transition: all 0.5s linear;
+    opacity: 0;
+}
+
+.view-tenth p {
+    color: #333;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s linear;
+}
+
+.view-tenth a.info {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s linear;
+}
+
+.view-tenth:hover img {
+    -webkit-transform: scale(10);
+    transform: scale(10);
+    opacity: 0;
+}
+
+.view-tenth:hover .mask {
+    opacity: 1;
+}
+
+.view-tenth:hover h2,
+.view-tenth:hover p,
+.view-tenth:hover a.info {
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+
+
+/*PERMETTRE AUX FENETRES DE POUVOIR SCROLLER**/
+/*
+.panel-body
+{
+    overflow-y: auto;
+    border: 1px solid black;
+    height: 100px;
+    line-height: 1em;
+}
+
+.panel-body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.panel-body::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+.panel-body::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.panel-body::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+}
+*/

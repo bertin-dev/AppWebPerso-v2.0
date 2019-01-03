@@ -115,24 +115,41 @@
                     <small><em>L'innovation Technologique</em></small>
                 </h4>
                 <div class="col-lg-12">
-                    <div class="col-lg-4 ombrage">
+                    <div class="col-lg-4 ombrage" style="text-align: center;">
+                        <div class="view view-tenth">
                         <img src="img/Accueil/Ecole/IMG-20170111-WA0013.jpg" class="img-responsive img-rounded" alt="">
-                        <h4>L'intérêt des Projets Puissants Facteur de Motivation</h4>
-                        <p>Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille,
-                            l'avant veille et ainsi de suite. Dieu Seul sait comment je déteste la robotisation
-                        </p>
+                        <div class="mask">
+                            <h2>The Only Living Boy in New York</h2>
+                            <p>Words and such, a whole lot more of muh flippin' words.</p>
+                            <a href="#" class="info">Read More</a>
+                        </div>
+                        </div>
+                        <h4 title="Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille,l'avant veille et ainsi de suite. Dieu Seul sait comment je déteste la robotisation
+                        ">L'intérêt des Projets Puissants Facteur de Motivation</h4>
                     </div>
-                    <div class="col-lg-4 ombrage ">
+                    <div class="col-lg-4 ombrage" style="text-align: center;">
+                        <div class="view view-tenth">
                         <img src="img/Accueil/Ecole/DSCN9729.jpg" class="img-responsive img-rounded" alt="">
+                        <div class="mask">
+                            <h2>The Only Living Boy in New York</h2>
+                            <p>Words and such, a whole lot more of muh flippin' words.</p>
+                            <a href="#" class="info">Read More</a>
+                        </div>
+                        </div>
                         <h4>Créativité Facteur d'Epanouissement au Travail</h4>
-                        <p>Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille, l'avant veille etc
-                        </p>
+
                     </div>
-                    <div class="col-lg-4 ombrage ">
+                    <div class="col-lg-4 ombrage" style="text-align: center;">
+                        <div class="view view-tenth">
                         <img src="img/Accueil/Communauté/IMG_20160625_155908_1.jpg" class="img-responsive img-rounded" alt="">
-                        <h4>A travers La discipline la bonne méthode je trouve toujours le succès dans les Projets</h4>
-                        <p>Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille, l'avant veille etc
-                        </p>
+                        <div class="mask">
+                            <h2>The Only Living Boy in New York</h2>
+                            <p>Words and such, a whole lot more of muh flippin' words.</p>
+                            <a href="#" class="info">Read More</a>
+                        </div>
+                        </div>
+                        <h4>A travers La discipline et la méthode je trouve toujours le succès dans les Projets</h4>
+
                     </div>
                 </div>
             </article>
@@ -147,7 +164,7 @@
                             <h3 class = "panel-title">SERVICES</h3>
                         </div>
 
-                        <div class = "panel-body" style="color: black; text-align: center;">
+                        <div class="panel-body" style="color: black; text-align: center;">
 
                             <div class="col-lg-6">
                                 Référencement de sites Internet et audit SEO - Expert en optimisation et positionnement Google
@@ -166,11 +183,54 @@
                 <div class="col-lg-4">
                     <div class = "panel panel-primary">
                         <div class = "panel-heading">
-                            <h3 class = "panel-title">FONCTIONNALITES METIERS DEPLOYE</h3>
+                            <h3 class = "panel-title">FONCTIONNALITES METIERS DEPLOYES</h3>
                         </div>
 
-                        <div class = "panel-body" style="color: black; text-align: center;">
-
+                        <div class="panel-body" style="color: black;">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h6 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                                Collapsible Group 1</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse in">
+                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                            commodo consequat.</div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h6 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                                Collapsible Group 2</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                            commodo consequat.</div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                                Collapsible Group 3</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                            commodo consequat.</div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -235,35 +295,6 @@
                 <h4>Mes Services
                     <small><em>Dernières Fonctionnalités</em></small>
                 </h4>
-                <div class="col-xs-6 col-md-6 col-lg-6">
-
-                    <div class="col-lg-6 Verticalementcentre ombrage">
-                        <h4>DU DEVELOPPEMENT AU DEPLOIEMENT</h4>
-                        <p>Utilisez les technologies du web pour vous faire connaître et ventre votre savoir faire</p>
-                    </div>
-
-                    <div class="col-lg-6 Verticalementcentre2 ombrage" style="text-align: center;">
-                        <img src="img/Accueil/php.png" class="img-responsive"  alt="">
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="col-xs-6 col-md-6 col-lg-6">
-
-                    <div class="col-lg-6 Verticalementcentre ombrage">
-                        <h4>LA DIGITALISATION DE VOTRE ENTREPRISE</h4>
-                        <p>Elle passe par l'utilisation des logiciels d'entreprises</p>
-                    </div>
-
-                    <div class="col-lg-6 Verticalementcentre2 ombrage">
-                        <img src="img/Accueil/microsofttech.png" class="img-responsive" alt="">
-                    </div>
-
-                </div>
-
 
 <div class="col-xs-12 col-lg-12 ombrage blanc" style="margin-bottom: 20px;">
                 <div class="col-lg-6">
