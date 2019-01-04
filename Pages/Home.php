@@ -6,7 +6,7 @@
         <div class="row">
             <article class="title-big col-lg-12">
                 <div class="col-lg-6">
-                    <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30">
+                    <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30" >
                         Bienvenue
                     </div>
                     <!--- <img src="img/bertin.dev.jpg" title="Programmation" class="img-responsive well" width="379" />-->
@@ -44,17 +44,18 @@
                 </div>
 
                 <div class="col-lg-6" style="text-align: center;">
-                    <h1>Recherchez-vous un Informaticien Programmeur ???</h1>
+                    <h1>Recherchez-vous un Développeur Consultant ???</h1>
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
                     <a href="index.php?id_page=5" title="contactez-moi">Contacter</a> ou regardez <a
                             href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations →</a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
                     <details>
-                        <summary><h1 title="Solutions Informatique">INNOVATION PAR L'EXPERIENCE</h1></summary>
-                        <summary><h2>Conseils</h2></summary>
-                        <summary><h3>Développent</h3></summary>
-                        <summary><h4>Intégration des Solutions</h4></summary>
+                        <summary><h1 title="Solutions Informatique">UN PROJET EST UN CHALLENGE !</h1></summary>
+                        <summary><h4>Audit & Conseils</h4></summary>
+                        <summary><h4>Transfert de Compétences</h4></summary>
+                        <summary><h4>Analyse, Conception, Implémentation et Déploiment</h4></summary>
+
                     </details>
                 </div>
                 <!--<a class="btn btn-default page-scroll" href="#about" title="ppppppppppppppp">Click Me to Scroll Down!</a>-->
@@ -62,7 +63,7 @@
 
 
             <article class="col-xs-12 col-md-4 col-lg-12" style="text-align: center;">
-                <h4 style="text-align: left">Mes Convictions
+                <h4 style="text-align: left; font-variant: small-caps;">MES CONVICTIONS
                     <small><em>Facteur de Motivation</em></small>
                 </h4>
                 <div class="ombrage col-lg-3">
@@ -88,30 +89,28 @@
             </article>
 
             <article class="title-big col-xs-12 col-md-4 col-lg-12">
-                <h4>Devis
+                <h4 style="font-variant: small-caps;">DEVIS
                     <small><em>Optez pour des solutions sur mesures</em></small>
                 </h4>
-                <div class="col-lg-6" style="text-align: center;">
-                    <h4>A propos
-                        <small><em>A propos de moi</em></small>
-                    </h4>
-                    Donnez vie à vos projets. <br>
-                    Mon principal objectif sera de vous accompagner dans la Digitalisation.<br>
-                    Que vous soyez un particulier, un Professionnel ou une entreprise
+                <div class="col-lg-6" style="text-align: center; ">
+                    <h4>Des Solutions pour tous vos enjeux de Transformation</h4>
+                    <h5>Transformation digitale<small><em> Votre Entreprise est-elle prête ?</em></small></h5>
+                    <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
+                    <h5>Une Technologie de Pointe <small><em>Adapté pour votre entreprise</em></small></h5>
                 </div>
 
 
-                <div class="right-sidebar col-lg-6" style="text-align: center;">
-                    <h4>Devis Dynamique en 5 Min</h4>
-                   <p>Votre offre sans engagement dans votre boîte mail sous 5 Min chrono!</p>
-                    <button class="btn btn-info">Demamder un Dévis</button>
+                <div class="right-sidebar col-lg-6" style="text-align: center; ">
+                    <h4>Générez Dynamiquement votre Devis</h4>
+                   <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
+                    <button class="btn-primary">Demandez un Dévis</button>
                 </div>
 
             </article>
 
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4>ENTREPRISE
+                <h4 style="font-variant: small-caps;">ENTREPRISE
                     <small><em>L'innovation Technologique</em></small>
                 </h4>
                 <div class="col-lg-12">
@@ -155,8 +154,8 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4>Mes Services
-                    <small><em>Dernières Fonctionnalités</em></small>
+                <h4 style="font-variant: small-caps;">QUALIFICATIONS
+                    <small><em>Mon Périmètre de Compétence s'articule autour de</em></small>
                 </h4>
                 <div class="col-lg-8">
                     <div class = "panel panel-primary">
@@ -166,14 +165,16 @@
 
                         <div class="panel-body" style="color: black; text-align: center;">
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 Référencement de sites Internet et audit SEO - Expert en optimisation et positionnement Google
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 Création de sites Internet pour les PME / PMI / auto-entrepreneurs (AE) / indépendants / artisans
                             </div>
 
-
+                            <div class="col-lg-4">
+                                Création de sites Internet pour les PME / PMI / auto-entrepreneurs (AE) / indépendants / artisans
+                            </div>
 
                         </div>
                     </div>
@@ -242,7 +243,7 @@
 
 
             <article class="col-xs-12 col-md-4 col-lg-12">
-                <h4>Mes dernières réalisations
+                <h4 style="font-variant: small-caps;">DERNIERES REALISATIONS
                     <small><em>Mes derniers projets</em></small>
                 </h4>
 
@@ -282,7 +283,7 @@
 
 <section class="title-big">
     <div class="parallax">
-        <p><h1 style="position: relative; top: 80px;">GOOGLE DEVELOPPER</h1></p>
+        <p><h1 style="position: relative; top: 80px; font-variant: small-caps;">MON EXPERIENCE EN PROGRAMMATION <br> A VOTRE SERVICE</h1></p>
     </div>
 </section>
 
@@ -292,23 +293,71 @@
         <div class="row">
 
             <article class="col-xs-12 col-md-8 col-lg-9">
-                <h4>Mes Services
+
+                <h4 style="font-variant: small-caps;">CITATIONS
+                    <small><em>sur les Technologies</em></small>
+                </h4>
+                <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px; margin-left: initial; padding-left: initial;">
+
+                        <div class="testimonialslide clearfix flexslider" style="border-left: 10px solid rgb(10, 141, 224); height: 100%; padding: initial; margin: initial; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
+
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="slides" style="width: 800%; transition-duration: 0s; transform: translate3d(-555px, 0px, 0px);">
+                                    <li class="clone">
+                                        <blockquote>
+                                            La créativité implique de briser les conventions afin de regarder les choses sous un jour nouveau.
+                                        </blockquote>
+                                        <h6>EDWARD DE BONO</h6>
+                                    </li>
+                                    <li class="clone" aria-hidden="true"><blockquote>
+                                            Les individus qui réussissent sont ceux qui savent mobiliser toutes leurs ressources mentales et physiques sur un objectif.
+                                        </blockquote>
+                                        <h6>Anthony Robbins</h6>
+                                    </li>
+
+                                    <li class="clone" aria-hidden="true"><blockquote>
+                                            Without imagination, he could not have creation there.
+                                        </blockquote>
+                                        <h6>A. Jacquard</h6>
+                                    </li>
+
+                                    <li class="clone" aria-hidden="true"><blockquote>
+                                            Il n’y a pas de grande tâche difficile qui ne puisse être décomposée en petites tâches faciles.
+                                        </blockquote>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a class="">2</a></li></ol>
+                        </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <h4 style="font-variant: small-caps;">Mes Services
                     <small><em>Dernières Fonctionnalités</em></small>
                 </h4>
 
 <div class="col-xs-12 col-lg-12 ombrage blanc" style="margin-bottom: 20px;">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <p>
                         <ul style="text-align: center; padding: initial; margin: initial">
-                        <li>Découvrir les applications universelles (Windows 10, windows 10 Mobile, Xbox etc...) et les outils qui sont liés.</li>
-                        <li>Utiliser les contrôles XAML et les reliers au code C#</li>
-                        <li>Comprend et expliquer le pattern MVVM</li>
-                        <li>Se connecter et aux services web et traiter les données</li>
-                        <li><a href="#">Lire la suire</a></li>
+                        <li>la Découverte des applications universelles (Windows 10, windows 10 Mobile) et Xamarin
+                            m'ont permis de déployer quelques applications crossplate-forme</li>
                     </ul>
                     </p>
                 </div>
-                <div class="col-lg-6">
+    <div class = "col-lg-3">
+            <img src="img/Accueil/xamarin-native.png" class="img-responsive" alt="">
+    </div>
+                <div class="col-lg-5">
                     <img src="img/Accueil/crossplaforme.png" class="img-responsive" alt="">
                 </div>
 
@@ -323,7 +372,7 @@
                     </div>
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
-                        <img src="img/Accueil/xamarin-native.png" class="img-responsive" alt="">
+                        <img src="img/Accueil/azure devops.png" class="img-responsive" alt="">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem dolores enim  </p>
                         </div>
                     </div>
@@ -337,55 +386,12 @@
                 </div>
 
 
-                <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px; height: 100px; margin-left: initial; padding-left: initial;">
-                    <div style="border-left: 10px solid rgb(10, 141, 224); height: 100%; padding: initial; margin: initial; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae eveniet excepturi hic illo nobis nostrum numquam optio?
-                        Dicta ea eaque optio quod? Amet autem consequatur et, illo magni quas?</div>
-                </div>
 
 
 
             </article>
 
-
-
-
-
-
-
-            <style>
-                table {
-                    display: table;
-                    border-collapse: separate;
-                    border-spacing: 2px;
-                    border-color: grey;
-                }
-                tbody {
-                    display: table-row-group;
-                    vertical-align: middle;
-                    border-color: inherit;
-                }
-
-                .grey-light {
-                    background: #cecdcc;
-                    color: #6a6767;
-                    text-align: center;
-                }
-
-                .bordures
-                {
-                    border: 1px dashed #0f6296;
-                    margin: 0 7%;
-                }
-
-                ul li
-                {
-                    list-style: none;
-                }
-
-
-            </style>
-
+<!----TRAITEMENT DE LA BARRE LATERALE-->
             <aside class="col-xs-12 col-md-4 col-lg-3">
                 <div class="bordures">
                     <div class="grey-light ombrage">
@@ -452,51 +458,6 @@
                     </ul>
                 </div>
 
-
-
-
-
-                <style>
-                    .box-item {
-
-                        margin: 0 7%;
-                        text-align: center;
-                        border-radius: 4px;
-                        background-color: rgba(255, 255, 255, 0.8);
-                        position: relative;
-                        -webkit-box-shadow: 0px 56px 36px -60px #121D12;
-                        -moz-box-shadow: 0px 56px 36px -60px #121D12;
-                        -o-box-shadow: 0px 56px 36px -60px #121D12;
-
-                    }
-
-                    .box-item h3 {
-                        color: #363638;
-                        font-size: 1.5em;
-                        text-transform: uppercase;
-                        margin: initial;
-                        padding: initial;
-                    }
-
-                    .box-item h6 {
-                        color: #363638;
-                        padding: initial;
-                        margin: initial;
-                    }
-
-                    .box-item p {
-                        color: #363638;
-                    }
-
-                    .itemmoitie
-                    {
-                        background-color: #0f6296!important;
-                        display: block;
-                        border-radius: 4px;
-                        margin: 0 7%;
-                    }
-
-                </style>
                 <div class="itemmoitie"><br><br><br></div>
                 <div class="box-item">
                     <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
@@ -517,42 +478,6 @@
 </section>
 
 
-
-<section id="" class="">
-    <div class="container">
-        <div class="row">
-
-            <article class="col-xs-12 col-md-8 col-lg-9">
-
-                <div class="col-lg-12">
-                    <div class="col-lg-4 ombrage">
-                        <img src="img/Accueil/Ecole/IMG-20170111-WA0013.jpg" class="img-responsive img-rounded" alt="">
-                        <h4>L'intérêt des Projets Puissants Facteur de Motivation</h4>
-                        <p>Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille,
-                            l'avant veille et ainsi de suite. Dieu Seul sait comment je déteste la robotisation
-                        </p>
-                    </div>
-                    <div class="col-lg-4 ombrage ">
-                        <img src="img/Accueil/Ecole/DSCN9729.jpg" class="img-responsive img-rounded" alt="">
-                        <h4>Créativité Facteur d'Epanouissement au Travail</h4>
-                        <p>Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille, l'avant veille etc
-                        </p>
-                    </div>
-                    <div class="col-lg-4 ombrage ">
-                        <img src="img/Accueil/Communauté/IMG_20160625_155908_1.jpg" class="img-responsive img-rounded" alt="">
-                        <h4>A travers La discipline la bonne méthode je trouve toujours le succès dans les Projets</h4>
-                        <p>Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille, l'avant veille etc
-                        </p>
-                    </div>
-                </div>
-            </article>
-
-            <aside class="col-xs-12 col-md-4 col-lg-3">
-
-            </aside>
-        </div>
-    </div>
-</section>
 
 
 
