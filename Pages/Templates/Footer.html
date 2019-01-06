@@ -106,7 +106,7 @@
     </nav>
 
     <span class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin: 0;">
-                <span title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php if(date("Y", time())==='2018') echo date("Y", time()); else echo '2018 - '. date("Y", time()); ?>
+                <span title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php  echo date("Y", time()); ?>
                     , bertin.dev, Inc.</em></small></span>
             </span>
 
@@ -121,7 +121,7 @@
 
 </footer>
 
-
+<?php require('login.php'); ?>
 <!-- jQuery -->
 <script src="../Public/js/jquery.js"></script>
 

@@ -15,7 +15,7 @@
 
                         <a href="#" title="Analyste Programmeur" class="transition">
                             <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive well"
-                                 src="img/bertin.dev5.png">
+                                 src="img/bertin.dev3.png">
                             <!--<div class="mask"> </div>-->
                             <h3 class="text-left" style="font-size: 25px;">Bertin Mounok<br>Contact: →(+237) 694 048 925<br>
                             </h3>
@@ -90,7 +90,7 @@
 
             <article class="title-big col-xs-12 col-md-4 col-lg-12">
                 <h4 style="font-variant: small-caps;">DEVIS
-                    <small><em>Optez pour des solutions sur mesures</em></small>
+                    <small><em>Optez Pour des Solutions sur Mesures</em></small>
                 </h4>
                 <div class="col-lg-6" style="text-align: center; ">
                     <h4>Des Solutions pour tous vos enjeux de Transformation</h4>
@@ -103,7 +103,7 @@
                 <div class="right-sidebar col-lg-6" style="text-align: center; ">
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
-                    <button class="btn-primary">Demandez un Dévis</button>
+                    <button class="btn-primary" data-toggle="modal" data-target="#login_1">Demandez un Dévis</button>
                 </div>
 
             </article>
@@ -155,7 +155,7 @@
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
                 <h4 style="font-variant: small-caps;">QUALIFICATIONS
-                    <small><em>Mon Périmètre de Compétence s'articule autour de</em></small>
+                    <small><em>Mon Périmètre de Compétence s'Articule Autour de</em></small>
                 </h4>
                 <div class="col-lg-8">
                     <div class = "panel panel-primary">
@@ -244,7 +244,7 @@
 
             <article class="col-xs-12 col-md-4 col-lg-12">
                 <h4 style="font-variant: small-caps;">DERNIERES REALISATIONS
-                    <small><em>Mes derniers projets</em></small>
+                    <small><em>Mes Derniers Projets</em></small>
                 </h4>
 
 
@@ -295,7 +295,7 @@
             <article class="col-xs-12 col-md-8 col-lg-9">
 
                 <h4 style="font-variant: small-caps;">CITATIONS
-                    <small><em>sur les Technologies</em></small>
+                    <small><em>Sur la Vie</em></small>
                 </h4>
                 <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px; margin-left: initial; padding-left: initial;">
 
@@ -309,19 +309,22 @@
                                         </blockquote>
                                         <h6>EDWARD DE BONO</h6>
                                     </li>
-                                    <li class="clone" aria-hidden="true"><blockquote>
+                                    <li class="clone" aria-hidden="true">
+                                        <blockquote>
                                             Les individus qui réussissent sont ceux qui savent mobiliser toutes leurs ressources mentales et physiques sur un objectif.
                                         </blockquote>
                                         <h6>Anthony Robbins</h6>
                                     </li>
 
-                                    <li class="clone" aria-hidden="true"><blockquote>
+                                    <li class="clone" aria-hidden="true">
+                                        <blockquote>
                                             Without imagination, he could not have creation there.
                                         </blockquote>
                                         <h6>A. Jacquard</h6>
                                     </li>
 
-                                    <li class="clone" aria-hidden="true"><blockquote>
+                                    <li class="clone" aria-hidden="true">
+                                        <blockquote>
                                             Il n’y a pas de grande tâche difficile qui ne puisse être décomposée en petites tâches faciles.
                                         </blockquote>
                                     </li>
@@ -331,55 +334,53 @@
                             <ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a class="">2</a></li></ol>
                         </div>
 
-
                 </div>
 
-
-
-
-
-
-
-
-                <h4 style="font-variant: small-caps;">Mes Services
-                    <small><em>Dernières Fonctionnalités</em></small>
+                <h4 style="font-variant: small-caps;">NOUVEAUTES
+                    <small><em>Dernières Technologies Déployés par Microsoft & Xamarin</em></small>
                 </h4>
-
-<div class="col-xs-12 col-lg-12 ombrage blanc" style="margin-bottom: 20px;">
-                <div class="col-lg-4">
-                    <p>
-                        <ul style="text-align: center; padding: initial; margin: initial">
-                        <li>la Découverte des applications universelles (Windows 10, windows 10 Mobile) et Xamarin
-                            m'ont permis de déployer quelques applications crossplate-forme</li>
-                    </ul>
-                    </p>
-                </div>
-    <div class = "col-lg-3">
-            <img src="img/Accueil/xamarin-native.png" class="img-responsive" alt="">
-    </div>
+                <div class="col-xs-12 col-lg-12 ombrage blanc" style="margin-bottom: 20px;">
                 <div class="col-lg-5">
+                        <ul style="text-align: center; padding: initial; margin: initial">
+                        <li>Il y a tout juste <?= date('Y')-2018;?> an que j'utilise cette techno mais putin je suis hyper faciné par cette dernière.
+                            Les applications universelles (Windows 10, windows 10 Mobile) et Xamarin
+                            m'ont permis de déployer quelques applications crossplate-forme
+                        </li>
+                        </ul>
+                </div>
+
+                 <div class = "col-lg-3" style="text-align: center; padding: initial; margin: initial">
+                     <img src="img/Accueil/xamarin-native.png" class="img-responsive" alt="">
+                 </div>
+
+                <div class="col-lg-4" style="text-align: center; padding: initial; margin: initial">
                     <img src="img/Accueil/crossplaforme.png" class="img-responsive" alt="">
                 </div>
-
-</div>
+                </div>
 
                 <div class="col-xs-12 col-lg-12 " style="margin-bottom: 20px;">
+                    <h4 style="font-variant: small-caps;">CLOUD
+                        <small><em>Traitement, Stockage, Restoration des Données Distantes</em></small>
+                    </h4>
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
                         <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores cupiditate dolor dolores</p>
+                            <hr>
+                        <p>Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory</p>
                         </div>
                     </div>
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
                         <img src="img/Accueil/azure devops.png" class="img-responsive" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorem dolores enim  </p>
+                            <hr>
+                        <p>Azure Devops autre fois appelé VSTS. Il me permet de planifier les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde via son outil Git.</p>
                         </div>
                     </div>
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
                         <img src="img/Accueil/web.png" class="img-responsive" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, cumque, doloremque.</p>
+                            <hr>
+                        <p>Autrefois négligé et simplifié par moi, Aujourd'hui cette Techno m'est dévenu incontournable dans tous les projets sur lesquels je suis passé</p>
                         </div>
                     </div>
 
@@ -461,13 +462,19 @@
                 <div class="itemmoitie"><br><br><br></div>
                 <div class="box-item">
                     <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
-                    <h6 title="Software Developper Xamarin"><small>Software Developper PHP and C#</small></h6>
+                    <h5 style="font-variant: small-caps; padding: initial;margin: initial;" title="Software Developper Xamarin"><small><em>Software Developper</em></small></h5>
                     <h3 style="border-bottom: 1px solid black">Bertin Story</h3>
-                    <p style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore lorem<br><a
+                    <p style="font-size: 12px;">
+                        #bertin.dev un Geek de l'informatique en général et la programmation en particulier depuis
+                        l'âge de 18 ans. Au début j'avais commencé par être passionné des Jeux Vidéos (Gamer),
+                        ensuite j'ai attaqué l'installation des logiciels, des Jeux PC, des systèmes d'exploitations,
+                        le crackage, le surf illégal, les téléchargements et
+                        très vite c'est devenu une passion que j'ai pu orienter vers le codage des logiciels d'entreprises
+                        depuis un bout de temps.
+                        <br><a
                                 href="#">Lire la Suite</a></p>
                     <div style="border-bottom: 1px solid black;"></div>
-                    <h6 style="margin: 5px;">Spécialiste des Technologies Suivantes:</h6>
+                    <h6 style="margin: 5px;">Spécialisé dans les Techno Suivantes:</h6>
                     <img src="img/Accueil/microsoft.jpg" title="icon-name" class="img-thumbnail" width="100" height="100">
                         <img src="img/Accueil/TWD-Logo-dodgerblue.png" title="icon-name" class="img-thumbnail" width="100" height="100">
 

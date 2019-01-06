@@ -16,7 +16,6 @@ require_once('page_number.php');
     <div class="container">
         <div class="row">
 
-
             <!-- GESTION DE L'ARTICLE DES ENTREPRISES-->
             <article class="col-lg-6">
                 <div class="title-big" align="center"><h1>ENTREPRISE</h1></div>
@@ -157,7 +156,8 @@ require_once('page_number.php');
                             <li><a href="#<?= 'travaux' . $portfolio->id_contenu; ?>" title="Travaux" data-toggle="tab">TRAVAUX</a>
                             </li>
                             <li><a href="#<?= 'captures' . $portfolio->id_contenu; ?>" title="Captures"
-                                   data-toggle="tab">CAPTURES</a></li>
+                                   data-toggle="tab">CAPTURES</a>
+                            </li>
                             <li><a href="#<?= 'fonctionalites' . $portfolio->id_contenu; ?>" title="Fonctionalités"
                                    data-toggle="tab">FONCTIONALITES</a></li>
                         </ul>
@@ -200,7 +200,6 @@ require_once('page_number.php');
                                 <img src="<?= $portfolio->screenshot_App; ?>" class="img-responsive"
                                      title="<?= $portfolio->nom_entite; ?>"
                                      alt="<?= $portfolio->nom_entite; ?>"/>
-
                             </div>
 
 

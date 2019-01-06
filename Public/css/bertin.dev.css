@@ -2265,11 +2265,9 @@ iframe[name="google_conversion_frame"]{
 
 .btn:after{
 
-  content: "\f105";
+  content: "";
   display: inline-block;
   margin-left: 15px;
-  font-family: "FontAwesome";
-
 }
 
 .btn i{

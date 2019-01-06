@@ -23,12 +23,12 @@
         </div>
     </div>-->
 
-    <div class="col-lg-12 apropos-cover" style="border: 5px solid green; ">
+    <div class="col-lg-12 apropos-cover" style="border-bottom: 5px solid #1073b2; margin-top: -57px; z-index: 0;">
 
     </div>
         <div class="col-lg-12" style="background: white; margin-bottom: 20px;">
             <div class="col-lg-3">
-                <img src="img/Accueil/app.jpg" alt="" style="float: right; margin-top: -70px; z-index: 10;border: 2px solid white;" class="img-circle" width="130" height="130">
+                <img src="img/Accueil/app.jpg" alt="" style="float: right; margin-top: -70px; z-index: 10;border: 2px solid #1073b2;" class="img-circle" width="130" height="130">
             </div>
             <div class="col-lg-9" style="color: black">
             <p style="font-variant: small-caps;">
