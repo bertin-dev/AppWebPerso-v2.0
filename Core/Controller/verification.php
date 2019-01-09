@@ -89,6 +89,91 @@ if(isset($_POST['view'])){
 }
 
 
+/*système de chargement automatique pendant le scroll*/
+if(isset($_POST['limit'], $_POST['start'])){
+
+    $content = '';
+
+    foreach (\App::getDB()->query('
+         SELECT * FROM contenu
+         INNER JOIN page
+         ON contenu.code_page = page.id_page
+         WHERE statut="1" AND id_page=2 
+         ORDER BY id_contenu DESC LIMIT '.$_POST['start'].','.$_POST['limit']) as $portfolio):
+
+        $content .= '<div id="load_more_data" class="col-lg-12 well" style="background: url("img/pattern15.png");">';
+                         $content .='<ul class="nav nav-tabs">';
+                         $content .='<li class="active"><a href="#freelance'.$portfolio->id_contenu.'"';
+                         $content .='title="'.$portfolio->type_service.'"  data-toggle="tab">';
+                         $content .='<i class="icon-briefcase"></i>'.$portfolio->type_service.'</a></li>';
+                         $content .='<li><a href="#travaux'.$portfolio->id_contenu.'" title="Travaux" data-toggle="tab">TRAVAUX</a></li>';
+                         $content .='<li><a href="#captures'.$portfolio->id_contenu.'" title="Captures" data-toggle="tab">CAPTURES</a></li>';
+                         $content .='<li><a href="#fonctionalites'.$portfolio->id_contenu.'" title="Fonctionalités" data-toggle="tab">FONCTIONALITES</a></li>';
+                         $content .='</ul>';
+
+
+                           $content .='<div class="tab-content">';
+                           $content .='<div class="tab-pane active" id="freelance'.$portfolio->id_contenu.'">';
+                           $content .='<div class="col-lg-6">';
+                           $content .='<strong>Année :</strong><em>';
+                           $content .='<small>'.$portfolio->annee.'</small></em><br>';
+                           $content .='<strong>Type de Service:</strong><em>';
+                           $content .='<small>'.$portfolio->type_service.'</small></em><br>';
+                           $content .='<strong>Entite:</strong><em>';
+                           $content .='<small>'.$portfolio->entite.'</small></em><br>';
+                           $content .='</div>';
+                           $content .='<div class="col-lg-6">';
+                           $content .='<strong>Nom d\'Entité:</strong> <em>';
+                           $content .='<small>'.$portfolio->nom_entite.'</small></em><br>';
+                           $content .='<strong>Activité:</strong><em>';
+                           $content .='<small>'.$portfolio->activite.'</small></em><br>';
+                           $content .='<strong>Ville:</strong> <em>';
+                           $content .='<small>'.$portfolio->ville.'</small></em>';
+                           $content .='</div></div>';
+
+                           $content .='<div class="tab-pane" id="travaux'.$portfolio->id_contenu.'">';
+                           $content .='<p><em>'.$portfolio->travaux_effectue.'</em></p>';
+                           $content .='</div>';
+
+                           $content .='<div class="tab-pane" id="captures'. $portfolio->id_contenu.'">';
+                           $content .='<img src="'.$portfolio->screenshot_App.'" class="img-responsive" title="'.$portfolio->nom_entite.'"alt="'.$portfolio->nom_entite.'"/>';
+                           $content .='</div>';
+                           $content .='<div class="tab-pane" id="fonctionalites'.$portfolio->id_contenu.'">';
+
+                            $content .='<div class=" col-lg-6">';
+                            $content .='<h4 align="center"><u>Fonctionalités</u>:</h4>';
+                            $content .='<em>'.$portfolio->fonctionnalites.'</em>';
+                             $content .='</div>';
+
+                             $content .='<div class="right-sidebar col-lg-6">';
+                             $content .='<h4 align="center"><u>Caractéristiques</u>:</h4>';
+                             $content .='<strong>Technologie :</strong> <em>';
+                             $content .='<small>'. $portfolio->app_dev.'</small></em><br>';
+                             $content .='<strong>Type:</strong> <em>';
+                             $content .='<small>'.$portfolio->type_app.'</small></em><br>';
+                             $content .=' <strong>Architecture:</strong> <em>';
+                             $content .='<small>'.$portfolio->architecture.'</small></em><br>';
+                             $content .='<strong>Méthode d\'Analyse:</strong><em>';
+                             $content .='<small>'.$portfolio->methode_analyse.'</small></em><br>';
+                             $content .=' <strong>IDE:</strong><em>';
+                             $content .='<small>'.$portfolio->ide.'</small></em><br>';
+                             $content .='<strong>Langage:</strong><em>';
+                             $content .=' <small>'.$portfolio->langage.'</small></em><br>';
+                             $content .='<strong>SGBD:</strong><em>';
+                             $content .='<small>'.$portfolio->sgbd.'</small></em><br>';
+                             $content .='<strong>Outils:</strong> <em>';
+                             $content .='<small>'.$portfolio->outils.'</small></em><br>';
+                             $content .='<strong>Framework/CMS:</strong> <em>';
+                             $content .='<small>'.$portfolio->framework.'</small></em><br>';
+                             $content .='<strong>URL:</strong> <em>';
+                             $content .='<small><a href="'.$portfolio->url.'" alt="'.$portfolio->url.'" title="'.$portfolio->url.'">'.$portfolio->url.'</a></small>';
+                             $content .='</em></div></div></div></div>';
+
+endforeach;
+echo $content;
+}
+
+
 
 // Une fois le formulaire envoyé
 if(isset($_GET['freelance']))

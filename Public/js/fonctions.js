@@ -503,3 +503,60 @@ jQuery(document).ready(function($) {
 SYSTEME DE GESTION DU LOGIN ET L'INSCRIPTION
    ========================================================================== */
 
+
+
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA PAGE PORFOLIO SECTION FREELANCE
+   ========================================================================== */
+
+$(function () {
+
+    var limit = 2;
+    var start = 0;
+    var action = 'inactive';
+
+    function chargement_data(limit, start){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                limit: limit,
+                start: start
+            },
+            cache: false,
+           success:function (data) {
+               $('#load_more_data').append(data);
+               if(data == ''){
+                   $('#load_data_message').html("<button type='button' class='btn btn-info'>No Data Found</button>");
+                   action = 'active';
+               }
+               else
+               {
+                   $('#load_data_message').html("<button type='button' class='btn btn-warning'>Please Wait... </button>");
+                   action = 'inactive';
+               }
+           }
+        });
+    }
+
+
+    if(action === 'inactive')
+    {
+        action = 'active';
+        chargement_data(limit, start);
+    }
+
+
+    $(window).scroll(function () {
+       if($(window).scrollTop() + $(window).height() > $('#load_more_data').height() && action==='inactive'){
+           action = 'active';
+           start = start + limit;
+           setTimeout(function () {
+               chargement_data(limit, start);
+           }, 5000);
+       }
+    });
+});

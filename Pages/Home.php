@@ -283,7 +283,7 @@
 
 <section class="title-big">
     <div class="parallax">
-        <p><h1 style="position: relative; top: 80px; font-variant: small-caps;">MON EXPERIENCE EN PROGRAMMATION <br> A VOTRE SERVICE</h1></p>
+        <h1 style="position: relative; top: 80px; font-variant: small-caps;">MON EXPERIENCE EN PROGRAMMATION <br> A VOTRE SERVICE</h1>
     </div>
 </section>
 
