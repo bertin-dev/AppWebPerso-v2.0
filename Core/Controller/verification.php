@@ -90,6 +90,9 @@ if(isset($_POST['view'])){
 
 
 /*système de chargement automatique pendant le scroll*/
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LE PORTFOLIO SECTION FONCTIONALITES
+   ========================================================================== */
 if(isset($_POST['limit'], $_POST['start'])){
 
     $content = '';
@@ -101,7 +104,7 @@ if(isset($_POST['limit'], $_POST['start'])){
          WHERE statut="1" AND id_page=2 
          ORDER BY id_contenu DESC LIMIT '.$_POST['start'].','.$_POST['limit']) as $portfolio):
 
-        $content .= '<div id="load_more_data" class="col-lg-12 well" style="background: url("img/pattern15.png");">';
+        $content .= '<div class="col-lg-12 well" style="background: url("img/pattern15.png");">';
                          $content .='<ul class="nav nav-tabs">';
                          $content .='<li class="active"><a href="#freelance'.$portfolio->id_contenu.'"';
                          $content .='title="'.$portfolio->type_service.'"  data-toggle="tab">';
@@ -172,6 +175,96 @@ if(isset($_POST['limit'], $_POST['start'])){
 endforeach;
 echo $content;
 }
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION REALISATION
+   ========================================================================== */
+if(isset($_POST['realisation'])){
+    $info = '';
+    foreach (\App::getDB()->query('
+                            SELECT * FROM contenu
+                            INNER JOIN page
+                            ON contenu.code_page=page.id_page
+                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
+
+        $info .= '<div class="col-lg-3">';
+        $info .= '<div class="cta externe event-type center-element-container no-transition" style="background-color:#1b1b1b;">';
+        $info .= '<a href="index.php?id_page=' . $projet->id_page . '#entreprise' . $projet->id_contenu . '" data-toggle="" data-target="" title=' . $projet->app_dev . ' class="transition page-scroll">';
+        $info .= '<img data-src="" alt="Projet de Développement" class="bg img_responsive" width="280" height="280"
+                        title=' . $projet->app_dev . ' src="' . $projet->screenshot_App . '">';
+        $info .= '<div class="mask"></div> <h4><u>' . $projet->app_dev . '</u></h4><h3 class="text-center" style="font-size: small">' . substr(strtoupper(nl2br(stripslashes($projet->fonctionnalites))), 0, 50) . '<br><u>LIRE LA SUITE</u></h3>';
+        $info .= '<div class="bottom">Publié:<div class="date">' . $projet->annee . '</div></div>';
+        $info .= '<div class="contentHover" style="font-size:small;"><i class="fa fa-laptop fa-2x"></i>Langage: ' . $projet->langage . '<br>IDE: ' . $projet->ide . '<br>SGBD: ' . $projet->sgbd . '<br>Framework: ' . $projet->framework . '<br>URL: ' . $projet->url . '</div>';
+        $info .= '<span class="border border-1"></span>
+                        <span class="border border-2"></span>
+                        <span class="border border-3"></span>
+                        <span class="border border-4"></span>';
+        $info .= '</a>';
+        $info .= '</div>';
+        $info .= '</div>';
+    endforeach;
+
+    echo $info;
+}
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION FONCTIONALITES
+   ========================================================================== */
+if(isset($_POST['fonctionnality']))
+{
+    $info = '';
+     $i = 0;
+    foreach (\App::getDB()->query('
+                            SELECT * FROM contenu
+                            INNER JOIN page
+                            ON contenu.code_page=page.id_page
+                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
+
+        $info .= '<div class="panel panel-default">';
+        $info .= '<div class="panel-heading">';
+        $info .= '<h6 class="panel-title">';
+        $info .= '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$i.'">'.$projet->app_dev.'</a>';
+        $info .= '</h6>';
+        $info .= '</div>';
+        $info .= '<div id="collapse'.$i.'" class="panel-collapse collapse">';
+        $info .= '<div class="panel-body">'.$projet->fonctionnalites.'</div>';
+        $info .= '</div>';
+        $info .= '</div>';
+        $i++;
+    endforeach;
+
+    echo $info;
+}
+
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION QUALIFICATION
+   ========================================================================== */
+if(isset($_POST['qualification']))
+{
+    $info = '';
+    foreach (\App::getDB()->query('
+                            SELECT * FROM contenu
+                            INNER JOIN page
+                            ON contenu.code_page=page.id_page
+                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
+
+        $info .= '<div class="col-lg-4">Référencement de sites Internet et audit SEO - Expert en optimisation et positionnement Google</div>';
+    endforeach;
+
+    echo $info;
+}
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION CITAIONS
+   ========================================================================== */
 
 
 

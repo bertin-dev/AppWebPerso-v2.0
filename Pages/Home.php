@@ -163,19 +163,13 @@
                             <h3 class = "panel-title">SERVICES</h3>
                         </div>
 
-                        <div class="panel-body" style="color: black; text-align: center;">
-
-                            <div class="col-lg-4">
-                                Référencement de sites Internet et audit SEO - Expert en optimisation et positionnement Google
-                            </div>
-                            <div class="col-lg-4">
-                                Création de sites Internet pour les PME / PMI / auto-entrepreneurs (AE) / indépendants / artisans
-                            </div>
-
-                            <div class="col-lg-4">
-                                Création de sites Internet pour les PME / PMI / auto-entrepreneurs (AE) / indépendants / artisans
-                            </div>
-
+                        <div id="last_qualification" class="panel-body" style="color: black; text-align: center;">
+                            <center>
+                                <div id="loader_qualification" style="display: none;">
+                                    <span class="loader loader-circle"></span>
+                                    Chargement......
+                                </div>
+                            </center>
                         </div>
                     </div>
                 </div>
@@ -188,51 +182,15 @@
                         </div>
 
                         <div class="panel-body" style="color: black;">
-                            <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h6 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                                Collapsible Group 1</a>
-                                        </h6>
-                                    </div>
-                                    <div id="collapse1" class="panel-collapse collapse in">
-                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h6 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                                Collapsible Group 2</a>
-                                        </h6>
-                                    </div>
-                                    <div id="collapse2" class="panel-collapse collapse">
-                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                                Collapsible Group 3</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse3" class="panel-collapse collapse">
-                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</div>
-                                    </div>
-                                </div>
-                            </div>
 
+                            <div id="last_fonctionnality" class="panel-group" id="accordion">
+                                <center>
+                                    <div id="loader_fonctionnality" style="display: none;">
+                                        <span class="loader loader-circle"></span>
+                                        Chargement......
+                                    </div>
+                                </center>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,36 +204,15 @@
                 <h4 style="font-variant: small-caps;">DERNIERES REALISATIONS
                     <small><em>Mes Derniers Projets</em></small>
                 </h4>
+                <div id="last_realisation">
+                    <center>
+                        <div id="loader_realisation" style="display: none;">
+                            <span class="loader loader-circle"></span>
+                            Chargement......
+                        </div>
+                    </center>
 
-
-                <?php
-                foreach (\App::getDB()->query('
-                            SELECT * FROM contenu
-                            INNER JOIN page
-                            ON contenu.code_page=page.id_page
-                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
-
-                    $info = '<div class="col-lg-3">';
-
-                    $info .= '<div class="cta externe event-type center-element-container no-transition" style="background-color:#1b1b1b;">';
-                    $info .= '<a href="index.php?id_page=' . $projet->id_page . '#entreprise' . $projet->id_contenu . '" data-toggle="" data-target="" title=' . $projet->app_dev . ' class="transition page-scroll">';
-                    $info .= '<img data-src="" alt="Projet de Développement" class="bg img_responsive" width="280" height="280"
-                        title=' . $projet->app_dev . ' src="' . $projet->screenshot_App . '">';
-                    $info .= '<div class="mask"></div> <h4><u>' . $projet->app_dev . '</u></h4><h3 class="text-center" style="font-size: small">' . substr(strtoupper(nl2br(stripslashes($projet->fonctionnalites))), 0, 50) . '<br><u>LIRE LA SUITE</u></h3>';
-                    $info .= '<div class="bottom">Publié:<div class="date">' . $projet->annee . '</div></div>';
-                    $info .= '<div class="contentHover" style="font-size:small;"><i class="fa fa-laptop fa-2x"></i>Langage: ' . $projet->langage . '<br>IDE: ' . $projet->ide . '<br>SGBD: ' . $projet->sgbd . '<br>Framework: ' . $projet->framework . '<br>URL: ' . $projet->url . '</div>';
-                    $info .= '<span class="border border-1"></span>
-                        <span class="border border-2"></span>
-                        <span class="border border-3"></span>
-                        <span class="border border-4"></span>';
-                    $info .= '</a>';
-                    $info .= '</div>';
-                    $info .= '</div>';
-
-
-                    echo $info;
-                endforeach;
-                ?>
+                </div>
             </article>
         </div>
     </div>
@@ -302,7 +239,7 @@
                         <div class="testimonialslide clearfix flexslider" style="border-left: 10px solid rgb(10, 141, 224); height: 100%; padding: initial; margin: initial; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
 
                             <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                                <ul class="slides" style="width: 800%; transition-duration: 0s; transform: translate3d(-555px, 0px, 0px);">
+                                <ul id="citations" class="slides" style="width: 800%; transition-duration: 0s; transform: translate3d(-555px, 0px, 0px);">
                                     <li class="clone">
                                         <blockquote>
                                             La créativité implique de briser les conventions afin de regarder les choses sous un jour nouveau.
@@ -328,7 +265,6 @@
                                             Il n’y a pas de grande tâche difficile qui ne puisse être décomposée en petites tâches faciles.
                                         </blockquote>
                                     </li>
-
                                 </ul>
                             </div>
                             <ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a class="">2</a></li></ol>

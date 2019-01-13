@@ -530,12 +530,18 @@ $(function () {
            success:function (data) {
                $('#load_more_data').append(data);
                if(data == ''){
-                   $('#load_data_message').html("<button type='button' class='btn btn-info'>No Data Found</button>");
+                   $('#load_data_message').html('<div style="display: none;">\n' +
+                       '                                    <span class="loader loader-circle"></span>\n' +
+                       '                                    Chargement......\n' +
+                       '                                </div>');
                    action = 'active';
                }
                else
                {
-                   $('#load_data_message').html("<button type='button' class='btn btn-warning'>Please Wait... </button>");
+                   $('#load_data_message').html('<div id="loader_qualification" style="display: block;">\n' +
+                       '                                    <span class="loader loader-circle"></span>\n' +
+                       '                                    Chargement......\n' +
+                       '                                </div>');
                    action = 'inactive';
                }
            }
@@ -560,3 +566,88 @@ $(function () {
        }
     });
 });
+
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION REALISATION
+   ========================================================================== */
+
+$(function(){
+    var realisation = '1';
+    $('#loader_realisation').show();
+    function chargement_realisation(){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                realisation: realisation
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_realisation').append(data);
+                $('#loader_realisation').hide();
+            }
+        });
+    }
+        chargement_realisation();
+});
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION FONCTIONALITES
+   ========================================================================== */
+
+$(function(){
+    var fonctionnality = '1';
+    $('#loader_fonctionnality').show();
+    function chargement_fonctionnality(){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                fonctionnality: fonctionnality
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_fonctionnality').append(data);
+                $('#loader_fonctionnality').hide();
+            }
+        });
+    }
+    chargement_fonctionnality();
+});
+
+
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION QUALIFICATION
+   ========================================================================== */
+
+$(function(){
+    var qualification = '1';
+    $('#loader_qualification').show();
+    function chargement_qualification(){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                qualification: qualification
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_qualification').append(data);
+                $('#loader_qualification').hide();
+            }
+        });
+    }
+    chargement_qualification();
+});
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION CITATIONS
+   ========================================================================== */
