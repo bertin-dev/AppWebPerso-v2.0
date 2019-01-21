@@ -1,37 +1,37 @@
 
-<footer>
+<footer class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 
     <!-- Navigation -->
     <nav class="navbarRetouche navbar-default" role="navigation">
         <div class="container" style="text-align: center;">
 
-            <div class="col-lg-3">
-                <h3><u>A Propos</u></h3>
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <h3 style="font-variant: small-caps;"><u>Réseaux Sociaux</u></h3>
                 Je m'appelle <a title="Auteur">Bertin Mounok</a>, j'ai commencé le développement web et le web design
                 pour développer un petit site perso et c'est rapidement devenu une vraie vocation.
                 J'aime expérimenter, découvrir et apprendre au fur et à mesure de mes projets pros et perso.
             </div>
-            <div class="col-lg-3">
-                <h3><u>Informations</u></h3>
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <h3 style="font-variant: small-caps;"><u>Informations</u></h3>
                 <address>
                     <div style="text-align: center;">
-                        <span title="lieu de localisation" class="col-lg-12"><img class="img-responsive" width="20"
+                        <span style="margin-bottom: 5%;" title="lieu de localisation" class="col-lg-12"><img class="" width="20"
                                                                                   title="Lieu de Localisation"
-                                                                                  src="../Public/img/socials/home.png"> →Yaoundé</span><br>
-                        <span title="Adresse Email" class="col-lg-12"><img class="img-responsive" width="20"
+                                                                                  src="../Public/img/socials/home.png"> → Yaoundé/Cameroun</span><br>
+                        <span style="margin-bottom: 5%;" title="Adresse Email" class="col-lg-12"><img class="" width="20"
                                                                            title="Adresse Email"
-                                                                           src="../Public/img/socials/email.png"> →bertmoun@yahoo.fr</span><br>
-                        <span title="Numéro Téléphone" class="col-lg-12"><img class="img-responsive" width="20"
+                                                                           src="../Public/img/socials/email.png"> → bertin.dev@outlook.fr</span><br>
+                        <span style="margin-bottom: 5%;" title="Numéro Téléphone" class="col-lg-12"><img class="" width="20"
                                                                               title="Numéro de Téléphone"
-                                                                              src="../Public/img/socials/mobile.png"> →(+237) 694 048 925</span><br>
-                        <span title="Code Postal" class="col-lg-12"><img class="img-responsive" width="20"
+                                                                              src="../Public/img/socials/mobile.png"> → (+237) 694 048 925</span><br>
+                        <span style="margin-bottom: 5%;" title="Code Postal" class="col-lg-12"><img class="" width="20"
                                                                          title="Code Postal"
-                                                                         src="../Public/img/socials/Sticky_1-128.png">→BP: 1492</span><br>
+                                                                         src="../Public/img/socials/Sticky_1-128.png">→ BP: 1492</span>
                     </div>
                 </address>
             </div>
-            <div class="col-lg-3">
-                <h3><u>Mes Dernières Infos</u></h3>
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <h3 style="font-variant: small-caps;"><u>Mes Derniers Tweets</u></h3>
                 <span class="col-lg-12" title="Gestion de la paie">
                 <span style="float: left;"><img class="img-responsive" width="15"
                                                 src="../Public/img/socials/mobile.png"></span>
@@ -60,9 +60,9 @@
                     Statut:<span style="color: #c9c9c9;"> Encours...</span></small></span><br>
                 </span>
             </div>
-            <div class="col-lg-3">
+            <div class="col-xs-12 col-md-3 col-lg-3">
                 <div class="col-xs-12 col-lg-12">
-                    <h3><u>Ou me Trouver</u> ???</h3>
+                    <h3 style="font-variant: small-caps;"><u>Ou me Trouver</u> ???</h3>
                     <img src="../Public/img/socials/Github_Bertin-Mounok.svg" alt="Github Bertin-Mounok"
                          title="Github Bertin Mounok" class="img-responsive"
                          style="float: left; margin: 0 0 0 15px;" width="32"/>
@@ -94,7 +94,7 @@
                         <p><input class="form-control" type="email" placeholder="email@domaine.com" required
                                   title="Entrez votre Email"/></p>
                         <p>
-                            <button class="btn btn-primary" type="submit" title="Envoyez">Envoyer</button>
+                            <button class="btn-primary" type="submit" title="Envoyez">Envoyer</button>
                         </p>
                     </div>
                 </form>
@@ -106,7 +106,7 @@
     </nav>
 
     <span class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin: 0;">
-                <span title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php  echo date("Y", time()); ?>
+                <span style="font-variant: small-caps;" title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php  echo date("Y", time()); ?>
                     , bertin.dev, Inc.</em></small></span>
             </span>
 
@@ -135,6 +135,7 @@
 <script src="../Public/js/scrollindicator.js"></script>
 <script src="../Public/js/infobulle.js."></script>
 <script src="../Public/js/jquery.flexslider-min.js"></script>
+<script src="../Public/js/wow.min.js"></script>
 <script src="../Public/js/fonctions.js"></script>
 
 
@@ -184,11 +185,24 @@ if($_SESSION['id_page']==7)
         $('#notif_chemin_fer').remove();
 
 
-        $('footer').addClass('collapse');
-        $('footer').remove();
+            $('footer').addClass('collapse');
+            $('footer').remove();
+
     });
 
 </script>
+<?php
+}
+
+if($_SESSION['id_page']==6){
+?>
+<script>
+    $(function () {
+        $('#notif_chemin_fer').addClass('collapse');
+        $('#notif_chemin_fer').remove();
+    });
+</script>
+
 <?php
 }
 ?>

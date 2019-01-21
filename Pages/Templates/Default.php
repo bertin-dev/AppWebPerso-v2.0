@@ -56,6 +56,10 @@
     <link href="../Public/css/scrolling-nav.css" rel="stylesheet">
     <link href="../Public/css/bertin.dev.css" rel="stylesheet">
 
+    <!-- Icon and Animate Core CSS -->
+    <link href="../Public/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../Public/css/animate.min.css" rel="stylesheet">
+
     <!-- Icône du site (favicon) -->
     <link rel="icon" type="image/png" href="../Public/img/bertin-mounok.png"/>
 

@@ -2,6 +2,11 @@
  * Created by Supers-Pipo on 04/02/2018.
  */
 
+/* ==========================================================================
+système d'animation wow.min.js et animate.min.css
+   ========================================================================== */
+new WOW().init();
+
 
 /* ==========================================================================
 système de notification en lecture
@@ -562,7 +567,7 @@ $(function () {
            start = start + limit;
            setTimeout(function () {
                chargement_data(limit, start);
-           }, 5000);
+           }, 3000);
        }
     });
 });
@@ -651,3 +656,39 @@ $(function(){
 /* ==========================================================================
 SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION CITATIONS
    ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+Système de Navigation en Ajax de la page Apropos
+   ========================================================================== */
+/*
+$(function(){
+    $('#tags a').click(function(e){
+        var link = $(this).attr('href');
+
+        var tab = link.split('=');
+        if(tab[1] != 6){
+            $.ajax({
+                url: link,
+            })
+                .done(function (html) {
+                    $('#Apropos_content').empty().append(html);
+                })
+                .fail(function () {
+                    console.log('error');
+                })
+                .always(function(){
+                    console.log('complete');
+                });
+            e.preventDefault();
+        }
+    });
+});*/

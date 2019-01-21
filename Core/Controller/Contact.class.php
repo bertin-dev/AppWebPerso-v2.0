@@ -37,9 +37,9 @@ class Contact
     }
 
 
-    public function textarea($name, $message, $id=null, $verification=null){
-        return $this->retour ("<textarea id=".$id." class='form-control' name=" .$name." 
-        placeholder=".$message."></textarea> <small id=".$verification."> </small>" );
+    public function textarea($name, $message, $id=null, $verification=null, $class=null){
+        return $this->retour ("<textarea id='$id' class='$class' name='$name' 
+        placeholder='$message'></textarea> <small id='$verification'> </small>" );
     }
 
     public function submit($text, $class=null){

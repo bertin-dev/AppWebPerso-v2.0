@@ -2157,7 +2157,7 @@ iframe[name="google_conversion_frame"]{
 }
 
 
-
+/*
 .btn{
 
   display: inline-block;
@@ -2170,13 +2170,10 @@ iframe[name="google_conversion_frame"]{
   cursor: pointer;
 
 }
-
-.btn:hover{
-
+/*.btn:hover{
   color: #fff;
   background: #007db3;
-
-}
+}*/
 
 .btn-solution{
 
