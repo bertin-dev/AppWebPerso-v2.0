@@ -72,51 +72,47 @@ Barre de séparation verticale et a droite
    PROGRESSBAR STEP BY STEP
    ========================================================================== */
 
-
-
-#msform{
-    width: 400px;
-    margin: 50px auto;
-    text-align: center;
-    position: relative;
-}
-
-#msform fieldset
-{
-    background: white;
-    border: 0 none;
-    border-radius: 3px;
-    box-shadow: 0 0 15px 1px rgba(0,0,0,0.4);
-    padding: 20px 30px;
-    box-sizing: border-box;
-    width: 80%;
-    margin: 0 10%;
-    position: absolute;
-}
-
 .fs-title{
     font-size: 15px;
     text-transform: uppercase;
-    color: #2C3E50;
-    margin-bottom: 10px;
+    color: white;
+    margin-bottom: 1px;
 }
 .fs-subtitle
 {
-    font-weight: normal;
+    font-weight: bold;
     font-size: 13px;
-    color: #666;
-    margin-bottom: 20px;
+    color: white;
+    margin-bottom: 2px;
+}
+
+
+
+#singIn .action-button{
+    width: 100px;
+    background: #0f6296;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#singIn .action-button:hover, #singIn .action-button:focus{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #0f6296 ;
 }
 
 
 /*hide all except first fieldset*/
-#msform fieldset:not(:first-of-type)
+#singUp fieldset:not(:first-of-type)
 {
     display: none;
 }
 
 /*input*/
-#msform input, #msform textarea, #msform select
+/*#singUp input, #singUp textarea, #singUp select
 {
     padding: 15px;
     border: 1px solid #ccc;
@@ -128,11 +124,11 @@ Barre de séparation verticale et a droite
     color: #2C3E50;
     font-size: 13px;
 }
+*/
 
-
-#msform .action-button{
+#singUp .action-button{
     width: 100px;
-    background: #FE1200;
+    background: #0f6296;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -142,12 +138,12 @@ Barre de séparation verticale et a droite
     margin: 10px 5px;
 }
 
-#msform .action-button:hover, #msform .action-button:focus{
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #FE1200 ;
+#singUp .action-button:hover, #singUp .action-button:focus{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #0f6296;
 }
 
 #progressbar{
-    margin-bottom: 30px;
+    margin: 20px 0 0 0;
     overflow: hidden;
     /*CSS counters to number the step */
     counter-reset: step;
@@ -158,24 +154,26 @@ Barre de séparation verticale et a droite
     list-style-type: none;
     color: white;
     text-transform: uppercase;
-    font-size: 9px;
-    width: 23.33%;
+    font-size: 10px;
+    width: 50%;
     float: left;
     position: relative;
+    text-align: center;
 }
 
 #progressbar li:before
 {
     content: counter(step);
     counter-increment: step;
-    width: 20px;
+    width: 30px;
     line-height: 20px;
     display: block;
-    font-size: 10px;
+    font-size: 20px;
     color: #333;
     background: white;
     border-radius: 3px;
     margin: 0 auto 5px auto;
+    text-align: center;
 }
 
 
@@ -184,7 +182,7 @@ Barre de séparation verticale et a droite
 {
     content:"";
     width: 100%;
-    height: 2px;
+    height: 4px;
     background: white;
     position: absolute;
     left: -50%;
@@ -201,7 +199,7 @@ Barre de séparation verticale et a droite
 /*making active/completed steps green*/
 #progressbar li.active:before, #progressbar li.active:after
 {
-    background: #FE1200;
+    background: #0f6296;
     color: white;
 }
 
@@ -832,8 +830,8 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 
-form input[type=text]:focus,
-/*form input[type=email]:focus,
+/*form input[type=text]:focus,
+form input[type=email]:focus,
 form input[type=password]:focus,*/
 form input[type=url]:focus,
 form input[type=number]:focus,
@@ -847,8 +845,8 @@ form textarea:focus {
 }
 
 
-form input[type=text],
-/*form input[type=email],
+/*form input[type=text],
+form input[type=email],
 form input[type=password],*/
 form input[type=url],
 form input[type=number],
@@ -2212,8 +2210,6 @@ ul.social_icons li  a i{
     background: #0182c4;
 }
 
-
-
 /* ==========================================================================
-SYSTEME DE GESTION DE LA DUREE DES ANIMATIONS PENDANT LE SCROOL
+SYSTEME DE GESTION DE LA DUREE DES ANIMATIONS PENDANT LE SCROLL
    ========================================================================== */

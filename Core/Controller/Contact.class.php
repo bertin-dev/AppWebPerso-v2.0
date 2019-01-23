@@ -24,7 +24,7 @@ class Contact
 
 
     public function input($type, $name, $placeholder=null, $multiple=null, $id=null, $verification=null){
-        return $this->retour ("<input class='form-control' required='required' id=".$id." $multiple type=".$type." name=" .$name." 
+        return $this->retour ("<input class='form-control' required='' id=".$id." $multiple type=".$type." name=" .$name." 
         placeholder=".$placeholder."> <small id=".$verification."> </small>");
     }
 

@@ -323,6 +323,11 @@
                 </div>
 
 
+                <div class="col-lg-12">
+                    <p>la page a mis <span class="label secondary"><?= round(microtime(TRUE) - $_SESSION['time'], 3); ?>s</span> à se générer à peu près</p>
+                </div>
+
+
 
 
 

@@ -51,7 +51,6 @@ $info_DB->extract_DB();
                         ?>
                     </div>
                 </form>
-
             </article>
             <!--CONTACT-->
             <article class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">

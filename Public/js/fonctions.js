@@ -692,3 +692,21 @@ $(function(){
         }
     });
 });*/
+
+
+
+/* ==========================================================================
+Système de connexion et inscription
+   ========================================================================== */
+jQuery(function(){
+
+    $('#inscription').on('click', function(){
+
+        $('#singIn').addClass('collapse');
+        $('#singUp').removeClass('collapse');
+        $('#inscription').remove();
+    });
+
+
+
+});
