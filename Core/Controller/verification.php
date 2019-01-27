@@ -44,15 +44,15 @@ if(isset($_POST['view'])){
     $connexion = App::getDB();
 
     if($_POST['view'] != ''){
-     $connexion->update('UPDATE contenu SET notification_vue= :statut', array('statut'=>1));
+     $connexion->update('UPDATE body SET notification_vue= :statut', array('statut'=>"1"));
     }
 
 
 
-    $nbre = $connexion->rowCount('SELECT * FROM contenu');
+    $nbre = $connexion->rowCount('SELECT * FROM body');
     $output = '';
     if($nbre > 0){
-        foreach($connexion->query('SELECT * FROM contenu ORDER BY id_contenu DESC LIMIT 4') as $con):
+        foreach($connexion->query('SELECT * FROM body ORDER BY id_body DESC LIMIT 4') as $con):
             $output .= '<ul id="competences-speech">
                          <li class="competence-java current">
                          <h2>'.$con->app_dev.'</h2>
@@ -70,7 +70,7 @@ if(isset($_POST['view'])){
                    ';
     }
 
-    $count = $connexion->rowCount('SELECT * FROM contenu WHERE notification_vue=0');
+    $count = $connexion->rowCount('SELECT * FROM body WHERE notification_vue="0"');
     $data = array (
         'notification' => $output,
         'unseen_notification' => $count
@@ -98,25 +98,25 @@ if(isset($_POST['limit'], $_POST['start'])){
     $content = '';
 
     foreach (\App::getDB()->query('
-         SELECT * FROM contenu
+         SELECT * FROM body
          INNER JOIN page
-         ON contenu.code_page = page.id_page
+         ON body.ref_id_page = page.id_page
          WHERE statut="1" AND id_page=2 
-         ORDER BY id_contenu DESC LIMIT '.$_POST['start'].','.$_POST['limit']) as $portfolio):
+         ORDER BY id_body DESC LIMIT '.$_POST['start'].','.$_POST['limit']) as $portfolio):
 
         $content .= '<div class="col-lg-12 well" style="background: url("img/pattern15.png");">';
                          $content .='<ul class="nav nav-tabs">';
-                         $content .='<li class="active"><a href="#freelance'.$portfolio->id_contenu.'"';
+                         $content .='<li class="active"><a href="#freelance'.$portfolio->id_body.'"';
                          $content .='title="'.$portfolio->type_service.'"  data-toggle="tab">';
                          $content .='<i class="icon-briefcase"></i>'.$portfolio->type_service.'</a></li>';
-                         $content .='<li><a href="#travaux'.$portfolio->id_contenu.'" title="Travaux" data-toggle="tab">TRAVAUX</a></li>';
-                         $content .='<li><a href="#captures'.$portfolio->id_contenu.'" title="Captures" data-toggle="tab">CAPTURES</a></li>';
-                         $content .='<li><a href="#fonctionalites'.$portfolio->id_contenu.'" title="Fonctionalités" data-toggle="tab">FONCTIONALITES</a></li>';
+                         $content .='<li><a href="#travaux'.$portfolio->id_body.'" title="Travaux" data-toggle="tab">TRAVAUX</a></li>';
+                         $content .='<li><a href="#captures'.$portfolio->id_body.'" title="Captures" data-toggle="tab">CAPTURES</a></li>';
+                         $content .='<li><a href="#fonctionalites'.$portfolio->id_body.'" title="Fonctionalités" data-toggle="tab">FONCTIONALITES</a></li>';
                          $content .='</ul>';
 
 
                            $content .='<div class="tab-content">';
-                           $content .='<div class="tab-pane active" id="freelance'.$portfolio->id_contenu.'">';
+                           $content .='<div class="tab-pane active" id="freelance'.$portfolio->id_body.'">';
                            $content .='<div class="col-lg-6">';
                            $content .='<strong>Année :</strong><em>';
                            $content .='<small>'.$portfolio->annee.'</small></em><br>';
@@ -134,14 +134,14 @@ if(isset($_POST['limit'], $_POST['start'])){
                            $content .='<small>'.$portfolio->ville.'</small></em>';
                            $content .='</div></div>';
 
-                           $content .='<div class="tab-pane" id="travaux'.$portfolio->id_contenu.'">';
+                           $content .='<div class="tab-pane" id="travaux'.$portfolio->id_body.'">';
                            $content .='<p><em>'.$portfolio->travaux_effectue.'</em></p>';
                            $content .='</div>';
 
-                           $content .='<div class="tab-pane" id="captures'. $portfolio->id_contenu.'">';
+                           $content .='<div class="tab-pane" id="captures'. $portfolio->id_body.'">';
                            $content .='<img src="'.$portfolio->screenshot_App.'" class="img-responsive" title="'.$portfolio->nom_entite.'"alt="'.$portfolio->nom_entite.'"/>';
                            $content .='</div>';
-                           $content .='<div class="tab-pane" id="fonctionalites'.$portfolio->id_contenu.'">';
+                           $content .='<div class="tab-pane" id="fonctionalites'.$portfolio->id_body.'">';
 
                             $content .='<div class=" col-lg-6">';
                             $content .='<h4 align="center"><u>Fonctionalités</u>:</h4>';
@@ -184,14 +184,14 @@ SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION 
 if(isset($_POST['realisation'])){
     $info = '';
     foreach (\App::getDB()->query('
-                            SELECT * FROM contenu
+                            SELECT * FROM body
                             INNER JOIN page
-                            ON contenu.code_page=page.id_page
-                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
+                            ON body.ref_id_page=page.id_page
+                            ORDER BY id_body DESC LIMIT 0, 4') as $projet):
 
         $info .= '<div class="col-lg-3">';
         $info .= '<div class="cta externe event-type center-element-container no-transition" style="background-color:#1b1b1b;">';
-        $info .= '<a href="index.php?id_page=' . $projet->id_page . '#entreprise' . $projet->id_contenu . '" data-toggle="" data-target="" title=' . $projet->app_dev . ' class="transition page-scroll">';
+        $info .= '<a href="index.php?id_page=' . $projet->id_page . '#entreprise' . $projet->id_body . '" data-toggle="" data-target="" title=' . $projet->app_dev . ' class="transition page-scroll">';
         $info .= '<img data-src="" alt="Projet de Développement" class="bg img_responsive" width="280" height="280"
                         title=' . $projet->app_dev . ' src="' . $projet->screenshot_App . '">';
         $info .= '<div class="mask"></div> <h4><u>' . $projet->app_dev . '</u></h4><h3 class="text-center" style="font-size: small">' . substr(strtoupper(nl2br(stripslashes($projet->fonctionnalites))), 0, 50) . '<br><u>LIRE LA SUITE</u></h3>';
@@ -219,10 +219,10 @@ if(isset($_POST['fonctionnality']))
     $info = '';
      $i = 0;
     foreach (\App::getDB()->query('
-                            SELECT * FROM contenu
+                            SELECT * FROM body
                             INNER JOIN page
-                            ON contenu.code_page=page.id_page
-                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
+                            ON body.ref_id_page=page.id_page
+                            ORDER BY id_body DESC LIMIT 0, 4') as $projet):
 
         $info .= '<div class="panel panel-default">';
         $info .= '<div class="panel-heading">';
@@ -250,10 +250,10 @@ if(isset($_POST['qualification']))
 {
     $info = '';
     foreach (\App::getDB()->query('
-                            SELECT * FROM contenu
+                            SELECT * FROM body
                             INNER JOIN page
-                            ON contenu.code_page=page.id_page
-                            ORDER BY id_contenu DESC LIMIT 0, 4') as $projet):
+                            ON body.ref_id_page=page.id_page
+                            ORDER BY id_body DESC LIMIT 0, 4') as $projet):
 
         $info .= '<div class="col-lg-4">Référencement de sites Internet et audit SEO - Expert en optimisation et positionnement Google</div>';
     endforeach;
@@ -261,9 +261,164 @@ if(isset($_POST['qualification']))
     echo $info;
 }
 
+/* ==========================================================================
+SYSTEME DE VERIFICATION DU FORMULAIRE INSCRIPTION
+   ========================================================================== */
+if(isset($_GET['singUp']))
+{
+    if(isset($_POST['nomSingUp'])){
+
+        nettoieProtect();
+        extract($_POST);
+        $nomSingUp = preg_replace('#[^a-z0-9]#i', '', $nomSingUp); //filter everything
+        // Connexion à la base de données
+        // Valeurs à modifier selon vos paramètres de configuration
+        //require '../../App/Config/Config_Server.php';
+        $connexion = App::getDB();
+        if(strlen($nomSingUp) < 4 || strlen($nomSingUp) > 16 ){
+            echo '<br>Le Nom est compris entre 3 et 16 caractères';
+            exit;
+        }
+        if(is_numeric($nomSingUp[0])){
+            echo '<br>Le Nom doit commencer par une lettre';
+            exit;
+        }
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE nom="'.$nomSingUp.'"');
+        if($nbre > 0){
+            echo '<br> Ce Nom est déjà utilisé';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+    if(isset($_POST['prenomSingUp'])){
+
+        nettoieProtect();
+        extract($_POST);
+        $prenomSingUp = preg_replace('#[^a-z0-9]#i', '', $prenomSingUp); //filter everything
+        // Connexion à la base de données
+        // Valeurs à modifier selon vos paramètres de configuration
+        //require '../../App/Config/Config_Server.php';
+        $connexion = App::getDB();
+        if(strlen($prenomSingUp) < 4 || strlen($prenomSingUp) > 16 ){
+            echo '<br>Le Prenom est compris entre 3 et 16 caractères';
+            exit;
+        }
+        if(is_numeric($prenomSingUp[0])){
+            echo '<br>Le Prenom doit commencer par une lettre';
+            exit;
+        }
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE prenom="'.$prenomSingUp.'"');
+        if($nbre > 0){
+            echo '<br> Ce Prenom est déjà utilisé';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+
+    if(isset($_POST['emailSingUp'])){
+
+        nettoieProtect();
+        extract($_POST);
+       // $emailSingUp = preg_replace('#[^a-z0-9]#i', '', $emailSingUp); //filter everything
+        // Connexion à la base de données
+        // Valeurs à modifier selon vos paramètres de configuration
+        //require '../../App/Config/Config_Server.php';
+        $connexion = App::getDB();
+
+
+        if(strlen($emailSingUp) < 4 || strlen($emailSingUp) > 20 ){
+            echo '<br>L\'adresse Email est compris entre 3 et 16 caractères';
+            exit;
+        }
+
+        if(!filter_var($emailSingUp, FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
+            echo '<br>Votre Adresse E-mail n\'est pas valide';
+            exit();
+        }
+
+
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$emailSingUp.'"');
+        if($nbre > 0){
+            echo '<br> Cet Email est déjà utilisé';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+
+    if(isset($_POST['passwordSingUp'])){
+
+        nettoieProtect();
+        extract($_POST);
+        $passwordSingUp = preg_replace('#[^a-z0-9]#i', '', $passwordSingUp); //filter everything
+        // Connexion à la base de données
+        // Valeurs à modifier selon vos paramètres de configuration
+        //require '../../App/Config/Config_Server.php';
+        $connexion = App::getDB();
+        if(strlen($passwordSingUp) < 4 || strlen($passwordSingUp) > 16 ){
+            echo '<br>Le Mot de Passe est compris entre 3 et 16 caractères';
+            exit;
+        }
+
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE password="'.$passwordSingUp.'"');
+        if($nbre > 0){
+            echo '<br> Ce Mot de Passe est déjà utilisé';
+            exit;
+        }
+        else{
+
+            file_put_contents('password.txt', '');
+            file_put_contents('password.txt', $passwordSingUp);
+           /* $monfichier = fopen("password.txt", "r+");
+            fputs($monfichier, $passwordSingUp); // On écrit le nouveau nombre de pages vues
+            fclose($monfichier);*/
+            echo 'success';
+        }
+    }
+
+
+        if(isset($_POST['passwordConfirmSingUp'])){
+
+            nettoieProtect();
+            extract($_POST);
+            $passwordConfirmSingUp = preg_replace('#[^a-z0-9]#i', '', $passwordConfirmSingUp); //filter everything
+            $monfichier = fopen("password.txt", "r+");
+            $mdp = fgets($monfichier); // On lit la première ligne (nombre de pages vues)
+            fclose($monfichier);
+
+
+            if(strlen($passwordConfirmSingUp) < 4 || strlen($passwordConfirmSingUp) > 16 ){
+                echo '<br>Le Mot de Passe de Confirmation est compris entre 4 et 16 caractères';
+                exit;
+            }
+
+            if($passwordConfirmSingUp != $mdp){
+                echo '<br>Les deux mots de passe sont différents';
+                exit;
+            }
+
+            else{
+                echo 'success';
+            }
+        }
+}
+
+
+
+
+
+
 
 /* ==========================================================================
-SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION CITAIONS
+SYSTEME DE VERIFICATION DE LA SECTION FREELANCE DANS LA PAGE ADMINISTRATION
    ========================================================================== */
 
 

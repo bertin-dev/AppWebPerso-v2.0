@@ -7,14 +7,18 @@
         -o-background-size: cover;
         background-size: cover;
     }
-
-
     .centre
     {
         text-align: center;
     }
 
-
+    .check_field
+    {
+        color: red;
+        z-index: 999999;
+        font-weight: bold;
+        background: white;
+    }
 </style>
 
 
@@ -30,20 +34,20 @@
 			
 	  <div class="ombrage" style="background: #0f6296; border-radius: 20%; margin: 15px;">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<center><strong style="font-size:1.2em;">GENEREZ VOTRE DEVIS</strong><br></center>
+				<strong class="centre" style="font-size:1.2em;">GENEREZ VOTRE DEVIS</strong><br>
 	 </div>
-	 <center><div id="rapport" class="alert alert-danger" style="display:none;"></div></center>
+	 <div id="rapport" class="alert alert-danger centre centre" style="display:none;"></div>
 
 	  
-	  <form id="singIn" class="" action="traitement.php?go=go" method="post" enctype="multipart/form-data">
+	  <form id="singIn" class="" method="post" onsubmit="return false;" accept-charset="UTF-8">
 
           <div class="">
             <div class="inputBox">
-              <input type="email" name="email" required="">
-                <label for="">Email</label>
+              <input type="email" name="emailSingIn" required="" id="emailSingIn"><small id="check_emailSingIn"></small>
+                <label for="">Email*</label>
             </div>
             <div class="inputBox">
-                <input type="password" name="password" required="">
+                <input type="password" name="passwordSingIn" required="" id="passwordSingIn"><small id="check_passwordSingIn"></small>
                 <label for="">Password</label>
             </div>
 
@@ -64,23 +68,24 @@
 
 
 
-                <form id="singUp" class="collapse" action="traitement.php?go=go" method="post" enctype="multipart/form-data">
+                <form id="singUp" class="collapse" method="post" onsubmit="return false;" accept-charset="UTF-8">
 
                     <ul id="progressbar">
                         <li class="active">IDENTIFICATION PERSONNELLE</li>
                         <li>IDENTIFICATION PUBLIC</li>
+                       <center><span id="statut" class="check_field"> Veuillez-remplir tous les champs</span></center>
                     </ul>
 
                 <fieldset>
                     <h2 class="fs-title centre">IDENTIFICATION PERSONNELLE</h2>
                     <h3 class="fs-subtitle centre"><u>Etape 1</u></h3>
                         <div class="inputBox">
-                            <input type="text" name="nom" required="">
-                            <label for="">Nom</label>
+                            <input type="text" name="nomSingUp" required="" id="nomSingUp"><em><small id="output_nomSingUp"></small></em>
+                            <label for="">Nom*</label>
                         </div>
                         <div class="inputBox">
-                            <input type="text" name="prenom" required="">
-                            <label for="">Prenom</label>
+                            <input type="text" name="prenomSingUp" required="" id="prenomSingUp"><em><small id="output_prenomSingUp"></small></em>
+                            <label for="">Prenom*</label>
                         </div>
                     <input type="button" class="next action-button" title="Cliquez Suivant" name="next" value="SUIVANT">
                </fieldset>
@@ -89,16 +94,24 @@
                         <h2 class="fs-title centre">IDENTIFICATION PUBLIC</h2>
                         <h3 class="fs-subtitle centre"><u>Etape 2 - Fin</u></h3>
                         <div class="inputBox">
-                            <input type="email" name="email" required="">
-                            <label for="">Email</label>
+                            <input type="email" name="emailSingUp" required="" id="emailSingUp"><em><small id="output_emailSingUp"></small></em>
+                            <label for="">Email*</label>
                         </div>
 
                         <div class="inputBox">
-                            <input type="password" name="password" required="">
-                            <label for="">Password</label>
+                            <input type="password" name="passwordSingUp" required="" id="passwordSingUp"><em><small id="output_passwordSingUp"></small></em>
+                            <label for="">Password*</label>
+                        </div>
+
+                        <div class="inputBox">
+                            <input type="password" name="passwordConfirmSingUp" required="" id="passwordConfirmSingUp"><em><small id="output_passwordConfirmSingUp"></small></em>
+                            <label for="">Password Confirm*</label>
                         </div>
                         <input type="button" class="previous action-button" value="PRECEDENT" title="precedent" name="previous">
-                        <input type="submit" class="submit action-button" value="ENVOYER" title="submit" name="submit">
+                        <input id="enreg" type="submit" class="submit action-button" value="ENVOYER" title="Enregistrez-vous!">
+
+                            <div id="load_data_SingUp" class="center"></div>
+
                     </fieldset>
 
                     </form>
@@ -119,8 +132,7 @@
 
     <script>
       $(function() {
-			
-			
+          /*
 		  $('#go').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
@@ -150,7 +162,7 @@
 	}
            
        });
-        });
+        });*/
 
 
 

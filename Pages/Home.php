@@ -17,19 +17,25 @@
                             <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive well"
                                  src="img/bertin.dev3.png">
                             <!--<div class="mask"> </div>-->
-                            <h3 class="text-left" style="font-size: 25px;">Bertin Mounok<br>Contact: →(+237) 694 048 925<br>
+                            <h3 class="text-left ecriture" style="font-size: 25px;">Chez Bertin.dev<br>Software Developper
+                                <i class="fa fa-windows"></i>
+                                <i class="fa fa-cloud"></i>
+                                <i class="fa fa-android"></i>
                             </h3>
 
-                            <div class="bottom">
-                                Profil
-                                <div class="date">
-                                    bertin.dev
+                            <div class="bottom ecriture">
+                                Plate-forme
+                                <div class="date" style="font-size: 20px;">
+                                    <i class="fa fa-globe"></i>
+                                    <i class="fa fa-laptop"></i>
+                                    <i class="fa fa-mobile-phone" style="margin-right: 5px;"></i>
                                 </div>
                             </div>
 
-                            <div class="contentHover">
-                                <i class="fa fa-arrow-circle-right"> </i>Email: →Bertmoun@yahoo.fr<br>BP: →1492<br>Ville:
-                                →Yaoundé.
+                            <div class="contentHover ecriture">
+                                <i class="fa fa-arrow-circle-right"> </i>
+                                <i class="fa fa-envelope" style="font-size: 30px;">→bertin.dev@outlook.fr</i> <br>
+                                <i class="fa fa-phone-square" style="font-size: 30px;">→+237 694 04 89 25</i>
                             </div>
 
 
@@ -66,6 +72,15 @@
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;">MES CONVICTIONS
                     <small><em>Facteur de Motivation</em></small>
                 </h4>
+                <?php
+                foreach (\App::getDB()->query('SELECT title, paragraphes FROM page
+                                                         INNER JOIN body
+                                                         ON page.id_page=body.ref_id_page') AS $facteur):
+
+
+                endforeach;
+                ?>
+
                 <div class="ombrage col-lg-3">
                     <h1>PASSION</h1>
                     <p>Plus qu'un métier, le développement est pour moi une passion qui me pousse à me dépasser.</p>

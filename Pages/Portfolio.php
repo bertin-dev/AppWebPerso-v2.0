@@ -18,30 +18,30 @@ require_once('page_number.php');
 
             <!-- GESTION DE L'ARTICLE DES ENTREPRISES-->
             <article class="col-lg-6">
-                <div class="title-big" align="center"><h1>ENTREPRISE</h1></div>
+                <div class="title-big wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms" align="center"><h1>ENTREPRISE</h1></div>
                 <?php
                 foreach (\App::getDB()->query('
-         SELECT * FROM contenu
-         INNER JOIN page
-         ON contenu.code_page = page.id_page
-         WHERE statut="0" AND id_page=' . $_ENV['id_page']) as $portfolio):
+                SELECT * FROM body
+                INNER JOIN page
+                ON body.ref_id_page = page.id_page
+                WHERE statut="0" AND id_page=' . $_ENV['id_page']) as $portfolio):
                     ?>
 
-                    <div class="col-lg-12 well" style="background: url('img/pattern15.png');">
+                    <div class="col-lg-12 well wow fadeInDown" style="background: url('img/pattern15.png');">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#<?= 'entreprise' . $portfolio->id_contenu; ?>"
+                            <li class="active"><a href="#<?= 'entreprise' . $portfolio->id_body; ?>"
                                                   title="<?= $portfolio->entreprise; ?>" data-toggle="tab"><i
                                             class="icon-briefcase"></i><?= $portfolio->entreprise; ?></a></li>
-                            <li><a href="#<?= 'travaux' . $portfolio->id_contenu; ?>" title="Travaux" data-toggle="tab">TRAVAUX</a>
+                            <li><a href="#<?= 'travaux' . $portfolio->id_body; ?>" title="Travaux" data-toggle="tab">TRAVAUX</a>
                             </li>
-                            <li><a href="#<?= 'captures' . $portfolio->id_contenu; ?>" title="Captures"
+                            <li><a href="#<?= 'captures' . $portfolio->id_body; ?>" title="Captures"
                                    data-toggle="tab">CAPTURES</a></li>
-                            <li><a href="#<?= 'fonctionalites' . $portfolio->id_contenu; ?>" title="Fonctionalités"
+                            <li><a href="#<?= 'fonctionalites' . $portfolio->id_body; ?>" title="Fonctionalités"
                                    data-toggle="tab">FONCTIONALITES</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="<?= 'entreprise' . $portfolio->id_contenu; ?>">
+                            <div class="tab-pane active" id="<?= 'entreprise' . $portfolio->id_body; ?>">
                                 <div class="col-lg-6">
                                     <strong>Année :</strong> <em>
                                         <small><?= $portfolio->annee; ?></small>
@@ -70,12 +70,12 @@ require_once('page_number.php');
 
                             </div>
 
-                            <div class="tab-pane" id="<?= 'travaux' . $portfolio->id_contenu; ?>">
+                            <div class="tab-pane" id="<?= 'travaux' . $portfolio->id_body; ?>">
                                 <p><em><?= $portfolio->travaux_effectue; ?></em></p>
                             </div>
 
 
-                            <div class="tab-pane" id="<?= 'captures' . $portfolio->id_contenu; ?>">
+                            <div class="tab-pane" id="<?= 'captures' . $portfolio->id_body; ?>">
                                 <img src="<?= $portfolio->screenshot_App; ?>" class="img-responsive"
                                      title="<?= $portfolio->entreprise; ?>"
                                      alt="<?= $portfolio->entreprise; ?>"/>
@@ -83,7 +83,7 @@ require_once('page_number.php');
                             </div>
 
 
-                            <div class="tab-pane" id="<?= 'fonctionalites' . $portfolio->id_contenu; ?>">
+                            <div class="tab-pane" id="<?= 'fonctionalites' . $portfolio->id_body; ?>">
 
                                 <div class=" col-lg-6">
                                     <h4 align="center"><u>Fonctionalités</u>:</h4>
@@ -138,8 +138,8 @@ require_once('page_number.php');
 
             <!-- GESTION DE L'ARTICLE DES FREELANCES   well   style="background: url('img/pattern15.png')"-->
             <article class="col-lg-6">
-                <div class="title-big" align="center"><h1>FREELANCE</h1></div>
-                <div id="load_more_data"></div>
+                <div class="title-big wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" align="center"><h1>FREELANCE</h1></div>
+                <div id="load_more_data" class="wow fadeInDown"></div>
                 <div id="load_data_message"></div>
 
             </article>

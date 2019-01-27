@@ -26,12 +26,14 @@ class Controller
         // Extrait les informations correspondantes à la page en cours de la DB
         foreach(App::getDB()->query('
          SELECT * FROM page
+         INNER JOIN headers
+         ON page.ref_id_headers=headers.id_headers
          WHERE id_page='.$_ENV['id_page']) as $con):
             $_ENV['mots_cles'] = $con->mots_cles;
             $_ENV['description'] =$con->description;
             $_ENV['titre'] = $con->titre;
             $_ENV['logo'] = $con->logo;
-            $_ENV['id_parent'] = $con->ref_Id_Parent;
+            $_ENV['id_parent'] = $con->ref_id_parent;
 
         endforeach;
     }
@@ -47,29 +49,35 @@ class Controller
         $resultat = $connexion->query('SELECT COUNT(*) FROM `page` WHERE ref_Id_Parent='.$idpage, get_called_class());
 
         if($resultat == 0) {
-            $retour = $connexion->query('SELECT id_page, titre FROM `page` WHERE ref_Id_Parent=' . $_ENV['id_parent'], get_called_class());
+            $retour = $connexion->query('SELECT id_page, titre FROM page
+            INNER JOIN headers
+            ON page.ref_id_headers=headers.id_headers
+            WHERE ref_id_parent=' . $_ENV['id_parent'], get_called_class());
         }
         else{
 
-            $menu_retour ='<ul id="menu_horizontal" style="float:right;" class="nav navbar-nav">';
-            $menu_retour .= '<li class="dropdown"> <a href="index.php">ACCUEIL</a></li> ';
+            $menu_retour ='<ul id="menu_horizontal" style="float:right; font-variant: small-caps; font-size: 18px;" class="nav navbar-nav">';
+            $menu_retour .= '<li class="dropdown"> <a href="index.php">Accueil</a></li> ';
 
-            foreach($connexion->query('SELECT id_page, titre FROM `page` WHERE ref_Id_Parent=' . $idpage, get_called_class()) as $retour):
+            foreach($connexion->query('SELECT id_page, titre FROM page
+            INNER JOIN headers
+            ON page.ref_id_headers=headers.id_headers
+            WHERE ref_id_parent=' . $idpage, get_called_class()) as $retour):
 
                 $menu_retour .= '<li class="dropdown">';
-                if($retour->id_page ==='3')
+                /*if($retour->id_page ==='3')
                     $menu_retour .= '<a class="dropdown-toggle" data-toggle="dropdown" ';
-                else
+                else*/
                     $menu_retour .= '<a class="" data-toggle=""';
 
 
                 $menu_retour .= 'href="index.php?id_page='.$retour->id_page.'" title="'.$retour->titre.'">';
                 //$menu_retour .= '<a href="index.php?id_page='.$retour->id_page.'">';
                 $menu_retour .= $retour->titre;
-                if($retour->id_page ==='3')
-                    $menu_retour .= '<b class="caret"></b>';
+               /* if($retour->id_page ==='3')
+                    $menu_retour .= '<b class="caret"></b>';*/
                 $menu_retour .= '</a>';
-                if($retour->id_page ==='3')
+                /*if($retour->id_page ==='3')
                 {
 
                     $menu_retour .= '<ul class="dropdown-menu">';
@@ -80,7 +88,7 @@ class Controller
                     $menu_retour .= '</li>';
                     $menu_retour .= '</ul>';
 
-                }
+                }*/
                 $menu_retour .= '</li>';
             endforeach;
             $menu_retour .= '</ul> ';

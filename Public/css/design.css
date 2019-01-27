@@ -1,3 +1,8 @@
+.ecriture
+{
+    font-variant: small-caps;
+}
+
 .infobulle{
     position: absolute;
     background: #000000;
@@ -1862,11 +1867,11 @@ SYSTEME DE GESTION DU LOGIN ET L'INSCRIPTION
 
 .inputBox input
 {
-    width: 100%;
+    width: 92%;
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;

@@ -11,7 +11,7 @@ use App\config\Database;
 
   class App
   {
-      CONST DB_NAME = 'bertin_mounok_db';
+      CONST DB_NAME = 'bertin_dev_db';
       CONST DB_USER = 'root';
       CONST DB_PASS = '';
       CONST DB_HOST = 'localhost';

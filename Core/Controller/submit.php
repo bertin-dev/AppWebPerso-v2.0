@@ -27,6 +27,72 @@ function nettoieProtect(){
 }
 
 
+
+// Une fois le formulaire envoyé
+if(isset($_GET['singUp'])) {
+    // Vérification de la validité des champs
+    if (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['nomSingUp'])) {
+        echo "Nom Invalid<br />\n";
+        exit();
+    } elseif (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['prenomSingUp'])) {
+        echo "Prenom Invalid<br />\n";
+        exit();
+    } elseif (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['emailSingUp'])) {
+        echo "Email Invalid<br />\n";
+        exit();
+    } elseif (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['passwordSingUp'])) {
+        echo $message = "password Invalid<br />\n";
+        exit();
+    }
+    else {
+
+        $_POST['nomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['nomSingUp'])));
+        $_POST['prenomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['prenomSingUp'])));
+        $_POST['emailSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['emailSingUp'])));
+        $_POST['passwordSingUp'] = stripslashes(htmlspecialchars($_POST['passwordSingUp']));
+        $_POST['passwordSingUp'] = sha1($_POST['passwordSingUp']);
+
+        // Génération de la clef d'activation
+        $caracteres = array("a", "b", "c", "d", "e", "f", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        $caracteres_aleatoires = array_rand($caracteres, 8);
+        $clef_activation = "";
+
+        foreach ($caracteres_aleatoires as $i) {
+            $clef_activation .= $caracteres[$i];
+        }
+
+        // Connexion à la base de données
+        $connexion = App::getDB();
+
+        nettoieProtect();
+        extract($_POST);
+
+        $nbreEmail = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingUp'].'"');
+
+        // Si une erreur survient
+        if($nbreEmail > 0)
+        {
+            echo "Votre Adresse Email Existe déjà<br/>";
+        }
+        else
+        {
+
+        $connexion->insert('INSERT INTO compte(nom, prenom, email, password, date_enreg, clef_activation, etat_compte) 
+                                      VALUES(?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'],
+            $_POST['emailSingUp'], $_POST['passwordSingUp'], time(), $clef_activation, '0']);
+
+        $max_id = $connexion->query('SELECT MAX(id_compte) AS max_id FROM compte');
+        /*if(!file_exists("../Projets/$max_id")){
+            mkdir("../Projets/$max_id", 0755);
+        }*/
+
+        echo 'success';
+    }
+}
+
+}
+
+
 // Une fois le formulaire envoyé
 if(isset($_GET['freelance']))
 {
