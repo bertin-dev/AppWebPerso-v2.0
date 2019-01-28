@@ -88,6 +88,7 @@ $_SESSION['time'] = microtime(TRUE);
 
 <?php include('Head.php'); ?>
 
+<div id="alert_notifications"></div>
 
 <div id="menu_pipo">
 <?= $contenu; ?>
