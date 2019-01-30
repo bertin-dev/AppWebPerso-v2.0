@@ -42,8 +42,8 @@ class Contact
         placeholder='$message'></textarea> <small id='$verification'> </small>" );
     }
 
-    public function submit($text, $class=null){
-        return $this->retour ("<button class='btn btn-primary ".$class."' title='Cliquez-Ici' required='required' type='submit'> $text </button>") ;
+    public function submit($text, $class=null, $id=null){
+        return $this->retour ("<input class='btn btn-primary ".$class."' title='Cliquez-Ici' required='required' type='submit' id='$id' value='$text'>") ;
     }
 
 

@@ -89,15 +89,17 @@
                 </div>
                 <strong>Entrez votre Email </strong>
 
-                <form method="post" action="">
+                    <form id="newsletters" method="post" onsubmit="return false;" accept-charset="UTF-8">
                     <div class="control-group">
-                        <p><input class="form-control" type="email" placeholder="email@domaine.com" required
-                                  title="Entrez votre Email"/></p>
-                        <p>
-                            <button class="btn-primary" type="submit" title="Envoyez">Envoyer</button>
-                        </p>
+
+                            <input class="form-control" type="email" placeholder="email@domaine.com" required
+                                  title="Entrez votre Email" name="newsletter" id="newsletter"/>
+                        <small id="output_newsletter"></small>
+                        <input id="enreg_newsletter" class="btn btn-primary" type="submit" title="Envoyez" value="Envoyer">
+                        <div id="load_data_newsletter"></div>
                     </div>
                 </form>
+                <br>
                 <small>Pour recevoir nos newsletters</small>
             </div>
 

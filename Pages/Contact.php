@@ -37,17 +37,17 @@ $info_DB->extract_DB();
                 <p style="font-size: 13px; color: #c9c9c9">Afin d'obtenir un devis précis merci de détailler au maximum
                     le fonctionnement de votre projet.</p>
 
-                <form method="post" action="" accept-charset="UTF-8" enctype="multipart/form-data">
+                <form id="contact_visitor" method="post"  accept-charset="UTF-8" onsubmit="return false;">
                     <div class="form-group">
-                        <input name="_csrf_token" value="HkglWjsyRSUpMkorVjcSLHwBCCR2JgAApxToYquCzh0N1vZaKwdwDQ=="
-                               type="hidden">
-                        <input name="_utf8" value="✓" type="hidden">
+                        <!--<input name="_csrf_token" value="HkglWjsyRSUpMkorVjcSLHwBCCR2JgAApxToYquCzh0N1vZaKwdwDQ==" type="hidden">-->
                         <?php
                         $enregistrement = new Contact($_POST);
-                        echo '<div class="col-lg-6">' . $enregistrement->input('text', 'nom', 'Nom&Prenom') . '</div>';
-                        echo '<div class="col-lg-6">' . $enregistrement->input('email', 'email', 'Email@domaine.com') . '</div>';
-                        echo '<div class="col-lg-12">' . $enregistrement->textarea('message', 'Entrez votre message', '', '', 'form-control');
-                        echo $enregistrement->submit('Envoyer') . '</div>';
+                        echo '<div class="col-lg-6">' . $enregistrement->input('text', 'identite_visitor', 'Nom&Prenom', '', 'identite_visitor') . '<small id="output_identite_visitor"></small></div>';
+                        echo '<div class="col-lg-6">' . $enregistrement->input('email', 'email_visitor', 'Email@domaine.com', '', 'email_visitor') . '<small id="output_email_visitor"></small></div>';
+                        echo '<div class="col-lg-12">' . $enregistrement->textarea('message_visitor', 'Entrez votre message', 'message_visitor', '', 'form-control') .'<small id="output_message_visitor"></small></div>';
+                        echo'<div class="col-lg-8"></div>';
+                        echo '<div class="col-lg-1"><div id="load_data_visitor"></div></div>';
+                        echo '<div class="col-lg-3">'.$enregistrement->submit('Envoyer', '', 'enreg_visitor') . '</div>';
                         ?>
                     </div>
                 </form>

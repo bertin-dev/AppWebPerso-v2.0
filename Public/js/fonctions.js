@@ -706,6 +706,12 @@ jQuery(function(){
         $('#singUp').removeClass('collapse');
         $('#inscription').remove();
     });
+
+    $('#forget').on('click', function(e){
+        e.preventDefault();
+        $('#SingInForm').addClass('collapse');
+        $('#SingInForget').removeClass('collapse');
+    });
 });
 
 
@@ -726,17 +732,17 @@ $(function () {
     function emailSingIn() {
         $.ajax({
             type: 'post',
-            url: '../Core/Controller/verification.php?freelance=freelance',
+            url: '../Core/Controller/verification.php?singIn=singIn',
             data: {
-                'entite': $('#entite').val()
+                'emailSingIn': $('#emailSingIn').val()
             },
             success: function (data) {
                 if(data=='success'){
-                    $('#output_checkentite').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    $('#output_emailSingIn').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
                     return true;
                 }
                 else{
-                    $('#output_checkentite').css('color', 'red').html(data);
+                    $('#output_emailSingIn').css('color', 'red').html(data);
                 }
             }
         });
@@ -748,17 +754,17 @@ $(function () {
     function passwordSingIn() {
         $.ajax({
             type: 'post',
-            url: '../Core/Controller/verification.php?freelance=freelance',
+            url: '../Core/Controller/verification.php?singIn=singIn',
             data: {
-                'entite': $('#entite').val()
+                'passwordSingIn': $('#passwordSingIn').val()
             },
             success: function (data) {
                 if(data=='success'){
-                    $('#output_checkentite').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    $('#output_passwordSingIn').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
                     return true;
                 }
                 else{
-                    $('#output_checkentite').css('color', 'red').html(data);
+                    $('#output_passwordSingIn').css('color', 'red').html(data);
                 }
             }
         });
@@ -768,12 +774,16 @@ $(function () {
 
 
     $('#singIn').submit(function () {
-        var statut1 = $('#statut');
-        var nom = $('#nomSingUp').val(), prenom = $('#prenomSingUp').val(), email1 = $('#emailSingUp').val(), password1 = $('#passwordSingUp').val();
+        var email = $('#emailSingIn').val(), password = $('#passwordSingIn').val();
 
 
-        if (nom == '' || prenom == '' || email1 == '' || password1 == '') {
-            statut1.html('Veuillez Remplir Tous les Champs').fadeIn(400);
+        if (email == '' || password == '') {
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir Tous les Champs !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
         }
         else {
             var $form = $(this);
@@ -782,27 +792,54 @@ $(function () {
 
             $.ajax({
                 type: 'post',
-                url: '../Core/Controller/submit.php?freelance=freelance',
+                url: '../Core/Controller/submit.php?singIn=singIn',
                 contentType: false, // obligatoire pour de l'upload
                 processData: false, // obligatoire pour de l'upload
                 data: donnee,
                 beforeSend: function () {
-                    $('#enreg').attr('value', 'En cours...');
+                    $('#enreg_connexion').attr('value', 'En cours...');
+                    $('#load_data_SingIn').html('<div style="display: block;">\n' +
+                        '                                    <span class="loader loader-circle"></span>\n' +
+                        '                                    Chargement......\n' +
+                        '                                </div>');
                 },
                 success: function (data) {
                     if(data != 'success'){
-                        statut1.html(data).fadeIn(400);
-                        $('#enreg').attr('value', 'Envoyer');
+                        $('#enreg_connexion').attr('value', 'Envoyer');
+                        $('#load_data_SingIn').html('<div style="display: none;">\n' +
+                            '                                    <span class="loader loader-circle"></span>\n' +
+                            '                                    Chargement......\n' +
+                            '                                </div>');
+
+                        $('body').notif({
+                            title: 'Message d\'Erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
                     }
                     else {
-                        $('#msform').hide();
-                        var element = document.createElement('div'),
-                            affText = document.createTextNode('Votre Enregistrement a été Effectué avec succès !');
-                        element.id = 'msform';
-                        element.setAttribute('title', 'Enregistrement Terminé');
-                        element.appendChild(affText);
-                        document.body.appendChild(element);
-                        $('#msform').html('<p>Un Email a été envoyé à toutes les personnes ayant une adresse dans notre base de données </p>').css('width', 'inherit').fadeIn(400);
+                        $('#enreg_connexion').attr('value', 'Envoyer');
+                        $('#load_data_SingIn').html('<div style="display: none;">\n' +
+                            '                                    <span class="loader loader-circle"></span>\n' +
+                            '                                    Chargement......\n' +
+                            '                                </div>');
+                        $('#singIn').hide();
+
+                        var myDate = new Date(), etat;
+                        (myDate.getHours()>=6 && myDate.getHours() <= 12)? etat = 'BONJOUR': etat = 'BONSOIR';
+                        //alert(myDate.getHours());
+                        $('body').notif({
+                            title: etat,
+                            content: 'Soyez La Bienvenue',
+                            img: 'img/bertin-mounok.png',
+                            cls: 'success1'
+                        });
+
+                        /* $(location).attr('href',"actualites.php");
+                           * 		$('body').load('mise_a_jour_actualite.php?page='+data, function() {
+				         }); */
+
                     }
                 }
 
@@ -974,6 +1011,12 @@ GESTION DU SYSTEME D'INSCRIPTION
 
         if (nom == '' || prenom == '' || email1 == '' || password1 == '') {
             statut1.html('Veuillez Remplir Tous les Champs').fadeIn(400);
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir Tous les Champs !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
         }
         else {
             var $form = $(this);
@@ -987,7 +1030,7 @@ GESTION DU SYSTEME D'INSCRIPTION
                 processData: false, // obligatoire pour de l'upload
                 data: donnee,
                 beforeSend: function () {
-                    $('#enreg').attr('value', 'Encours...');
+                    $('#enreg').attr('value', 'En cours...');
                             $('#load_data_SingUp').html('<div style="display: block;">\n' +
                        '                                    <span class="loader loader-circle"></span>\n' +
                        '                                    Chargement......\n' +
@@ -1001,6 +1044,13 @@ GESTION DU SYSTEME D'INSCRIPTION
                        '                                    <span class="loader loader-circle"></span>\n' +
                        '                                    Chargement......\n' +
                        '                                </div>');
+
+                        $('body').notif({
+                            title: 'Message d\'erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
                     }
                     else {
                         $('#enreg').attr('value', 'Envoyer');
@@ -1011,21 +1061,11 @@ GESTION DU SYSTEME D'INSCRIPTION
                         $('#singUp').hide();
 
                             $('body').notif({
-                                title: 'Mon titre',
-                                content: 'Mon contenu',
+                                title: 'Courrier Electronique',
+                                content: 'Un Email vient d\'être Envoyé à cette Adresse: ' + email1,
                                 img: 'img/bertin-mounok.png',
                                 cls: 'success1'
                             });
-
-
-                        /*var element = document.createElement('div'),
-                            affText = document.createTextNode('Votre Enregistrement a été Effectué avec succès !');
-                        element.id = 'msform';
-                        element.setAttribute('title', 'Enregistrement Terminé');
-                        element.appendChild(affText);
-                        document.body.appendChild(element);
-                        $('#msform').html('<p>Un Email a été envoyé à toutes les personnes ayant une adresse dans notre base de données </p>').css('width', 'inherit').fadeIn(400);
-                        */
                     }
                 }
 
@@ -1090,6 +1130,420 @@ $(function () {
             img: 'img/bertin-mounok.png',
             cls: 'success1'
         });
+    });
+
+});
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME DE NEWSLETTERS
+========================================================================== */
+$(function () {
+
+    $('#newsletter').keyup(function () {
+        newsletter();
+    });
+
+    //fonction de verification du Nom en ajax
+    function newsletter() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?newsletter=newsletter',
+            data: {
+                'newsletter': $('#newsletter').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('#output_newsletter').show();
+                    $('#output_newsletter').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    return true;
+                }
+                else{
+                    $('#output_newsletter').show();
+                    $('#output_newsletter').css({
+                        'color': 'red',
+                        'font-weight': 'bold',
+                        'margin': 'initial',
+                        'padding': 'initial',
+                        'font-size': '65%'
+                    }).html(data);
+
+                    setTimeout(function () {
+                        $('#output_newsletter').hide();
+
+                    }, 7000);
+                }
+            }
+        });
+
+
+    }
+
+
+
+    $('#newsletters').submit(function () {
+        var email_newsletter = $('#newsletter').val();
+
+
+        if (email_newsletter == '') {
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir le Champs !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
+        }
+        else {
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+            $.ajax({
+                type: 'post',
+                url: '../Core/Controller/submit.php?newsletter=newsletter',
+                contentType: false, // obligatoire pour de l'upload
+                processData: false, // obligatoire pour de l'upload
+                data: donnee,
+                beforeSend: function () {
+                    $('#enreg_newsletter').attr('value', 'En cours...');
+                    $('#load_data_newsletter').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
+                },
+                success: function (data) {
+                    if(data != 'success'){
+                        $('#enreg_newsletter').attr('value', 'Envoyer');
+                        $('#load_data_newsletter').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Message d\'erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
+                    }
+                    else {
+                        $('#enreg_newsletter').attr('value', 'Envoyer');
+                        $('#load_data_newsletter').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Opération Réussie',
+                            content: 'Merci de Nous avoir fait Confiance !',
+                            img: 'img/bertin-mounok.png',
+                            cls: 'success1'
+                        });
+                        setTimeout(function () {
+                            $('#output_newsletter').fadeOut().hide();
+
+                        }, 7000);
+                    }
+                }
+
+            });
+
+        }
+
+
+    });
+
+
+
+});
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME D'ENVOI DE DONNEES DANS LA MENU CONTACT
+========================================================================== */
+$(function () {
+
+    $('#identite_visitor').keyup(function () {
+        identite_visitor();
+    });
+
+    $('#email_visitor').keyup(function () {
+        email_visitor();
+    });
+
+    $('#message_visitor').keyup(function () {
+        message_visitor();
+    });
+    //fonction de verification du Nom en ajax
+    function identite_visitor() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?visitor=visitor',
+            data: {
+                'identite_visitor': $('#identite_visitor').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('#output_identite_visitor').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    return true;
+                }
+                else{
+                    $('#output_identite_visitor').css({
+                        'color': 'red',
+                        'font-weight': 'bold',
+                        'margin': 'initial',
+                        'padding': 'initial',
+                        'font-size': '65%'
+                    }).html(data);
+
+                   /* setTimeout(function () {
+                        $('#output_visitor').hide();
+
+                    }, 7000);*/
+                }
+            }
+        });
+
+
+    }
+
+
+    //fonction de verification du Nom en ajax
+    function email_visitor() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?visitor=visitor',
+            data: {
+                'email_visitor': $('#email_visitor').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('#output_email_visitor').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    return true;
+                }
+                else{
+                    $('#output_email_visitor').css({
+                        'color': 'red',
+                        'font-weight': 'bold',
+                        'margin': 'initial',
+                        'padding': 'initial',
+                        'font-size': '65%'
+                    }).html(data);
+
+                   /* setTimeout(function () {
+                        $('#output_email_visitor').hide();
+
+                    }, 7000);*/
+                }
+            }
+        });
+
+
+    }
+
+    //fonction de verification du MESSAGE en ajax
+    function message_visitor() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?visitor=visitor',
+            data: {
+                'message_visitor': $('#message_visitor').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('#output_message_visitor').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    return true;
+                }
+                else{
+                    $('#output_message_visitor').css({
+                        'color': 'red',
+                        'font-weight': 'bold',
+                        'margin': 'initial',
+                        'padding': 'initial',
+                        'font-size': '65%'
+                    }).html(data);
+
+                   /* setTimeout(function () {
+                        $('#output_message_visitor').hide();
+
+                    }, 7000);*/
+                }
+            }
+        });
+
+
+    }
+
+
+
+    $('#contact_visitor').submit(function () {
+        var identite_visitor = $('#identite_visitor').val(), email_visitor = $('#email_visitor').val(), message_visitor = $('#message_visitor').val();
+
+
+        if (identite_visitor == '' || email_visitor == '' || message_visitor == '') {
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir le Champs !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
+        }
+        else {
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+            $.ajax({
+                type: 'post',
+                url: '../Core/Controller/submit.php?visitor=visitor',
+                contentType: false, // obligatoire pour de l'upload
+                processData: false, // obligatoire pour de l'upload
+                data: donnee,
+                beforeSend: function () {
+                    $('#enreg_visitor').attr('value', 'En cours...');
+                    $('#load_data_visitor').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
+                },
+                success: function (data) {
+                    if(data != 'success'){
+                        $('#enreg_visitor').attr('value', 'Envoyer');
+                        $('#load_data_visitor').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Message d\'erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
+                    }
+                    else {
+                        $('#enreg_visitor').attr('value', 'Envoyer');
+                        $('#load_data_visitor').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Opération Réussie',
+                            content: 'Merci de Nous avoir fait Confiance !',
+                            img: 'img/bertin-mounok.png',
+                            cls: 'success1'
+                        });
+                       /* setTimeout(function () {
+                            $('#output_visitor').fadeOut().hide();
+
+                        }, 7000);*/
+                    }
+                }
+
+            });
+
+        }
+
+
+    });
+
+
+
+});
+
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME DE RECUPERATION DU MOT DE PASSE
+========================================================================== */
+
+$(function () {
+
+    $('#getEmail').keyup(function () {
+        getEmail();
+    });
+
+
+    //fonction de verification de l'email en ajax
+    function getEmail() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?getEmail=getEmail',
+            data: {
+                'getEmail': $('#getEmail').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('#output_getEmail').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    return true;
+                }
+                else{
+                    $('#output_getEmail').css({
+                        'color': 'red',
+                        'font-weight': 'bold'
+                    }).html(data);
+
+                    /* setTimeout(function () {
+                         $('#output_email_visitor').hide();
+
+                     }, 7000);*/
+                }
+            }
+        });
+
+
+    }
+
+
+
+
+    $('#getPassword').submit(function () {
+        var email = $('#getEmail').val();
+
+
+        if (email == '') {
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir le Champs !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
+        }
+        else {
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+            $.ajax({
+                type: 'post',
+                url: '../Core/Controller/submit.php?getEmail=getEmail',
+                contentType: false, // obligatoire pour de l'upload
+                processData: false, // obligatoire pour de l'upload
+                data: donnee,
+                beforeSend: function () {
+                    $('#sendEmailForget').attr('value', 'En cours...');
+                    $('#load_data_getEmail').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
+                },
+                success: function (data) {
+                    if(data != 'success'){
+                        $('#sendEmailForget').attr('value', 'Envoyer');
+                        $('#load_data_getEmail').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Message d\'erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
+                    }
+                    else {
+                        $('#sendEmailForget').attr('value', 'Envoyer');
+                        $('#load_data_getEmail').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Opération Réussie',
+                            content: 'Merci de Nous avoir fait Confiance !',
+                            img: 'img/bertin-mounok.png',
+                            cls: 'success1'
+                        });
+                        /* setTimeout(function () {
+                             $('#output_visitor').fadeOut().hide();
+
+                         }, 7000);*/
+                    }
+                }
+
+            });
+
+        }
+
+
     });
 
 });

@@ -118,7 +118,8 @@
                 <div class="right-sidebar col-lg-6 wow fadeInDown" style="text-align: center; ">
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
-                    <button class="btn-primary WOW bounceInDown animated" data-toggle="modal" data-target="#login_1">Demandez un Dévis</button>
+                    <input id="enreg_newsletter" class="btn btn-primary WOW bounceInDown animated" type="button" title="Envoyez" value="Demandez un Dévis" data-toggle="modal" data-target="#login_1">
+
                 </div>
 
             </article>

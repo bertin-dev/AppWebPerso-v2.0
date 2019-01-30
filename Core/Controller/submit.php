@@ -30,27 +30,70 @@ function nettoieProtect(){
 
 // Une fois le formulaire envoyé
 if(isset($_GET['singUp'])) {
+
+    if(is_numeric($_POST['nomSingUp'][0])){
+        echo 'Le Nom doit commencer par une lettre';
+        exit;
+    }
     // Vérification de la validité des champs
-    if (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['nomSingUp'])) {
-        echo "Nom Invalid<br />\n";
-        exit();
-    } elseif (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['prenomSingUp'])) {
-        echo "Prenom Invalid<br />\n";
-        exit();
-    } elseif (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['emailSingUp'])) {
-        echo "Email Invalid<br />\n";
-        exit();
-    } elseif (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['passwordSingUp'])) {
-        echo $message = "password Invalid<br />\n";
+    if (!preg_match('/^[A-Za-z0-9_ ]{3,16}$/', $_POST['nomSingUp'])) {
+        echo "Le Nom est Invalid";
         exit();
     }
-    else {
 
-        $_POST['nomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['nomSingUp'])));
-        $_POST['prenomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['prenomSingUp'])));
-        $_POST['emailSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['emailSingUp'])));
-        $_POST['passwordSingUp'] = stripslashes(htmlspecialchars($_POST['passwordSingUp']));
-        $_POST['passwordSingUp'] = sha1($_POST['passwordSingUp']);
+    /*-------------------------------*/
+    if(is_numeric($_POST['prenomSingUp'][0])){
+        echo 'Le Prenom doit commencer par une lettre<br>';
+        exit;
+    }
+
+    if (!preg_match('/^[A-Za-z0-9_ ]{3,16}$/', $_POST['prenomSingUp'])) {
+        echo "Le Prenom est Invalid";
+        exit();
+    }
+
+    /*-------------------------------*/
+    if(is_numeric($_POST['emailSingUp'][0])){
+        echo 'L\'email doit commencer par une lettre<br>';
+        exit;
+    }
+    if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['emailSingUp'])) {
+        echo "Email Invalid";
+        exit();
+    }
+
+    /*---------------------------------------------------*/
+
+    if (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['passwordSingUp'])) {
+        echo $message = "password Invalid";
+        exit();
+    }
+
+
+    if ($_POST['passwordSingUp'] != $_POST['passwordConfirmSingUp']) {
+        echo $message = "Les Mots de Passe sont différents";
+        exit();
+    }
+
+    $_POST['nomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['nomSingUp'])));
+    $_POST['prenomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['prenomSingUp'])));
+    $_POST['emailSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['emailSingUp'])));
+    $_POST['passwordSingUp'] = stripslashes(htmlspecialchars($_POST['passwordSingUp']));
+    $_POST['passwordSingUp'] = sha1($_POST['passwordSingUp']);
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+    $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE nom="'.$_POST['nomSingUp'].'"
+     OR prenom="'.$_POST['prenomSingUp'].'"  
+     OR email="'.$_POST['emailSingUp'].'" 
+     OR password="'.$_POST['passwordSingUp'].'"');
+
+    if($nbre > 0){
+        echo 'Un des champs est déjà utilisé';
+        exit;
+    }
+
+    else {
 
         // Génération de la clef d'activation
         $caracteres = array("a", "b", "c", "d", "e", "f", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -61,8 +104,6 @@ if(isset($_GET['singUp'])) {
             $clef_activation .= $caracteres[$i];
         }
 
-        // Connexion à la base de données
-        $connexion = App::getDB();
 
         nettoieProtect();
         extract($_POST);
@@ -90,6 +131,200 @@ if(isset($_GET['singUp'])) {
     }
 }
 
+}
+
+
+
+
+
+
+if(isset($_GET['singIn'])) {
+
+    /*-------------------------------*/
+    if(is_numeric($_POST['emailSingIn'][0])){
+        echo 'L\'email doit commencer par une lettre';
+        exit;
+    }
+    if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['emailSingIn'])) {
+        echo "Email Invalid";
+        exit();
+    }
+
+    /*---------------------------------------------------*/
+
+    if (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['passwordSingIn'])) {
+        echo $message = "password Invalid";
+        exit();
+    }
+
+    $_POST['emailSingIn'] = strtolower(stripslashes(htmlspecialchars($_POST['emailSingIn'])));
+    $_POST['passwordSingIn'] = stripslashes(htmlspecialchars($_POST['passwordSingIn']));
+    $_POST['passwordSingIn'] = sha1($_POST['passwordSingIn']);
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+    $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'"');
+
+    if($nbre <= 0){
+        echo 'Votre Compte n\'a pas encore été créee';
+        exit;
+    }
+
+    else {
+/*
+        nettoieProtect();
+        extract($_POST);
+
+            $connexion->insert('INSERT INTO compte(nom, prenom, email, password, date_enreg, clef_activation, etat_compte) 
+                                      VALUES(?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'],
+                $_POST['emailSingUp'], $_POST['passwordSingUp'], time(), $clef_activation, '0']);
+
+            $max_id = $connexion->query('SELECT MAX(id_compte) AS max_id FROM compte');*/
+            /*if(!file_exists("../Projets/$max_id")){
+                mkdir("../Projets/$max_id", 0755);
+            }*/
+
+            echo 'success';
+
+    }
+
+}
+
+
+
+
+// Une fois le formulaire envoyé
+if(isset($_GET['newsletter'])) {
+
+    if(is_numeric($_POST['newsletter'][0])){
+        echo 'L\'email doit commencer par une lettre';
+        exit;
+    }
+    if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['newsletter'])) {
+        echo "Email Invalid";
+        exit();
+    }
+    $_POST['newsletter'] = strtolower(stripslashes(htmlspecialchars($_POST['newsletter'])));
+
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+    $nbre = $connexion->rowCount('SELECT id_newsletter FROM newsletter WHERE email_newsletter="'.$_POST['newsletter'].'"');
+
+    if($nbre > 0){
+        echo 'l\'adresse Email est déjà utilisé';
+        exit;
+    }
+
+    else {
+        nettoieProtect();
+        extract($_POST);
+
+            $connexion->insert('INSERT INTO newsletter(email_newsletter, date_enreg) 
+                                      VALUES(?,?)', [$_POST['newsletter'], time()]);
+            echo 'success';
+    }
+
+}
+
+
+
+
+// Une fois le formulaire envoyé
+if(isset($_GET['visitor'])) {
+
+    if(is_numeric($_POST['identite_visitor'][0])){
+        echo 'Le Nom doit commencer par une lettre';
+        exit;
+    }
+    // Vérification de la validité des champs
+    if (!preg_match('/^[A-Za-z0-9_ ]{3,16}$/', $_POST['identite_visitor'])) {
+        echo "Le Nom est Invalid";
+        exit();
+    }
+
+    /*-------------------------------*/
+    if(is_numeric($_POST['email_visitor'][0])){
+        echo 'L\'email doit commencer par une lettre<br>';
+        exit;
+    }
+    if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['email_visitor'])) {
+        echo "Email Invalid";
+        exit();
+    }
+
+    /*-------------------------------*/
+
+    if (!preg_match('/^[A-Za-z0-9_ ]{3,1000}$/', $_POST['message_visitor'])) {
+        echo "Le Message Présente des Erreurs";
+        exit();
+    }
+
+    /*---------------------------------------------------*/
+
+    /* htmlentities empêche l'excution du code HTML
+     * le ENT_QUOTES pour dire à htmlentities qu'on veut en plus transformer les apostrophes et guillemets*/
+
+    $_POST['identite_visitor'] = htmlentities(strtolower(stripslashes(htmlspecialchars($_POST['identite_visitor']))), ENT_QUOTES);
+    $_POST['email_visitor'] = htmlentities(strtolower(stripslashes(htmlspecialchars($_POST['email_visitor']))), ENT_QUOTES);
+    $_POST['message_visitor'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['message_visitor'])))), ENT_QUOTES);
+
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+    $nbre = $connexion->rowCount('SELECT id_visiteur FROM visiteur WHERE email_visiteur="'.$_POST['email_visitor'].'"');
+
+    if($nbre > 0){
+        echo 'l\'adresse Email est déjà utilisé';
+        exit;
+    }
+
+    else {
+        nettoieProtect();
+        extract($_POST);
+       /* $connexion->query('
+                            SELECT id_compte FROM compte
+                            ');*/
+
+        $connexion->insert('INSERT INTO visiteur(nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin) 
+                                      VALUES(?,?,?,?)', [$_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time()]);
+
+
+        echo 'success';
+    }
+
+}
+
+
+/* ==========================================================================
+SYSTEME DE RECUPERATION DU MOT DE PASSE
+   ========================================================================== */
+if(isset($_GET['getEmail'])){
+
+    if(is_numeric($_POST['getEmail'][0])){
+        echo 'L\'email doit commencer par une lettre';
+        exit;
+    }
+    if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['getEmail'])) {
+        echo "Email Invalid";
+        exit();
+    }
+    $_POST['getEmail'] = strtolower(stripslashes(htmlspecialchars($_POST['getEmail'])));
+
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+    $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['getEmail'].'"');
+
+    if($nbre <= 0){
+        echo 'Votre Adresse Email n\'existe pas dans données';
+        exit;
+    }
+
+    else {
+    //ENVOI D un EMAIL CONTENAN LE MODE DE PASSE ET L ADRESSE EMAIL DANS LA BOITE DU CORRESPONDANT
+        echo 'success';
+    }
 }
 
 

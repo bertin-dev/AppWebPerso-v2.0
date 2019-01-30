@@ -261,6 +261,73 @@ if(isset($_POST['qualification']))
     echo $info;
 }
 
+
+
+
+
+if(isset($_GET['singIn']))
+{
+    if(isset($_POST['emailSingIn'])){
+
+        nettoieProtect();
+        extract($_POST);
+
+        if(strlen($_POST['emailSingIn']) < 4 || strlen($_POST['emailSingIn']) > 20 ){
+            echo '<br>L\'adresse Email est compris entre 3 et 16 caractères';
+            exit;
+        }
+
+        if(is_numeric($_POST['emailSingIn'][0])){
+            echo '<br>L\'adresse email doit commencer par une lettre';
+            exit;
+        }
+
+        if(!filter_var($_POST['emailSingIn'], FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
+            echo '<br>Votre Adresse E-mail n\'est pas valide';
+            exit();
+        }
+
+
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingIn'].'"');
+        if($nbre <= 0){
+            echo '<br>Votre Email n\'existe pas';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+
+    if(isset($_POST['passwordSingIn'])){
+
+        nettoieProtect();
+        extract($_POST);
+        $passwordSingIn = preg_replace('#[^a-z0-9]#i', '', $passwordSingIn); //filter everything
+        // Connexion à la base de données
+
+        $connexion = App::getDB();
+        if(strlen($passwordSingIn) < 4 || strlen($passwordSingIn) > 16 ){
+            echo '<br>Le Mot de Passe est compris entre 3 et 16 caractères';
+            exit;
+        }
+
+        $passwordSingIn = sha1($passwordSingIn);
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE password="'.$passwordSingIn.'"');
+        if($nbre <= 0){
+            echo '<br>Ce Mot de Passe n\'existe pas';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+}
+
+
+
 /* ==========================================================================
 SYSTEME DE VERIFICATION DU FORMULAIRE INSCRIPTION
    ========================================================================== */
@@ -271,18 +338,18 @@ if(isset($_GET['singUp']))
         nettoieProtect();
         extract($_POST);
         $nomSingUp = preg_replace('#[^a-z0-9]#i', '', $nomSingUp); //filter everything
-        // Connexion à la base de données
-        // Valeurs à modifier selon vos paramètres de configuration
-        //require '../../App/Config/Config_Server.php';
-        $connexion = App::getDB();
+
         if(strlen($nomSingUp) < 4 || strlen($nomSingUp) > 16 ){
             echo '<br>Le Nom est compris entre 3 et 16 caractères';
             exit;
         }
+
         if(is_numeric($nomSingUp[0])){
             echo '<br>Le Nom doit commencer par une lettre';
             exit;
         }
+
+        $connexion = App::getDB();
         $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE nom="'.$nomSingUp.'"');
         if($nbre > 0){
             echo '<br> Ce Nom est déjà utilisé';
@@ -298,18 +365,17 @@ if(isset($_GET['singUp']))
         nettoieProtect();
         extract($_POST);
         $prenomSingUp = preg_replace('#[^a-z0-9]#i', '', $prenomSingUp); //filter everything
-        // Connexion à la base de données
-        // Valeurs à modifier selon vos paramètres de configuration
-        //require '../../App/Config/Config_Server.php';
-        $connexion = App::getDB();
+
         if(strlen($prenomSingUp) < 4 || strlen($prenomSingUp) > 16 ){
             echo '<br>Le Prenom est compris entre 3 et 16 caractères';
             exit;
         }
+
         if(is_numeric($prenomSingUp[0])){
             echo '<br>Le Prenom doit commencer par une lettre';
             exit;
         }
+        $connexion = App::getDB();
         $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE prenom="'.$prenomSingUp.'"');
         if($nbre > 0){
             echo '<br> Ce Prenom est déjà utilisé';
@@ -325,25 +391,24 @@ if(isset($_GET['singUp']))
 
         nettoieProtect();
         extract($_POST);
-       // $emailSingUp = preg_replace('#[^a-z0-9]#i', '', $emailSingUp); //filter everything
-        // Connexion à la base de données
-        // Valeurs à modifier selon vos paramètres de configuration
-        //require '../../App/Config/Config_Server.php';
-        $connexion = App::getDB();
 
-
-        if(strlen($emailSingUp) < 4 || strlen($emailSingUp) > 20 ){
+        if(strlen($_POST['emailSingUp']) < 4 || strlen($_POST['emailSingUp']) > 20 ){
             echo '<br>L\'adresse Email est compris entre 3 et 16 caractères';
             exit;
         }
 
-        if(!filter_var($emailSingUp, FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
+        if(is_numeric($_POST['emailSingUp'][0])){
+         echo '<br>L\'adresse email doit commencer par une lettre';
+         exit;
+          }
+
+        if(!filter_var($_POST['emailSingUp'], FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
             echo '<br>Votre Adresse E-mail n\'est pas valide';
             exit();
         }
 
-
-        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$emailSingUp.'"');
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingUp'].'"');
         if($nbre > 0){
             echo '<br> Cet Email est déjà utilisé';
             exit;
@@ -412,10 +477,166 @@ if(isset($_GET['singUp']))
 }
 
 
+/* ==========================================================================
+SYSTEME DE VERIFICATION DE LA SECTION NEWSLETTER
+   ========================================================================== */
+
+if(isset($_GET['newsletter']))
+{
+
+    if(isset($_POST['newsletter'])){
+
+        nettoieProtect();
+        extract($_POST);
+
+        if(strlen($_POST['newsletter']) < 4 || strlen($_POST['newsletter']) > 20 ){
+            echo 'L\'adresse Email est compris entre 3 et 16 caractères<br>';
+            exit;
+        }
+
+        if(!filter_var($_POST['newsletter'], FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
+            echo 'Votre Adresse E-mail n\'est pas valide<br>';
+            exit();
+        }
+
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_newsletter FROM newsletter WHERE email_newsletter="'.$_POST['newsletter'].'"');
+        if($nbre > 0){
+            echo 'Cet Email est déjà utilisé<br>';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+}
 
 
 
 
+
+
+
+/* ==========================================================================
+SYSTEME DE VERIFICATION DE LA SECTION CONTACT
+   ========================================================================== */
+
+if(isset($_GET['visitor']))
+{
+
+    if(isset($_POST['identite_visitor'])){
+
+        nettoieProtect();
+        extract($_POST);
+        $identite_visitor = preg_replace('#[^a-z0-9]#i', '', $identite_visitor); //filter everything
+
+        if(strlen($identite_visitor) < 4 || strlen($identite_visitor) > 16 ){
+            echo 'Le Nom est compris entre 3 et 16 caractères';
+            exit;
+        }
+
+        if(is_numeric($identite_visitor[0])){
+            echo 'Le Nom doit commencer par une lettre';
+            exit;
+        }
+
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_visiteur FROM visiteur WHERE nom_prenom_visiteur="'.$identite_visitor.'"');
+        if($nbre > 0){
+            echo '<br> Ce Nom est déjà utilisé';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+
+
+    if(isset($_POST['email_visitor'])){
+
+        nettoieProtect();
+        extract($_POST);
+
+        if(strlen($_POST['email_visitor']) < 4 || strlen($_POST['email_visitor']) > 20 ){
+            echo 'L\'adresse Email est compris entre 3 et 16 caractères<br>';
+            exit;
+        }
+
+        if(!filter_var($_POST['email_visitor'], FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
+            echo 'Votre Adresse E-mail n\'est pas valide<br>';
+            exit();
+        }
+
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_visiteur  FROM visiteur WHERE email_visiteur="'.$_POST['email_visitor'].'"');
+        if($nbre > 0){
+            echo 'Cet Email est déjà utilisé<br>';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+
+
+
+
+    if(isset($_POST['message_visitor'])){
+
+        nettoieProtect();
+        extract($_POST);
+        $message_visitor = preg_replace('#[^a-z0-9]#i', '', $message_visitor); //filter everything
+
+        if(strlen($message_visitor) < 4 || strlen($message_visitor) > 1000 ){
+            echo 'Le Message est compris entre 3 et 1000 caractères';
+            exit;
+        }
+
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_visiteur FROM visiteur WHERE message_visiteur="'.$message_visitor.'"');
+        if($nbre > 0){
+            echo '<br> Ce Message est déjà utilisé';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+}
+
+
+/* ==========================================================================
+SYSTEME DE RECUPERATION DU MOT DE PASSE
+   ========================================================================== */
+if(isset($_GET['getEmail'])){
+
+    if(isset($_POST['getEmail'])){
+
+        nettoieProtect();
+        extract($_POST);
+
+        if(strlen($_POST['getEmail']) < 4 || strlen($_POST['getEmail']) > 20 ){
+            echo '<br>L\'adresse Email est compris entre 3 et 16 caractères';
+            exit;
+        }
+
+        if(!filter_var($_POST['getEmail'], FILTER_VALIDATE_EMAIL)) { //Validation d'une adresse de messagerie.
+            echo '<br>Votre Adresse E-mail n\'est pas valide';
+            exit();
+        }
+
+        $connexion = App::getDB();
+        $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['getEmail'].'"');
+        if($nbre <= 0){
+            echo '<br>Votre Adresse Email n\'existe pas dans nos données';
+            exit;
+        }
+        else{
+            echo 'success';
+        }
+    }
+}
 
 /* ==========================================================================
 SYSTEME DE VERIFICATION DE LA SECTION FREELANCE DANS LA PAGE ADMINISTRATION
