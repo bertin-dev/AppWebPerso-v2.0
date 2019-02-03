@@ -50,7 +50,7 @@
             </div>
 
             <label class="col-lg-12">
-                <span class="col-lg-6"><input type="checkbox" name="t_and_c" id="t_and_c" value="1" data-color="info"> Restez-Connecté ! </span>&nbsp &nbsp &nbsp &nbsp
+                <span class="col-lg-6"><input type="checkbox" name="t_and_c" id="t_and_c" value="1"> Restez-Connecté ! </span>&nbsp &nbsp &nbsp &nbsp
                 <span class="col-lg-5"> <a id="forget" style="color: #fff;font-weight: bold" href="#" title="Cliquez ici si vous avez oublié votre password">   Password Oublié ? </a></span>
             </label>
 

@@ -26,6 +26,26 @@ function nettoieProtect(){
 
 }
 
+//recuperation de la veritable adresse ip du visiteur
+function get_ip(){
+
+    //IP si internet partagé
+    if(isset($_SERVER['HTTP_CLIENT_IP'])){
+        return $_SERVER['HTTP_CLIENT_IP'];
+    }
+
+
+    //IP derriere un proxy
+    elseif(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        return $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+
+    //IP normal
+    else{
+        return isset($_SERVER['REMOTE_ADDR'])? $_SERVER['REMOTE_ADDR'] : '';
+    }
+}
+
 
 
 // Une fois le formulaire envoyé
@@ -65,13 +85,13 @@ if(isset($_GET['singUp'])) {
     /*---------------------------------------------------*/
 
     if (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['passwordSingUp'])) {
-        echo $message = "password Invalid";
+        echo "password Invalid";
         exit();
     }
 
 
     if ($_POST['passwordSingUp'] != $_POST['passwordConfirmSingUp']) {
-        echo $message = "Les Mots de Passe sont différents";
+        echo "Les Mots de Passe sont différents";
         exit();
     }
 
@@ -85,8 +105,7 @@ if(isset($_GET['singUp'])) {
     $connexion = App::getDB();
     $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE nom="'.$_POST['nomSingUp'].'"
      OR prenom="'.$_POST['prenomSingUp'].'"  
-     OR email="'.$_POST['emailSingUp'].'" 
-     OR password="'.$_POST['passwordSingUp'].'"');
+     OR email="'.$_POST['emailSingUp'].'"');
 
     if($nbre > 0){
         echo 'Un des champs est déjà utilisé';
@@ -118,16 +137,58 @@ if(isset($_GET['singUp'])) {
         else
         {
 
-        $connexion->insert('INSERT INTO compte(nom, prenom, email, password, date_enreg, clef_activation, etat_compte) 
-                                      VALUES(?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'],
-            $_POST['emailSingUp'], $_POST['passwordSingUp'], time(), $clef_activation, '0']);
+        $connexion->insert('INSERT INTO compte(nom, prenom, email, password, date_enreg, clef_activation, etat_compte, privileges) 
+                                      VALUES(?,?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'],
+            $_POST['emailSingUp'], $_POST['passwordSingUp'], time(), $clef_activation, '0', 'utilisateur']);
 
-        $max_id = $connexion->query('SELECT MAX(id_compte) AS max_id FROM compte');
+        $max = $connexion->prepare_request('SELECT MAX(id_compte) AS max_id FROM compte', array());
         /*if(!file_exists("../Projets/$max_id")){
             mkdir("../Projets/$max_id", 0755);
         }*/
 
-        echo 'success';
+
+            // Envoi du mail d'activation
+            $sujet = "Activation de votre compte utilisateur";
+
+            $msg = " Ce mail vous a été envoyé car il a été enregistré lors de l'inscription sur le \n";
+            $msg .= "site web de bertin.dev Pour valider votre inscription, merci de cliquer sur le lien suivant :\n";
+            //$message .= "http://" . $_SERVER["SERVER_NAME"];
+            $msg .= 'http://'.$_SERVER['HTTP_HOST'];
+            //$end=end(explode('/',$_SERVER['PHP_SELF']));
+
+            /*$a=explode('/',$_SERVER['PHP_SELF']);
+            $end=end($a);*/
+
+            $end=current(array_reverse(explode('/', $_SERVER['PHP_SELF'])));
+
+            $rep=str_replace($end,'',$_SERVER['PHP_SELF']);
+            $msg .= $msg.$rep.'index.php?id_page=8&amp;numero_id='.$max['max_id']; //"mysql_insert_id();
+            $msg .= '&clef='.$clef_activation;
+
+
+
+            /* Pour envoyer le courrier HTML, vous pouvez mettre l'en-tête du Contenu-type */
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+            /* additional headers */
+            $headers .= "To: ".$_POST['prenomSingUp'].' '.$_POST['nomSingUp']." <".$_POST['emailSingUp'].">\r\n";
+            $headers .= "From: Site <info@bertin-mounok.fr>\r\n";
+
+
+
+            // Si une erreur survient
+            if(!@mail($_POST['emailSingUp'], $sujet, $msg, $headers))
+            {
+                echo "Une erreur est survenue lors de l'envoi du mail d'activation. Veuillez contacter l'administrateur afin d'activer votre compte<br/>";
+            }
+            else {
+                //L'utilisateur à 48h (172800 secondes) pour valider son inscription par mail:
+                //(le rafraichissement de la base se fait lors de l'inscription d'une personne).
+                /*$heure=time();*/
+                $connexion->delete('DELETE FROM compte WHERE date_enreg <:date_expiration AND etat_compte=:etat', ['date_expiration' => (time() - 172800), 'etat' => 0]);
+                echo 'success';
+            }
     }
 }
 
@@ -163,29 +224,30 @@ if(isset($_GET['singIn'])) {
 
     // Connexion à la base de données
     $connexion = App::getDB();
-    $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'"');
+    $nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'" AND etat_compte="1"');
 
     if($nbre <= 0){
-        echo 'Votre Compte n\'a pas encore été créee';
+        echo 'Votre Compte n\'existe pas ou alors n\'est pas activé';
         exit;
     }
 
     else {
-/*
-        nettoieProtect();
-        extract($_POST);
 
-            $connexion->insert('INSERT INTO compte(nom, prenom, email, password, date_enreg, clef_activation, etat_compte) 
-                                      VALUES(?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'],
-                $_POST['emailSingUp'], $_POST['passwordSingUp'], time(), $clef_activation, '0']);
+        $nbre_con =  $connexion->prepare_request('SELECT id_compte, nom, email, nbre_connexion FROM compte WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
+            ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
 
-            $max_id = $connexion->query('SELECT MAX(id_compte) AS max_id FROM compte');*/
-            /*if(!file_exists("../Projets/$max_id")){
-                mkdir("../Projets/$max_id", 0755);
-            }*/
+        $connexion->update('UPDATE compte SET date_consultation=:consultation, nbre_connexion=:nbre_connexion 
+        WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte', ['consultation'=>time(), 'nbre_connexion'=>intval($nbre_con['nbre_connexion'])+1, 'email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
+
+        //gestion du checkbox qui est sur l'authentification
+        if(isset($_POST['t_and_c']) && $_POST['t_and_c']=='1')
+        {
+            setcookie('ID', $nbre_con['id_compte'], time() + 30*24*3600, null, null, false, true);
+            setcookie('Nom', $nbre_con['nom'], time() + 30*24*3600, null, null, false, true);
+            setcookie('Email', $nbre_con['email'], time() + 30*24*3600, null, null, false, true);
+        }
 
             echo 'success';
-
     }
 
 }
@@ -220,8 +282,26 @@ if(isset($_GET['newsletter'])) {
         nettoieProtect();
         extract($_POST);
 
-            $connexion->insert('INSERT INTO newsletter(email_newsletter, date_enreg) 
-                                      VALUES(?,?)', [$_POST['newsletter'], time()]);
+
+
+        $visiteur = $connexion->prepare_request('SELECT id_visiteur FROM visiteur WHERE email_visiteur=:email', array('email'=>$_POST['newsletter']));
+
+        if($visiteur['id_visiteur'] == null)
+        {
+            $connexion->insert('INSERT INTO newsletter(email_newsletter, ip, date_enreg) 
+                                      VALUES(?,?,?)', [$_POST['newsletter'], get_ip(), time()]);
+        }
+        else{
+
+            $connexion->insert('INSERT INTO newsletter(email_newsletter, ip, date_enreg)
+                                      VALUES(?,?,?)', [$_POST['newsletter'], get_ip(), time()]);
+
+            $newsletter = $connexion->prepare_request('SELECT id_newsletter FROM newsletter WHERE email_newsletter=:email', array('email'=>$_POST['newsletter']));
+
+            $connexion->update('UPDATE visiteur SET ref_id_newsletter = ? WHERE email_visiteur = ? ',
+                [$newsletter['id_newsletter'], $_POST["newsletter"]]);
+
+        }
             echo 'success';
     }
 
@@ -255,11 +335,16 @@ if(isset($_GET['visitor'])) {
 
     /*-------------------------------*/
 
-    if (!preg_match('/^[A-Za-z0-9_ ]{3,1000}$/', $_POST['message_visitor'])) {
+    /*if (!preg_match('/^[A-Za-z0-9_ ]{3,1000}$/', $_POST['message_visitor'])) {
         echo "Le Message Présente des Erreurs";
         exit();
-    }
+    }*/
 
+
+    if(!filter_var(get_ip(), FILTER_VALIDATE_IP)) { //Validation d'une adresse IP.
+        echo 'Adresse Ip Invalid';
+        exit();
+    }
     /*---------------------------------------------------*/
 
     /* htmlentities empêche l'excution du code HTML
@@ -286,10 +371,17 @@ if(isset($_GET['visitor'])) {
                             SELECT id_compte FROM compte
                             ');*/
 
-        $connexion->insert('INSERT INTO visiteur(nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin) 
-                                      VALUES(?,?,?,?)', [$_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time()]);
-
-
+        $newsletter = $connexion->prepare_request('SELECT id_newsletter FROM newsletter WHERE email_newsletter=:email', array('email'=>$_POST['email_visitor']));
+       if($newsletter['id_newsletter'] == null)
+       {
+           $newsletter['id_newsletter'] = 0;
+           $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
+                                      VALUES(?,?,?,?,?,?)', [$newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+       }
+       else{
+        $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
+                                      VALUES(?,?,?,?,?,?)', [$newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+       }
         echo 'success';
     }
 

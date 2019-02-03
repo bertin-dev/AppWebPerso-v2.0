@@ -93,6 +93,15 @@ class Database
 
 
 
+    public function prepare_request($statement, $attributes){
+        $req = $this->getPDO()->prepare($statement);
+        $req->execute($attributes);
+            $donnee = $req->fetch();
+        return $donnee;
+    }
+
+
+
     //combinaison de query et prepare pour optimiser les rêquetes
     public static function query_OR_prepare($statement, $attributes = null, $one = false)
     {

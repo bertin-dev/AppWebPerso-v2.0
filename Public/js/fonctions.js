@@ -274,6 +274,9 @@ $(function(){
         })
             .done(function (html) {
                 $('#page-top').empty().append(html);
+               /* $('body').load(link, function() {
+
+                });*/
             })
             .fail(function () {
                 console.log('error');
@@ -824,7 +827,7 @@ $(function () {
                             '                                    <span class="loader loader-circle"></span>\n' +
                             '                                    Chargement......\n' +
                             '                                </div>');
-                        $('#singIn').hide();
+                        $('#singIn').hide().fadeOut();
 
                         var myDate = new Date(), etat;
                         (myDate.getHours()>=6 && myDate.getHours() <= 12)? etat = 'BONJOUR': etat = 'BONSOIR';
@@ -836,8 +839,11 @@ $(function () {
                             cls: 'success1'
                         });
 
-                        /* $(location).attr('href',"actualites.php");
-                           * 		$('body').load('mise_a_jour_actualite.php?page='+data, function() {
+                        setTimeout(function () {
+                            $(location).attr('href',"index.php?id_page=9");
+                        }, 7000);
+
+                        /* $('body').load('mise_a_jour_actualite.php?page='+data, function() {
 				         }); */
 
                     }
@@ -1062,7 +1068,7 @@ GESTION DU SYSTEME D'INSCRIPTION
 
                             $('body').notif({
                                 title: 'Courrier Electronique',
-                                content: 'Un Email vient d\'être Envoyé à cette Adresse: ' + email1,
+                                content: 'Votre compte utilisateur a partiellement été créée <br> Un Email vient d\'être Envoyé à cette Adresse: ' + email1,
                                 img: 'img/bertin-mounok.png',
                                 cls: 'success1'
                             });
@@ -1117,7 +1123,7 @@ $(function () {
                 $notif.addClass('.fadeOutLeft').delay(500).slideUp(300, function () {
                     $notif.remove();
                 });
-            }, 5000);
+            }, 6000);
         });
     };
 

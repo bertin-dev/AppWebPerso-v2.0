@@ -21,7 +21,7 @@ $_SESSION['time'] = microtime(TRUE);
 
 
 <!DOCTYPE html>
-<html lang="fr_en">
+<html lang="fr">
 
 <head>
     <!-- Encodage des caractères -->
