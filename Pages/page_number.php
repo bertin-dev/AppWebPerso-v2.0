@@ -6,7 +6,6 @@
  * Time: 18h29
  */
 
-
 require '../Core/Controller/Controller.php';
 use Core\Controller\Controller;
 

@@ -13,6 +13,7 @@
     Version: 1.0.0
     Foncton: inclus l' entête, le corps et le pied de page
 ------------------------------------------------------------------------- */
+session_start();
 if(isset($_SESSION['time']))
     unset($_SESSION['time']);
 $_SESSION['time'] = microtime(TRUE);

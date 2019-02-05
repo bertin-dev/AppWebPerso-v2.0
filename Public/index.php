@@ -6,12 +6,12 @@
  * Time: 08h52
  */
 
-session_start();
+//session_start();
 
 /*<?php setcookie('pseudo', 'M@teo21', time() + 365*24*3600, null, null, false, true); ?>*/
 //page de demarrage
 isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
-  $_SESSION['id_page'] = $page;
+  $_ENV['id_page'] = $page;
 
  // uniqid(TRUE); permet de générer un clé aléatoire en fonction du temps et la probabilté que cela soit sécurisé est avec le paramètre TRUE
 //random_bytes(20); permet de générer un code de 20 caractères

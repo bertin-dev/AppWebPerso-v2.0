@@ -232,6 +232,7 @@ if(isset($_GET['singIn'])) {
     }
 
     else {
+        session_start();
 
         $nbre_con =  $connexion->prepare_request('SELECT id_compte, nom, email, nbre_connexion FROM compte WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
             ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
@@ -246,7 +247,10 @@ if(isset($_GET['singIn'])) {
             setcookie('Nom', $nbre_con['nom'], time() + 30*24*3600, null, null, false, true);
             setcookie('Email', $nbre_con['email'], time() + 30*24*3600, null, null, false, true);
         }
-
+         else{
+             $_SESSION['ID'] = $nbre_con['id_compte'];
+             $_SESSION['EMAIL'] = $nbre_con['email'];
+         }
             echo 'success';
     }
 
@@ -402,7 +406,6 @@ if(isset($_GET['getEmail'])){
         exit();
     }
     $_POST['getEmail'] = strtolower(stripslashes(htmlspecialchars($_POST['getEmail'])));
-
 
     // Connexion à la base de données
     $connexion = App::getDB();

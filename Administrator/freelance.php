@@ -105,6 +105,9 @@ endforeach;
             <li>
                 <a href="freelance.php">FREELANCE</a>
             </li>
+            <li>
+                <a href="blog.php">BLOG</a>
+            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper  style="position: absolute; left: 26%;"-->

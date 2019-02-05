@@ -8,126 +8,170 @@
 ?>
 <?php require_once('page_number.php'); ?>
 
+
+
 <section id="blog" class="blog-section">
+    <div id="blog-list">
+    <?php
+    if(isset($_GET['contenu']))
+    {
+    foreach (App::getDB()->query('SELECT id_sujet, titre, paragraphe, image, date_enreg FROM sujets WHERE id_sujet="'.intval($_GET['contenu']).'" ORDER BY id_sujet DESC') AS $blog_item):
+    echo '
 <article class="col-xs-12 col-md-10 col-lg-10">
-
-    <div class="col-md-10 col-lg-6 blog-article-1">
+                       <!--BLOC 1-->
+            <div class="col-md-10 col-lg-5 blog-article-1"> 
         <h1 class="blog-article-1-h1">
-            <a href="#" class="" data-destination="blog-article" data-title="Lire l'article « Histoire d'un site #5 - Projets, Culture &amp; Contact »">
-                Histoire d'un site #5 - Projets, Culture &amp; Contact
-            </a>
+            <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;contenu='.intval($blog_item->id_sujet).'" class="" title="'.$blog_item->titre.'">'.
+             $blog_item->titre
+            .'</a>
         </h1>
-
-        <p class="blog-article-1-p-1">Ces pages, bien que secondaires, ont demandé un minimum de travail. Notamment la page culture qui n'est pas statique comme on pourrait le croire, mais qui est en lien avec mes scrobbles sur LastFM
-            . Par ailleurs, la page contact est en lien avec l'API Youtube pour afficher mes derniers tutoriels.
+            <p class="blog-article-1-p-1">'.$blog_item->paragraphe.'</p>
+         <p class="blog-article-1-p-2">
+            <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;contenu='.intval($blog_item->id_sujet).'" tabindex="-1" title="'.$blog_item->titre.'">Lire la suite</a>
         </p>
-        <p class="blog-article-1-p-2">
-            <a href="#" tabindex="-1" data-title="Histoire d'un site #5 - Projets, Culture & Contact" data-destinaation="blog-article">Lire la suite</a>
-        </p>
-    </div>
-
-
-    <div class="col-md-2 col-lg-2 papou">
+        </div>
+                       <!--BLOC 2-->
+            <div class="col-md-2 col-lg-2 papou">
         <div class="col-lg-12" style="margin-top: 35px;">
-        <time datetime="2013-09-06CEST15:00:00" itemprop="datePublished">
+        <time>
                         <span class="date">
-                            <span class="day">06</span>
+                            <span class="day">'.date('d', $blog_item->date_enreg).'</span>
                             <span class="month-year">
-                                <span class="month">sep</span><br>
-                                <span class="year">2013</span>
+                                <span class="month">'.date('M', $blog_item->date_enreg).'</span><br>
+                                <span class="year">'.date('Y', $blog_item->date_enreg).'</span>
                             </span>
                         </span>
-            <span class="time1">15:00</span>
+            <span class="time1">'.date('H', $blog_item->date_enreg).':'.date('i', $blog_item->date_enreg).'</span>
         </time>
         </div>
         <div class="col-lg-12">
-
+<!--cette partie est a gerer-->
         <a class="apropos" href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie À Propos">À Propos</a>
         <a href="#" class="comments">Un Commentaire</a>
 
         <div class="tags-container">
-
             <p class="tags">
                 <span class="tags-label">Mots-clés : </span><br>
-                <a href="#" class="nav-js" data-destination="blog" data-title="Articles ayant le tag histoire d'un site">histoire d'un site</a>
+                <a href="#" class="nav-js" data-destination="blog" data-title="Articles ayant le tag histoire d\'un site">histoire d\'un site</a>
                 <br>
             </p>
         </div>
-
-
+      <!---------------------------------->
        </div>
-
-
     </div>
-
-    <div class="col-lg-4 illu-article">
-            <a href="#" class="nav-js" data-destination="blog-article" tabindex="-1">
-                <img class="img-responsive" src="img/Accueil/app.jpg" alt="Histoire d'un site #5 - Projets, Culture &amp; Contact">
+                      <!--BLOC 3-->
+            <div class="col-lg-5 illu-article">
+            <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;contenu='.intval($blog_item->id_sujet).'" tabindex="-1">
+                <img class="img-responsive" src="'.$blog_item->image.'" alt="'.$blog_item->titre.'" title="'.$blog_item->titre.'">
             </a>
-    </div>
+            <!----------------->
+            
+            <div id="commentaires" class="commentaires">
 
-</article>
+    <form action="" method="post" class="ajouter-commentaire">
+        <img class="commentaire-avatar" src="http://www.gravatar.com/avatar/none?s=70" alt="Votre gravatar">
+        <input type="text" id="trumbony_commentaire_commentaire_username" name="trumbony_commentaire_commentaire[username]" required="required" placeholder="Pseudo" class="commentaire-input commentaire-pseudo neutral_input">
+        <input type="email" id="trumbony_commentaire_commentaire_email" name="trumbony_commentaire_commentaire[email]" required="required" placeholder="Courriel" class="commentaire-input commentaire-email neutral_input" value="">
 
+        <textarea id="trumbony_commentaire_commentaire_contenu" name="trumbony_commentaire_commentaire[contenu]" required="required" placeholder="Commentaire" rows="3" class="neutral_input" style="overflow: hidden; min-height: 3em; height: 32px;"></textarea>
+        <div class="autogrow-textarea-mirror" style="display: none; overflow-wrap: break-word; padding: 10px 3.39063px; width: 333.219px; font-family: Sansation, &quot;Trebuchet MS&quot;, Helvetica, Verdana, sans-serif, serif; font-size: 16px; line-height: normal;">.<br>.</div>
+        <input type="hidden" id="trumbony_commentaire_commentaire__token" name="trumbony_commentaire_commentaire[_token]" value="1XvRtXijjtdJ4EuOg6r9XClhEB8X-a57I-uUCFJCzRU" class="neutral_input">
 
+        <span class="commentaire-error-msg"></span>
 
-    <article class="col-xs-12 col-md-10 col-lg-10" style="opacity: 0.3;">
+        <input type="submit" value="Envoyer" class="neutral_input">
+    </form>
 
-        <div class="col-md-10 col-lg-6 blog-article-1">
-            <h1 class="blog-article-1-h1">
-                <a href="#" class="" data-destination="blog-article" data-title="Lire l'article « Histoire d'un site #5 - Projets, Culture &amp; Contact »">
-                    Histoire d'un site #5 - Projets, Culture &amp; Contact
+    <div class="commentaires-liste">
+        <article class="commentaire">
+            <div class="commentaire-wrapper ">
+                <header>
+                    <img class="commentaire-avatar" src="http://www.gravatar.com/avatar/8359043bee5818d614f867c9fa042511?s=70" alt="Gravatar de Malnux Starck">
+                    <span class="commentaire-auteur">Malnux Starck</span>
+                    <time datetime="2016-07-10CEST04:09:09"> 10/07/2016 à 04h09</time>
+
+                </header>
+
+                <div class="commentaire-contenu">
+                    Vous etes trop fort Mr Alex. je vous apprecie. j\'aimerai etre comme vous en tant que developpeur. :)
+                </div>
+                <a data-repondre="/commentaires/zeste-de-savoir-apres-une-annee-de-developpement/repondre/8207" href="JavaScript:void(null)" class="commentaire-repondre">
+                    Répondre
                 </a>
-            </h1>
+            </div>
 
-            <p class="blog-article-1-p-1">Ces pages, bien que secondaires, ont demandé un minimum de travail. Notamment la page culture qui n'est pas statique comme on pourrait le croire, mais qui est en lien avec mes scrobbles sur LastFM
-                . Par ailleurs, la page contact est en lien avec l'API Youtube pour afficher mes derniers tutoriels.
-            </p>
-            <p class="blog-article-1-p-2">
-                <a href="#" tabindex="-1" data-title="Histoire d'un site #5 - Projets, Culture & Contact" data-destinaation="blog-article">Lire la suite</a>
-            </p>
+            <div class="commentaire-reponses">
+            </div>
+        </article>
+
+
+    </div>
+</div>
+            
+            
+            <!----------->
+    </div>
+</article>
+        ';
+    endforeach;
+    }
+
+
+    else
+    {
+        foreach (App::getDB()->query('SELECT id_sujet, titre, paragraphe, image, date_enreg FROM sujets  ORDER BY id_sujet DESC') AS $blog_item):
+            echo '<article class="col-xs-12 col-md-10 col-lg-10">
+          <div class="col-md-10 col-lg-6 blog-article-1"> 
+        <h1 class="blog-article-1-h1">
+            <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;contenu='.intval($blog_item->id_sujet).'" class="" title="'.$blog_item->titre.'">'.
+                $blog_item->titre
+                .'</a>
+        </h1>
+            <p class="blog-article-1-p-1">'.$blog_item->paragraphe.'</p>
+         <p class="blog-article-1-p-2">
+            <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;contenu='.intval($blog_item->id_sujet).'" tabindex="-1" title="'.$blog_item->titre.'">Lire la suite</a>
+        </p>
         </div>
-
-
-        <div class="col-md-2 col-lg-2 papou">
-            <div class="col-lg-12" style="margin-top: 35px;">
-                <time datetime="2013-09-06CEST15:00:00" itemprop="datePublished">
+            <div class="col-md-2 col-lg-2 papou">
+        <div class="col-lg-12" style="margin-top: 35px;">
+        <time>
                         <span class="date">
-                            <span class="day">06</span>
+                            <span class="day">'.date('d', $blog_item->date_enreg).'</span>
                             <span class="month-year">
-                                <span class="month">sep</span><br>
-                                <span class="year">2013</span>
+                                <span class="month">'.date('M', $blog_item->date_enreg).'</span><br>
+                                <span class="year">'.date('Y', $blog_item->date_enreg).'</span>
                             </span>
                         </span>
-                    <span class="time1">15:00</span>
-                </time>
-            </div>
-            <div class="col-lg-12">
-
-                <a class="apropos" href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie À Propos">À Propos</a>
-                <a href="#" class="comments">Un Commentaire</a>
-
-                <div class="tags-container">
-
-                    <p class="tags">
-                        <span class="tags-label">Mots-clés : </span><br>
-                        <a href="#" class="nav-js" data-destination="blog" data-title="Articles ayant le tag histoire d'un site">histoire d'un site</a>
-                        <br>
-                    </p>
-                </div>
-
-
-            </div>
-
-
+            <span class="time1">'.date('H', $blog_item->date_enreg).':'.date('i', $blog_item->date_enreg).'</span>
+        </time>
         </div>
+        <div class="col-lg-12">
+<!--cette partie est a gerer-->
+        <a class="apropos" href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie À Propos">À Propos</a>
+        <a href="#" class="comments">Un Commentaire</a>
 
+        <div class="tags-container">
+            <p class="tags">
+                <span class="tags-label">Mots-clés : </span><br>
+                <a href="#" class="nav-js" data-destination="blog" data-title="Articles ayant le tag histoire d\'un site">histoire d\'un site</a>
+                <br>
+            </p>
+        </div>
+      <!---------------------------------->
+       </div>
+    </div>
         <div class="col-lg-4 illu-article">
-            <a href="#" class="nav-js" data-destination="blog-article" tabindex="-1">
-                <img class="img-responsive" src="img/Accueil/app.jpg" alt="Histoire d'un site #5 - Projets, Culture &amp; Contact">
+            <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;contenu='.intval($blog_item->id_sujet).'" tabindex="-1">
+                <img class="img-responsive" src="'.$blog_item->image.'" alt="'.$blog_item->titre.'" title="'.$blog_item->titre.'">
             </a>
-        </div>
+    </div>
+</article>
+        ';
+        endforeach;
+    }
 
-    </article>
+
+    ?>
 
 
     <aside id="sidebar" class="col-xs-12 col-md-2 col-lg-2">
@@ -143,36 +187,21 @@
         <div id="categories" class="sidebar-bloc not-search">
             <span class="title">Catégories</span>
             <ul>
-                <li>
-                    <a href="../categorie/a-propos.html" class="nav-js category" data-destination="blog">
-                        À Propos
-                        <span class="counter">7</span>
+                <?php
+                foreach (App::getDB()->query('SELECT id_categorie, libelle FROM categorie ORDER BY id_categorie DESC') AS $cat):
+                echo '<li>
+                    <a href="../categorie/a-propos.html">'.
+                        $cat->libelle
+                        .'<span class="counter">'. App::getDB()->rowCount('SELECT id_categorie, ref_id_categorie FROM sujets 
+                                                              INNER JOIN categorie
+                                                              ON categorie.id_categorie=sujets.ref_id_categorie
+                                                              WHERE id_categorie="'.$cat->id_categorie.'"')
+                       .'</span>
                     </a>
-                </li>
-                <li>
-                    <a href="../categorie/astuces-pour-developpeurs.html" class="nav-js category" data-destination="blog">
-                        Astuces pour développeurs
-                        <span class="counter">3</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../categorie/decouvertes.html" class="nav-js category" data-destination="blog">
-                        Découvertes
-                        <span class="counter">2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../categorie/musique.html" class="nav-js category" data-destination="blog">
-                        Musique
-                        <span class="counter">3</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../categorie/tutoriels-videos.html" class="nav-js category" data-destination="blog">
-                        Tutoriels vidéos
-                        <span class="counter">2</span>
-                    </a>
-                </li>
+                </li>';
+                endforeach;
+
+                ?>
             </ul>
         </div>
 
@@ -234,6 +263,5 @@
         </div>
 
     </aside>
+    </div>
 </section>
-
-

@@ -453,6 +453,22 @@ text-align: center;
 GESTION DU BLOG
    ========================================================================== */
 
+#blog-list article:nth-child(2n) {
+    background: rgba(0,0,0,.2);
+}
+
+#blog-list .papou:nth-child(2n) {
+    overflow: hidden;
+    border: 1px solid #1b4159;
+    background-color: initial;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 240px;
+}
+
 .blog-section
 {
     /*border: 5px dashed white;*/
@@ -575,9 +591,6 @@ float: left;
 }
 
 
-
-
-
 .papou
 {
     overflow: hidden;
@@ -592,6 +605,98 @@ float: left;
 }
 
 
+/*****************************************************************************BLOG COMMMENTAIRE*/
+.commentaires form {
+    margin-left: -94px;
+    margin-right: 0;
+    width: auto;
+    padding-bottom: 53px;
+}
+
+.commentaire-wrapper, .commentaires form {
+    position: relative;
+    background: rgba(18,18,18,.25);
+    border: 1px solid #1c455f;
+    border-right: 0;
+    padding-left: 94px;
+    padding-bottom: 20px;
+    min-height: 95px;
+}
+
+.commentaire-avatar {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.commentaires form .commentaire-input {
+    float: left;
+    width: 46%;
+    margin: 11px 0;
+}
+
+.commentaires form .commentaire-email {
+    float: right;
+}
+
+form textarea {
+    min-height: 4em!important;
+    width: 98%;
+    padding: 10px 1%;
+    -webkit-resize: none;
+    -moz-resize: none;
+    resize: none;
+}
+
+.commentaire-error-msg {
+    display: block;
+    float: left;
+    color: #1073b2;
+    width: 50%;
+    margin: 10px;
+}
+
+.commentaires-liste {
+    margin-left: -94px;
+    margin-bottom: 50px;
+}
+
+article.commentaire{
+    min-height: inherit;
+    padding: 25px 0 0;
+}
+
+.commentaire-wrapper header {
+    margin: 10px 10px 0;
+}
+
+.commentaire-auteur {
+    color: #EEE;
+}
+
+#blog article.commentaire header time {
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50%;
+    left: initial;
+    text-align: right;
+    color: #777;
+}
+
+.commentaire-contenu {
+    padding: 10px;
+    text-align: justify;
+    color: #BBB;
+}
+
+.commentaire-repondre {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+}
+/*****************/
 .apropos
 {
     text-align: right;
@@ -663,10 +768,10 @@ float: left;
 /*  3*/
 .illu-article
 {
-    background-image: url('../img/Accueil/app.jpg');
+/*background-image: url('../img/Accueil/app.jpg');*/
     overflow: hidden;
     border: 1px solid #1b4159;
-    background-color: #1b4159;
+    /*background-color: #1b4159;*/
     background-repeat: no-repeat;
     background-position: center center;
     -webkit-background-size: cover;

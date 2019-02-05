@@ -117,6 +117,7 @@ $info_DB->extract_DB();
 </section>
 
 <?php
+session_start();
 $_POST['passwordSingIn'] = sha1('12345');
 $_POST['emailSingIn'] = 'bertmoun@yahoo.fr';
 // Connexion à la base de données
@@ -128,6 +129,11 @@ var_dump(intval($nbre_con['nbre_connexion']));
 
 $_POST['t_and_c'] = '1';
 var_dump($_POST['t_and_c']);
+var_dump($_SESSION['ID']);
+var_dump($_SESSION['pipo']);
+var_dump($_COOKIE['ID']);
+var_dump($_COOKIE['PHPSESSID']);
+var_dump($_ENV['dadi']);
 die;
 
 

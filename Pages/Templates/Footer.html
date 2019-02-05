@@ -175,7 +175,7 @@ Empêche l'affichage du pied de page (footer) et (du chemin de fer + Notificatio
    ==========================================================================
   -->
 <?php
-if($_SESSION['id_page']==7)
+if($_ENV['id_page']==7)
 {
 ?>
 <script>
@@ -186,10 +186,19 @@ if($_SESSION['id_page']==7)
 
         $('#notif_chemin_fer').addClass('collapse');
         $('#notif_chemin_fer').remove();
-
-
             $('footer').addClass('collapse');
             $('footer').remove();
+
+           /* $('a').on('click', function () {
+
+            });*/
+
+          /* $('section article a, aside a').each(function () {
+              $('section article a, aside a').attr({
+                  'data-toggle': 'modal',
+                  'data-target': '#login_1'
+              });
+           });*/
 
     });
 
@@ -197,7 +206,7 @@ if($_SESSION['id_page']==7)
 <?php
 }
 
-if($_SESSION['id_page']==6){
+if($_ENV['id_page']==6){
 ?>
 <script>
     $(function () {
