@@ -152,4 +152,13 @@ class Database
 
 
 
+    public function compteur_start_end($statement)
+    {
+        $req = $this->getPDO()->prepare($statement);
+        return $req;
+    }
+
+
+
+
 }

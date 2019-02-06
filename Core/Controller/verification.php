@@ -1688,3 +1688,10 @@ fonctionnalites, screenshot_App, url, code_page, statut) VALUES(?,?,?,?,?,?,?,?,
         else echo $message;
     }
 }
+
+
+
+if(isset($page))
+{
+    echo $id_page;
+}

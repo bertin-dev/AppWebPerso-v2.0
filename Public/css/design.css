@@ -553,18 +553,18 @@ GESTION DU BLOG
 
 
 
-time
+/*time
 {
     color: #c9c9c9;
     font-size: 24px;
     width: 9%;
     min-width: 120px;
     margin: 0 0 0 -4.1%;
-}
+}*/
 
 
 
-.date
+/*.date
 {
     float: left;;
 }
@@ -588,7 +588,7 @@ float: left;
 {
     float: right;
     color: #4d4d4d;
-}
+}*/
 
 
 .papou
@@ -607,7 +607,7 @@ float: left;
 
 /*****************************************************************************BLOG COMMMENTAIRE*/
 .commentaires form {
-    margin-left: -94px;
+    margin-left: 0;
     margin-right: 0;
     width: auto;
     padding-bottom: 53px;
@@ -618,9 +618,9 @@ float: left;
     background: rgba(18,18,18,.25);
     border: 1px solid #1c455f;
     border-right: 0;
-    padding-left: 94px;
+    padding-left: 45px;
     padding-bottom: 20px;
-    min-height: 95px;
+    min-height: 170px;
 }
 
 .commentaire-avatar {
@@ -631,17 +631,17 @@ float: left;
 
 .commentaires form .commentaire-input {
     float: left;
-    width: 46%;
+    width: 42%;
     margin: 11px 0;
 }
 
 .commentaires form .commentaire-email {
-    float: right;
+    margin-left: 6%;
 }
 
 form textarea {
-    min-height: 4em!important;
-    width: 98%;
+    min-height: 4.5em!important;
+    width: 90%;
     padding: 10px 1%;
     -webkit-resize: none;
     -moz-resize: none;
@@ -656,6 +656,7 @@ form textarea {
     margin: 10px;
 }
 
+
 .commentaires-liste {
     margin-left: -94px;
     margin-bottom: 50px;
@@ -663,7 +664,7 @@ form textarea {
 
 article.commentaire{
     min-height: inherit;
-    padding: 25px 0 0;
+    padding: 25px 0px 0 94px;
 }
 
 .commentaire-wrapper header {
@@ -678,50 +679,60 @@ article.commentaire{
     font-size: 14px;
     position: absolute;
     top: 10px;
-    right: 10px;
     width: 50%;
-    left: initial;
+    left: 45%;
     text-align: right;
     color: #777;
 }
 
 .commentaire-contenu {
     padding: 10px;
+    margin-right: 7px;
     text-align: justify;
     color: #BBB;
 }
 
 .commentaire-repondre {
     position: absolute;
-    right: 10px;
+    right: 10%;
     bottom: 5px;
 }
-/*****************/
-.apropos
-{
-    text-align: right;
-    text-decoration: none;
-    color: #959595;
-    font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    display: block;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -o-transition: all .2s;
-    transition: all .2s;
-    width: 9%;
-    min-width: 120px;
-    margin: 10% 0 0 -4.1%;
 
+
+#blog article time {
+    top: 40px;
+    color: #c9c9c9;
+    font-size: 24px;
 }
 
-.comments
-{
+#blog article .comments {
     top: 115px;
+}
+
+
+#blog article time .date, #blog article time .day {
+    float: left;
+}
+
+#blog article time .month-year {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    line-height: 9px;
+    float: right;
+    margin-top: 9px;
+}
+
+#blog article time .time {
+    float: right;
+    color: #4d4d4d;
+}
+
+#blog article .category {
+    top: 98px;
+}
+
+#blog article .category, #blog article .comments {
     text-align: right;
     text-decoration: none;
     color: #959595;
@@ -735,23 +746,50 @@ article.commentaire{
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     -o-transition: all .2s;
+    -ms-transition: all .2s;
     transition: all .2s;
-    width: 9%;
-    min-width: 120px;
-    margin: 0 0 0 -4.1%;
 }
 
-
-.tags-container
-{
-    color: #4b4b4b;
-    font-size: 11px;
+#blog article time, #blog article .category, #blog article .comments, #blog article .tags-container {
+    position: absolute;
     display: block;
-    width: 9%;
+    left: 1%;
+    width: 1%;
     min-width: 120px;
-    margin: 20% 0 0 -4.1%;
+    margin: 0;
     padding: 0;
 }
+
+#blog article .tags-container {
+    color: #4b4b4b;
+    font-size: 11px;
+    top: 150px;
+}
+
+/*-PAGINATION PERSONNALISE-*/
+.pagination1 {
+    position: absolute;
+    right: 55%;
+    background: #282828;
+    padding: 0 7px;
+    z-index: 10;
+}
+
+.pagination1 span.current {
+    color: #FFF;
+}
+
+.pagination1 span, .pagination1 a {
+    display: inline-block;
+    height: 30px;
+    width: 35px;
+    text-align: center;
+    line-height: 30px;
+    color: #999;
+}
+
+
+/******************************************************************************/
 
 .tags-container .tags a
 {

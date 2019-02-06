@@ -1575,6 +1575,10 @@ $(function(){
 
 
 /* ==========================================================================
-SYSTEME DE RECUPERATION DU MOT DE PASSE
+SYSTEME DE GESTION DES COMENTAIRES UTILISATEURS DU BLOG
 ========================================================================== */
+$(function(){
+
+
+});
 

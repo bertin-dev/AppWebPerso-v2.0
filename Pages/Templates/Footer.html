@@ -184,9 +184,10 @@ if($_ENV['id_page']==7)
        // $('#notif_chemin_fer').attr('style', 'display: none');
         //$('footer').attr('style', 'display: none');
 
-        $('#notif_chemin_fer').addClass('collapse');
+        /*2 eme methode*/
+        //$('#notif_chemin_fer').addClass('collapse');
         $('#notif_chemin_fer').remove();
-            $('footer').addClass('collapse');
+          //  $('footer').addClass('collapse');
             $('footer').remove();
 
            /* $('a').on('click', function () {
@@ -210,7 +211,7 @@ if($_ENV['id_page']==6){
 ?>
 <script>
     $(function () {
-        $('#notif_chemin_fer').addClass('collapse');
+      //  $('#notif_chemin_fer').addClass('collapse');
         $('#notif_chemin_fer').remove();
     });
 </script>
@@ -219,6 +220,26 @@ if($_ENV['id_page']==6){
 }
 ?>
 
+<script>
+    $(function () {
+        $('.page a').click(function(e){
+            var link = $(this).attr('href');
+            $.ajax({
+                url: link,
+            })
+                .done(function (html) {
+                   // $('body').empty().append(html);
+                    $('body').load(link, function() {
+
+                    });
+                });
+            e.preventDefault();
+
+        });
+
+
+    });
+</script>
 
 
 
