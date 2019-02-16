@@ -62,7 +62,7 @@ class Controller
             foreach($connexion->query('SELECT id_page, titre FROM page
             INNER JOIN headers
             ON page.ref_id_headers=headers.id_headers
-            WHERE ref_id_parent=' . $idpage, get_called_class()) as $retour):
+            WHERE id_page<8 AND ref_id_parent=' . $idpage, get_called_class()) as $retour):
 
                 $menu_retour .= '<li class="dropdown">';
                 /*if($retour->id_page ==='3')
@@ -73,7 +73,7 @@ class Controller
 
                 $menu_retour .= 'href="index.php?id_page='.$retour->id_page.'" title="'.$retour->titre.'">';
                 //$menu_retour .= '<a href="index.php?id_page='.$retour->id_page.'">';
-                $menu_retour .= $retour->titre;
+                $menu_retour .= utf8_encode($retour->titre);
                /* if($retour->id_page ==='3')
                     $menu_retour .= '<b class="caret"></b>';*/
                 $menu_retour .= '</a>';

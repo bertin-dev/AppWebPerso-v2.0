@@ -2,28 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: Supers-Pipo
- * Date: 04/02/2018
- * Time: 21h52
-
+ * Date: 16/02/2019
+ * Time: 04h41
  */
-
-
-/* ------------------------------------------------------------------------
-    Auteur: Bertin Mounok (http://www.bertin-dev.fr)
-    Version: 1.0.0
-    Foncton: inclus l' entête, le corps et le pied de page
-------------------------------------------------------------------------- */
-//session_start();
-if(isset($_SESSION['time']))
-    unset($_SESSION['time']);
-$_SESSION['time'] = microtime(TRUE);
-
 ?>
-
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <!-- Encodage des caractères -->
     <meta charset="utf-8">
@@ -31,16 +16,16 @@ $_SESSION['time'] = microtime(TRUE);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Insère les mots-clés extraits de la BD dans les meta -->
-    <meta name="keywords" lang="fr" content="<?= $_ENV['mots_cles']; ?>">
+    <meta name="keywords" lang="fr" content="Bertin.dev, Apropos de moi, Informaticien, Programmeur, Consultant informatique, developpeur peur ">
     <!-- Insère la description extraite de la DB dans les meta -->
-    <meta name="description" lang="fr" content="<?= $_ENV['description']; ?>">
+    <meta name="description" lang="fr" content="apres avoir appri sur internet, quoi de plus normal de partager mes connaissances � mon tour">
     <meta name="author" content="Bertin Mounok, Bertin-Mounok, Pipo, Supers-Pipo, bertin.dev, bertin-dev, Ngando Mounok Hugues Bertin">
     <meta name="copyright" content="© 2018, bertin.dev, Inc">
     <!--Programme ou système ayant généré le contenu. Ne doit pas être utilisé si le document est conçu « à la main ».-->
     <!--<meta name="generator" content="PhpStorm 2018.1.4">-->
 
     <!-- rafraichi la page web apres chaque 60 secondes -->
-   <!-- <meta http-equiv="Refresh" content="60">-->
+    <!-- <meta http-equiv="Refresh" content="60">-->
 
     <!-- Redirection vers une autre URL au bout de 60 secondes -->
     <!--<meta http-equiv="refresh" content="60;url=http://www.blup.fr" />-->
@@ -49,8 +34,7 @@ $_SESSION['time'] = microtime(TRUE);
     <meta name="Application-Web-Portfolio" content="Mes Réalisations">
 
     <!-- Insère le titre extrait de la DB dans la balise correspondante -->
-    <title><?php if($_ENV['titre']=="Accueil") echo 'Bertin Mounok | '.$_ENV['titre'].' → Portfolio';
-             else echo $_ENV['titre'].' | Bertin Mounok'?></title>
+    <title>Blog | Bertin Mounok</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../Public/css/bootstrap.css" rel="stylesheet">
@@ -65,7 +49,7 @@ $_SESSION['time'] = microtime(TRUE);
     <link href="../Public/css/animate.min.css" rel="stylesheet">
 
     <!-- Icône du site (favicon) -->
-    <link rel="icon" type="image/png" href="../Public/img/bertin-mounok.png"/>
+    <link rel="icon" type="image/png" href="../Public/img/bertin-mounok.png">
 
     <!-- Fil RSS du site -->
     <!--<link rel="alternate" type="application/rss+xml" title="News de mon site" href="news.xml" />-->
@@ -82,23 +66,18 @@ $_SESSION['time'] = microtime(TRUE);
 
 </head>
 
-<!-- The #page-top ID is part of the scrolling feature -
- the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
-
-<body id="page-top" data-spy="scroll" data-target="navbar-fixed-top">
-
-<?php include('Head.php'); ?>
-
-<div id="alert_notifications"></div>
-
-<div id="menu_pipo">
-<?= $contenu; ?>
-</div>
+<body>
+<section id="blog" class="blog-section">
+        <?php
+        if(isset($_GET['id']) && !empty($_GET['id']))
+        {
+            echo '<div id="blog-list"></div>';
+        }
+        ?>
 
 
-<?php include('Footer.html');?>
+</section>
 
+<?php require 'Templates/Footer.html';?>
 </body>
-
 </html>
-

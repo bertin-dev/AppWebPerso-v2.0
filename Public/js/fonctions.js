@@ -1072,6 +1072,11 @@ GESTION DU SYSTEME D'INSCRIPTION
                                 img: 'img/bertin-mounok.png',
                                 cls: 'success1'
                             });
+                       /* $('#nomSingUp').val("");
+                        $('#prenomSingUp').val("");
+                        $('#emailSingUp').val("");
+                        $('#passwordSingUp').val("");*/
+
                     }
                 }
 
@@ -1575,10 +1580,357 @@ $(function(){
 
 
 /* ==========================================================================
-SYSTEME DE GESTION DES COMENTAIRES UTILISATEURS DU BLOG
+SYSTEME DE GESTION DES COMMENTAIRES UTILISATEURS DU BLOG
 ========================================================================== */
 $(function(){
+
+    /*var $timer = setInterval(function () {
+        load_comments();
+    }, 3000);*/
+
+    $('#contenuCommentaireUser').keyup(function () {
+        commentaire();
+    });
+
+    //fonction de verification du Commentaire en ajax
+    function commentaire() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?commentaire=commentaire',
+            data: {
+                'contenuCommentaireUser': $('#contenuCommentaireUser').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('.commentaire-error-msg').html('');
+                  //  $('.commentaire-error-msg').html('<img src="../Public/img/icons/check.png" title="validé" width="15" class="small_image" alt=""> ');
+                    return true;
+                }
+                else{
+                    $('.commentaire-error-msg').css({
+                        'font-size': '8px',
+                            'margin-top': '-5px',
+                    'margin-bottom': '-20px'
+                    }).html(data);
+
+                    /* setTimeout(function () {
+                         $('#output_message_visitor').hide();
+
+                     }, 7000);*/
+                }
+            }
+        });
+
+
+    }
+
+
+
+    $('#commentaire_user').submit(function () {
+        var contentComments = $('#contenuCommentaireUser').val();
+
+
+        if (contentComments == '') {
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir le Champs Commentaire !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
+        }
+        else {
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+            $.ajax({
+                type: 'post',
+                url: '../Core/Controller/submit.php?commentaire=commentaire',
+                contentType: false, // obligatoire pour de l'upload
+                processData: false, // obligatoire pour de l'upload
+                data: donnee,
+                beforeSend: function () {
+                    $('#enreg_commentaires').attr('value', 'En cours...');
+                    $('.commentaire-error-msg').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
+                },
+                success: function (data) {
+                    if(data != 'success'){
+                        $('#enreg_commentaires').attr('value', 'Envoyer');
+                        $('.commentaire-error-msg').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Message d\'erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
+                    }
+                    else {
+                        clearInterval($timer);
+                        $('#enreg_commentaires').attr('value', 'Envoyer');
+                        $('.commentaire-error-msg').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Opération Réussie',
+                            content: 'Merci de Nous avoir fait Confiance !',
+                            img: 'img/bertin-mounok.png',
+                            cls: 'success1'
+                        });
+                       // $('#contenuCommentaireUser').val("");
+                        /* setTimeout(function () {
+                             $('#output_visitor').fadeOut().hide();
+
+                         }, 7000);*/
+                       // load_comments();
+
+                        // load_comments();
+                    }
+
+                    /*$timer = setInterval(function () {
+                        load_comments();
+                    }, 3000);*/
+                }
+
+            });
+
+        }
+
+
+    });
+
+
+
+
+    //SYSTEME D AFFICHAGE DES MESSAGES INSTANTANEES
+    function load_comments(vue_commentaires = ''){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'post',
+            data: {vue_commentaires: vue_commentaires},
+            dataType: 'json',
+            success: function (data) {
+                $('.commentaires-liste').html(data.notifOnComments);
+
+                /* if (data.unseen_notification > 0) {
+                     $('.count').html(data.unseen_notification);
+                 }*/
+
+
+            }/*,
+            error: function(data){
+                console.log(data.unseen_notification);
+            }*/
+        });
+    }
+
+
+//REPONSES DES COMMENTAIRES
+/*
+    $('#reponse_commentaire_contenu').keyup(function () {
+        reponse_commentaire();
+    });
+
+    function reponse_commentaire() {
+        $.ajax({
+            type: 'post',
+            url: '../Core/Controller/verification.php?reponse_commentaire=reponse_commentaire',
+            data: {
+                'reponse_commentaire_contenu': $('#reponse_commentaire_contenu').val()
+            },
+            success: function (data) {
+                if(data=='success'){
+                    $('.commentaire-error-msg-reponse').html('');
+                    return true;
+                }
+                else{
+                    $('.commentaire-error-msg-reponse').css({
+                        'font-size': '8px',
+                        'margin-top': '-5px',
+                        'margin-bottom': '-20px',
+                        'color': 'red'
+                    }).html(data);
+                }
+            }
+        });
+
+
+    }
+
+
+
+    $('.ajouter-commentaire').submit(function () {
+        var reponse_commentaire_contenu = $('#reponse_commentaire_contenu').val();
+
+
+        if (reponse_commentaire_contenu == '') {
+            $('body').notif({
+                title: 'Message d\'erreur',
+                content: 'Veuillez Remplir le Champs Commentaire !',
+                img: 'img/bertin-mounok.png',
+                cls: 'error1'
+            });
+        }
+        else {
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+            $.ajax({
+                type: 'post',
+                url: '../Core/Controller/submit.php?reponse_commentaire=reponse_commentaire',
+                contentType: false, // obligatoire pour de l'upload
+                processData: false, // obligatoire pour de l'upload
+                data: donnee,
+                beforeSend: function () {
+                    $('#enreg_reponse_commentaires').attr('value', 'En cours...');
+                    $('.commentaire-error-msg-reponse').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
+                },
+                success: function (data) {
+                    if(data != 'success'){
+                        $('#enreg_reponse_commentaires').attr('value', 'Envoyer');
+                        $('.commentaire-error-msg-reponse').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Message d\'erreur',
+                            content: data,
+                            img: 'img/bertin-mounok.png',
+                            cls: 'error1'
+                        });
+                    }
+                    else {
+                        clearInterval($timer);
+                        $('#enreg_reponse_commentaires').attr('value', 'Envoyer');
+                        $('.commentaire-error-msg-reponse').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                        $('body').notif({
+                            title: 'Opération Réussie',
+                            content: 'Merci de Nous avoir fait Confiance !',
+                            img: 'img/bertin-mounok.png',
+                            cls: 'success1'
+                        });
+                        $('#reponse_commentaire_contenu').val("zzrezrzer");
+                    }
+                }
+
+            });
+
+        }
+
+
+    });
+    */
+
+
+
+
+
+
 
 
 });
 
+
+
+$(function(){
+
+    /* ==========================================================================
+GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
+========================================================================== */
+        $('#search_contenu').keyup(function () {
+            search();
+        });
+
+        //fonction de verification du Nom en ajax
+        function search() {
+            $.ajax({
+                type: 'GET',
+                url: '../Core/Controller/verification.php?search=search',
+                data: {
+                    'search_contenu': $('#search_contenu').val()
+                },
+                success: function (data) {
+                    if(data=='Aucun'){
+                        $('#output_search').css({
+                            'font-weight': 'bold',
+                            'margin': 'initial',
+                            'padding': 'initial',
+                            'font-size': '65%'
+                        }).html('Aucun résultat trouvé');
+
+                        /*setTimeout(function () {
+                            $('#output_search').hide();
+
+                        }, 7000);*/
+                    }
+                    else
+                    {
+                        $('#output_search').empty();
+                        $('#blog-list').load('../Pages/Blog_resultat.php?id=1', function() {
+                            $('#blog-list').html(data);
+                        });
+
+                    }
+
+                }
+            });
+
+
+        }
+
+
+
+        $('#search_sujet').submit(function () {
+            var search_contenu = $('#search_contenu').val();
+
+
+            if (search_contenu == '') {
+                $('body').notif({
+                    title: 'Message d\'erreur',
+                    content: 'Veuillez Remplir le Champs !',
+                    img: 'img/bertin-mounok.png',
+                    cls: 'error1'
+                });
+            }
+            else {
+                var $form = $(this);
+                var formdata = (window.FormData) ? new FormData($form[0]) : null;
+                var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+                $.ajax({
+                    type: 'post',
+                    url: '../Core/Controller/submit.php?search=search',
+                    data: donnee,
+                    beforeSend: function () {
+
+                    },
+                    success: function (data) {
+                        if(data != 'success'){
+                            $('body').notif({
+                                title: 'Message d\'erreur',
+                                content: data,
+                                img: 'img/bertin-mounok.png',
+                                cls: 'error1'
+                            });
+                        }
+                        else {
+                            $('body').notif({
+                                title: 'Opération Réussie',
+                                content: 'Merci de Nous avoir fait Confiance !',
+                                img: 'img/bertin-mounok.png',
+                                cls: 'success1'
+                            });
+                            setTimeout(function () {
+                                $('#output_search').fadeOut().hide();
+
+                            }, 7000);
+                        }
+                    }
+
+                });
+
+            }
+
+
+        });
+
+});

@@ -168,6 +168,26 @@
 
 </script>
 
+<!--
+  ==========================================================================
+Affiche le service devis si tu es authentifié
+   ==========================================================================
+  -->
+<?php
+if( (isset($_SESSION['ID']) && !empty($_SESSION['ID'])) OR (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) )
+{
+?>
+<script>
+    $('#devis_service').on('click', function () {
+        $(location).attr('href',"index.php?id_page=9");
+    });
+    </script>
+<?php
+}
+?>
+
+
+
 
 <!--
   ==========================================================================
@@ -175,7 +195,7 @@ Empêche l'affichage du pied de page (footer) et (du chemin de fer + Notificatio
    ==========================================================================
   -->
 <?php
-if($_ENV['id_page']==7)
+if(isset($_ENV['id_page']) && $_ENV['id_page']==7)
 {
 ?>
 <script>
@@ -207,7 +227,7 @@ if($_ENV['id_page']==7)
 <?php
 }
 
-if($_ENV['id_page']==6){
+if(isset($_ENV['id_page']) && $_ENV['id_page']==6){
 ?>
 <script>
     $(function () {

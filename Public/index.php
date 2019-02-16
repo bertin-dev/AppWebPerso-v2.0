@@ -6,7 +6,7 @@
  * Time: 08h52
  */
 
-//session_start();
+session_start();
 
 /*<?php setcookie('pseudo', 'M@teo21', time() + 365*24*3600, null, null, false, true); ?>*/
 //page de demarrage

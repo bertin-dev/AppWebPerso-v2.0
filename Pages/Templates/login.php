@@ -21,19 +21,6 @@
     }
 </style>
 
-<?php
-
-
-if(isset($_SESSION['ID']))
-{
-    echo '<div class="modal fade" id="login_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
- header('location: Apropos.php');
-    echo '</div>';
-}
-else
-{
-    ?>
-
     <div class="modal fade" id="login_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="login-img3-body modal-content">
@@ -88,7 +75,6 @@ else
 
 
                     <form id="singUp" class="collapse" method="post" onsubmit="return false;" accept-charset="UTF-8">
-
                         <ul id="progressbar">
                             <li class="active">IDENTIFIANT PERSONNELLE</li>
                             <li>IDENTIFIANT PUBLIC</li>
@@ -141,9 +127,4 @@ else
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-<?php
-
-}
-?>
 

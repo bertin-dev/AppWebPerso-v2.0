@@ -119,8 +119,10 @@
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
 
-                        <input class="btn btn-primary WOW bounceInDown animated" type="button" title="Envoyez"
-                           value="Demandez un Dévis" data-toggle="modal" data-target="#login_1">
+                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Envoyez" data-toggle="modal" data-target="#login_1" >Demandez un Dévis</a>
+
+
+
                 </div>
 
             </article>

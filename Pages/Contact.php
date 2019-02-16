@@ -115,26 +115,3 @@ $info_DB->extract_DB();
         </div>
     </div>
 </section>
-
-<?php
-session_start();
-$_POST['passwordSingIn'] = sha1('12345');
-$_POST['emailSingIn'] = 'bertmoun@yahoo.fr';
-// Connexion à la base de données
-$connexion = App::getDB();
-$nbre = $connexion->rowCount('SELECT id_compte FROM compte WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'" AND etat_compte="1"');
-$nbre_con =  $connexion->prepare_request('SELECT nbre_connexion FROM compte WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
-    ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
-var_dump(intval($nbre_con['nbre_connexion']));
-
-$_POST['t_and_c'] = '1';
-var_dump($_POST['t_and_c']);
-var_dump($_SESSION['ID']);
-var_dump($_SESSION['pipo']);
-var_dump($_COOKIE['ID']);
-var_dump($_COOKIE['PHPSESSID']);
-var_dump($_ENV['dadi']);
-die;
-
-
-?>

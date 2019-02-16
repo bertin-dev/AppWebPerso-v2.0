@@ -6,6 +6,7 @@
  * Time: 22h33
  */
 require '../../App/Config/Config_Server.php';
+session_start();
 
 function nettoieProtect(){
 
@@ -136,9 +137,9 @@ if(isset($_GET['singUp'])) {
         }
         else
         {
-
-        $connexion->insert('INSERT INTO compte(nom, prenom, email, password, date_enreg, clef_activation, etat_compte, privileges) 
-                                      VALUES(?,?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'],
+            $id_forum = $connexion->prepare_request('SELECT id_blog FROM blog', array());
+        $connexion->insert('INSERT INTO compte(ref_id_blog, nom, prenom, email, password, date_enreg, clef_activation, etat_compte, privileges) 
+                                      VALUES(?,?,?,?,?,?,?,?,?)', [intval($id_forum['id_blog']), $_POST['nomSingUp'], $_POST['prenomSingUp'],
             $_POST['emailSingUp'], $_POST['passwordSingUp'], time(), $clef_activation, '0', 'utilisateur']);
 
         $max = $connexion->prepare_request('SELECT MAX(id_compte) AS max_id FROM compte', array());
@@ -232,7 +233,7 @@ if(isset($_GET['singIn'])) {
     }
 
     else {
-        session_start();
+       // session_start();
 
         $nbre_con =  $connexion->prepare_request('SELECT id_compte, nom, email, nbre_connexion FROM compte WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
             ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
@@ -300,11 +301,10 @@ if(isset($_GET['newsletter'])) {
             $connexion->insert('INSERT INTO newsletter(email_newsletter, ip, date_enreg)
                                       VALUES(?,?,?)', [$_POST['newsletter'], get_ip(), time()]);
 
-            $newsletter = $connexion->prepare_request('SELECT id_newsletter FROM newsletter WHERE email_newsletter=:email', array('email'=>$_POST['newsletter']));
+            $newsletter = $connexion->prepare_request('SELECT id_newsletter, email_newsletter FROM newsletter WHERE email_newsletter=:email', array('email'=>$_POST['newsletter']));
 
             $connexion->update('UPDATE visiteur SET ref_id_newsletter = ? WHERE email_visiteur = ? ',
                 [$newsletter['id_newsletter'], $_POST["newsletter"]]);
-
         }
             echo 'success';
     }
@@ -379,12 +379,33 @@ if(isset($_GET['visitor'])) {
        if($newsletter['id_newsletter'] == null)
        {
            $newsletter['id_newsletter'] = 0;
-           $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
+           /***verification si votre compte existe****/
+           if( (isset($_SESSION['ID']) && !empty($_SESSION['ID'])) || (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) ){
+               if(isset($_SESSION['ID'])) $compte = intval($_SESSION['ID']);
+               if(isset($_COOKIE['ID'])) $compte = intval($_COOKIE['ID']);
+               $connexion->insert('INSERT INTO visiteur(ref_id_compte, ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
+                                      VALUES(?,?,?,?,?,?,?)', [$compte, $newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+           }
+           else
+           {
+               $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
                                       VALUES(?,?,?,?,?,?)', [$newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
-       }
+           }
+
+          }
        else{
-        $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
+           /***verification si votre compte existe****/
+           if( (isset($_SESSION['ID']) && !empty($_SESSION['ID'])) || (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) ){
+               if(isset($_SESSION['ID'])) $compte = intval($_SESSION['ID']);
+               else if(isset($_COOKIE['ID'])) $compte = intval($_COOKIE['ID']);
+               else $compte = 0;
+               $connexion->insert('INSERT INTO visiteur(ref_id_compte, ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
+                                      VALUES(?,?,?,?,?,?,?)', [$compte, $newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+           }
+           else {
+               $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
                                       VALUES(?,?,?,?,?,?)', [$newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+           }
        }
         echo 'success';
     }
@@ -421,6 +442,63 @@ if(isset($_GET['getEmail'])){
         echo 'success';
     }
 }
+
+
+
+
+/* ==========================================================================
+SYSTEME DE SOUMISSION DES COMMENTAIRES
+   ========================================================================== */
+// Une fois le formulaire envoyé
+if(isset($_GET['commentaire'])) {
+
+    if(strlen($_POST['contenuCommentaireUser']) < 4 || strlen($_POST['contenuCommentaireUser']) > 5000 ){
+        echo 'Le Commentaire est compris entre 3 et 5000 caractères';
+        exit;
+    }
+
+    /* htmlentities empêche l'excution du code HTML
+     * le ENT_QUOTES pour dire à htmlentities qu'on veut en plus transformer les apostrophes et guillemets*/
+     $_POST['contenuCommentaireUser'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['contenuCommentaireUser'])))), ENT_QUOTES);
+
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+    $nbre = $connexion->rowCount('SELECT id_commentaires FROM comments WHERE commentaires="'.$_POST['contenuCommentaireUser'].'"');
+
+    if($nbre > 0){
+        echo 'Ce Commentaire existe déjà';
+        exit;
+    }
+
+    else {
+        nettoieProtect();
+        extract($_POST);
+
+        if(isset($_SESSION['ID'])) $compte = intval($_SESSION['ID']);
+        else if(isset($_COOKIE['ID'])) $compte = intval($_COOKIE['ID']);
+        else $compte = 0;
+
+        $connexion->insert('INSERT INTO comments(ref_id_sujet, ref_id_compte, commentaires, data_ajout_commentaires) VALUES (:ref_sujet, :ref_compte, :comments, :temps)',
+            ['ref_sujet'=>$_SESSION['id_sujet'], 'ref_compte'=>$compte, 'comments'=>$_POST['contenuCommentaireUser'], 'temps'=>time()]);
+
+       /* $newsletter = $connexion->prepare_request('SELECT id_newsletter FROM newsletter WHERE email_newsletter=:email', array('email'=>$_POST['email_visitor']));
+        if($newsletter['id_newsletter'] == null)
+        {
+            $newsletter['id_newsletter'] = 0;
+            $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur)
+                                      VALUES(?,?,?,?,?,?)', [$newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+        }
+        else{
+            $connexion->insert('INSERT INTO visiteur(ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur)
+                                      VALUES(?,?,?,?,?,?)', [$newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
+        }*/
+        echo 'success';
+    }
+
+}
+
+
 
 
 // Une fois le formulaire envoyé

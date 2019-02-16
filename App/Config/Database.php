@@ -77,7 +77,6 @@ class Database
 
 
 
-
     public function prepare($statement, $attributes, $class_name, $one = false){
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
