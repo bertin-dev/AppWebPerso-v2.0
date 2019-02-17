@@ -656,6 +656,30 @@ $(function(){
 });
 
 
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION FONCTIONALITES
+   ========================================================================== */
+
+$(function(){
+    var load_commentaire = '1';
+    $('#loader_last_comments').show();
+    function chargement_commentaire(){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                load_commentaire: load_commentaire
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_comments').append(data);
+                $('#loader_last_comments').hide();
+            }
+        });
+    }
+    chargement_commentaire();
+});
 /* ==========================================================================
 SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION CITATIONS
    ========================================================================== */
@@ -1848,8 +1872,9 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 data: {
                     'search_contenu': $('#search_contenu').val()
                 },
+                dataType: 'json',
                 success: function (data) {
-                    if(data=='Aucun'){
+                    if(data.resultat=='Aucun'){
                         $('#output_search').css({
                             'font-weight': 'bold',
                             'margin': 'initial',
@@ -1864,73 +1889,22 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                     }
                     else
                     {
-                        $('#output_search').empty();
+                        //$('#output_search').empty();
                         $('#blog-list').load('../Pages/Blog_resultat.php?id=1', function() {
-                            $('#blog-list').html(data);
+                            $('#blog-list').html(data.resultat);
                         });
+                        $('#output_search').css({
+                            'font-weight': 'bold',
+                            'margin': 'initial',
+                            'padding': 'initial',
+                            'font-size': '65%'
+                        }).html(data.compteur + ' résultats trouvés');
 
                     }
 
                 }
             });
 
-
         }
-
-
-
-        $('#search_sujet').submit(function () {
-            var search_contenu = $('#search_contenu').val();
-
-
-            if (search_contenu == '') {
-                $('body').notif({
-                    title: 'Message d\'erreur',
-                    content: 'Veuillez Remplir le Champs !',
-                    img: 'img/bertin-mounok.png',
-                    cls: 'error1'
-                });
-            }
-            else {
-                var $form = $(this);
-                var formdata = (window.FormData) ? new FormData($form[0]) : null;
-                var donnee = (formdata !== null) ? formdata : $form.serialize();
-
-                $.ajax({
-                    type: 'post',
-                    url: '../Core/Controller/submit.php?search=search',
-                    data: donnee,
-                    beforeSend: function () {
-
-                    },
-                    success: function (data) {
-                        if(data != 'success'){
-                            $('body').notif({
-                                title: 'Message d\'erreur',
-                                content: data,
-                                img: 'img/bertin-mounok.png',
-                                cls: 'error1'
-                            });
-                        }
-                        else {
-                            $('body').notif({
-                                title: 'Opération Réussie',
-                                content: 'Merci de Nous avoir fait Confiance !',
-                                img: 'img/bertin-mounok.png',
-                                cls: 'success1'
-                            });
-                            setTimeout(function () {
-                                $('#output_search').fadeOut().hide();
-
-                            }, 7000);
-                        }
-                    }
-
-                });
-
-            }
-
-
-        });
 
 });

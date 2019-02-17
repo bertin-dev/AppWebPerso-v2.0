@@ -65,13 +65,18 @@ require_once('page_number.php'); ?>
         <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie À Propos">'.$blog_item->libelle.'</a>
    
 
-        <a href="#" class="comments">'. App::getDB()->rowCount('SELECT commentaires, data_ajout_commentaires, prenom FROM comments
+        <a href="#" class="comments">';
+         $resultComment =  App::getDB()->rowCount('SELECT commentaires, data_ajout_commentaires, prenom FROM comments
                                                      INNER JOIN compte
                                                      ON comments.ref_id_compte=compte.id_compte
                                                      INNER JOIN sujets
                                                      ON comments.ref_id_sujet=sujets.id_sujet
-                                                     WHERE sujets.id_sujet="'.$_SESSION['id_sujet'].'"') .' Commentaire </a>
-
+                                                     WHERE sujets.id_sujet="'.$_SESSION['id_sujet'].'"');
+        if($resultComment==1)
+            echo ' Un Commentaire';
+        else
+            echo $resultComment .' Commentaires';
+        echo '</a>
         <div class="tags-container">
             <p class="tags">
                 <span class="tags-label">Mots-clés : </span><br>
@@ -183,9 +188,11 @@ require_once('page_number.php'); ?>
                                                          INNER JOIN categorie
                                                          ON categorie.id_categorie=sujets.ref_id_categorie
                                                         WHERE sujets.id_sujet = "'.$blog_item['id_sujet'].'" AND categorie.id_categorie="'.$_GET['cat'].'"');
-
-            echo $resultat .' Commentaire</a>
-
+                if($resultat==1)
+                    echo ' Un Commentaire';
+                else
+            echo $resultat .' Commentaires';
+                echo '</a>
         <div class="tags-container">
             <p class="tags">
                 <span class="tags-label">Mots-clés : </span><br>
@@ -262,13 +269,18 @@ require_once('page_number.php'); ?>
         <div class="col-lg-12">
 <!--cette partie est a gerer-->
         <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie À Propos">'.$blog_item['libelle'].'</a>
-        <a href="#" class="comments">'.
-                                      App::getDB()->rowCount('SELECT * FROM comments
+        <a href="#" class="comments">';
+               $totalComments = App::getDB()->rowCount('SELECT * FROM comments
                                                      INNER JOIN compte
                                                      ON comments.ref_id_compte=compte.id_compte
                                                      INNER JOIN sujets
                                                      ON comments.ref_id_sujet=sujets.id_sujet
-                                                     WHERE sujets.id_sujet="'.$blog_item['id_sujet'].'"') .' Commentaire</a>
+                                                     WHERE sujets.id_sujet="'.$blog_item['id_sujet'].'"');
+            if($totalComments==1)
+                    echo ' Un Commentaire';
+                else
+                    echo $totalComments.' Commentaires';
+                 echo '</a>
 
         <div class="tags-container">
             <p class="tags">
@@ -323,66 +335,52 @@ require_once('page_number.php'); ?>
             </ul>
         </div>
 
-
-
-
         <div id="tags" class="sidebar-bloc not-search">
             <span class="title">Archives</span>
             <ul>
                 <?php
-               // var_dump(date('m/Y'))
-                /*
-                foreach(App::getDB()->query('SELECT id_sujet FROM sujets WHERE date_enreg BETWEEN "'.date('m/Y').'" AND "'..'" ') AS $archive):
-
+                /*var_dump(date("d/m/Y", mktime(0,0, 0, $mois, 1, $annee)));
+                var_dump(date("d/m/Y", mktime(0,0, 0, $mois+1, 0, $annee)));
+                $dates = new DateTime();
+                $debut = $dates->format("01/m/Y");
+                $fin = $dates->format("t/m/Y");
+                var_dump($debut);
+                var_dump($fin);
+                $dates1 = DateTime::createFromFormat('d/m/Y', $debut);
+                $dates2 = DateTime::createFromFormat('d/m/Y', $fin);
+                var_dump($dates1->format('U'));
+                var_dump($dates2->format('U'));
+                A% JOUR EN LETTRE
+                d% JOUR EN CHIFFRE
+                */
+                $dates = new DateTime();
+                $debut = $dates->format("01/m/Y");
+                $fin = $dates->format("t/m/Y");
+                $datesD = DateTime::createFromFormat('d/m/Y', $debut);
+                $datesF = DateTime::createFromFormat('d/m/Y', $fin);
+                setlocale(LC_TIME, "fr_FR", "French");
+               /* foreach(App::getDB()->query('SELECT id_sujet, date_enreg FROM sujets WHERE date_enreg BETWEEN "'.$datesD->format('U').'" AND "'.$datesF->format('U').'" ') AS $archive):
                 endforeach;*/
+
+               $archives = App::getDB()->rowCount('SELECT date_enreg FROM sujets WHERE date_enreg 
+                                                                                    BETWEEN "'.$datesD->format('U').'" AND "'.$datesF->format('U').'"');
+               if($archives > 0)
+               {
+                  $archiv = App::getDB()->prepare_request('SELECT  date_enreg FROM sujets WHERE date_enreg 
+                                                                                    BETWEEN "'.$datesD->format('U').'" AND "'.$datesF->format('U').'"', array());
+                  $temps = utf8_encode(ucfirst(strftime("%B %G", strtotime(date("Y-m",$archiv['date_enreg'])))));
+                  // App::getDB()->insert('INSERT INTO archive(libelle_archive, date_enreg_archive) VALUES (?,?)', [$temps, time()]);
+               }
+
+               // $archivTotal = App::getDB()->prepare_request('SELECT DISTINCT libelle_archive FROM archive', array());
+
+                    echo '<li> 
+                    <a href="#" class="nav-js category">' . $temps . '<span class="counter">' . $archives . '</span>
+                    </a>
+                </li>';
+
                 ?>
-                <li>
-                    <a href="#" class="nav-js category" data-destination="blog">
-                        Novembre 2014
-                        <span class="counter">1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2014/08.html" class="nav-js category" data-destination="blog">
-                        Août 2014
-                        <span class="counter">2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2014/05.html" class="nav-js category" data-destination="blog">
-                        Mai 2014
-                        <span class="counter">1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2014/04.html" class="nav-js category" data-destination="blog">
-                        Avril 2014
-                        <span class="counter">1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2014/03.html" class="nav-js category" data-destination="blog">
-                        Mars 2014
-                        <span class="counter">1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2013/12.html" class="nav-js category" data-destination="blog">
-                        Décembre 2013
-                        <span class="counter">1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2013/11.html" class="nav-js category" data-destination="blog">
-                        Novembre 2013
-                        <span class="counter">1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../date/2013/09.html" class="nav-js category" data-destination="blog">
-                        Septembre 2013
-                        <span class="counter">9</span>
-                    </a>
+
                 </li>
             </ul>
         </div>

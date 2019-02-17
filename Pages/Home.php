@@ -393,29 +393,13 @@
                 </div>
                 <div class="widget">
                     <h5 class="titreWidget">Derniers Commentaires</h5>
-                    <ul class="space">
-                        <li class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                            <a href="#" class="reduct1"><img src="img/portfolio/cacam.jpg" class="img-responsive" width="85" height="85" alt="Toutou" /></a>
-                            <strong class="reduct2"><a href="#">Lorem ipsum dolor sit</a></strong>
-                            <p class="reduct3">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae debitis dolor
-                                excepturi in laborum nobis nulla obcaecati optio provident recusandae repellendus
-                                sapiente, sunt, veniam! Aperiam nostrum possimus praesentium reprehenderit ut.<br>
-                                <small><mark>Publié par:</mark> <i><u>bertin.dev</u> le 06/12/2018 à 18h 30</i> </small>
-                            </p>
-                        </li>
-
-                        <li class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                            <a href="#" class="reduct1"><img src="img/portfolio/cacam.jpg" class="img-responsive" width="85" height="85" alt="Toutou" /></a>
-                            <strong class="reduct2"><a href="#">Lorem ipsum dolor sit</a></strong>
-                            <p class="reduct3">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae debitis dolor
-                                excepturi in laborum nobis nulla obcaecati optio provident recusandae repellendus
-                                sapiente, sunt, veniam! Aperiam nostrum possimus praesentium reprehenderit ut.<br>
-                                <small><mark>Publié par:</mark> <i><u>bertin.dev</u> le 06/12/2018 à 18h 30</i> </small>
-                            </p>
-                        </li>
-
+                    <ul id="last_comments" class="space">
+                        <center>
+                            <div id="loader_last_comments" style="display: none;">
+                                <span class="loader loader-circle"></span>
+                                Chargement......
+                            </div>
+                        </center>
                     </ul>
                 </div>
 
