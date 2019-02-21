@@ -46,13 +46,13 @@
                         </li>
                         <li class="active">
                             <small><em> <?php if ($_ENV['titre'] == "ACCUEIL") echo '';
-                                    else if ($_ENV['titre'] == "PORTFOLIO") echo $_ENV['titre'] . ' → Mes Réalisations.';
-                                    else if ($_ENV['titre'] == "COMPETENCES") echo 'Mes ' . $_ENV['titre'] . ' → Ce que je sais faire.';
-                                    else if ($_ENV['titre'] == "CULTURE") echo $_ENV['titre'] . ' → Ce que J\'aime.';
-                                    else if ($_ENV['titre'] == 'CONTACT') echo $_ENV['titre'] . ' → M\'envoyer un Email.';
-                                    else if ($_ENV['titre'] == 'A PROPOS') echo $_ENV['titre'] . ' → Je parle de moi.';
+                                    else if ($_ENV['titre'] == "PORTFOLIO") echo utf8_encode($_ENV['titre']) . ' → Mes Réalisations.';
+                                    else if ($_ENV['titre'] == "COMPETENCES") echo 'Mes ' . utf8_encode($_ENV['titre']) . ' → Ce que je sais faire.';
+                                    else if ($_ENV['titre'] == "CULTURE") echo utf8_encode($_ENV['titre']) . ' → Ce que J\'aime.';
+                                    else if ($_ENV['titre'] == 'CONTACT') echo utf8_encode($_ENV['titre']) . ' → M\'envoyer un Email.';
+                                    else if ($_ENV['titre'] == 'A PROPOS') echo utf8_encode($_ENV['titre']) . ' → Je parle de moi.';
                                     else if (!isset($_ENV['titre']) OR empty($_ENV['titre'])) echo ' → Page Introuvable.';
-                                    else echo $_ENV['titre'] . ' → Bienvenue sur Mon Espace Interactif.';
+                                    else echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
                                     ?>
 
                                 </em></small>

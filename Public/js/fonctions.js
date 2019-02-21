@@ -295,7 +295,7 @@ $(function(){
 
 
 /* ==========================================================================
-SYSTEME DE GESTION DES IMAGES SOUS FORME DE PANORAMA SUR APROPOS ET COMETENCE
+SYSTEME DE GESTION DES IMAGES SOUS FORME DE PANORAMA SUR APROPOS
    ========================================================================== */
 
 $(window).load(function () {
@@ -1906,5 +1906,54 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
             });
 
         }
+
+});
+
+
+
+/* ==========================================================================
+GESTION DES SERVICES
+========================================================================== */
+
+$(function(){
+
+    $('.web1').click(function(){
+         $('body').load('index.php?id_page=14', function() {
+
+             });
+    });
+
+
+    $('.web2').click(function(){
+        $('body').load('index.php?id_page=13', function() {
+
+        });
+    });
+
+
+    $('.web3').click(function(){
+        $('body').load('index.php?id_page=11', function() {
+
+        });
+    });
+
+
+    $('.windows1').click(function(){
+        $('body').load('index.php?id_page=12', function() {
+
+        });
+    });
+
+    $('.mobile1').click(function(){
+        $('body').load('index.php?id_page=10', function() {
+
+        });
+    });
+
+    $('.webservice1').click(function(){
+        $('body').load('index.php?id_page=15', function() {
+
+        });
+    });
 
 });

@@ -2457,3 +2457,25 @@ SYSTEME DE GESTION DE L'ALERT DE NOTIFICATION APRES UN EVENEMENT
     background-image: linear-gradient(top, #FA5650, #D1363D);
 }
 
+
+/* ==========================================================================
+BLOC SERVICE
+   ========================================================================== */
+
+.decallage-bas
+{
+    margin-bottom: 15px;
+}
+
+.right2 {
+    margin-left: 110px;
+}
+.left2 {
+    position: absolute;
+    height: 100%;
+    width: 100px;
+    top: 0;
+    left: 0;
+    border-right: 1px solid rgba(0,0,0, 0.2);
+    padding: 0 10px;
+}

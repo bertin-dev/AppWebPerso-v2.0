@@ -71,7 +71,7 @@ class Controller
                     $menu_retour .= '<a class="" data-toggle=""';
 
 
-                $menu_retour .= 'href="index.php?id_page='.$retour->id_page.'" title="'.$retour->titre.'">';
+                $menu_retour .= 'href="index.php?id_page='.$retour->id_page.'" title="'.utf8_encode($retour->titre) .'">';
                 //$menu_retour .= '<a href="index.php?id_page='.$retour->id_page.'">';
                 $menu_retour .= utf8_encode($retour->titre);
                /* if($retour->id_page ==='3')

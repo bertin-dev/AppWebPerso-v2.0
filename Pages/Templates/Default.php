@@ -31,11 +31,11 @@ $_SESSION['time'] = microtime(TRUE);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Insère les mots-clés extraits de la BD dans les meta -->
-    <meta name="keywords" lang="fr" content="<?= $_ENV['mots_cles']; ?>">
+    <meta name="keywords" lang="fr" content="<?= utf8_encode($_ENV['mots_cles']); ?>">
     <!-- Insère la description extraite de la DB dans les meta -->
-    <meta name="description" lang="fr" content="<?= $_ENV['description']; ?>">
+    <meta name="description" lang="fr" content="<?= utf8_encode($_ENV['description']); ?>">
     <meta name="author" content="Bertin Mounok, Bertin-Mounok, Pipo, Supers-Pipo, bertin.dev, bertin-dev, Ngando Mounok Hugues Bertin">
-    <meta name="copyright" content="© 2018, bertin.dev, Inc">
+    <meta name="copyright" content="© <?=date('Y', time());?>, bertin.dev, Inc.">
     <!--Programme ou système ayant généré le contenu. Ne doit pas être utilisé si le document est conçu « à la main ».-->
     <!--<meta name="generator" content="PhpStorm 2018.1.4">-->
 
@@ -49,8 +49,8 @@ $_SESSION['time'] = microtime(TRUE);
     <meta name="Application-Web-Portfolio" content="Mes Réalisations">
 
     <!-- Insère le titre extrait de la DB dans la balise correspondante -->
-    <title><?php if($_ENV['titre']=="Accueil") echo 'Bertin Mounok | '.$_ENV['titre'].' → Portfolio';
-             else echo $_ENV['titre'].' | Bertin Mounok'?></title>
+    <title><?php if($_ENV['titre']=="Accueil") echo 'Bertin Mounok | '.utf8_encode($_ENV['titre']).' → Portfolio';
+             else echo utf8_encode($_ENV['titre']).' | Bertin Mounok'?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../Public/css/bootstrap.css" rel="stylesheet">

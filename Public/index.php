@@ -56,7 +56,31 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
           break;
 
       case 9:
-          require '../Pages/Services.php';
+          require '../Pages/Service.php';
+          break;
+
+      case 10:
+          require '../Pages/Services/Apps_mobile.php';
+          break;
+
+      case 11:
+          require '../Pages/Services/Apps_web.php';
+          break;
+
+      case 12:
+          require '../Pages/Services/Apps_windows.php';
+          break;
+
+      case 13:
+          require '../Pages/Services/Site_web_cms.php';
+          break;
+
+      case 14:
+          require '../Pages/Services/Site_web_code.php';
+          break;
+
+      case 15:
+          require '../Pages/Services/Web_services.php';
           break;
 
       default:
