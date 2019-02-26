@@ -93,7 +93,7 @@ endforeach;
                 <a href="blog.php">BLOG</a>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="bloc_services.php">SERVICES</a>
             </li>
             <li>
                 <a href="#">Services</a>

@@ -217,3 +217,311 @@ if(isset($_GET['blog']))
         else echo $message;
     }
 }
+
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME D INSERTION DES MODELS DANS LE BD
+========================================================================== */
+if(isset($_GET['models']))
+{
+    // Vérification de la validité des champs
+    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['addModels']))
+    {
+        $i++;
+        $message .= "Models Invalid<br />\n";
+    }
+
+    else
+    {
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_model FROM model WHERE libelle="'.$addModels.'"');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Ce Model Existe déjà<br/>";
+        }
+        else
+        {
+            $connexion->insert('INSERT INTO model(libelle, date_creat_model) 
+                                               VALUES(?, ?)', array($addModels, time()));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}
+
+
+/* ==========================================================================
+GESTION DU SYSTEME D INSERTION DES CATEGORIES DE SERVICES DANS LE BD
+========================================================================== */
+
+if(isset($_GET['cat_services']))
+{
+    // Vérification de la validité des champs
+    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['addCat_services']))
+    {
+        $i++;
+        $message .= "Catégorie de Services Invalid<br />\n";
+    }
+
+    else
+    {
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_cat_serv FROM categorie_services WHERE libelle="'.$addCat_services.'"');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Cette Catégorie de Services Existe déjà<br/>";
+        }
+        else
+        {
+            $connexion->insert('INSERT INTO categorie_services(libelle, date_enreg_cat_serv) 
+                                               VALUES(?, ?)', array($addCat_services, time()));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME D INSERTION DES SERVICES DANS LE BD
+========================================================================== */
+
+if(isset($_GET['services']))
+{
+
+    // Vérification de la validité des champs
+    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['titreServices']))
+    {
+        $i++;
+        $message .= "Titre Invalid<br />\n";
+    }
+    else
+    {
+        $_POST['titreServices'] = stripslashes(htmlspecialchars($_POST['titreServices']));
+        $_POST['descriptionServices'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['descriptionServices'])))), ENT_QUOTES);
+
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_services FROM services WHERE libelle="'.$_POST['titreServices'].'" OR description="'.$_POST['descriptionServices'].'"');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Ce Titre ou alors cette Description Existe déjà<br/>";
+        }
+        else
+        {
+
+            $connexion->insert('INSERT INTO services(ref_id_cat_serv, ref_id_model, ref_id_typeF, ref_id_admin, services.libelle, description, estimation, unites ,date_enreg_services)
+                                               VALUES(:cat_serv, :id_model, :id_typeF, :id_admin, :titre, :descript, :estimation, :unites ,:temps)',
+                array('cat_serv'=>intval($_POST['bloc_services']),
+                    'id_model'=>intval($_POST['cat_services_models']),
+                    'id_typeF'=>intval($_POST['fonctionnality']),
+                    'id_admin'=>0,
+                    'titre'=>$_POST['titreServices'],
+                    'descript'=>$_POST['descriptionServices'],
+                    'estimation'=>$_POST['prixServices'],
+                    'unites'=>$_POST['unites_services'],
+                    'temps'=>time()
+                ));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}
+
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME D INSERTION DES TYPES DE FONCTIONNALITES DANS LE BD
+========================================================================== */
+
+if(isset($_GET['typeF']))
+{
+    // Vérification de la validité des champs
+    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['addTypeF']))
+    {
+        $i++;
+        $message .= "Type de Fonctionnalité Invalid<br />\n";
+    }
+
+    else
+    {
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_typeF FROM type_fonctionnalite WHERE libelle="'.$addTypeF.'"');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Ce Type de Fonctionnalites Existe déjà<br/>";
+        }
+        else
+        {
+            $connexion->insert('INSERT INTO type_fonctionnalite(libelle, date_create) 
+                                               VALUES(?, ?)', array($addTypeF, time()));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}
+
+
+
+/* ==========================================================================
+GESTION DU SYSTEME D INSERTION DES SERVICES DANS LE BD
+========================================================================== */
+
+/*if(isset($_GET['fonctionnalites']))
+{
+
+    // Vérification de la validité des champs
+    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['addfonctionnalites']))
+    {
+        $i++;
+        $message .= "Fonctionnalité Invalid<br />\n";
+    }
+    else
+    {
+        $_POST['addfonctionnalites'] = stripslashes(htmlspecialchars($_POST['addfonctionnalites']));
+
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_fonctionnalite FROM fonctionnalite WHERE libelle="'.$addfonctionnalites.'"');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Cette Fonctionnalité Existe déjà<br/>";
+        }
+        else
+        {
+
+            $connexion->insert('INSERT INTO fonctionnalite(ref_id_admin, ref_id_typeF, fonctionnalite.libelle, date_creation)
+                                               VALUES(:id_admin, :id_typeF, :titre, :temps)',
+                array(
+                    'id_admin'=>0,
+                    'id_typeF'=>intval($_POST['fonctionnality']),
+                    'titre'=>$addfonctionnalites,
+                    'temps'=>time()
+                ));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}*/

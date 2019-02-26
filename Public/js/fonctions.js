@@ -1956,4 +1956,21 @@ $(function(){
         });
     });
 
+
+    $('input[type=checkbox][name=onoffswitch], #typeTechnologie').on('change', function(){
+        if(this.checked)
+            $('#form_entreprise').removeClass('collapse').delay(500).fadeOut();
+        else
+            $('#form_entreprise').addClass('collapse').delay(500).fadeIn();
+
+        if($('#typeTechnologie').val()==='Framework')
+            $('#framework_web').addClass('collapse').delay(500).fadeIn();
+        else
+            $('#framework_web').removeClass('collapse').delay(500).fadeOut();
+    });
+
+
+
 });
+
+

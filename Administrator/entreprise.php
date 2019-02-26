@@ -108,6 +108,9 @@ endforeach;
             <li>
                 <a href="blog.php">BLOG</a>
             </li>
+            <li>
+                <a href="bloc_services.php">SERVICES</a>
+            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper  style="position: absolute; left: 26%;"-->
