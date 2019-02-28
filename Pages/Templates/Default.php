@@ -96,7 +96,7 @@ $_SESSION['time'] = microtime(TRUE);
 </div>
 
 
-<?php include('Footer.html');?>
+<?php include('Footer.php');?>
 
 </body>
 

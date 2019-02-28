@@ -141,33 +141,6 @@
 <script src="../Public/js/mustache.js"></script>
 <script src="../Public/js/fonctions.js"></script>
 
-
-
-<script>
-
-    /*
-        $(function() {
-
-            $('#menu_horizontal a').on('click', function (e) {
-                console.log($(this).attr('href'));
-                e.preventDefault();
-                  $.ajax({
-                     url: $(this).attr('href'),
-                      type: 'GET',
-                      dataType: 'html',
-
-
-                  });
-
-                console.log($(this).attr('href'));
-                console.log('<?php echo $_ENV['id_page'];?>');
-            });
-
-        });
-    */
-
-</script>
-
 <!--
   ==========================================================================
 Affiche le service devis si tu es authentifié
@@ -260,6 +233,41 @@ if(isset($_ENV['id_page']) && $_ENV['id_page']==6){
 
     });
 </script>
+
+
+<?php
+if(isset($_SESSION['model']) && $_SESSION['model']=="Gestion de Projets")
+{
+?>
+<script>
+$(function () {
+    const element = $('#blocG1');
+    if(element.hasClass('collapse')){
+        //alert('1');
+        element.toggleClass('collapse')
+    }
+});
+
+</script>
+<?php
+    unset($_SESSION['model']);
+}
+if(isset($_SESSION['uniq_model']) && $_SESSION['uniq_model']=="Gestion de Projets")
+{
+    ?>
+    <script>
+        $(function () {
+            const element = $('#blocG1');
+            if(element.hasClass('collapse')){
+                alert('2');
+                element.addClass('collapse');
+            }
+        });
+    </script>
+<?php
+    unset($_SESSION['uniq_model']);
+}
+?>
 
 
 

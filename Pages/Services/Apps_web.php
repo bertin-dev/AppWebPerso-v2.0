@@ -93,10 +93,12 @@ require 'compteur_pages.php'; ?>
 
                                     <tbody>
                                         <?php
-                                        foreach (App::getDB()->query('SELECT id_services, libelle FROM services ORDER BY id_services DESC') AS $cat):
+                                        foreach (App::getDB()->query('SELECT id_services, services.libelle AS libel_Serv, description, estimation, unites, model.libelle AS model_libel FROM services
+                                                                                INNER JOIN model
+                                                                                ON services.ref_id_model=model.id_model ORDER BY id_services DESC') AS $cat):
                                             echo '<tr>
-                                                        <td width="90%">'.$cat->libelle.'</td>
-                                                        <td width="10%"><a href="index.php?id_page='.$_ENV['id_page'].'&AddServ='.$cat->id_services.'" onclick="callfunction(); return false; ">Ajouter</a></td>
+                                                        <td width="90%" title="'.$cat->description.'">'.$cat->libel_Serv.'</td>
+                                                        <td width="10%"><a href="index.php?id_page='.$_ENV['id_page'].'&AddServ='.$cat->id_services.'" onclick="callfunction(); return false; " title="'.$cat->model_libel.'">Ajouter</a></td>
                                                    </tr>';
                                         endforeach;
                                         ?>
@@ -145,7 +147,7 @@ require 'compteur_pages.php'; ?>
                                         <script>
                                             function getSelectedValue() {
                                                 var selectedValue = document.getElementById("list").value;
-                                                $(location).attr('href','index.php?id_page=11&mod=' + $(this).val());
+                                                $(location).attr('href','index.php?id_page=11&mod=' + selectedValue);
 
                                             }
 

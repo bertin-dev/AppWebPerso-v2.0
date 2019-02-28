@@ -12,15 +12,18 @@ require '../Core/Controller/Contact.class.php';
 require '../App/Config/Config_Server.php';
 use \Core\Controller\Contact;
 
+
 // Extrait les informations correspondantes à la page en cours de la DB
 foreach(\App::getDB()->query('
-         SELECT * FROM page
+         SELECT * FROM headers 
+         INNER JOIN page
+         ON headers.id_headers=page.ref_id_headers
          WHERE id_page=1') as $con):
     $_ENV['logo'] = $con->logo;
     $_ENV['titre'] = $con->titre;
-
 endforeach;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr_en">

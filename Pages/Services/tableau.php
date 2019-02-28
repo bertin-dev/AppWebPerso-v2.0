@@ -47,128 +47,139 @@
                     'model_tmp'=>$serv_compteur['model_libel'],
                     'date_tmp'=>time()
                 ]);
+            $_SESSION['model'] = $serv_compteur['model_libel'];
         }
     }
 
-
+//lorque le bouton supprier a été pressé
     if(isset($_GET['del']) && !empty(intval($_GET['del'])))
     {
+        //on verifi s 'il existe uniquement un model dans la BD
+        $tmp_compteur = App::getDB()->rowCount('SELECT id_tmp FROM `_tmp` WHERE model_tmp="'.$_GET['ref_model'].'"');
+     //si oui alors
+        if($tmp_compteur==1){
+            //On recupere ce seul model pour l'assigner a une variable de session
+            $uniq_model = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp=:tmp ', ['tmp'=>$_GET['ref_model']]);
+          $_SESSION['uniq_model'] = $uniq_model['model_tmp'];
+        }
+
+        //puis on supprime cet unique ou alors le model concerné
         App::getDB()->delete('DELETE FROM `_tmp` WHERE id_tmp=:id', ['id'=>$_GET['del']]);
-        header('location: index.php?id_page='.$_ENV['id_page']);
+        //header('location: index.php?id_page='.$_ENV['id_page']);
     }
     ?>
     <tbody id="tab1"><!--<tr class="gradeA even" role="row">-->
     <?php
 
     //Bloc 1
-    echo '<tr class="gradeC odd collapse" role="row">
+    echo '<tr id="blocG1" class="gradeC odd collapse" role="row">
         <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Gestion de Projets"')
             .'" class="text-center">';
     $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Gestion de Projets"', []);
     echo strtoupper(utf8_encode($retour['model_tmp']));
     echo '</td>';
 
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp FROM `_tmp` WHERE model_tmp=:abc');
+    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
     $retour1->execute(array('abc'=>"Gestion de Projets"));
     while ($retour2 = $retour1->fetch())
     {
         echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
                                             <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'">Supprimer</a></td>
+                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
                                             </tr>';
     }
 
 
     //Bloc 2
-    echo '<tr class="gradeC odd collapse" role="row">
+    echo '<tr id="blocD2" class="gradeC odd collapse" role="row">
         <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Design et Mise en Page"')
             .'" class="text-center">';
     $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Design et Mise en Page"', []);
     echo strtoupper(utf8_encode($retour['model_tmp']));
     echo '</td>';
 
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp FROM `_tmp` WHERE model_tmp=:abc');
+    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
     $retour1->execute(array('abc'=>"Design et Mise en Page"));
     while ($retour2 = $retour1->fetch())
     {
         echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
                                             <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'">Supprimer</a></td>
+                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
                                             </tr>';
     }
 
                //Bloc 3
-        echo '<tr class="gradeC odd" role="row">
+        echo '<tr id="blocF3" class="gradeC odd" role="row">
         <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Fonctionnalite"')
         .'" class="text-center">';
         $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Fonctionnalite"', []);
         echo strtoupper(utf8_encode($retour['model_tmp']));
         echo '</td>';
 
-        $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp FROM `_tmp` WHERE model_tmp=:abc');
+        $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
         $retour1->execute(array('abc'=>"Fonctionnalite"));
         while ($retour2 = $retour1->fetch())
         {
         echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
                                             <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'">Supprimer</a></td>
+                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
                                             </tr>';
         }
 
     //Bloc 4
-    echo '<tr class="gradeC odd" role="row">
+    echo '<tr id="blocM4" class="gradeC odd" role="row">
         <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Maintenance"')
             .'" class="text-center">';
     $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Maintenance"', []);
     echo strtoupper(utf8_encode($retour['model_tmp']));
     echo '</td>';
 
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp FROM `_tmp` WHERE model_tmp=:abc');
+    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
     $retour1->execute(array('abc'=>"Maintenance"));
     while ($retour2 = $retour1->fetch())
     {
         echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
                                             <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'">Supprimer</a></td>
+                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
                                             </tr>';
     }
 
 
     //Bloc 5
-    echo '<tr class="gradeC odd collapse" role="row">
+    echo '<tr id="blocW5" class="gradeC odd collapse" role="row">
         <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Webmarketing"')
             .'" class="text-center">';
     $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Webmarketing"', []);
     echo strtoupper(utf8_encode($retour['model_tmp']));
     echo '</td>';
 
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp FROM `_tmp` WHERE model_tmp=:abc');
+    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
     $retour1->execute(array('abc'=>"Webmarketing"));
     while ($retour2 = $retour1->fetch())
     {
         echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
                                             <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'">Supprimer</a></td>
+                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
                                             </tr>';
     }
 
 
 
     //Bloc 6
-    echo '<tr class="gradeC odd collapse" role="row">
+    echo '<tr id="blocT6" class="gradeC odd collapse" role="row">
         <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Technologies utilisees"')
             .'" class="text-center">';
     $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Technologies utilisees"', []);
     echo strtoupper(utf8_encode($retour['model_tmp']));
     echo '</td>';
 
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp FROM `_tmp` WHERE model_tmp=:abc');
+    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
     $retour1->execute(array('abc'=>"Technologies utilisees"));
     while ($retour2 = $retour1->fetch())
     {
         echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
                                             <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'">Supprimer</a></td>
+                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
                                             </tr>';
     }
     ?>
