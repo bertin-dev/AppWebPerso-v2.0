@@ -136,7 +136,6 @@
 <script src="../Public/js/scrolling-nav.js"></script>
 <script src="../Public/js/scrollindicator.js"></script>
 <script src="../Public/js/infobulle.js."></script>
-<script src="../Public/js/jquery.flexslider-min.js"></script>
 <script src="../Public/js/wow.min.js"></script>
 <script src="../Public/js/mustache.js"></script>
 <script src="../Public/js/fonctions.js"></script>

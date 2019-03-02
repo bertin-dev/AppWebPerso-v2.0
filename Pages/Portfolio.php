@@ -76,10 +76,12 @@ require_once('page_number.php');
 
 
                             <div class="tab-pane" id="<?= 'captures' . $portfolio->id_body; ?>">
-                                <img src="<?= $portfolio->screenshot_App; ?>" class="img-responsive"
-                                     title="<?= $portfolio->entreprise; ?>"
-                                     alt="<?= $portfolio->entreprise; ?>"/>
 
+                                <?php
+                                $img = explode('-', $portfolio->screenshot_App);
+                                for($i=0;$i<count($img)-1;$i++)
+                                    echo '<img src="'.$img[$i].'" class="img-responsive" title="'.$portfolio->entreprise.'"alt="'.$portfolio->entreprise.'"/>';
+                                ?>
                             </div>
 
 

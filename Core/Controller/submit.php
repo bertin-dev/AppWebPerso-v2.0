@@ -507,32 +507,32 @@ if(isset($_GET['freelance']))
 
 
         // Vérification de la validité des champs
-        if(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['entiteF']))
+        if(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['entiteF']))
         {
             echo "Entite Invalide<br />\n";
             exit();
         }
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['valeurEntite']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['valeurEntite']))
         {
             echo "Valeur de L'entite Invalide<br />\n";
             exit();
         }
 
 
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['activiteF']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['activiteF']))
         {
             echo "Activité Invalide<br />\n";
             exit();
         }
 
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['ville']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['ville']))
         {
             echo $message = "ville Invalide<br />\n";
             exit();
         }
 
 
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,100}$/', $_POST['travaux']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,1000}$/', $_POST['travaux']))
         {
             echo "travaux Invalide<br />\n";
             exit();
@@ -558,13 +558,13 @@ if(isset($_GET['freelance']))
         }
 
 
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['analyse']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['analyse']))
         {
             echo "analyse Invalide<br />\n";
             exit();
         }
 
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['ide']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['ide']))
         {
             echo "IDE Invalide<br />\n";
             exit();
@@ -589,7 +589,7 @@ if(isset($_GET['freelance']))
             exit();
         }
 
-        elseif(!preg_match('/^[A-Za-z0-9_ ]{4,20}$/', $_POST['framework']))
+        elseif(!preg_match('/^[A-Za-z0-9_ ]{2,20}$/', $_POST['framework']))
         {
             echo "framework Invalide<br />\n";
             exit();
@@ -612,7 +612,7 @@ if(isset($_GET['freelance']))
             nettoieProtect();
             extract($_POST);
 
-            $nbre = $connexion->rowCount('SELECT id_contenu FROM contenu WHERE outils="'.$_POST['outils'].'"');
+            $nbre = $connexion->rowCount('SELECT id_body FROM body WHERE outils="'.$_POST['outils'].'"');
 
             // Si une erreur survient
             if($nbre > 0)
@@ -621,63 +621,118 @@ if(isset($_GET['freelance']))
             }
             else
             {
-                //on verifi si l'adresse de l'image a ete bien definit
 
+
+                $phpFileUploadErrors = array(
+                    0=>'Il y a aucune erreur fichier upload avec success',
+                    1=>'taille du fichier supérieur à la taille minimale requise',
+                    2=>'fichier trop grand par rapport au format specifié',
+                    3=>'les fichiers ont partiellement été uploadé',
+                    4=>'aucun fichier n\'a été uploadé',
+                    5=>'dossier de destination n\existe pas',
+                    6=>'impossible d\écrire les fichiers dans le serveur',
+                    7=>'une extension php a stoppé le chargement des fichiers'
+                );
+
+
+                function reArrayFiles( $file_post)
+                {
+                    $file_ary = array();
+                    $file_count = count($file_post['name']);
+                    $file_keys = array_keys($file_post);
+
+                    for ($i=0;$i<$file_count;$i++){
+                       foreach ($file_keys as $key){
+                           $file_ary[$i][$key] = $file_post[$key][$i];
+                       }
+                }
+                    return $file_ary;
+                }
+
+                //on verifi si l'adresse de l'image a ete bien definit
+                $out_path_img = '';
                 if(isset($_FILES['capture']['name']) AND !empty($_FILES['capture']['name']))
                 {
-
-                    //on verifi la taille de l'image
-                    if($_FILES['capture']['size']>=1000)
+                    $file_array = reArrayFiles($_FILES['capture']);
+                    for($i=0;$i<count($file_array);$i++)
                     {
-                        $extensions_valides=Array('jpg','jpeg','png');
-                        //la fonctions strrchr( $chaine,'.') renvoit l'extension avec le point
-                        //la fonction substtr($chaine,1) ignore la premiere caractere de la chaine
-                        //la fonction strtolower($chaine) renvoit la chaine en minuscule
-                        $extension_upload=strtolower(substr(strrchr($_FILES['capture']['name'],'.'),1));
-                        //on verifi si l'extension_upload est valide
-
-                        if(in_array($extension_upload,$extensions_valides))
+                        if($file_array[$i]['error'])
                         {
-                            $id=md5(uniqid(rand(),true));
-                            $chemin="../../Public/img/portfolio/{$id}.{$extension_upload}";
-                            //on deplace du serveur au disque dur
+                            echo 'Erreur: ' .$file_array[$i]['name']. ' - '.$phpFileUploadErrors[$file_array[$i]['error']];
+                        }
+                        else{
+                          if($file_array[$i]['size']<1000){
+                              echo 'Taille de l\'image inférieur à 1ko';
+                          }
+                          else{
+                              $extension = array('jpg', 'png', 'gif', 'jpeg', 'JPG', 'PNG', 'GIF', 'JPEG');
+                              //renvoi l extension
+                              //$extension_upload=strtolower(substr(strrchr($file_array[$i]['name'],'.'),1));
+                              //renvoi aussi l extension
+                              //$file_ext[1]
 
-                            if(move_uploaded_file($_FILES['capture']['tmp_name'],$chemin))
-                            {
-                                // La photo est la source
-                                if($extension_upload=='jpg' OR $extension_upload=='jpeg'){$source = imagecreatefromjpeg($chemin);}
-                                else{$source = imagecreatefrompng($chemin);}
-                                $destination = imagecreatetruecolor(460, 380); // On crée la miniature vide
+                              $file_ext = explode('.', $file_array[$i]['name']);
+                              $name = $file_ext[0];
+                              $file_ext = end($file_ext); ////renvoi dernier élement du tableau c-a-d l extension
 
-                                // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
-                                $largeur_source = imagesx($source);
-                                $hauteur_source = imagesy($source);
-                                $largeur_destination = imagesx($destination);
-                                $hauteur_destination = imagesy($destination);
-                                $chemin0="../../Public/img/portfolio/miniature/{$id}.{$extension_upload}";
-                                // On crée la miniature
-                                imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
-                                // On enregistre la miniature sous le nom
 
-                                imagejpeg($destination,$chemin0);
-                                $chemin1= str_replace('../../Public/', '', $chemin0);
-                            }else{echo "no deplace";}
-                        }else{echo "no extensions";}
-                    }else{echo "no size";}
+                              if(!in_array($file_ext, $extension))
+                              {
+                                  echo 'Erreur: ' .$file_array[$i]['name']. ' - Extension Invalid';
+                              }
+                              else
+                              {
+                                 // $img_dir = 'files/'.$file_array[$i]['name'];
+                                  $id=md5(uniqid(rand(),true));
+                                  $chemin="../../Public/img/portfolio/{$id}.{$file_ext}";
+                                  //on deplace du serveur au disque dur
+                                  if(!move_uploaded_file($file_array[$i]['tmp_name'], $chemin)){
+                                      echo 'impossible d\'upload les fichiers';
+                                  }
+                                  else{
+
+                                      // La photo est la source
+                                      if($file_ext=='jpg' OR $file_ext=='jpeg' OR $file_ext=='JPG' OR $file_ext=='JPEG')
+                                      {$source = imagecreatefromjpeg($chemin);}
+                                      else if($file_ext=='gif' OR $file_ext=='GIF'){$source = imagecreatefromgif($chemin);}
+                                      else{$source = imagecreatefrompng($chemin);}
+                                      $destination = imagecreatetruecolor(460, 380); // On crée la miniature vide
+
+                                      // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
+                                      $largeur_source = imagesx($source);
+                                      $hauteur_source = imagesy($source);
+                                      $largeur_destination = imagesx($destination);
+                                      $hauteur_destination = imagesy($destination);
+                                      $chemin0="../../Public/img/portfolio/miniature/{$id}.{$file_ext}";
+                                      // On crée la miniature
+                                      imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
+                                      // On enregistre la miniature sous le nom
+
+                                      imagejpeg($destination,$chemin0);
+                                      $chemin1= str_replace('../../Public/', '', $chemin0);
+                                      $out_path_img .= $chemin1.'-';
+                                  }
+
+                              }
+                              // echo 'Upload effectué avec success ' .$file_array[$i]['name']. ' - '.$phpFileUploadErrors[$file_array[$i]['error']];
+
+                          }
+                        }
+
+                    }
+/*print_r($out_path_img);
+                    die();*/
+
                 }else{echo "no defined";}
 
 
-
-
-
-
-                $connexion->insert('INSERT INTO contenu(annee, type_service, entite, activite, nom_entite,
+                $connexion->insert('INSERT INTO body(annee, type_service, entite, activite, nom_entite,
 ville, app_dev, type_app, methode_analyse, architecture, travaux_effectue, ide, langage, sgbd, outils, framework,
-fonctionnalites, screenshot_App, url, code_page, statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$_POST['dateF'], $_POST['typeServiceF'],
+fonctionnalites, screenshot_App, url, ref_id_page, statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$_POST['dateF'], $_POST['typeServiceF'],
                     $_POST['entiteF'], $_POST['activiteF'], $_POST['valeurEntite'], $_POST['ville'], $_POST['app_dev'], $_POST['type_app'],
-                    $_POST['analyse'], $_POST['architecture'], $_POST['travaux'], $_POST['ide'], $_POST['langage'], $_POST['sgbd'], $_POST['outils'], $_POST['framework'],'', $chemin1, '', 2, 1]);
+                    $_POST['analyse'], $_POST['architecture'], $_POST['travaux'], $_POST['ide'], $_POST['langage'], $_POST['sgbd'], $_POST['outils'], $_POST['framework'],'', $out_path_img, '', 2, 1]);
 
-                $max_id = $connexion->query('SELECT MAX(id_contenu) AS max_id FROM contenu');
+                $max_id = $connexion->query('SELECT MAX(id_body) AS max_id FROM body');
                  /*if(!file_exists("../Projets/$max_id")){
                      mkdir("../Projets/$max_id", 0755);
                  }*/
@@ -704,7 +759,7 @@ fonctionnalites, screenshot_App, url, code_page, statut) VALUES(?,?,?,?,?,?,?,?,
                 $msg .= 'http://'.$_SERVER['HTTP_HOST']; //http://bertin.dev:8081
                 $end=current(array_reverse(explode('/', $_SERVER['PHP_SELF'])));
                 $rep=str_replace($end,'',$_SERVER['PHP_SELF']);
-                $msg .= $msg.$rep.'../../Public/index.php?id_page=2&amp;id_contenu='.$max_id; //"mysql_insert_id();
+                $msg .= $msg.$rep.'../../Public/index.php?id_page=2&amp;id_body='.$max_id; //"mysql_insert_id();
 //echo $msg;
                 $msg .= "<br> il redirigera directement sur mon site web porfolio et là vous pourrez avoir accès à l'ensemble
                       de mes prochaines éffectifs et ceux en cours de réalisation.</p>
@@ -743,12 +798,5 @@ fonctionnalites, screenshot_App, url, code_page, statut) VALUES(?,?,?,?,?,?,?,?,
             }
 
         }
-
-
-
-
-
-
-
 
 }

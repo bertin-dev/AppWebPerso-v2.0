@@ -253,48 +253,78 @@
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">CITATIONS
                     <small><em>Sur la Vie</em></small>
                 </h4>
-                <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px; margin-left: initial; padding-left: initial;">
+                <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px;">
+<!-------->
 
-                        <div class="testimonialslide clearfix flexslider" style="border-left: 10px solid rgb(10, 141, 224); height: 100%; padding: initial; margin: initial; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
+                                <div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="180000">
+                                    <!-- Carousel Slides / Quotes -->
+                                    <div class="carousel-inner text-center">
+                                        <!-- Quote 1 -->
+                                        <div class="item active">
+                                            <blockquote>
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-sm-offset-2">
+                                                        <p>La créativité implique de briser les conventions afin de regarder les choses sous un jour nouveau.</p>
+                                                        <small>EDWARD DE BONO</small>
+                                                    </div>
+                                                </div>
+                                            </blockquote>
+                                        </div>
+                                        <!-- Quote 2 -->
+                                        <div class="item">
+                                            <blockquote>
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-sm-offset-2"><p>
+                                                            Les individus qui réussissent sont ceux qui savent mobiliser toutes leurs ressources mentales et physiques sur un objectif.</p>
+                                                            <small>Anthony Robbins</small>
+                                                    </div>
+                                                </div>
+                                            </blockquote>
+                                        </div>
+                                        <!-- Quote 3 -->
+                                        <div class="item">
+                                            <blockquote>
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-sm-offset-2">
+                                                        <p>Il n’y a pas de grande tâche difficile qui ne puisse être décomposée en petites tâches faciles.</p>
+                                                            <small>**</small>
+                                                    </div>
+                                                </div>
+                                            </blockquote>
+                                        </div>
+                                        <!-- Quote 4 -->
+                                        <div class="item">
+                                            <blockquote>
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-sm-offset-2">
+                                                        <p> Without imagination, he could not have creation there.</p>
+                                                        <small>A. Jacquard</small>
+                                                    </div>
+                                                </div>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                    <!-- Bottom Carousel Indicators -->
+                                    <ol class="carousel-indicators" style="margin-bottom: 0;">
+                                        <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="" alt=""></li>
+                                        <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="" alt=""></li>
+                                        <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="" alt=""></li>
+                                        <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="" alt=""></li>
+                                    </ol>
 
-                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                                <ul id="citations" class="slides" style="width: 800%; transition-duration: 0s; transform: translate3d(-555px, 0px, 0px);">
-                                    <li class="clone">
-                                        <blockquote>
-                                            La créativité implique de briser les conventions afin de regarder les choses sous un jour nouveau.
-                                        </blockquote>
-                                        <h6>EDWARD DE BONO</h6>
-                                    </li>
-                                    <li class="clone" aria-hidden="true">
-                                        <blockquote>
-                                            Les individus qui réussissent sont ceux qui savent mobiliser toutes leurs ressources mentales et physiques sur un objectif.
-                                        </blockquote>
-                                        <h6>Anthony Robbins</h6>
-                                    </li>
+                                    <!-- Carousel Buttons Next/Prev -->
+                                    <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                                    <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                                </div>
 
-                                    <li class="clone" aria-hidden="true">
-                                        <blockquote>
-                                            Without imagination, he could not have creation there.
-                                        </blockquote>
-                                        <h6>A. Jacquard</h6>
-                                    </li>
-
-                                    <li class="clone" aria-hidden="true">
-                                        <blockquote>
-                                            Il n’y a pas de grande tâche difficile qui ne puisse être décomposée en petites tâches faciles.
-                                        </blockquote>
-                                    </li>
-                                </ul>
-                            </div>
-                            <ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a class="">2</a></li></ol>
-                        </div>
-
+                        <a class="btn btn-primary" href="index.php?id_page=6" title="Cliquez"><i class="fa fa-arrow-right"></i> Me Suivre</a>
+<!-------->
                 </div>
 
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">NOUVEAUTES
                     <small><em>Dernières Technologies Déployés par Microsoft & Xamarin</em></small>
                 </h4>
-                <div class="col-xs-12 col-lg-12 ombrage blanc wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
+                <div class="col-xs-12 col-lg-12 view peach-gradient wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
                 <div class="col-lg-5 ">
                         <ul style="text-align: center; padding: initial; margin: initial">
                         <li>Il y a tout juste <?= date('Y')-2018;?> an que j'utilise cette techno mais putin je suis hyper faciné par cette dernière.
@@ -317,6 +347,7 @@
                     <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">CLOUD
                         <small><em>Traitement, Stockage, Restoration des Données Distantes</em></small>
                     </h4>
+
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
                         <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
@@ -324,6 +355,7 @@
                         <p>Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory</p>
                         </div>
                     </div>
+
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
                         <img src="img/Accueil/azure devops.png" class="img-responsive" alt="">
@@ -331,6 +363,7 @@
                         <p>Azure Devops autre fois appelé VSTS. Il me permet de planifier les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde via son outil Git.</p>
                         </div>
                     </div>
+
                     <div class = "col-lg-4">
                         <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
                         <img src="img/Accueil/web.png" class="img-responsive" alt="">
@@ -350,49 +383,134 @@
 
 
 
+                <div class="col-lg-4 mb-4">
+
+                    <!-- Card -->
+                    <div class="card card-cascade narrower">
+
+                        <!-- Card image -->
+                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                            <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+                            <!-- Text -->
+                            <p class="card-text" style="font-size: 15px">
+                                Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+
+                    <!-- Card -->
+                    <div class="card card-cascade narrower">
+                        <!-- Card image -->
+                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                            <img src="img/Accueil/azure devops.png" class="img-responsive" alt="" width="145">
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+                            <!-- Text -->
+                            <p class="card-text" style="font-size: 15px">
+                                Azure Devops autre fois appelé VSTS. Il me permet de planifier les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde.
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+
+                    <!-- Card -->
+                    <div class="card card-cascade narrower">
+                        <!-- Card image -->
+                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                            <img src="img/Accueil/web.png" class="img-responsive" alt="" >
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+                            <!-- Text -->
+                            <p class="card-text" style="font-size: 15px">
+                                Autrefois négligé et simplifié par moi, Aujourd'hui cette Techno m'est dévenu incontournable dans tous les projets sur lesquels je suis passé
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
             </article>
 
 <!----TRAITEMENT DE LA BARRE LATERALE-->
-            <aside class="col-xs-12 col-md-4 col-lg-3">
-                <div class="bordures">
-                    <div class="grey-light ombrage">
-                        <h3>MON AGENDA <br>HEBDOMADAIRE</h3>
+            <aside class="col-xs-12 col-md-4 col-lg-3 mb-4">
+
+
+                <h5 class="titreWidget" style="font-variant: small-caps"><em>Agenda Mensuel</em></small> </h5>
+                    <!-- Card -->
+                    <div style="margin-top: 60px" class="card card-cascade narrower">
+
+                        <!-- Card image -->
+                        <div style="margin-top: -40px" class="view view-cascade gradient-card-header peach-gradient">
+
+                            <!-- Title
+                            <h2 class="card-header-title">Ally Cook</h2>-->
+                            <!-- Subtitle -->
+                            <h5 class="mb-0 pb-3 pt-2" style="margin-top: initial;">Google Developper 8 MARS 2018</h5>
+
+
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+
+                            <marquee behavior="" direction="UP" scrollamount="1" height="50">
+                            <!-- Text -->
+                                <h5>Du 25 au 26 Nov. 2018</h5>
+                            <p class="card-text">Salon Beauté Sélection.</p>
+
+                                <h5>Du 27 au 29 Nov. 2019</h5>
+                                <p class="card-text">Affaire de cadeau - Paris</p>
+
+                            </marquee>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+
+                <h5 class="titreWidget" style="font-variant: small-caps"><em>Article Publié <small>il y a 3 jours</em></small> </h5>
+                <div class="card card-cascade wider">
+
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header peach-gradient">
+
+                        <!-- Title -->
+                        <h2 class="card-header-title mb-3">Astuces pour mettre les fichiers en cache</h2>
+                        <!-- Text -->
+                        <p class="mb-0"><i class="fa fa-calendar mr-2"></i> Application Web
+                            <a style="margin: initial;padding: initial;" class="btn btn-primary" href="index.php?id_page=7" title="Cliquez-Ici"><i class="fa fa-eye"></i> Voir</a>
+                        </p>
                     </div>
 
-                    <table id="content" cellpadding="0" cellspacing="0">
-                        <tbody>
-                        <tr>
-                            <td width="">
-                                <div class="body_agenda" >
-                                    <div class="caroufredsel_wrapper">
-                                        <div class="caroufredsel_wrapper">
-                                            <marquee behavior="" direction="UP" scrollamount="1" height="50">
-                                                <ul id="agenda">
-                                                    <!--s_--><!--_s-->
-                                                    <li><a rel="nofollow" href="#" target="blank">Salon Beauté Sélection – Lyon</a>
-                                                        <p>Du 25 au 26 nov. 2018<br>Salon Beauté Sélection – Lyon</p>
-                                                    </li>
-                                                    <li>
-                                                        <a rel="nofollow" href="#" target="blank">All4Pack – salon de la Manutention</a>
-                                                        <p>Du 26 au 29 nov. 2018<br>All4Pack – salon de la Manutention</p>
-                                                    </li>
-                                                    <li>
-                                                        <a rel="nofollow" href="#" target="blank">Affaire de Cadeaux – Paris</a>
-                                                        <p>Du 27 au 29 nov. 2018<br>Affaire de Cadeaux – Paris</p>
-                                                    </li>
-                                                </ul>
-                                            </marquee>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
 
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
+
+
+
+
+
+
+
+
                 <div class="widget">
-                    <h5 class="titreWidget">Derniers Commentaires</h5>
+                    <h5 class="titreWidget" style="font-variant: small-caps"><em>Derniers Commentaires</em></small> </h5>
                     <ul id="last_comments" class="space">
                         <center>
                             <div id="loader_last_comments" style="display: none;">
@@ -403,7 +521,8 @@
                     </ul>
                 </div>
 
-                <div class="itemmoitie"><br><br><br></div>
+                <h5 class="titreWidget" style="font-variant: small-caps; margin-top: 20px"><em>Ma Story</em></small> </h5>
+                <div class="itemmoitie peach-gradient"></div>
                 <div class="box-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
                     <h5 style="font-variant: small-caps; padding: initial;margin: initial;" title="Software Developper Xamarin"><small><em>Software Developper</em></small></h5>

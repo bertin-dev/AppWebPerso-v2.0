@@ -47,6 +47,8 @@ endforeach;
     <!--<link href="../css/bootstrap.css" rel="stylesheet">-->
     <link href="../Public/css/design.css" rel="stylesheet">
     <link href="../Public/css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
     <!--<link href="style.css" rel="stylesheet">-->
 
     <!-- Custom CSS-->
@@ -191,7 +193,7 @@ endforeach;
                         echo $enregistrement->input('text','sgbd', 'SGBD', '', 'sgbd', 'output_checksgbd');
                         echo $enregistrement->input('text','outils', 'OUTILS', '', 'outils', 'output_checkoutils');
                         echo $enregistrement->input('text','framework', 'FRAMEWORK', '', 'framework', 'output_checkframework');
-                        echo $enregistrement->input('text','url', 'URL', '', 'url', 'output_checkurl');
+                        echo $enregistrement->input('url','url', 'URL', '', 'url', 'output_checkurl');
                         echo '</div>';
                         ?>
                         <input id="previous1" type="button" class="previous action-button" value="PRECEDENT" title="precedent" name="previous1">
@@ -205,7 +207,7 @@ endforeach;
                         <h3 class="fs-subtitle">Etape 4 - Fin</h3>
                         <?php
                         echo $enregistrement->textarea('fonctionnalites','Détails-Fonctionnalités', 'fonctionnalites', 'output_checkfonctionnalites');
-                        echo $enregistrement->input('file','capture', 'Screenshot', 'multiple', 'capture', 'output_checkcapture');
+                        echo $enregistrement->input('file','capture[]', 'Screenshot', 'multiple', 'capture', 'output_checkcapture');
                         ?>
                         <input id="previous2" type="button" class="previous action-button" value="PRECEDENT" title="precedent" name="previous2">
                         <input id="enreg" type="submit" class="submit action-button" value="ENVOYER" title="submit">
@@ -236,7 +238,7 @@ endforeach;
 </script>
 
 <script src="../Public/js/check_formulaire.js"></script>
-<script src="../Public/js/fonctions.js"></script>
+<script src="traitement.js"></script>
 
 
 
