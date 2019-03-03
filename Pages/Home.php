@@ -25,6 +25,12 @@
 
                             <div class="bottom ecriture">
                                 Plate-forme
+                                <span class="text-center" style="margin: initial; padding: initial; position: absolute; left: 50%; top: 80%">
+                                    <i class="fa fa-linkedin"></i>
+                                    <i class="fa fa-instagram"></i>
+                                    <i class="fa fa-twitter"></i>
+
+                                </span>
                                 <div class="date" style="font-size: 20px;">
                                     <i class="fa fa-globe"></i>
                                     <i class="fa fa-laptop"></i>
@@ -54,7 +60,7 @@
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
                     <a href="index.php?id_page=5" title="contactez-moi">Contacter</a> ou regardez <a
-                            href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations →</a> <br>
+                            href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-right"></span></a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
                     <details>
                         <summary><h1 title="Solutions Informatique">UN PROJET EST UN CHALLENGE !</h1></summary>
@@ -69,8 +75,8 @@
 
 
             <article class="col-xs-12 col-md-4 col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center;">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;">MES CONVICTIONS
-                    <small><em>Facteur de Motivation</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
+                        <small>Facteur de Motivation</small></em>
                 </h4>
                 <?php
                 foreach (\App::getDB()->query('SELECT title, paragraphes FROM page
@@ -104,8 +110,8 @@
             </article>
 
             <article class="title-big col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">DEVIS
-                    <small><em>Optez Pour des Solutions sur Mesures</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
+                        <small>Optez Pour des Solutions sur Mesures</small></em>
                 </h4>
                 <div class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center; ">
                     <h4>Des Solutions pour tous vos enjeux de Transformation</h4>
@@ -119,7 +125,7 @@
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
 
-                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Envoyez" data-toggle="modal" data-target="#login_1" >Demandez un Dévis</a>
+                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Envoyez" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demandez un Dévis</a>
 
 
 
@@ -129,11 +135,36 @@
 
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">ENTREPRISE
-                    <small><em>L'innovation Technologique</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-home"></span><em> ENTREPRISE
+                        <small>L'innovation Technologique</small></em>
                 </h4>
                 <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="col-lg-4 ombrage" style="text-align: center;">
+
+                    <div class="col-lg-4">
+                        <div class="card card-image mb-3" style="background-image: url('img/Accueil/Ecole/IMG-20170111-WA0013.jpg');">
+
+                            <!-- Content -->
+                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                <div>
+                                    <h5 class="pink-text">
+                                        <i class="fa fa-facebook"></i> Marketing</h5>
+                                    <h3 class="card-title pt-2">
+                                        <strong>This is card title</strong>
+                                    </h3>
+                                    <p>L'intérêt des Projets Puissants Facteur de Motivation</p>
+                                    <a class="btn btn-pink waves-effect waves-light btn-customizable"
+                                    title="Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme
+                                     parce qu'on sait qu'on aura affaire à la même routine que la veille,l'avant veille et ainsi de suite.
+                                     Dieu Seul sait comment je déteste la robotisation">
+                                        <i class="fa fa-cloud left"></i> View project</a>
+                                </div>
+                            </div>
+                            <!-- Content -->
+                        </div>
+                    </div>
+
+
+                   <!-- <div class="col-lg-4 ombrage" style="text-align: center;">
                         <div class="view view-tenth">
                         <img src="img/Accueil/Ecole/IMG-20170111-WA0013.jpg" class="img-responsive img-rounded" alt="">
                         <div class="mask">
@@ -144,37 +175,52 @@
                         </div>
                         <h4 title="Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille,l'avant veille et ainsi de suite. Dieu Seul sait comment je déteste la robotisation
                         ">L'intérêt des Projets Puissants Facteur de Motivation</h4>
-                    </div>
-                    <div class="col-lg-4 ombrage" style="text-align: center;">
-                        <div class="view view-tenth">
-                        <img src="img/Accueil/Ecole/DSCN9729.jpg" class="img-responsive img-rounded" alt="">
-                        <div class="mask">
-                            <h2>The Only Living Boy in New York</h2>
-                            <p>Words and such, a whole lot more of muh flippin' words.</p>
-                            <a href="#" class="info">Read More</a>
-                        </div>
-                        </div>
-                        <h4>Créativité Facteur d'Epanouissement au Travail</h4>
+                    </div>-->
 
+                    <div class="col-lg-4">
+                    <div class="card card-image mb-3" style="background-image: url('img/Accueil/Ecole/DSCN9729.jpg');">
+                        <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-5 px-4">
+                            <div>
+                                <h5 class="orange-text">
+                                    <i class="fa fa-desktop"></i> Software</h5>
+                                <h3 class="card-title pt-2">
+                                    <strong>This is card title</strong>
+                                </h3>
+                                <p>Créativité Facteur d'Epanouissement au Travail</p>
+                                <a class="btn-customizable btn-deep-orange waves-effect waves-light">
+                                    <i class="fas fa-camera left"></i> View project</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-4 ombrage" style="text-align: center;">
-                        <div class="view view-tenth">
-                        <img src="img/Accueil/Communauté/IMG_20160625_155908_1.jpg" class="img-responsive img-rounded" alt="">
-                        <div class="mask">
-                            <h2>The Only Living Boy in New York</h2>
-                            <p>Words and such, a whole lot more of muh flippin' words.</p>
-                            <a href="#" class="info">Read More</a>
-                        </div>
-                        </div>
-                        <h4>A travers La discipline et la méthode je trouve toujours le succès dans les Projets</h4>
+                    </div>
 
+                    <div class="col-lg-4">
+                        <div class="card card-image mb-3" style="background-image: url('img/Accueil/Communauté/IMG_20160625_155908_1.jpg');">
+
+                            <!-- Content -->
+                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                <div>
+                                    <h5 class="pink-text">
+                                        <i class="fa fa-facebook"></i> Marketing</h5>
+                                    <h3 class="card-title pt-2">
+                                        <strong>Discipline</strong>
+                                    </h3>
+                                    <p>A travers La discipline et la méthode je trouve toujours le succès dans les Projets</p>
+                                    <a class="btn-pink waves-effect waves-light btn-customizable"
+                                       title="">
+                                        <i class="fa fa-cloud left"></i> View project</a>
+                                </div>
+                            </div>
+                            <!-- Content -->
+                        </div>
                     </div>
+
                 </div>
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">QUALIFICATIONS
-                    <small><em>Mon Périmètre de Compétence s'Articule Autour de</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-transfer"></span><em> QUALIFICATIONS
+                        <small>Mon Périmètre de Compétence s'Articule Autour de</small></em>
                 </h4>
                 <div class="col-lg-8 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class = "panel panel-primary">
@@ -220,8 +266,8 @@
 
 
             <article class="col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">DERNIERES REALISATIONS
-                    <small><em>Mes Derniers Projets</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> DERNIERES REALISATIONS
+                        <small>Mes Derniers Projets</small></em>
                 </h4>
                 <div id="last_realisation" class="wow fadeInUp">
                     <center>
@@ -250,8 +296,8 @@
 
             <article class="col-xs-12 col-md-8 col-lg-9">
 
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">CITATIONS
-                    <small><em>Sur la Vie</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-book"></span><em> CITATIONS
+                        <small>Sur la Vie</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px;">
 <!-------->
@@ -321,8 +367,8 @@
 <!-------->
                 </div>
 
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">NOUVEAUTES
-                    <small><em>Dernières Technologies Déployés par Microsoft & Xamarin</em></small>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-new-window"></span><em> NOUVEAUTES
+                        <small>Dernières Technologies Déployés par Microsoft & Xamarin</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 view peach-gradient wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
                 <div class="col-lg-5 ">
@@ -344,31 +390,70 @@
                 </div>
 
                 <div class="col-xs-12 col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
-                    <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;">CLOUD
-                        <small><em>Traitement, Stockage, Restoration des Données Distantes</em></small>
+                    <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-cloud-download"></span><em> CLOUD
+                            <small>Traitement, Stockage, Restoration des Données Distantes</small></em>
                     </h4>
 
-                    <div class = "col-lg-4">
-                        <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
-                        <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
-                            <hr>
-                        <p>Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory</p>
+
+                    <div class="col-lg-4 mb-4">
+
+                        <!-- Card -->
+                        <div class="card card-cascade narrower">
+
+                            <!-- Card image -->
+                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                                <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body card-body-cascade text-center">
+                                <!-- Text -->
+                                <p class="card-text" style="font-size: 15px">
+                                    Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory
+                                </p>
+                            </div>
+
                         </div>
                     </div>
+                    <div class="col-lg-4 mb-4">
 
-                    <div class = "col-lg-4">
-                        <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
-                        <img src="img/Accueil/azure devops.png" class="img-responsive" alt="">
-                            <hr>
-                        <p>Azure Devops autre fois appelé VSTS. Il me permet de planifier les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde via son outil Git.</p>
+                        <!-- Card -->
+                        <div class="card card-cascade narrower">
+                            <!-- Card image -->
+                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                                <img src="img/Accueil/azure devops.png" class="img-responsive" alt="" width="140">
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body card-body-cascade text-center">
+                                <!-- Text -->
+                                <p class="card-text" style="font-size: 15px">
+                                    Azure Devops autre fois appelé VSTS. Il me permet de planifier
+                                    les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde via son outil Git.
+                                </p>
+
+                            </div>
+
                         </div>
                     </div>
+                    <div class="col-lg-4 mb-4">
 
-                    <div class = "col-lg-4">
-                        <div class="blanc ombrage" style="height: 100%; margin-bottom: 10px;">
-                        <img src="img/Accueil/web.png" class="img-responsive" alt="">
-                            <hr>
-                        <p>Autrefois négligé et simplifié par moi, Aujourd'hui cette Techno m'est dévenu incontournable dans tous les projets sur lesquels je suis passé</p>
+                        <!-- Card -->
+                        <div class="card card-cascade narrower">
+                            <!-- Card image -->
+                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                                <img src="img/Accueil/web.png" class="img-responsive" alt="" >
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body card-body-cascade text-center">
+                                <!-- Text -->
+                                <p class="card-text" style="font-size: 15px">
+                                    Autrefois négligé et simplifié par moi, Aujourd'hui cette Techno m'est dévenu incontournable dans tous les projets sur lesquels je suis passé
+                                </p>
+
+                            </div>
+
                         </div>
                     </div>
 
@@ -379,84 +464,18 @@
                     <p>la page a mis <span class="label secondary"><?= round(microtime(TRUE) - $_SESSION['time'], 3); ?>s</span> à se générer à peu près</p>
                 </div>
 
-
-
-
-
-                <div class="col-lg-4 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-cascade narrower">
-
-                        <!-- Card image -->
-                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                            <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
-                        </div>
-
-                        <!-- Card content -->
-                        <div class="card-body card-body-cascade text-center">
-                            <!-- Text -->
-                            <p class="card-text" style="font-size: 15px">
-                                Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-cascade narrower">
-                        <!-- Card image -->
-                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                            <img src="img/Accueil/azure devops.png" class="img-responsive" alt="" width="145">
-                        </div>
-
-                        <!-- Card content -->
-                        <div class="card-body card-body-cascade text-center">
-                            <!-- Text -->
-                            <p class="card-text" style="font-size: 15px">
-                                Azure Devops autre fois appelé VSTS. Il me permet de planifier les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde.
-                            </p>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-cascade narrower">
-                        <!-- Card image -->
-                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                            <img src="img/Accueil/web.png" class="img-responsive" alt="" >
-                        </div>
-
-                        <!-- Card content -->
-                        <div class="card-body card-body-cascade text-center">
-                            <!-- Text -->
-                            <p class="card-text" style="font-size: 15px">
-                                Autrefois négligé et simplifié par moi, Aujourd'hui cette Techno m'est dévenu incontournable dans tous les projets sur lesquels je suis passé
-                            </p>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
             </article>
 
 <!----TRAITEMENT DE LA BARRE LATERALE-->
             <aside class="col-xs-12 col-md-4 col-lg-3 mb-4">
 
 
-                <h5 class="titreWidget" style="font-variant: small-caps"><em>Agenda Mensuel</em></small> </h5>
+                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-calendar"></span><em> Agenda Mensuel</em></small> </h5>
                     <!-- Card -->
                     <div style="margin-top: 60px" class="card card-cascade narrower">
 
                         <!-- Card image -->
-                        <div style="margin-top: -40px" class="view view-cascade gradient-card-header peach-gradient">
+                        <div style="margin-top: -45px" class="view view-cascade gradient-card-header peach-gradient">
 
                             <!-- Title
                             <h2 class="card-header-title">Ally Cook</h2>-->
@@ -485,7 +504,7 @@
                     <!-- Card -->
 
 
-                <h5 class="titreWidget" style="font-variant: small-caps"><em>Article Publié <small>il y a 3 jours</em></small> </h5>
+                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-pushpin"></span><em> Article Publié <small>il y a 3 jours</em></small> </h5>
                 <div class="card card-cascade wider">
 
                     <!-- Card image -->
@@ -502,23 +521,119 @@
 
                 </div>
 
-
-
-
-
-
-
-
+                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-comment"></span><em> Derniers Commentaires</em></small> </h5>
                 <div class="widget">
-                    <h5 class="titreWidget" style="font-variant: small-caps"><em>Derniers Commentaires</em></small> </h5>
-                    <ul id="last_comments" class="space">
+                    <div id="last_comments" class="">
+
+                                <div class="panel panel-default widget">
+                                    <div class="panel-heading">
+                                        <span class="glyphicon glyphicon-comment"></span>
+                                        <h3 class="panel-title">
+                                            Recent Comments</h3>
+                                        <span class="label label-info">78 <span class="glyphicon glyphicon-option-vertical"></span></span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-xs-2 col-md-1">
+                                                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                                    <div class="col-xs-10 col-md-11">
+                                                        <div>
+                                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                                Google Style Login Page Design Using Bootstrap</a>
+                                                            <div class="mic-info">
+                                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            Awesome design
+                                                        </div>
+                                                        <div class="action">
+                                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-xs-2 col-md-1">
+                                                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                                    <div class="col-xs-10 col-md-11">
+                                                        <div>
+                                                            <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
+                                                            <div class="mic-info">
+                                                                By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                                        </div>
+                                                        <div class="action">
+                                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-xs-2 col-md-1">
+                                                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                                    <div class="col-xs-10 col-md-11">
+                                                        <div>
+                                                            <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
+                                                            <div class="mic-info">
+                                                                By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                                        </div>
+                                                        <div class="action">
+                                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                                    </div>
+                                </div>
+
+
                         <center>
                             <div id="loader_last_comments" style="display: none;">
                                 <span class="loader loader-circle"></span>
                                 Chargement......
                             </div>
                         </center>
-                    </ul>
+                    </div>
                 </div>
 
                 <h5 class="titreWidget" style="font-variant: small-caps; margin-top: 20px"><em>Ma Story</em></small> </h5>
@@ -529,11 +644,11 @@
                     <h3 style="border-bottom: 1px solid black">Bertin Story</h3>
                     <p style="font-size: 12px;">
                         #bertin.dev un Geek de l'informatique en général et la programmation en particulier depuis
-                        l'âge de 18 ans. Au début j'avais commencé par être passionné des Jeux Vidéos (Gamer),
+                        l'âge de 17 ans.<!-- Au début j'avais commencé par être passionné des Jeux Vidéos (Gamer),
                         ensuite j'ai attaqué l'installation des logiciels, des Jeux PC, des systèmes d'exploitations,
                         le crackage, le surf illégal, les téléchargements et
                         très vite c'est devenu une passion que j'ai pu orienter vers le codage des logiciels d'entreprises
-                        depuis un bout de temps.
+                        depuis un bout de temps.-->
                         <br><a
                                 href="#">Lire la Suite</a></p>
                     <div style="border-bottom: 1px solid black;"></div>
