@@ -614,6 +614,30 @@ $(function(){
 });
 
 
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION ARTICLE
+   ========================================================================== */
+
+$(function(){
+    var article = '1';
+    $('#loader_article').show();
+    function chargement_article(){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                article: article
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_article').append(data);
+                $('#loader_article').hide();
+            }
+        });
+    }
+    chargement_article();
+});
+
 
 /* ==========================================================================
 SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION COMMENTAIRE
@@ -621,8 +645,8 @@ SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION 
 
 $(function(){
     var load_commentaire = '1';
-    $('#loader_last_comments').show();
     function chargement_commentaire(){
+        $('#loader_last_comments').show();
         $.ajax({
             url: '../Core/Controller/verification.php?comment=2',
             method: 'POST',
@@ -643,6 +667,7 @@ SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION 
    ========================================================================== */
 
     function chargement_more_commentaire(){
+        $('#loader_last_comments').show();
         $.ajax({
             url: '../Core/Controller/verification.php?more_comment=1',
             method: 'POST',
@@ -663,13 +688,11 @@ SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION 
 
         if(more_comment.text()==='Réduire Commentaires'){
             $('#last_comments').append().empty();
-            $('#loader_last_comments').show();
             chargement_commentaire();
             more_comment.text('Plus de Commentaires');
         }
         else {
             $('#last_comments').append().empty();
-            $('#loader_last_comments').show();
             chargement_more_commentaire();
             more_comment.text('Réduire Commentaires');
         }

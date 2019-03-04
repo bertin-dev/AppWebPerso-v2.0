@@ -504,18 +504,53 @@
                     <!-- Card -->
 
 
-                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-pushpin"></span><em> Article Publié <small>il y a 3 jours</em></small> </h5>
+                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-pushpin"></span><em> Article Publié <small>
+                            il y a
+                            <?php
+                            $now = time();
+
+                            foreach (\App::getDB()->query('
+                            SELECT MAX(id_sujet), sujets.date_enreg AS D_enreg_Article FROM sujets
+                            INNER JOIN categorie
+                            ON sujets.ref_id_categorie=categorie.id_categorie
+                            ORDER BY id_sujet') as $projet):
+
+                            echo Diff_entre_2Jours($now, $projet->D_enreg_Article);
+                               echo Diff_entre_2Jours($now, $projet->D_enreg_Article)==1 ? ' Jour' : ' Jours';
+                            endforeach;
+
+
+                            function Diff_entre_2Jours($dateNow, $dateEnreg){
+                                $diff = abs($dateNow - $dateEnreg);
+                                $result = array();
+                                $tmp = $diff;
+
+                                $result['second'] = $tmp % 60; // renvoi le reste de la div
+
+                                $tmp = floor(($tmp - $result['second']) / 60);
+                                $result['minute'] = $tmp % 60;
+
+                                $tmp = floor(($tmp - $result['minute']) / 60);
+                                $result['heure'] = $tmp % 24;
+
+                                $tmp = floor(($tmp - $result['heure']) / 24);
+                                $result['jour'] = $tmp;
+
+                                return $result['jour'];
+                            }
+                            ?>
+                            </em></small> </h5>
                 <div class="card card-cascade wider">
 
                     <!-- Card image -->
-                    <div class="view view-cascade gradient-card-header peach-gradient">
+                    <div id="last_article" class="view view-cascade gradient-card-header peach-gradient">
 
-                        <!-- Title -->
-                        <h2 class="card-header-title mb-3">Astuces pour mettre les fichiers en cache</h2>
-                        <!-- Text -->
-                        <p class="mb-0"><i class="fa fa-globe mr-2"></i> Application Web
-                            <a style="margin: initial;padding: initial;" class="btn btn-primary" href="index.php?id_page=7" title="Cliquez-Ici"><i class="fa fa-eye"></i> Voir</a>
-                        </p>
+                        <center>
+                            <div id="loader_article" style="display: none;">
+                                <span class="loader loader-circle"></span>
+                                Chargement......
+                            </div>
+                        </center>
                     </div>
 
 
@@ -540,20 +575,17 @@
                                              <span class="glyphicon glyphicon-option-vertical"></span></span>
                                     </div>
                                     <div class="panel-body">
-                                        <ul id="last_comments" class="list-group">
-
-                                        </ul>
+                                        <ul id="last_comments" class="list-group"> </ul>
+                                        <center>
+                                            <div id="loader_last_comments" style="display: none;">
+                                                <span class="loader loader-circle"></span>
+                                                Chargement......
+                                            </div>
+                                        </center>
                                         <a id="more_commentaire" href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Plus de Commentaires</a>
                                     </div>
                                 </div>
 
-
-                        <center>
-                            <div id="loader_last_comments" style="display: none;">
-                                <span class="loader loader-circle"></span>
-                                Chargement......
-                            </div>
-                        </center>
 
                 </div>
 
