@@ -616,7 +616,7 @@ $(function(){
 
 
 /* ==========================================================================
-SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION FONCTIONALITES
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION COMMENTAIRE
    ========================================================================== */
 
 $(function(){
@@ -624,7 +624,7 @@ $(function(){
     $('#loader_last_comments').show();
     function chargement_commentaire(){
         $.ajax({
-            url: '../Core/Controller/verification.php',
+            url: '../Core/Controller/verification.php?comment=2',
             method: 'POST',
             data: {
                 load_commentaire: load_commentaire
@@ -637,11 +637,46 @@ $(function(){
         });
     }
     chargement_commentaire();
-});
+
 /* ==========================================================================
-SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION CITATIONS
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION COMMENTAIRE BOUTON PLUS DE COMMENTAIRES
    ========================================================================== */
 
+    function chargement_more_commentaire(){
+        $.ajax({
+            url: '../Core/Controller/verification.php?more_comment=1',
+            method: 'POST',
+            data: {
+                load_commentaire: load_commentaire
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_comments').append(data);
+                $('#loader_last_comments').hide();
+            }
+        });
+    }
+
+    var more_comment = $('#more_commentaire');
+    more_comment.click(function(even){
+        even.preventDefault();
+
+        if(more_comment.text()==='Réduire Commentaires'){
+            $('#last_comments').append().empty();
+            $('#loader_last_comments').show();
+            chargement_commentaire();
+            more_comment.text('Plus de Commentaires');
+        }
+        else {
+            $('#last_comments').append().empty();
+            $('#loader_last_comments').show();
+            chargement_more_commentaire();
+            more_comment.text('Réduire Commentaires');
+        }
+
+    });
+
+});
 
 
 

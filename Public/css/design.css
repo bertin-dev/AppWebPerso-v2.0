@@ -363,29 +363,6 @@ h5.titreWidget {
     font-size: 20px;
 }
 
-ul.space
-{
-    list-style: none;
-    margin: initial;
-    padding: initial;
-}
-.reduct1
-{
-    float: left!important;
-    margin-right: 5px;
-    padding: initial;
-}
-.reduct2
-{
-    padding: initial;
-    margin: initial;
-    font-size: 14px;
-}
-.reduct3
-{
-    padding: initial;
-    font-size: 12px;
-}
 
 
 
@@ -2879,5 +2856,5 @@ ZONE CITATION DE LA HOME PAGE
 .widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
 .widget .mic-info { color: #666666;font-size: 11px; }
 .widget .action { margin-top:5px; }
-.widget .comment-text { font-size: 12px; }
+.widget .comment-text { font-size: 12px; color: #666666;}
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }

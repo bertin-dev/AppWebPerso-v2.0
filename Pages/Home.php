@@ -59,7 +59,7 @@
                     <h1>Recherchez-vous un Développeur Consultant ???</h1>
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
-                    <a href="index.php?id_page=5" title="contactez-moi">Contacter</a> ou regardez <a
+                    <a href="index.php?id_page=5" title="contactez-moi">Contacter <span class="glyphicon glyphicon-send"></span></a> ou regardez <a
                             href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-right"></span></a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
                     <details>
@@ -513,7 +513,7 @@
                         <!-- Title -->
                         <h2 class="card-header-title mb-3">Astuces pour mettre les fichiers en cache</h2>
                         <!-- Text -->
-                        <p class="mb-0"><i class="fa fa-calendar mr-2"></i> Application Web
+                        <p class="mb-0"><i class="fa fa-globe mr-2"></i> Application Web
                             <a style="margin: initial;padding: initial;" class="btn btn-primary" href="index.php?id_page=7" title="Cliquez-Ici"><i class="fa fa-eye"></i> Voir</a>
                         </p>
                     </div>
@@ -523,106 +523,27 @@
 
                 <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-comment"></span><em> Derniers Commentaires</em></small> </h5>
                 <div class="widget">
-                    <div id="last_comments" class="">
 
                                 <div class="panel panel-default widget">
-                                    <div class="panel-heading">
-                                        <span class="glyphicon glyphicon-comment"></span>
+                                    <div class="panel-heading" style="background-color: #337ab7; color: white;">
                                         <h3 class="panel-title">
-                                            Recent Comments</h3>
-                                        <span class="label label-info">78 <span class="glyphicon glyphicon-option-vertical"></span></span>
+                                            Récent</h3>
+                                        <span class="label label-info">
+                                            <?php
+                                           echo $decompte = App::getDB()->rowCount('SELECT id_sujet, titre, commentaires, image, prenom, data_ajout_commentaires  FROM sujets
+                                                                INNER JOIN comments
+                                                                ON sujets.id_sujet=comments.ref_id_sujet
+                                                                INNER JOIN compte
+                                                                ON compte.id_compte=comments.ref_id_compte
+                                                                ORDER BY data_ajout_commentaires DESC ');
+                                            ?>
+                                             <span class="glyphicon glyphicon-option-vertical"></span></span>
                                     </div>
                                     <div class="panel-body">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-xs-2 col-md-1">
-                                                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                                                    <div class="col-xs-10 col-md-11">
-                                                        <div>
-                                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                                Google Style Login Page Design Using Bootstrap</a>
-                                                            <div class="mic-info">
-                                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-text">
-                                                            Awesome design
-                                                        </div>
-                                                        <div class="action">
-                                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                                                <span class="glyphicon glyphicon-ok"></span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                                                <span class="glyphicon glyphicon-trash"></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-xs-2 col-md-1">
-                                                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                                                    <div class="col-xs-10 col-md-11">
-                                                        <div>
-                                                            <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
-                                                            <div class="mic-info">
-                                                                By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-text">
-                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                                        </div>
-                                                        <div class="action">
-                                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                                                <span class="glyphicon glyphicon-ok"></span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                                                <span class="glyphicon glyphicon-trash"></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-xs-2 col-md-1">
-                                                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                                                    <div class="col-xs-10 col-md-11">
-                                                        <div>
-                                                            <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
-                                                            <div class="mic-info">
-                                                                By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-text">
-                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                                        </div>
-                                                        <div class="action">
-                                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                                                <span class="glyphicon glyphicon-ok"></span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                                                <span class="glyphicon glyphicon-trash"></span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                        <ul id="last_comments" class="list-group">
+
                                         </ul>
-                                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                                        <a id="more_commentaire" href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Plus de Commentaires</a>
                                     </div>
                                 </div>
 
@@ -633,29 +554,31 @@
                                 Chargement......
                             </div>
                         </center>
-                    </div>
+
                 </div>
 
                 <h5 class="titreWidget" style="font-variant: small-caps; margin-top: 20px"><em>Ma Story</em></small> </h5>
-                <div class="itemmoitie peach-gradient"></div>
-                <div class="box-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
-                    <h5 style="font-variant: small-caps; padding: initial;margin: initial;" title="Software Developper Xamarin"><small><em>Software Developper</em></small></h5>
-                    <h3 style="border-bottom: 1px solid black">Bertin Story</h3>
-                    <p style="font-size: 12px;">
-                        #bertin.dev un Geek de l'informatique en général et la programmation en particulier depuis
-                        l'âge de 17 ans.<!-- Au début j'avais commencé par être passionné des Jeux Vidéos (Gamer),
+                <div class="widget">
+                    <div class="itemmoitie peach-gradient"></div>
+                    <div class="box-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
+                        <h5 style="font-variant: small-caps; padding: initial;margin: initial;" title="Software Developper Xamarin"><small><em>Software Developper</em></small></h5>
+                        <h3 style="border-bottom: 1px solid black">Bertin Story</h3>
+                        <p style="font-size: 12px;">
+                            #bertin.dev un Geek de l'informatique en général et la programmation en particulier depuis
+                            l'âge de 17 ans.<!-- Au début j'avais commencé par être passionné des Jeux Vidéos (Gamer),
                         ensuite j'ai attaqué l'installation des logiciels, des Jeux PC, des systèmes d'exploitations,
                         le crackage, le surf illégal, les téléchargements et
                         très vite c'est devenu une passion que j'ai pu orienter vers le codage des logiciels d'entreprises
                         depuis un bout de temps.-->
-                        <br><a
-                                href="#">Lire la Suite</a></p>
-                    <div style="border-bottom: 1px solid black;"></div>
-                    <h6 style="margin: 5px;">Spécialisé dans les Techno Suivantes:</h6>
-                    <img src="img/Accueil/microsoft.jpg" title="icon-name" class="img-thumbnail" width="100" height="100">
+                            <br><a
+                                    href="#">Lire la Suite</a></p>
+                        <div style="border-bottom: 1px solid black;"></div>
+                        <h6 style="margin: 5px;">Spécialisé dans les Techno Suivantes:</h6>
+                        <img src="img/Accueil/microsoft.jpg" title="icon-name" class="img-thumbnail" width="100" height="100">
                         <img src="img/Accueil/TWD-Logo-dodgerblue.png" title="icon-name" class="img-thumbnail" width="100" height="100">
 
+                    </div>
                 </div>
             </aside>
         </div>
