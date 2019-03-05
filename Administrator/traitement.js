@@ -129,7 +129,7 @@ progressBar.init();
 
 
 //Gestion du scrolling indicator
-$(function() {
+/*$(function() {
 
     $("body").prognroll();
 
@@ -145,7 +145,8 @@ $(function() {
         }
     });
 
-});
+});*/
+
 
 
 
@@ -463,14 +464,14 @@ $(function() {
 
 
 /* ==========================================================================
-GESTION DE L'AJOUT DES FONCTIONNALITES DANS LA ZONE ADMINISTRATION
+GESTION DE L'AJOUT DE L'AGENDA DANS LA ZONE CONFIG PAGE
 ========================================================================== */
-/*$(function() {
+$(function() {
 
-    $('#fonctionnalites').on('submit', function (e) {
+    $('#program_annuel').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
-        $('.fonctionnalitesUploads').show();
+        $('.agendaUploads').show();
         var $form = $(this);
         var formdata = (window.FormData) ? new FormData($form[0]) : null;
         var data = (formdata !== null) ? formdata : $form.serialize();
@@ -483,23 +484,23 @@ GESTION DE L'AJOUT DES FONCTIONNALITES DANS LA ZONE ADMINISTRATION
             dataType: 'html', // selon le retour attendu
             data:data,
             success:function(data){
-                var cat = $('#fonctionnaliteRapport');
+                var cat = $('#agendaRapport');
                 if(data != 'success'){
                     if(cat.hasClass('alert-success')){
                         cat.removeClass('alert-success');
                         cat.addClass('alert-danger');
                     }
                     cat.html(data).show();
-                    $('.fonctionnalitesUploads').hide();
+                    $('.agendaUploads').hide();
                 }
                 else
                 {
-                    $('.fonctionnalitesUploads').hide();
+                    $('.agendaUploads').hide();
                     cat.removeClass('alert-danger');
                     cat.addClass('alert-success');
-                    cat.html('Vous avez Ajouté une Fonctionnalité').show();
+                    cat.html('Vous avez AJouté un Nouveau Programme').show();
                     setTimeout(function () {
-                        cat.html('Vous avez Ajouté une Fonctionnalité').slideDown().hide();
+                        cat.html('Vous avez AJouté un Nouveau Programme').slideDown().hide();
                     }, 5000);
 
                 }
@@ -509,5 +510,5 @@ GESTION DE L'AJOUT DES FONCTIONNALITES DANS LA ZONE ADMINISTRATION
         });
     });
 });
-*/
+
 

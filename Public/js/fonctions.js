@@ -614,6 +614,34 @@ $(function(){
 });
 
 
+
+
+/* ==========================================================================
+SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION ARTICLE
+   ========================================================================== */
+
+$(function(){
+    var agenda = '1';
+    $('#loader_agenda').show();
+    function chargement_agenda(){
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                agenda: agenda
+            },
+            cache: false,
+            success:function (data) {
+                $('#last_agenda').append(data);
+                $('#loader_agenda').hide();
+            }
+        });
+    }
+    chargement_agenda();
+});
+
+
+
 /* ==========================================================================
 SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION ARTICLE
    ========================================================================== */

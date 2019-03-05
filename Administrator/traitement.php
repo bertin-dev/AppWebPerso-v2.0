@@ -462,6 +462,94 @@ if(isset($_GET['typeF']))
 
 
 
+
+/* ==========================================================================
+GESTION DE L'AJOUT DE L'AGENDA DANS LA ZONE CONFIG PAGE
+========================================================================== */
+if(isset($_GET['agenda']))
+{
+    // Vérification de la validité des champs
+    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['addMsgAgenda']))
+    {
+        $i++;
+        $message .= "Programme Invalid<br />\n";
+    }
+
+    else
+    {
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_agenda FROM agenda WHERE libelle="'.$addMsgAgenda.'"');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Ce Programme Existe déjà<br/>";
+        }
+        else
+        {
+            $addDAgenda = strtotime($_POST['addDAgenda']);
+            $addFAgenda = strtotime($_POST['addFAgenda']);
+            if($addFAgenda < $addDAgenda){
+                $i++;
+                $message .= "La difference de dates est négative<br/>";
+            }
+            else{
+                $duree = Diff_entre_2Jours($addFAgenda, $addDAgenda);
+                $connexion->insert('INSERT INTO agenda(ref_id_admin, libelle, debut, fin, duree_restante, date_creation) 
+                                               VALUES(?, ?, ?, ?, ?, ?)', array(0, $addMsgAgenda, $addDAgenda, $addFAgenda, $duree, time()));
+                $message .= 'success';
+            }
+
+        }
+    }
+
+
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}
+
+
+function Diff_entre_2Jours($date2, $date1){
+    $diff = abs($date2 - $date1);
+    $result = array();
+    $tmp = $diff;
+
+    $result['second'] = $tmp % 60; // renvoi le reste de la div
+
+    $tmp = floor(($tmp - $result['second']) / 60);
+    $result['minute'] = $tmp % 60;
+
+    $tmp = floor(($tmp - $result['minute']) / 60);
+    $result['heure'] = $tmp % 24;
+
+    $tmp = floor(($tmp - $result['heure']) / 24);
+    $result['jour'] = $tmp;
+
+    return $result['jour'];
+}
+
+
 /* ==========================================================================
 GESTION DU SYSTEME D INSERTION DES SERVICES DANS LE BD
 ========================================================================== */

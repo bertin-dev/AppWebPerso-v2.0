@@ -5,6 +5,238 @@
  * Date: 04/03/2019
  * Time: 19h14
  */
+
+require '../App/Config/Config_Server.php';
+
+
+// Extrait les informations correspondantes à la page en cours de la DB
+foreach(\App::getDB()->query('
+         SELECT * FROM headers 
+         INNER JOIN page
+         ON headers.id_headers=page.ref_id_headers
+         WHERE id_page=1') as $con):
+    $_ENV['logo'] = $con->logo;
+    $_ENV['titre'] = $con->titre;
+endforeach;
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Insère les mots-clés extraits de la DB dans les meta -->
+    <meta name="keywords" lang="fr" content="">
+    <!-- Insère la description extraite de la DB dans les meta -->
+    <meta name="description" lang="fr" content="">
+    <meta name="author" content="Bertin Mounok, Bertin-Mounok, Pipo, Supers-Pipo">
+
+    <!-- Insère le titre extrait de la DB dans la balise correspondante -->
+    <title>Config_Page || SERVICES</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../Public/css/bootstrap.css" rel="stylesheet">
+    <link href="../Public/css/design.css" rel="stylesheet">
+    <link href="../Public/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../Public/css/scrolling-nav.css" rel="stylesheet">
+
+    <!-- Icône du site (favicon) -->
+    <link rel="icon" type="image/png" href="../Public/img/bertin-mounok.png"/>
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <?php require ('Sidebar.php');?>
+    <!-- /#sidebar-wrapper -->
+
+
+
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-1">
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                </div>
+                <div class="col-lg-12">
+
+                    <h1 class="text-center" style="margin-bottom: 50px;"><u>CONFIGURATION DES PAGES</u></h1>
+
+
+                       <!-- Blog Agenda-->
+                    <div class="col-lg-5">
+                        <div id="agendaRapport" class="alert alert-danger" style="display:none;"></div>
+
+                        <form id="program_annuel" action="traitement.php?agenda=agenda" method="post">
+                            <div class="form-group">
+                                <label>AGENDA ANNUEL <b>*</b></label>
+                                <input type="text" name="addMsgAgenda" class="form-control" required="" placeholder="Programme">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="debut">DEBUT <b>*</b></label>
+                                    <input id="debut" type="datetime-local" name="addDAgenda" class="form-control" required="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="fin">FIN <b>*</b></label>
+                                    <input id="fin" type="datetime-local" name="addFAgenda" class="form-control" required="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <img src="images/ajax-loader.gif" class="agendaUploads" style="display:none;">
+                                <input type="submit" class="form-control" value="AJOUTER UN PROGRAMME">
+                            </div>
+                        </form>
+
+                        <div style="margin-bottom: 100px;"></div>
+
+
+
+                    </div>
+                    <div class="col-lg-4"  style="border-left: 2px solid white; border-right: 2px solid white;">
+                        <div id="servicesRapport" class="alert alert-danger" style="display:none;"></div>
+                        <form id="services" method="post" action="traitement.php?services=services">
+                            <div class="form-group">
+                                <label>LISTING TYPE FONCTIONNALITES <b>*</b></label>
+                                <select style="background-color: white;" id="fonctionnality" name="fonctionnality" class="form-control">
+                                    <?php
+                                    foreach (App::getDB()->query('SELECT id_typeF, libelle FROM type_fonctionnalite ORDER BY id_typeF DESC') AS $cat):
+                                        echo '<option value="'.$cat->id_typeF.'">'.$cat->libelle.'</option>';
+                                    endforeach;
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>LISTE DE MODELES <b>*</b></label>
+                                <select style="background-color: white;" id="cat_services_models" name="cat_services_models" class="form-control">
+                                    <?php
+                                    foreach (App::getDB()->query('SELECT id_model, libelle FROM model ORDER BY id_model DESC') AS $cat):
+                                        echo '<option value="'.$cat->id_model.'">'.$cat->libelle.'</option>';
+                                    endforeach;
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>LISTE DE CATEGORIES SERVICES <b>*</b></label>
+                                <select style="background-color: white;" id="bloc_services" name="bloc_services" class="form-control">
+                                    <?php
+                                    foreach (App::getDB()->query('SELECT id_cat_serv, libelle FROM categorie_services ORDER BY id_cat_serv DESC') AS $cat):
+                                        echo '<option value="'.$cat->id_cat_serv.'">'.$cat->libelle.'</option>';
+                                    endforeach;
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>TITRE <b>*</b></label>
+                                <input type="text" name="titreServices" class="form-control" required="required" placeholder="Entrez votre Titre" value="<?php if(isset($_POST['titreService'])){echo $_POST['titreService'];}?>">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>DESCRIPTION <b>*</b></label>
+                                <textarea name="descriptionServices" class="form-control" title="Description">Entrez votre Description</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label>ESTIMATION FINANCIERE <b>*</b></label>
+                                    <input type="number" name="prixServices" class="form-control" required="required" placeholder="Entrez votre Estimation" value="<?php if(isset($_POST['prixServices'])){echo $_POST['prixServices'];}?>">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>UNITES <b>*</b></label>
+                                    <select style="background-color: white;" id="unites_services" name="unites_services" class="form-control">
+                                        <option value="FCFA">FCFA</option>
+                                        <option value="DOLLAR">DOLLAR</option>
+                                        <option value="EURO">EURO</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-lg" required="" value="AJOUT SERVICE">
+                                <img src="images/ajax-loader.gif" class="servicesUploads" style="display:none;">
+                            </div>
+
+
+                        </form>
+                    </div>
+
+
+
+                    <div class="col-lg-3">
+                        <div id="typeFRapport" class="alert alert-danger" style="display:none;"></div>
+
+                        <form id="typeFonctionnalites" action="traitement.php?typeF=typeF" method="post">
+                            <div class="form-group">
+                                <label>TYPE DE FONCTIONNALITES <b>*</b></label>
+                                <input type="text" name="addTypeF" class="form-control" required="" placeholder="TYPE DE FONCTIONNALITES">
+                            </div>
+                            <div class="form-group">
+                                <img src="images/ajax-loader.gif" class="typeFUploads" style="display:none;">
+                                <input type="submit" class="form-control" value="AJOUTER TYPE FONCTIONNALITES">
+                            </div>
+                        </form>
+
+                        <div style="margin-bottom: 100px;"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../Public/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../Public/js/bootstrap.min.js"></script>
+
+<script src="traitement.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+
+</html>
+
 
 

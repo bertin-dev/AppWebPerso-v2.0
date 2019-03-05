@@ -480,21 +480,37 @@
                             <!-- Title
                             <h2 class="card-header-title">Ally Cook</h2>-->
                             <!-- Subtitle -->
-                            <h5 class="mb-0 pb-3 pt-2" style="margin-top: initial;">Google Developper 8 MARS 2018</h5>
+                            <h5 class="mb-0 pb-3 pt-2" style="margin-top: initial;">
+                                <?php
+                                $evenement = '';
+                                foreach (App::getDB()->query('
+                                         SELECT MIN(debut), fin, agenda.libelle AS titre_programme FROM agenda
+                                         ORDER BY debut ') as $projet):
+
+                                    $result_diff = Diff_entre_2Jours(time(), $projet->debut);
+                                if($result_diff==0){
+                                    App::getDB()->delete('DELETE FROM agenda WHERE debut =:date_D', ['date_D' => $projet->debut]);
+                                    $evenement .= $projet->titre_programme;
+                                }else{
+                                    $evenement .= $projet->titre_programme;
+                                }
+                                endforeach;
+                                echo $evenement;
+                                ?>
+                                </h5>
 
 
                         </div>
-
                         <!-- Card content -->
                         <div class="card-body card-body-cascade text-center">
+                            <marquee id="last_agenda" class="text-center" behavior="" direction="UP" scrollamount="1" height="50">
 
-                            <marquee behavior="" direction="UP" scrollamount="1" height="50">
-                            <!-- Text -->
-                                <h5>Du 25 au 26 Nov. 2018</h5>
-                            <p class="card-text">Salon Beauté Sélection.</p>
-
-                                <h5>Du 27 au 29 Nov. 2019</h5>
-                                <p class="card-text">Affaire de cadeau - Paris</p>
+                                <center>
+                                    <div id="loader_agenda" style="display: none;">
+                                        <span class="loader loader-circle"></span>
+                                        Chargement......
+                                    </div>
+                                </center>
 
                             </marquee>
 
