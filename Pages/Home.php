@@ -60,7 +60,7 @@
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
                     <a href="index.php?id_page=5" title="contactez-moi">Contacter <span class="glyphicon glyphicon-send"></span></a> ou regardez <a
-                            href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-right"></span></a> <br>
+                            href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-left"></span></a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
                     <details>
                         <summary><h1 title="Solutions Informatique">UN PROJET EST UN CHALLENGE !</h1></summary>
