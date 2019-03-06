@@ -116,8 +116,10 @@
                 <div class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center; ">
                     <h4>Des Solutions pour tous vos enjeux de Transformation</h4>
                     <h5>Transformation digitale<small><em> Votre Entreprise est-elle prête ?</em></small></h5>
-                    <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
-                    <h5>Une Technologie de Pointe <small><em>Adapté pour votre entreprise</em></small></h5>
+                   <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
+                    <!--  <h5>Une Technologie de Pointe <small><em>Adapté pour votre entreprise</em></small></h5>-->
+                    <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Voir"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
+
                 </div>
 
 
@@ -125,7 +127,7 @@
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
 
-                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Envoyez" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demandez un Dévis</a>
+                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demandez un Dévis</a>
 
 
 
@@ -460,6 +462,18 @@
                 </div>
 
 
+                <?php
+                //$Cache->inc(ROOT.'/twitter.php');
+                if(!$variable = $Cache->read('variable')){
+                    sleep(1);
+                    $variable = "ici mon text";
+                    $Cache->write('variable', $variable);
+                }
+
+                echo $variable;
+                ?>
+
+
                 <div class="col-lg-12">
                     <p>la page a mis <span class="label secondary"><?= round(microtime(TRUE) - $_SESSION['time'], 3); ?>s</span> à se générer à peu près</p>
                 </div>
@@ -483,21 +497,23 @@
                             <h5 class="mb-0 pb-3 pt-2" style="margin-top: initial;">
                                 <?php
                                 $evenement = '';
-                                foreach (App::getDB()->query('
-                                         SELECT MIN(debut), fin, agenda.libelle AS titre_programme FROM agenda
-                                         ORDER BY debut ') as $projet):
+                                $now_time = time();
+                                foreach (App::getDB()->query(' SELECT debut, fin, agenda.libelle AS titre_programme FROM agenda ORDER BY debut ASC LIMIT 1 ') as $projet):
 
-                                    $result_diff = Diff_entre_2Jours(time(), $projet->debut);
+                                    $result_diff = Diff_entre_2Jours($now_time, $projet->debut);
+
                                 if($result_diff==0){
                                     App::getDB()->delete('DELETE FROM agenda WHERE debut =:date_D', ['date_D' => $projet->debut]);
                                     $evenement .= $projet->titre_programme;
                                 }else{
-                                    $evenement .= $projet->titre_programme;
+                                    $evenement .= utf8_encode(strtoupper($projet->titre_programme));
                                 }
                                 endforeach;
+                                $evenement .= '</h5>';
+                                $evenement .= '<p style="padding: initial; margin: initial;">Du '.date('d', $projet->debut).' au '.date('d M Y', $projet->fin).'</p>';
                                 echo $evenement;
                                 ?>
-                                </h5>
+
 
 
                         </div>

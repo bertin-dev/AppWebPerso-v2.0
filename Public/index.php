@@ -8,6 +8,11 @@
 
 session_start();
 
+require '../Core/Controller/Cache.php';
+define('ROOT', dirname(__FILE__));
+
+$Cache = new Cache(ROOT.'/tmp', 1);
+
 /*<?php setcookie('pseudo', 'M@teo21', time() + 365*24*3600, null, null, false, true); ?>*/
 //page de demarrage
 isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
