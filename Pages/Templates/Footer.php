@@ -1344,8 +1344,8 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
 </script>
 
 <script src="../Public/js/wow.min.js"></script>
-<script src="../Public/js/fonctions.js"></script>
 <script src="../Public/js/mustache.js"></script>
+<script src="../Public/js/fonctions.js"></script>
 
 
 

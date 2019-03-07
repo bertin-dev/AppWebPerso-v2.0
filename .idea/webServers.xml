@@ -5,6 +5,14 @@
       <webServer id="cb2ff961-75a9-406f-9dd0-25a704f62b53" name="Apache on Xampp" url="http://bertin.dev">
         <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\AppWebPerso@Project-v2.0" accessType="MOUNT" />
       </webServer>
+      <webServer id="97bc7c8b-eeaf-4558-8027-8764e5bbc10a" name="bertin-mounok.com" url="http://ftp.bertin-mounok.com">
+        <fileTransfer host="ftp.bertin-mounok.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

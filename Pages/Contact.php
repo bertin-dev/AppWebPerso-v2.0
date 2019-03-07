@@ -109,8 +109,8 @@ $info_DB->extract_DB();
             <!--PLAN DE LOCALISATION-->
             <article class="col-lg-12 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
                 <h4 align="center" style="font-variant: small-caps;">Plan de Localisation</h4>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254777.9977962855!2d11.37036633318602!3d3.8302937854779944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf7a309a7977%3A0x7f54bad35e693c51!2zWWFvdW5kw6k!5e0!3m2!1sfr!2scm!4v1519291442812"
-                        width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.6440133674932!2d11.557070014759473!3d3.8862519971732494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc5cc60617969%3A0x36698089de830e9f!2sNkolmesseng+-safari!5e0!3m2!1sfr!2scm!4v1551903683175"
+                        width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
             </article>
         </div>
     </div>
