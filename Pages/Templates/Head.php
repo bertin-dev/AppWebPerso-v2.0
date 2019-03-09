@@ -45,19 +45,22 @@
                                                                                src="../Public/img/socials/home.png"></a>
                         </li>
                         <li class="active">
-                            <small><em> <?php if ($_ENV['titre'] == "ACCUEIL") echo '';
-                                    else if ($_ENV['titre'] == "PORTFOLIO") echo utf8_encode($_ENV['titre']) . ' → Mes Réalisations.';
-                                    else if ($_ENV['titre'] == "COMPETENCES") echo 'Mes ' . utf8_encode($_ENV['titre']) . ' → Ce que je sais faire.';
-                                    else if ($_ENV['titre'] == "CULTURE") echo utf8_encode($_ENV['titre']) . ' → Ce que J\'aime.';
-                                    else if ($_ENV['titre'] == 'CONTACT') echo utf8_encode($_ENV['titre']) . ' → M\'envoyer un Email.';
-                                    else if ($_ENV['titre'] == 'A PROPOS') echo utf8_encode($_ENV['titre']) . ' → Je parle de moi.';
+                            <small><em> <?php if ($_ENV['titre'] == "Accueil") echo '';
+                                    else if ($_ENV['titre'] == "Portfolio") echo utf8_encode($_ENV['titre']) . ' → Mes Réalisations.';
+                                    else if (utf8_encode($_ENV['titre']) == "Compétences") echo 'Mes ' . utf8_encode($_ENV['titre']) . ' → Ce que je sais faire.';
+                                    else if ($_ENV['titre'] == "Culture") echo utf8_encode($_ENV['titre']) . ' → Ce que J\'aime.';
+                                    else if ($_ENV['titre'] == 'Contact') echo utf8_encode($_ENV['titre']) . ' → M\'envoyer un Email.';
+                                    else if ($_ENV['titre'] == 'A Propos') echo utf8_encode($_ENV['titre']) . ' → Je parle de moi.';
+                                    else if ($_ENV['titre'] == 'Blog') echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
+                                    else if ($_ENV['titre'] == 'Applications Web') echo utf8_encode($_ENV['titre']) . ' → Générez votre Dévis.';
+                                    else if ($_ENV['titre'] == 'Services') echo utf8_encode($_ENV['titre']) . ' → Mes prestations.';
                                     else if (!isset($_ENV['titre']) OR empty($_ENV['titre'])) echo ' → Page Introuvable.';
-                                    else echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
+                                   // else echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
                                     ?>
 
                                 </em></small>
                         </li>
-                        <span style="margin-left: 2%; "><small><em>Projet Encours... : Conception et implémentation d'une ERP </em></small></span>
+                        <span style="margin-left: 2%; "><small><em>Encours... : Conception et implémentation d'une ERP </em></small></span>
                        <!-- <marquee width="700" behavior="alternate" hspace="20" direction="left" scrollamount="1" SCROLLDELAY="10"></marquee>-->
 
 

@@ -63,29 +63,30 @@
             <div class="col-xs-12 col-md-3 col-lg-3">
                 <div class="col-xs-12 col-lg-12">
                     <h3 style="font-variant: small-caps;"><u>Ou me Trouver</u> ???</h3>
-                    <img src="../Public/img/socials/Github_Bertin-Mounok.svg" alt="Github Bertin-Mounok"
-                         title="Github Bertin Mounok" class="img-responsive"
-                         style="float: left; margin: 0 0 0 15px;" width="32"/>
-
-                    <img src="../Public/img/socials/LinkedIn-Bertin-Mounok.svg" alt="LinkedIn Bertin-Mounok"
-                         title="LinkedIn Bertin Mounok" class="img-responsive"
-                         style="float: left; margin: 0 0 0 5px;" width="32"/>
-
-
-                    <img src="../Public/img/socials/Facebook-Bertin-Mounok.svg" alt="Facebook Bertin-Mounok"
-                         title="Facebook Bertin Mounok" class="img-responsive"
-                         style="float: left; margin: 0 0 0 5px;" width="32"/>
-
-                    <!-- <img src="img/Twitter-Bertin-Mounok.svg" alt="twitter Bertin-Mounok" title="twitter Bertin Mounok" class="img-responsive"
-                          style="float: left; margin: 0 0 0 5px;" width="32"/>-->
-
-                    <img src="../Public/img/socials/Google+-Bertin-Mounok.svg" alt="Google+ Bertin-Mounok"
-                         title="Google+ Bertin Mounok" class="img-responsive"
-                         width="32" style="float: left; margin: 0 0 0 5px;"/>
-
-                    <img src="../Public/img/socials/Viadeo-Bertin-Mounok.svg" alt="Viadeo Bertin-Mounok"
-                         title="Viadeo Bertin Mounok" class="img-responsive"
-                         style="float: left; margin: 0 0 0 5px;" width="32"/>
+                    <a href="https://github.com/bertin-dev/AppWebPerso-v2.0"><img src="../Public/img/socials/Github_Bertin-Mounok.svg" alt="Github Bertin-Mounok"
+                                    title="Github Bertin Mounok" class="img-responsive"
+                                    style="float: left; margin: 0 0 0 15px;" width="32"/>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bertin-mounok-415754120/">
+                        <img src="../Public/img/socials/LinkedIn-Bertin-Mounok.svg" alt="LinkedIn Bertin-Mounok"
+                             title="LinkedIn Bertin Mounok" class="img-responsive"
+                             style="float: left; margin: 0 0 0 5px;" width="32"/>
+                    </a>
+                    <a href="https://www.facebook.com/Ndembapipo">
+                        <img src="../Public/img/socials/Facebook-Bertin-Mounok.svg" alt="Facebook Bertin-Mounok"
+                             title="Facebook Bertin Mounok" class="img-responsive"
+                             style="float: left; margin: 0 0 0 5px;" width="32"/>
+                    </a>
+                    <a href="https://plus.google.com/u/0/?tab=wX">
+                        <img src="../Public/img/socials/Google+-Bertin-Mounok.svg" alt="Google+ Bertin-Mounok"
+                             title="Google+ Bertin Mounok" class="img-responsive"
+                             width="32" style="float: left; margin: 0 0 0 5px;"/>
+                    </a>
+                    <a href="http://www.viadeo.com/p/0021658i7bpwsd5p">
+                        <img src="../Public/img/socials/Viadeo-Bertin-Mounok.svg" alt="Viadeo Bertin-Mounok"
+                             title="Viadeo Bertin Mounok" class="img-responsive"
+                             style="float: left; margin: 0 0 0 5px;" width="32"/>
+                    </a>
                 </div>
                 <strong>Entrez votre Email </strong>
 
@@ -479,6 +480,11 @@ SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION 
    ========================================================================== */
 
 $(function(){
+    //ZONE DE CITATION A L ACCUEIL
+    $('.item').first().addClass('active');
+    //ZONE ENTREPRISE A L ACCUEIL
+    $('#card1').removeClass('rgba-black-strong').addClass('rgba-indigo-strong');
+
     var realisation = '1';
     $('#loader_realisation').show();
     function chargement_realisation(){

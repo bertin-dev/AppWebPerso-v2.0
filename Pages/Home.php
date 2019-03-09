@@ -13,9 +13,17 @@
                     <div class="cta large event-type center-element-container no-transition"
                          style="background-color:#1b1b1b;">
 
-                        <a href="#" title="Analyste Programmeur" class="transition">
-                            <img data-src="" alt="bertin.dev" title="Programmation" class="bg img-responsive well"
-                                 src="img/bertin.dev3.png">
+                        <a href="#" title="Consultant en Développement .NET / WEB" class="transition">
+                            <?php
+                            foreach (App::getDB()->query('SELECT title,chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Extreme Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $slide):
+
+                             echo '<img data-src="" alt="bertin.dev" title="'.utf8_encode($slide->title).'" class="bg img-responsive well"
+                                 src="'.$slide->chemin.'">';
+                            endforeach;
+                            ?>
                             <!--<div class="mask"> </div>-->
                             <h3 class="text-left ecriture" style="font-size: 25px;">Chez Bertin.dev<br>Software Developper
                                 <i class="fa fa-windows"></i>
@@ -39,7 +47,7 @@
                             </div>
 
                             <div class="contentHover ecriture">
-                                <i class="fa fa-arrow-circle-right"> </i>
+                                <i class="fa fa-user-md"> </i>
                                 <i class="fa fa-envelope" style="font-size: 30px;">→bertin.dev@outlook.fr</i> <br>
                                 <i class="fa fa-phone-square" style="font-size: 30px;">→+237 694 04 89 25</i>
                             </div>
@@ -78,15 +86,6 @@
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
                         <small>Facteur de Motivation</small></em>
                 </h4>
-                <?php
-                foreach (\App::getDB()->query('SELECT title, paragraphes FROM page
-                                                         INNER JOIN body
-                                                         ON page.id_page=body.ref_id_page') AS $facteur):
-
-
-                endforeach;
-                ?>
-
                 <div class="ombrage col-lg-3">
                     <h1>PASSION</h1>
                     <p>Plus qu'un métier, le développement est pour moi une passion qui me pousse à me dépasser.</p>
@@ -135,51 +134,51 @@
 
             </article>
 
-
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-home"></span><em> ENTREPRISE
                         <small>L'innovation Technologique</small></em>
                 </h4>
                 <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-
-                    <div class="col-lg-4">
-                        <div class="card card-image mb-3" style="background-image: url('img/Accueil/Ecole/IMG-20170111-WA0013.jpg');">
-
+                    <?php
+                    $i=0;
+                    foreach (App::getDB()->query('SELECT title, description, chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 3') AS $entreprise):
+                        $enterprise = explode('-', utf8_encode($entreprise->description));
+                        echo '<div class="col-lg-4">
+                        <div class="card card-image mb-3" style="background-image: url('.$entreprise->chemin.');">
                             <!-- Content -->
-                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                            <div id="card'.$i.'" class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                 <div>
-                                    <h5 class="pink-text">
-                                        <i class="fa fa-facebook"></i> Marketing</h5>
+                                    <h5 class="pink-text">';
+                                    switch ($i){
+                                        case 1:
+                                            echo '<i class="fa fa-laptop"></i>';
+                                            break;
+                                        case 2:
+                                            echo '<i class="fa fa-mobile"></i>';
+                                            break;
+                                        default:
+                                            echo '<i class="fa fa-desktop"></i>';
+                                    }
+                                        echo ' '.$enterprise[0].'</h5>
                                     <h3 class="card-title pt-2">
-                                        <strong>This is card title</strong>
+                                        <strong>'.utf8_encode(strtoupper($entreprise->title)).'</strong>
                                     </h3>
-                                    <p>L'intérêt des Projets Puissants Facteur de Motivation</p>
-                                    <a class="btn btn-pink waves-effect waves-light btn-customizable"
-                                    title="Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme
-                                     parce qu'on sait qu'on aura affaire à la même routine que la veille,l'avant veille et ainsi de suite.
-                                     Dieu Seul sait comment je déteste la robotisation">
-                                        <i class="fa fa-cloud left"></i> View project</a>
+                                    <p>'.$enterprise[1].'</p>
+                                    <a class="btn-pink waves-effect waves-light btn-customizable"
+                                    title="'.$enterprise[2].'">
+                                        <i class="fa fa-play left"></i> Voir Les Projets</a>
                                 </div>
                             </div>
                             <!-- Content -->
                         </div>
-                    </div>
-
-
-                   <!-- <div class="col-lg-4 ombrage" style="text-align: center;">
-                        <div class="view view-tenth">
-                        <img src="img/Accueil/Ecole/IMG-20170111-WA0013.jpg" class="img-responsive img-rounded" alt="">
-                        <div class="mask">
-                            <h2>The Only Living Boy in New York</h2>
-                            <p>Words and such, a whole lot more of muh flippin' words.</p>
-                            <a href="#" class="info">Read More</a>
-                        </div>
-                        </div>
-                        <h4 title="Rien de pire que de se rendre au bureau tous les matins la mort dans l'âme parce qu'on sait qu'on aura affaire à la même routine que la veille,l'avant veille et ainsi de suite. Dieu Seul sait comment je déteste la robotisation
-                        ">L'intérêt des Projets Puissants Facteur de Motivation</h4>
-                    </div>-->
-
-                    <div class="col-lg-4">
+                    </div>';
+                                    $i++;
+                         endforeach;
+                    ?>
+                    <!--<div class="col-lg-4">
                     <div class="card card-image mb-3" style="background-image: url('img/Accueil/Ecole/DSCN9729.jpg');">
                         <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-5 px-4">
                             <div>
@@ -194,29 +193,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="card card-image mb-3" style="background-image: url('img/Accueil/Communauté/IMG_20160625_155908_1.jpg');">
-
-                            <!-- Content -->
-                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                                <div>
-                                    <h5 class="pink-text">
-                                        <i class="fa fa-facebook"></i> Marketing</h5>
-                                    <h3 class="card-title pt-2">
-                                        <strong>Discipline</strong>
-                                    </h3>
-                                    <p>A travers La discipline et la méthode je trouve toujours le succès dans les Projets</p>
-                                    <a class="btn-pink waves-effect waves-light btn-customizable"
-                                       title="">
-                                        <i class="fa fa-cloud left"></i> View project</a>
-                                </div>
-                            </div>
-                            <!-- Content -->
-                        </div>
-                    </div>
-
+                    </div>-->
                 </div>
             </article>
 
@@ -286,9 +263,18 @@
 </section>
 
 <section class="title-big">
-    <div class="parallax">
-        <h1 class="WOW bounceInDown animated" data-wow-duration="500ms" data-wow-delay="300ms" style="position: relative; top: 80px; font-variant: small-caps;">MON EXPERIENCE EN PROGRAMMATION <br> A VOTRE SERVICE</h1>
-    </div>
+<?php
+foreach (App::getDB()->query('SELECT title, chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Milieu" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $parallax):
+      $title = explode('-', $parallax->title);
+    echo '<div class="parallax" style="background: url('.$parallax->chemin.') no-repeat center;background-size: cover;background-attachment: fixed;height: 200px;text-align: center">
+          <h1 class="WOW bounceInDown animated" data-wow-duration="500ms" data-wow-delay="300ms" style="position: relative; top: 80px; font-variant: small-caps;">'.strtoupper(utf8_encode($title[0])). '<br>'.strtoupper(utf8_encode($title['1'])).'</h1>
+          </div>';
+endforeach;
+?>
+
 </section>
 
 
@@ -308,61 +294,39 @@
                                     <!-- Carousel Slides / Quotes -->
                                     <div class="carousel-inner text-center">
                                         <!-- Quote 1 -->
-                                        <div class="item active">
+                                        <?php
+                                        foreach (App::getDB()->query('SELECT title, description FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Bas" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 4') AS $citations):
+                                            echo '<div class="item">
                                             <blockquote>
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2">
-                                                        <p>La créativité implique de briser les conventions afin de regarder les choses sous un jour nouveau.</p>
-                                                        <small>EDWARD DE BONO</small>
+                                                    <div class="col-sm-8 col-sm-offset-2"><p>'.utf8_encode($citations->description).'</p>
+                                                            <small>'.strtoupper(utf8_encode($citations->title)).'</small>
                                                     </div>
                                                 </div>
                                             </blockquote>
-                                        </div>
-                                        <!-- Quote 2 -->
-                                        <div class="item">
-                                            <blockquote>
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2"><p>
-                                                            Les individus qui réussissent sont ceux qui savent mobiliser toutes leurs ressources mentales et physiques sur un objectif.</p>
-                                                            <small>Anthony Robbins</small>
-                                                    </div>
-                                                </div>
-                                            </blockquote>
-                                        </div>
-                                        <!-- Quote 3 -->
-                                        <div class="item">
-                                            <blockquote>
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2">
-                                                        <p>Il n’y a pas de grande tâche difficile qui ne puisse être décomposée en petites tâches faciles.</p>
-                                                            <small>**</small>
-                                                    </div>
-                                                </div>
-                                            </blockquote>
-                                        </div>
-                                        <!-- Quote 4 -->
-                                        <div class="item">
-                                            <blockquote>
-                                                <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2">
-                                                        <p> Without imagination, he could not have creation there.</p>
-                                                        <small>A. Jacquard</small>
-                                                    </div>
-                                                </div>
-                                            </blockquote>
-                                        </div>
+                                                  </div>';
+                                        endforeach;
+                                        ?>
                                     </div>
                                     <!-- Bottom Carousel Indicators -->
                                     <ol class="carousel-indicators" style="margin-bottom: 0;">
-                                        <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="" alt=""></li>
-                                        <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="" alt=""></li>
-                                        <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="" alt=""></li>
-                                        <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="" alt=""></li>
+                                        <?php
+                                         $i = 0;
+                                        foreach (App::getDB()->query('SELECT chemin, title FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Bas" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 4') AS $citations):
+                                                         echo ' <li data-target="#quote-carousel" data-slide-to="'.$i.'" class="active"><img class="img-responsive " src="'.$citations->chemin.'" alt="'.$citations->title.'"></li>';
+                                        endforeach;
+                                        ?>
                                     </ol>
 
                                     <!-- Carousel Buttons Next/Prev -->
-                                    <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-                                    <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                                    <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-lg"><i class="fa fa-chevron-left"></i></a>
+                                    <a data-slide="next" href="#quote-carousel" class="right carousel-control visible-lg"><i class="fa fa-chevron-right"></i></a>
                                 </div>
 
                         <a class="btn btn-primary" href="index.php?id_page=6" title="Cliquez"><i class="fa fa-arrow-right"></i> Me Suivre</a>
@@ -395,70 +359,31 @@
                     <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-cloud-download"></span><em> CLOUD
                             <small>Traitement, Stockage, Restoration des Données Distantes</small></em>
                     </h4>
+                    <?php
+                    foreach (App::getDB()->query('SELECT chemin, title, description FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Extreme Bas" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 3') AS $facteur):
 
-
-                    <div class="col-lg-4 mb-4">
-
+                        echo '<div class="col-lg-4 mb-4">
                         <!-- Card -->
                         <div class="card card-cascade narrower">
-
                             <!-- Card image -->
                             <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                                <img src="img/Accueil/Microsoft-Cloud1.jpg" class="img-responsive" alt="">
+                                <img src="'.$facteur->chemin.'" title="'.utf8_encode($facteur->title).'" class="img-responsive" alt="">
                             </div>
 
                             <!-- Card content -->
                             <div class="card-body card-body-cascade text-center">
                                 <!-- Text -->
-                                <p class="card-text" style="font-size: 15px">
-                                    Grace à cette Techno, j'ai accès à toutes mes données partout soit entant que utilisateur ou alors entant que Développeur au travers d' Azure Active Directory
-                                </p>
+                                <p class="card-text" style="font-size: 15px">'.utf8_encode($facteur->description).'</p>
                             </div>
 
                         </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
+                    </div>';
 
-                        <!-- Card -->
-                        <div class="card card-cascade narrower">
-                            <!-- Card image -->
-                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                                <img src="img/Accueil/azure devops.png" class="img-responsive" alt="" width="140">
-                            </div>
-
-                            <!-- Card content -->
-                            <div class="card-body card-body-cascade text-center">
-                                <!-- Text -->
-                                <p class="card-text" style="font-size: 15px">
-                                    Azure Devops autre fois appelé VSTS. Il me permet de planifier
-                                    les Projets dans le Backlog et travailler avec d'autres Developpeurs du monde via son outil Git.
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-
-                        <!-- Card -->
-                        <div class="card card-cascade narrower">
-                            <!-- Card image -->
-                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                                <img src="img/Accueil/web.png" class="img-responsive" alt="" >
-                            </div>
-
-                            <!-- Card content -->
-                            <div class="card-body card-body-cascade text-center">
-                                <!-- Text -->
-                                <p class="card-text" style="font-size: 15px">
-                                    Autrefois négligé et simplifié par moi, Aujourd'hui cette Techno m'est dévenu incontournable dans tous les projets sur lesquels je suis passé
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
+                    endforeach;
+                    ?>
                 </div>
 
 
@@ -484,7 +409,7 @@
             <aside class="col-xs-12 col-md-4 col-lg-3 mb-4">
 
 
-                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-calendar"></span><em> Agenda Mensuel</em></small> </h5>
+                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-calendar"></span><em> Agenda Annuel</em></small> </h5>
                     <!-- Card -->
                     <div style="margin-top: 60px" class="card card-cascade narrower">
 
@@ -500,17 +425,21 @@
                                 $now_time = time();
                                 foreach (App::getDB()->query(' SELECT debut, fin, agenda.libelle AS titre_programme FROM agenda ORDER BY debut ASC LIMIT 1 ') as $projet):
 
-                                    $result_diff = Diff_entre_2Jours($now_time, $projet->debut);
-
-                                if($result_diff==0){
-                                    App::getDB()->delete('DELETE FROM agenda WHERE debut =:date_D', ['date_D' => $projet->debut]);
-                                    $evenement .= $projet->titre_programme;
-                                }else{
-                                    $evenement .= utf8_encode(strtoupper($projet->titre_programme));
-                                }
+                                    if(isset($projet->debut) && $projet->debut!=''){
+                                        $result_diff = Diff_entre_2Jours($now_time, $projet->debut);
+                                        if($result_diff==0){
+                                            App::getDB()->delete('DELETE FROM agenda WHERE debut =:date_D', ['date_D' => $projet->debut]);
+                                            $evenement .= $projet->titre_programme;
+                                        }else{
+                                            $evenement .= utf8_encode(strtoupper($projet->titre_programme));
+                                        }
+                                    }
                                 endforeach;
-                                $evenement .= '</h5>';
-                                $evenement .= '<p style="padding: initial; margin: initial;">Du '.date('d', $projet->debut).' au '.date('d M Y', $projet->fin).'</p>';
+                                    if($evenement == '') $evenement .= 'Aucun Evénement</h5>';
+                                        else{
+                                            $evenement .= '</h5>';
+                                            $evenement .= '<p style="padding: initial; margin: initial;">Du '.date('d', $projet->debut).' au '.date('d M Y', $projet->fin).'</p>';
+                                        }
                                 echo $evenement;
                                 ?>
 

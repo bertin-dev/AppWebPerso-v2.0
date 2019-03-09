@@ -83,8 +83,9 @@ endforeach;
                     <h1 class="text-center" style="margin-bottom: 50px;"><u>CONFIGURATION DES PAGES</u></h1>
 
 
-                       <!-- Blog Agenda-->
+                       <!-- Bloc Agenda-->
                     <div class="col-lg-5">
+                        <h1>BLOC AGENDA</h1>
                         <div id="agendaRapport" class="alert alert-danger" style="display:none;"></div>
 
                         <form id="program_annuel" action="traitement.php?agenda=agenda" method="post">
@@ -111,9 +112,63 @@ endforeach;
                                 <input type="submit" class="form-control" value="AJOUTER UN PROGRAMME">
                             </div>
                         </form>
+                        <div style="margin-bottom: 150px;"></div>
 
-                        <div style="margin-bottom: 100px;"></div>
+                        <h1>BLOC IMAGES</h1>
+                        <div id="imgRapport" class="alert alert-danger" style="display:none;"></div>
+                        <form id="img" action="traitement.php?img=img" method="post">
+                            <div class="form-group col-lg-6">
+                                <label for="numPageImg">PAGE CORRESPONDANTE <b>*</b></label>
+                                <select style="background-color: white;" id="numPageImg" name="numPage" class="form-control">
+                                    <?php
+                                    foreach (App::getDB()->query('SELECT id_page, titre FROM page 
+                                                                                          INNER JOIN headers 
+                                                                                          ON page.ref_id_headers=headers.id_headers 
+                                                                                          WHERE id_page <=7') AS $cat):
+                                        echo '<option value="'.$cat->id_page.'">'.utf8_encode($cat->titre).'</option>';
+                                    endforeach;
+                                    ?>
+                                </select>
+                            </div>
 
+
+                            <div class="form-group col-lg-6">
+                                <label for="destinationImg">LIEU DE DESTINATION <b>*</b></label>
+                                <select style="background-color: white;" id="destinationImg" name="destinationImg" class="form-control">
+                                    <option value="Extreme Haut">Extrême Haut</option>
+                                    <option value="Haut">Haut</option>
+                                    <option value="Milieu">Milieu</option>
+                                    <option value="Bas">Bas</option>
+                                    <option value="Extreme Bas">Extrême Bas</option>
+                                    <option value="Gauche">Gauche</option>
+                                    <option value="Extreme Gauche">Extrême Gauche</option>
+                                    <option value="Droit">Droit</option>
+                                    <option value="Extreme Droit">Extrême Droit</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>TITRE <b>*</b></label>
+                                <input type="text" name="titreImg" class="form-control" required="" placeholder="TITRE">
+                            </div>
+
+                            <div class="form-group">
+                                <label>DESCRIPTION <b>*</b></label>
+                                <textarea name="descriptionImg" class="form-control" title="Description">Entrez votre Description</textarea>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="blocImg">IMAGE <b>*</b></label>
+                                <input type="file" name="blocImg" class="form-control" id="blocImg">
+                            </div>
+
+                            <div class="form-group">
+                                <img src="images/ajax-loader.gif" class="imgUploads" style="display:none;">
+                                <input type="submit" class="form-control" value="AJOUTEZ UNE IMAGE">
+                            </div>
+                        </form>
 
 
                     </div>

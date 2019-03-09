@@ -313,7 +313,7 @@ $(function() {
 
 
 /* ==========================================================================
-GESTION DE L AJOUT DES CATEGORIE SERVICES DANS LA ZONE SERVICES
+GESTION DE L AJOUT DES CATEGORIES SERVICES DANS LA ZONE SERVICES
 ========================================================================== */
 $(function() {
 
@@ -498,9 +498,9 @@ $(function() {
                     $('.agendaUploads').hide();
                     cat.removeClass('alert-danger');
                     cat.addClass('alert-success');
-                    cat.html('Vous avez AJouté un Nouveau Programme').show();
+                    cat.html('Vous avez Ajouté un Nouveau Programme').show();
                     setTimeout(function () {
-                        cat.html('Vous avez AJouté un Nouveau Programme').slideDown().hide();
+                        cat.html('Vous avez Ajouté un Nouveau Programme').slideDown().hide();
                     }, 5000);
 
                 }
@@ -512,3 +512,51 @@ $(function() {
 });
 
 
+
+/* ==========================================================================
+GESTION DE L'AJOUT DE L'IMAGE DANS LA ZONE CONFIG PAGE
+========================================================================== */
+$(function() {
+
+    $('#img').on('submit', function (e) {
+        // On empêche le navigateur de soumettre le formulaire
+        e.preventDefault();
+        $('.imgUploads').show();
+        var $form = $(this);
+        var formdata = (window.FormData) ? new FormData($form[0]) : null;
+        var data = (formdata !== null) ? formdata : $form.serialize();
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            contentType: false, // obligatoire pour de l'upload
+            processData: false, // obligatoire pour de l'upload
+            dataType: 'html', // selon le retour attendu
+            data:data,
+            success:function(data){
+                var cat = $('#imgRapport');
+                if(data != 'success'){
+                    if(cat.hasClass('alert-success')){
+                        cat.removeClass('alert-success');
+                        cat.addClass('alert-danger');
+                    }
+                    cat.html(data).show();
+                    $('.imgUploads').hide();
+                }
+                else
+                {
+                    $('.imgUploads').hide();
+                    cat.removeClass('alert-danger');
+                    cat.addClass('alert-success');
+                    cat.html('Vous avez Ajouté une Nouvelle Image').show();
+                    setTimeout(function () {
+                        cat.html('Vous avez AJouté une Nouvelle Image').slideDown().hide();
+                    }, 5000);
+
+                }
+
+            }
+
+        });
+    });
+});

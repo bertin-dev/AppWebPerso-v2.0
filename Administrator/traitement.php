@@ -25,6 +25,28 @@ session_start();
 
     }
 
+
+
+//function
+function Diff_entre_2Jours($date2, $date1){
+    $diff = abs($date2 - $date1);
+    $result = array();
+    $tmp = $diff;
+
+    $result['second'] = $tmp % 60; // renvoi le reste de la div
+
+    $tmp = floor(($tmp - $result['second']) / 60);
+    $result['minute'] = $tmp % 60;
+
+    $tmp = floor(($tmp - $result['minute']) / 60);
+    $result['heure'] = $tmp % 24;
+
+    $tmp = floor(($tmp - $result['heure']) / 24);
+    $result['jour'] = $tmp;
+
+    return $result['jour'];
+}
+
     $message='';
     $success='';
     $i=0;
@@ -530,23 +552,138 @@ if(isset($_GET['agenda']))
 }
 
 
-function Diff_entre_2Jours($date2, $date1){
-    $diff = abs($date2 - $date1);
-    $result = array();
-    $tmp = $diff;
 
-    $result['second'] = $tmp % 60; // renvoi le reste de la div
 
-    $tmp = floor(($tmp - $result['second']) / 60);
-    $result['minute'] = $tmp % 60;
 
-    $tmp = floor(($tmp - $result['minute']) / 60);
-    $result['heure'] = $tmp % 24;
+/* ==========================================================================
+GESTION DU SYSTEME D INSERTION DES IMAGES DANS LE BD
+========================================================================== */
 
-    $tmp = floor(($tmp - $result['heure']) / 24);
-    $result['jour'] = $tmp;
+if(isset($_GET['img']))
+{
 
-    return $result['jour'];
+    // Vérification de la validité des champs
+    if(!isset($_POST['titreImg']))
+    {
+        $i++;
+        $message .= "Titre Inexistant<br />\n";
+    }
+    else
+    {
+        $_POST['titreImg'] = strtolower(stripslashes(htmlspecialchars($_POST['titreImg'])));
+        $_POST['descriptionImg'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['descriptionImg'])))), ENT_QUOTES);
+
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_img FROM images WHERE title="'.$_POST['titreImg'].'" ');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Ce Titre ou alors cette Description Existe déjà<br/>";
+        }
+        else
+        {
+
+            //on verifi si l'adresse de l'image a ete bien definit
+            if(isset($_FILES['blocImg']['name']) AND !empty($_FILES['blocImg']['name']))
+            {
+                //on verifi la taille de l'image
+                if($_FILES['blocImg']['size']>=1000)
+                {
+                    $extensions_valides=Array('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG');
+                    //la fonctions strrchr( $chaine,'.') renvoit l'extension avec le point
+                    //la fonction substtr($chaine,1) ingore la premiere caractere de la chaine
+                    //la fonction strtolower($chaine) renvoit la chaine en minuscule
+                    $extension_upload=strtolower(substr(strrchr($_FILES['blocImg']['name'],'.'),1));
+                    //on verifi si l'extension_upload est valide
+
+                    if(in_array($extension_upload,$extensions_valides))
+                    {
+                        $token=md5(uniqid(rand(),true));
+                        $chemin="../Public/img/Accueil/{$token}.{$extension_upload}";
+                        // $chemin="blog_img/{$token}.{$extension_upload}";
+                        //on deplace du serveur au disque dur
+
+                        if(move_uploaded_file($_FILES['blocImg']['tmp_name'],$chemin))
+                        {
+                            // La photo est la source
+                            if($extension_upload=='jpg' OR $extension_upload=='jpeg' OR $extension_upload=='JPG' OR $extension_upload=='JPEG')
+                            {$source = imagecreatefromjpeg($chemin);}
+                            else{$source = imagecreatefrompng($chemin);}
+                            $destination = imagecreatetruecolor(150, 150); // On crée la miniature vide
+
+                            // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
+                            $largeur_source = imagesx($source);
+                            $hauteur_source = imagesy($source);
+                            $largeur_destination = imagesx($destination);
+                            $hauteur_destination = imagesy($destination);
+                            //$chemin0="blog_img/miniature/{$token}.{$extension_upload}";
+                            $chemin0="../Public/img/Accueil/miniature/{$token}.{$extension_upload}";
+                            // On crée la miniature
+                            imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
+                            imagejpeg($destination,$chemin0);
+                        }
+                        else
+                        {
+                            $i++;
+                            $message .= "no deplace<br/>";
+                        }
+                    }
+                    else
+                    {
+                        $i++;
+                        $message .= "no extensions<br/>";
+                    }
+                }
+                else
+                {
+                    $i++;
+                    $message .= "no size<br/>";
+                }
+            }
+            else
+            {
+                $i++;
+                $message .= "no defined<br/>";
+            }
+
+
+            $connexion->insert('INSERT INTO images(ref_id_admin, ref_id_page, chemin, title, description, destination, date_ajout)
+                                               VALUES(:id_admin, :id_page, :chemin, :title, :description, :destination, :date_ajout)',
+                array('id_admin'=>0,
+                    'id_page'=>intval($_POST['numPage']),
+                    'chemin'=>$chemin,
+                    'title'=>$_POST['titreImg'],
+                    'description'=>$_POST['descriptionImg'],
+                    'destination'=>$_POST['destinationImg'],
+                    'date_ajout'=>time()
+                ));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
 }
 
 

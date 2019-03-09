@@ -12,24 +12,37 @@
 <section id="" class="">
 <div class="container" style="padding: initial; margin: initial; width: 100%">
     <div class="row" style="padding: initial; margin: initial; width: 100%">
+        <?php
+        foreach (App::getDB()->query('SELECT title,chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Extreme Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $cover):
 
+            echo '<div class="col-lg-12 apropos-cover" style="border-bottom: 5px solid #1073b2; margin-top: 50px; z-index: 0;
+    background: url('.$cover->chemin.') no-repeat center;
+    /* background-color: #2F2F2E; */
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 200px;">
 
-   <!-- <div class="apropos-cover" style="padding: initial; margin-top: -40px; height: 200px;">
-        <div class="col-lg-3">
-            <img src="img/Accueil/app.jpg" alt="" class="img-responsive img-circle">
-        </div>
+    </div>';
+        endforeach;
+        ?>
 
-        <div class="col-lg-9">
-        </div>
-    </div>-->
-
-    <div class="col-lg-12 apropos-cover" style="border-bottom: 5px solid #1073b2; margin-top: 50px; z-index: 0;">
-
-    </div>
         <div class="col-lg-12" style="background: white; margin-bottom: 20px;">
-            <div class="col-lg-3">
-                <img src="img/Accueil/app.jpg" alt="" style="float: right; margin-top: -70px; z-index: 10;border: 2px solid #1073b2;" class="img-circle" width="130" height="130">
-            </div>
+            <?php
+            foreach (App::getDB()->query('SELECT title,chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $profil):
+                echo '<div class="col-lg-3">
+                <img src="'.$profil->chemin.'" alt="'.$profil->title.'" title="'.$profil->title.'" style="float: right; margin-top: -70px; z-index: 10;border: 2px solid #1073b2;" class="img-circle" width="130" height="130">
+                </div>';
+            endforeach;
+            ?>
             <div class="col-lg-6" style="color: black">
             <p style="font-variant: small-caps;">
                 <span style="font-size: 26px; font-weight: bold;">Bertin Mounok</span><br>
@@ -42,11 +55,11 @@
                 <div class="col-lg-3" style="padding: 5px 0 0 0; font-variant: small-caps;"><button  class="btn btn-primary ombrage" style="border-radius: 50%;" disabled="disabled">Suivre</button></div>
                 <div class="col-lg-9" style="padding: initial; margin: initial;">
                 <ul class="social_icons">
-                    <li><a href="#" title=""><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" title=""><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" title=""><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" title=""><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#" title=""><i class="fa fa-comments"></i></a></li>
+                    <li><a href="https://www.facebook.com/Ndembapipo" title="Facebook bertin-dev"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/bertin_dev" title="Twitter bertin-dev"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/u/0/?tab=wX" title="Google+ bertin-dev"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/bertin-mounok-415754120/" title="LinkedIn bertin-dev"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="index.php?id_page=7" title="Blog bertin-dev"><i class="fa fa-comments"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -139,12 +152,12 @@
                                             </ul>
                                         </li>
 
-                                        <li>
+                                        <!--<li>
                                             <a href="#">BEAC</a>
                                             <ul>
                                                 <li> <a href="#">Développeur</a></li>
                                             </ul>
-                                        </li>
+                                        </li>-->
 
                                     </ul>
                                 </li>
@@ -201,19 +214,6 @@
 
 
         </div>
-
-        <!--
-            <div class="col-xs-12 col-md-3 col-lg-3">
-     <div class="col-lg-12" style="background: white; color: black;">
-         <h4 style="font-variant: small-caps;" >Parcours Professionnel</h4>
-       <div class="" style="border-left: 5px solid black; height: 100px; left: 50%; margin-bottom: 2px;"></div>
-     </div>
-        </div>
-         -->
-
-
-
-
 
         <div id="Apropos_content" class="col-xs-12 col-md-8 col-lg-8">
 
@@ -340,19 +340,45 @@
 
 
         <div class="col-xs-12 col-md-4 col-lg-4 WOW bounceInDown animated">
+            <?php
+            foreach (App::getDB()->query('SELECT title,chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Extreme Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $cover):
 
-            <div class="col-lg-12 apropos-cover" style="height: 100px;">
-                <h4 style="position: absolute; left: 40%; top: 50%; color: #2487c7;font-variant: small-caps;">#Bertin Mounok <br> <small><em>Cameroun</em></small></h4>
-            </div>
+                echo '<div class="col-lg-12 apropos-cover" style="height: 100px;
+    background: url('.$cover->chemin.') no-repeat center;
+    /* background-color: #2F2F2E; */
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 100px;">
+<h4 style="position: absolute; left: 40%; top: 50%; color: #2487c7;font-variant: small-caps;">#Bertin Mounok <br> <small><em>Cameroun</em></small></h4>
+    </div>';
+            endforeach;
+            ?>
             <div class="col-lg-12" style="background: white; margin-bottom: 20px;">
-                <div class="col-lg-5">
-                    <img src="img/Accueil/app.jpg" alt="" style="float: right; margin-top: -45px; z-index: 10;" class="img-thumbnail">
-                </div>
+                <?php
+                foreach (App::getDB()->query('SELECT title,chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         WHERE destination="Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $profil):
+                    echo '<div class="col-lg-5">
+                <img src="'.$profil->chemin.'" alt="'.$profil->title.'" title="'.$profil->title.'" style="float: right; margin-top: -45px; z-index: 10;" class="img-thumbnail">
+                </div>';
+                endforeach;
+                ?>
                 <div class="col-lg-7" style="color: black">
-                    <img src="img/Accueil/app.jpg" alt="" class="img-circle" width="40" height="40" style="float: left; margin-right: 2px;">
-                    <img src="img/Accueil/app.jpg" alt="" class="img-circle" width="40" height="40" style="float: left; margin-right: 2px;">
-                    <img src="img/Accueil/app.jpg" alt="" class="img-circle" width="40" height="40" style="float: left; margin-right: 2px;">
-                    <img src="img/Accueil/app.jpg" alt="" class="img-circle" width=40" height="40" >
+                    <?php
+                    foreach (App::getDB()->query('SELECT title,chemin FROM images
+                                                         INNER JOIN page
+                                                         ON images.ref_id_page=page.id_page
+                                                         ORDER BY id_page DESC LIMIT 0, 4 ') AS $profil):
+                        echo '<img src="'.$profil->chemin.'" alt="'.$profil->title.'" title="'.$profil->title.'" class="img-circle" width="40" height="40" style="float: left; margin-right: 2px;">';
+                    endforeach;
+                    ?>
                 </div>
             </div>
         </div>
