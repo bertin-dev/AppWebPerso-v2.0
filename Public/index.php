@@ -17,8 +17,8 @@ $Cache = new Cache(ROOT.'/tmp', 5);
 
 
 require '../vendor/autoload.php';
-$appId ='361124424614569';
-$appSecret ='04a4d5b4a49881e45df0bd215ae30d24';
+$appId ='ID_FACEBOOK';
+$appSecret ='CLE_SECRETE';
 $connect = new FacebookConnect($appId, $appSecret);
 $user = $connect->connect('http://www.bertin-mounok.com');
 if(is_string($user)){
