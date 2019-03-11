@@ -81,7 +81,6 @@
                 <!--<a class="btn btn-default page-scroll" href="#about" title="ppppppppppppppp">Click Me to Scroll Down!</a>-->
             </article>
 
-
             <article class="col-xs-12 col-md-4 col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center;">
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
                         <small>Facteur de Motivation</small></em>
@@ -126,7 +125,7 @@
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
 
-                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demandez un Dévis</a>
+                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>
 
 
 
@@ -281,15 +280,12 @@ endforeach;
 <section>
     <div class="container">
         <div class="row">
-
             <article class="col-xs-12 col-md-8 col-lg-9">
-
                 <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-book"></span><em> CITATIONS
                         <small>Sur la Vie</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px;">
 <!-------->
-
                                 <div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="180000">
                                     <!-- Carousel Slides / Quotes -->
                                     <div class="carousel-inner text-center">
@@ -328,7 +324,6 @@ endforeach;
                                     <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-lg"><i class="fa fa-chevron-left"></i></a>
                                     <a data-slide="next" href="#quote-carousel" class="right carousel-control visible-lg"><i class="fa fa-chevron-right"></i></a>
                                 </div>
-
                         <a class="btn btn-primary" href="index.php?id_page=6" title="Cliquez"><i class="fa fa-arrow-right"></i> Me Suivre</a>
 <!-------->
                 </div>
@@ -407,15 +402,11 @@ endforeach;
 
 <!----TRAITEMENT DE LA BARRE LATERALE-->
             <aside class="col-xs-12 col-md-4 col-lg-3 mb-4">
-
-
                 <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-calendar"></span><em> Agenda Annuel</em></small> </h5>
                     <!-- Card -->
                     <div style="margin-top: 60px" class="card card-cascade narrower">
-
                         <!-- Card image -->
                         <div style="margin-top: -45px" class="view view-cascade gradient-card-header peach-gradient">
-
                             <!-- Title
                             <h2 class="card-header-title">Ally Cook</h2>-->
                             <!-- Subtitle -->
@@ -442,26 +433,19 @@ endforeach;
                                         }
                                 echo $evenement;
                                 ?>
-
-
-
                         </div>
                         <!-- Card content -->
                         <div class="card-body card-body-cascade text-center">
                             <marquee id="last_agenda" class="text-center" behavior="" direction="UP" scrollamount="1" height="50">
-
                                 <center>
                                     <div id="loader_agenda" style="display: none;">
                                         <span class="loader loader-circle"></span>
                                         Chargement......
                                     </div>
                                 </center>
-
                             </marquee>
-
                         </div>
-
-                    </div>
+                    </div
                     <!-- Card -->
 
 
@@ -469,7 +453,6 @@ endforeach;
                             il y a
                             <?php
                             $now = time();
-
                             foreach (\App::getDB()->query('
                             SELECT MAX(id_sujet), sujets.date_enreg AS D_enreg_Article FROM sujets
                             INNER JOIN categorie
@@ -502,10 +485,8 @@ endforeach;
                             ?>
                             </em></small> </h5>
                 <div class="card card-cascade wider">
-
                     <!-- Card image -->
                     <div id="last_article" class="view view-cascade gradient-card-header peach-gradient">
-
                         <center>
                             <div id="loader_article" style="display: none;">
                                 <span class="loader loader-circle"></span>
@@ -513,13 +494,10 @@ endforeach;
                             </div>
                         </center>
                     </div>
-
-
                 </div>
 
                 <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-comment"></span><em> Derniers Commentaires</em></small> </h5>
                 <div class="widget">
-
                                 <div class="panel panel-default widget">
                                     <div class="panel-heading" style="background-color: #337ab7; color: white;">
                                         <h3 class="panel-title">
@@ -570,7 +548,6 @@ endforeach;
                         <h6 style="margin: 5px;">Spécialisé dans les Techno Suivantes:</h6>
                         <img src="img/Accueil/microsoft.jpg" title="icon-name" class="img-thumbnail" width="100" height="100">
                         <img src="img/Accueil/TWD-Logo-dodgerblue.png" title="icon-name" class="img-thumbnail" width="100" height="100">
-
                     </div>
                 </div>
             </aside>

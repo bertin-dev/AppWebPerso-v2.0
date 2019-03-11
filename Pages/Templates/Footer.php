@@ -142,10 +142,10 @@
     /* ==========================================================================
 SYSTME DE NAVIGATION EN AJAX
    ========================================================================== */
-    $('#menu_head a').click(function(e){
+   /* $('#menu_head a').click(function(e){
         var link = $(this).attr('href');
         /*Empeche d'éffectuer la navigation ajax pour le menu Blog qui a pour id=index.php?id_page=7*/
-        var tab = link.split('=');
+       /* var tab = link.split('=');
         if(tab[1] != 7){
             $.ajax({
                 url: link,
@@ -164,7 +164,7 @@ SYSTME DE NAVIGATION EN AJAX
                 });
             e.preventDefault();
         }
-    });
+    });*/
 
 
 

@@ -18,10 +18,12 @@ class Cache
         $this->duration = $duration;
     }
 
+    //Permet d'ecrire dans le fichier
     public function write($filename, $content){
       return file_put_contents($this->dirname.'/'.$filename, $content);
     }
 
+    //Permet de lire le fichier
 public function read($filename){
     $file = $this->dirname.'/'.$filename;
         if(!file_exists($file)){
@@ -34,6 +36,7 @@ public function read($filename){
 return file_get_contents($file);
 }
 
+//Permet de supprimer à la volé les élément de cache
 public function delete($filename){
 $file = $this->dirname.'/'.$filename;
 if(file_exists($file)){
@@ -41,6 +44,7 @@ if(file_exists($file)){
 }
 }
 
+//Permet de netoyer ou vider le contenu de cache ou le dossier
 public function clear(){
         $files = glob($this->dirname.'/*');
         foreach ($files as $file){
@@ -50,6 +54,7 @@ public function clear(){
 
 
 public function inc($file, $cachename = null){
+        var_dump($file);
         if(!$cachename){
             $cachename = basename($file); // renvoi le nom du fichier inclu
         }
@@ -66,6 +71,7 @@ public function inc($file, $cachename = null){
 }
 
 
+//elle permet de regrouper plusieurs requêtes
 public function start($cachename){
         if($content = $this->read($cachename)){
             echo $content;

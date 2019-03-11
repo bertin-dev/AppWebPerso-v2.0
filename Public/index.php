@@ -7,11 +7,29 @@
  */
 
 session_start();
+use \App\Facebook\FacebookConnect;
+
 
 require '../Core/Controller/Cache.php';
 define('ROOT', dirname(__FILE__));
+$Cache = new Cache(ROOT.'/tmp', 5);
 
-$Cache = new Cache(ROOT.'/tmp', 1);
+
+
+require '../vendor/autoload.php';
+$appId ='361124424614569';
+$appSecret ='04a4d5b4a49881e45df0bd215ae30d24';
+$connect = new FacebookConnect($appId, $appSecret);
+$user = $connect->connect('http://www.bertin-mounok.com');
+if(is_string($user)){
+    echo '<a href="'.$user.'">Se connecter avec Facebook</a>';
+}else{
+    //REQUETE SELECT
+    //$facebook_id = $user->getId();
+    //SELECT * FROM users WHERE facebook_id = $facebook_id;
+    //INSERT INTO users SET facebook_id = $facebook_id, firstname=$profil->getFirstName();
+    var_dump($user);
+}
 
 /*<?php setcookie('pseudo', 'M@teo21', time() + 365*24*3600, null, null, false, true); ?>*/
 //page de demarrage
