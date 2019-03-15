@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 /**
  * Created by PhpStorm.
  * User: Supers-Pipo
@@ -79,10 +79,10 @@ endforeach;
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-1">
+
                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
-                </div>
-                <div class="col-lg-11">
+
+                <div class="col-lg-12">
 
                     <h1 class="text-center" style="margin-bottom: 50px;"><u>ADMINISTRATION DU FORUM</u></h1>
 

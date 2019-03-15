@@ -121,9 +121,7 @@
                     </form>
 
                 </div>
-
                 <div class="col-lg-3"></div>
-
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

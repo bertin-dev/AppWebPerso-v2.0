@@ -54,7 +54,7 @@ public function clear(){
 
 
 public function inc($file, $cachename = null){
-        var_dump($file);
+        //var_dump($file);
         if(!$cachename){
             $cachename = basename($file); // renvoi le nom du fichier inclu
         }

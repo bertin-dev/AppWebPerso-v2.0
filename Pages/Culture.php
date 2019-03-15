@@ -36,6 +36,62 @@ require_once('page_number.php');
                                                                                src="../Public/img/culture/musique/nguea.jpg"
                                                                                alt="NGUEA LAROUTE"
                                                                                title="NGUEA LAROUTE"> </a></div>
+                                <div class="col-lg-3"><p><strong>BEN DECCA</strong><br><span title="Ben Decca"
+                                                                                                 style="color: #8d8f92; font-size: 11px;">Musique KMER</span>
+                                    </p><a href="#" title="Ben Decca"><img class="img-responsive"
+                                                                               src="../Public/img/culture/musique/Ben_Decca.jpg"
+                                                                               alt="Ben Decca"
+                                                                               title="Ben Decca"> </a></div>
+                                <div class="col-lg-3"><p><strong>Samy Diko</strong><br><span title="Samy Diko"
+                                                                                                 style="color: #8d8f92; font-size: 11px;">Musique KMER</span>
+                                    </p><a href="#" title="Samy Diko"><img class="img-responsive"
+                                                                               src="../Public/img/culture/musique/Samy_Diko.jpg"
+                                                                               alt="Samy Diko"
+                                                                               title="Samy Diko"> </a></div>
+<!---->
+                                <div class="col-lg-3"><p><strong>Siboy</strong><br><span title="Siboy"
+                                                                                             style="color: #8d8f92; font-size: 11px;">Musique Française</span>
+                                    </p><a href="#" title="Siboy"><img class="img-responsive"
+                                                                           src="../Public/img/culture/musique/siboy.jpg"
+                                                                           alt="Siboy"
+                                                                           title="Siboy"> </a></div>
+
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3"><p><strong>Drake</strong><br><span title="Drake"
+                                                                                             style="color: #8d8f92; font-size: 11px;">Musique Américaine</span>
+                                        </p><a href="#" title="Drake"><img class="img-responsive"
+                                                                           src="../Public/img/culture/musique/drake.jpg"
+                                                                           alt="Drake"
+                                                                           title="Drake"> </a></div>
+
+                                    <div class="col-lg-3"><p><strong>Eminen</strong><br><span title="Eminen"
+                                                                                              style="color: #8d8f92; font-size: 11px;">Musique Américaine</span>
+                                        </p><a href="#" title="Eminen"><img class="img-responsive"
+                                                                            src="../Public/img/culture/musique/eminen.jpg"
+                                                                            alt="Eminen"
+                                                                            title="Eminen"> </a></div>
+
+                                    <div class="col-lg-3"><p><strong>Fergie</strong><br><span title="Fergie"
+                                                                                              style="color: #8d8f92; font-size: 11px;">Musique Américaine</span>
+                                        </p><a href="#" title="Fergie"><img class="img-responsive"
+                                                                            src="../Public/img/culture/musique/Fergie.jpg"
+                                                                            alt="Fergie"
+                                                                            title="Fergie"> </a></div>
+
+                                    <div class="col-lg-3"><p><strong>Christian Ikoumou</strong><br><span title="T-Pain"
+                                                                                              style="color: #8d8f92; font-size: 11px;">Musique KMER</span>
+                                        </p><a href="#" title="Christian Ikoumou"><img class="img-responsive"
+                                                                            src="../Public/img/culture/musique/christian.jpg"
+                                                                            alt="Christian Ikoumou"
+                                                                            title="Christian Ikoumou"> </a></div>
+
+                                </div>
+                                <div class="col-lg-3"><p><strong>T-Pain</strong><br><span title="T-Pain"
+                                                                                          style="color: #8d8f92; font-size: 11px;">Musique Américaine</span>
+                                    </p><a href="#" title="T-Pain"><img class="img-responsive"
+                                                                        src="../Public/img/culture/musique/t-pain.jpg"
+                                                                        alt="T-Pain"
+                                                                        title="T-Pain"> </a></div>
                                 <div class="col-lg-3"><p><strong>50 CENT</strong><br><span title="50 Cent"
                                                                                            style="color: #8d8f92; font-size: 11px;">Musique Americaine</span>
                                     </p><a href="#" title="50 cent"><img class="img-responsive"
@@ -173,6 +229,37 @@ require_once('page_number.php');
                                                                             src="../Public/img/culture/musique/alicia.jpg"
                                                                             alt="Alicia Key" title="Alicia Key"> </a>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3"><p><strong>Fally Ipupa</strong><br><span title="Fally Ipupa"
+                                                                                                   style="color: #8d8f92; font-size: 11px;">Musique Congolaise</span>
+                                        </p><a href="#" title="Fally Ipupa"><img class="img-responsive"
+                                                                                 src="../Public/img/culture/musique/fally.jpg"
+                                                                                 alt="Fally Ipupa"
+                                                                                 title="Fally Ipupa"> </a></div>
+
+                                    <div class="col-lg-3"><p><strong>Kerozene</strong><br><span title="Kerozene"
+                                                                                                style="color: #8d8f92; font-size: 11px;">Musique KMER</span>
+                                        </p><a href="#" title="Kerozene"><img class="img-responsive"
+                                                                              src="../Public/img/culture/musique/kerozen.jpg"
+                                                                              alt="Kerozene"
+                                                                              title="Kerozene"> </a></div>
+
+                                    <div class="col-lg-3"><p><strong>Sojip</strong><br><span title="Sojip"
+                                                                                             style="color: #8d8f92; font-size: 11px;">Musique KMER</span>
+                                        </p><a href="#" title="Sojip"><img class="img-responsive"
+                                                                           src="../Public/img/culture/musique/sojip.jpg"
+                                                                           alt="Sojip"
+                                                                           title="Sojip"> </a></div>
+
+                                    <div class="col-lg-3"><p><strong>Nakamura</strong><br><span title="Nakamura"
+                                                                                                style="color: #8d8f92; font-size: 11px;">Musique Française</span>
+                                        </p><a href="#" title="Nakamura"><img class="img-responsive"
+                                                                              src="../Public/img/culture/musique/nakamura.jpg"
+                                                                              alt="Nakamura"
+                                                                              title="Nakamura"> </a></div>
+                                </div>
+
+
                             </div>
 
                         </div>
@@ -310,6 +397,32 @@ require_once('page_number.php');
                                                                                   alt="KEN LE SURVIVANT"
                                                                                   title="KEN LE SURVIVANT"> </a></div>
                             </div>
+
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>MOUSTIQUE CHARISMATIQUE</strong><br><span title="MOUSTIQUE CHARISMATIQUE"
+                                                                                                style="color: #8d8f92; font-size: 11px;">Web Série</span>
+                                    </p><a href="#" title="MOUSTIQUE CHARISMATIQUE"><img class="img-responsive"
+                                                                              src="../Public/img/culture/series/moustik.jpg"
+                                                                              alt="MOUSTIQUE CHARISMATIQUE" title="MOUSTIQUE CHARISMATIQUE">
+                                    </a></div>
+                                <div class="col-lg-3"><p><strong>PAKGNE</strong><br><span title="PAKGNE"
+                                                                                              style="color: #8d8f92; font-size: 11px;">Web Série</span>
+                                    </p><a href="#" title="PAKGNE"> <img class="img-responsive"
+                                                                             src="../Public/img/culture/series/pakgne.jpg"
+                                                                             alt="PAKGNE" title="PAKGNE"> </a></div>
+                                <div class="col-lg-3"><p><strong>LES BAOS</strong><br><span title="LES BAOS"
+                                                                                                style="color: #8d8f92; font-size: 11px;">Web Série</span>
+                                    </p><a href="#" title="LES BAOS"><img class="img-responsive"
+                                                                              src="../Public/img/culture/series/coolblack.jpg"
+                                                                              alt="LES BAOS" title="LES BAOS"> </a></div>
+                                <div class="col-lg-3"><p><strong>MANEUH</strong><br><span
+                                                title="MANEUH" style="color: #8d8f92; font-size: 11px;">Web Série</span>
+                                    </p><a href="#" title="MANEUH"><img class="img-responsive"
+                                                                                  src="../Public/img/culture/series/maneuh.jpg"
+                                                                                  alt="MANEUH"
+                                                                                  title="MANEUH"> </a></div>
+                            </div>
                         </div>
 
 
@@ -434,6 +547,59 @@ require_once('page_number.php');
                                     </p><a href="#" title="Teken"><img class="img-responsive"
                                                                        src="../Public/img/culture/jeux/teken.jpg"
                                                                        alt="Teken" title="Teken"> </a></div>
+
+                                <div class="col-lg-3"><p><strong>Packman</strong><br><span title="Teken"
+                                                                                         style="color: #8d8f92; font-size: 11px;">Tétrisse</span>
+                                    </p><a href="#" title="Packman"><img class="img-responsive"
+                                                                       src="../Public/img/culture/jeux/packman.jpg"
+                                                                       alt="Packman" title="Packman"> </a></div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>Avengers</strong><br><span title="street fighter"
+                                                                                                  style="color: #8d8f92; font-size: 11px;">Aventure</span>
+                                    </p><a href="#" title="Avengers"><img class="img-responsive"
+                                                                                src="../Public/img/culture/jeux/avengers.jpg"
+                                                                                alt="Avengers"
+                                                                                title="Avengers"> </a></div>
+                                <div class="col-lg-3"><p><strong>batman-superman</strong><br><span
+                                                title="batman-superman" style="color: #8d8f92; font-size: 11px;">Jeu d'aventure</span>
+                                    </p><a href="#" title="batman-superman"><img class="img-responsive"
+                                                                                 src="../Public/img/culture/jeux/batman-superman.jpg"
+                                                                                 alt="batman-superman"
+                                                                                 title="batman-superman"> </a></div>
+                                <div class="col-lg-3"><p><strong>Fifa 19</strong><br><span title="Teken"
+                                                                                         style="color: #8d8f92; font-size: 11px;">Jeu de Football</span>
+                                    </p><a href="#" title="Fifa 19"><img class="img-responsive"
+                                                                       src="../Public/img/culture/jeux/fifa19.jpg"
+                                                                       alt="fifa19" title="Fifa 19"> </a></div>
+                                <div class="col-lg-3"><p><strong>king of Figther</strong><br><span title="Teken"
+                                                                                           style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="king of Figther"><img class="img-responsive"
+                                                                         src="../Public/img/culture/jeux/kingoffigther.jpg"
+                                                                         alt="king of Figther" title="king of Figther"> </a></div>
+                            </div>
+
+
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-4"><p><strong>Need For Speed</strong><br><span title="Need For Speed"
+                                                                                            style="color: #8d8f92; font-size: 11px;">Jeu de Course</span>
+                                    </p><a href="#" title="Need For Speed"><img class="img-responsive"
+                                                                          src="../Public/img/culture/jeux/needforspeed.jpg"
+                                                                          alt="Need For Speed"
+                                                                          title="Need For Speed"> </a></div>
+                                <div class="col-lg-4"><p><strong>PES 2019</strong><br><span
+                                                title="PES 2019" style="color: #8d8f92; font-size: 11px;">Jeu de Football</span>
+                                    </p><a href="#" title="PES 2019"><img class="img-responsive"
+                                                                                 src="../Public/img/culture/jeux/pes2019.jpg"
+                                                                                 alt="PES 2019"
+                                                                                 title="PES 2019"> </a></div>
+                                <div class="col-lg-4"><p><strong>Superman</strong><br><span title="Teken"
+                                                                                           style="color: #8d8f92; font-size: 11px;">Jeu d' Aventure</span>
+                                    </p><a href="#" title="Superman"><img class="img-responsive"
+                                                                         src="../Public/img/culture/jeux/superman.jpg"
+                                                                         alt="Superman" title="Superman"> </a></div>
                             </div>
                         </div>
 
@@ -520,6 +686,50 @@ require_once('page_number.php');
                                     </p><a href="#" title="REVU DU WEB"><img class="img-responsive"
                                                                              src="../Public/img/culture/emission tv/revuduweb.jpg"
                                                                              alt="revuduweb" title="REVU DU WEB"> </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>REGARD SOCIAL</strong><br><span
+                                                title="REGARD SOCIAL" style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                    </p><a href="#" title="REGARD SOCIAL"><img class="img-responsive"
+                                                                                       src="../Public/img/culture/emission tv/regardsocial.jpg"
+                                                                                       alt="REGARD SOCIAL"
+                                                                                       title="REGARD SOCIAL">
+                                    </a></div>
+                                <div class="col-lg-3"><p><strong>PAROLE DE FEMMES</strong><br><span title="PAROLE DE FEMMES"
+                                                                                               style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                    </p><a href="#" title="PAROLE DE FEMMES"><img class="img-responsive"
+                                                                             src="../Public/img/culture/emission tv/paroledefemme.jpg"
+                                                                             alt="PAROLE DE FEMMES" title="PAROLE DE FEMMES"> </a>
+                                </div>
+                                <div class="col-lg-3"><p><strong>REVUE DES GRANDES UNES</strong><br><span title="REVUE DES GRANDES UNES"
+                                                                                                  style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                    </p><a href="#" title="REVUE DES GRANDES UNES"><img class="img-responsive"
+                                                                                src="../Public/img/culture/emission tv/revuedesunes.jpg"
+                                                                                alt="REVUE DES GRANDES UNES"
+                                                                                title="REVUE DES GRANDES UNES"> </a></div>
+                                <div class="col-lg-3"><p><strong>EQUINOX SOIR</strong><br><span title="EQUINOX SOIR"
+                                                                                               style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                    </p><a href="#" title="EQUINOX SOIR"><img class="img-responsive"
+                                                                             src="../Public/img/culture/emission tv/equinoxsoir.jpg"
+                                                                             alt="EQUINOX SOIR" title="EQUINOX SOIR"> </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>JOURNAL DE 20H</strong><br><span
+                                                title="JOURNAL DE 20H" style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                    </p><a href="#" title="JOURNAL DE 20H"><img class="img-responsive"
+                                                                                       src="../Public/img/culture/emission tv/20heuinoxtv.jpg"
+                                                                                       alt="JOURNAL DE 20H"
+                                                                                       title="JOURNAL DE 20H">
+                                    </a></div>
+                                <div class="col-lg-3"><p><strong>10-12h LE ZENITH</strong><br><span title="10-12 LE ZENITH"
+                                                                                               style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                    </p><a href="#" title="10-12h LE ZENITH"><img class="img-responsive"
+                                                                             src="../Public/img/culture/emission tv/10-12hzenith.jpg"
+                                                                             alt="10-12h LE ZENITH" title="10-12h LE ZENITH"> </a>
                                 </div>
                             </div>
                         </div>

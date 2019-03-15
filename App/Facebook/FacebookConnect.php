@@ -25,7 +25,6 @@ class FacebookConnect
      */
     function __construct($appId, $appSecret)
     {
-
         $this->appId = $appId;
         $this->appSecret = $appSecret;
     }
@@ -42,7 +41,6 @@ class FacebookConnect
         }else{
             $session = $helper->getSessionFromRedirect();
         }
-
         if($session){
             try{
                 $_SESSION['fb_token'] = $session->getToken();
@@ -51,14 +49,15 @@ class FacebookConnect
                 if($profil->getEmail()===null){
                     throw new \Exception('Vous n\'avez pas accepter de donner votre mail');
                 }
-               return $profil;
+                return $profil;
             }catch (\Exception $e){
                 unset($_SESSION['fb_token']);
                 return $helper->getReRequestUrl(['email']);
             }
-        }else{ //$helper->getReRequestUrl(['email']);
-            echo '<a href="'.$helper->getLoginUrl(['email']).'">Se Connecter avec Facebook</a>';
+        }else{
+            return $helper->getLoginUrl(['email']);
         }
+
 
 
 

@@ -5,14 +5,38 @@
     <nav class="navbarRetouche navbar-default" role="navigation">
         <div class="container" style="text-align: center;">
 
-            <div class="col-xs-12 col-md-3 col-lg-3">
-                <h3 style="font-variant: small-caps;"><u>Réseaux Sociaux</u></h3>
-                Je m'appelle <a title="Auteur">Bertin Mounok</a>, j'ai commencé le développement web et le web design
-                pour développer un petit site perso et c'est rapidement devenu une vraie vocation.
-                J'aime expérimenter, découvrir et apprendre au fur et à mesure de mes projets pros et perso.
+            <div class="col-xs-12 col-md-3 col-lg-3 text-center">
+                <h3 style="font-variant: small-caps;"><i class="fa fa-link"></i> <u>Réseaux Sociaux</u></h3>
+
+                <div class="col-lg-4">
+                    <button style="background-color: #0077b5; font-size: 10px;" class="button share_linkedin btn-customizable waves-effect waves-light" data-url="http://....">
+                        Partage Linkedin
+                    </button>
+                </div>
+                <div class="col-lg-4">
+                    <button style="background-color: #00aced;font-size: 10px;" class="button share_twitter btn-customizable waves-effect waves-light" data-url="http://....">
+                        Partage Twitter
+                    </button>
+                </div>
+                <div class="col-lg-4">
+                    <button class="button share_facebook btn-customizable waves-effect waves-light" style="background-color: #3b5998;font-size: 10px;" data-url="https://bertin.dev/AppWebPerso@Project-v2.0/Public/">
+                        Partage Facebook
+                    </button>
+                </div>
+
+                <div class="col-lg-12">
+                    <form action="" role="form" class="form-group">
+                        <label for="langue">Choisir La Langue</label>
+                        <select name="" id="langue" class="form-control">
+                            <option value="francais">Français</option>
+                            <option value="Anglais">Anglais</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="#" class="white-text">Statistiques du Site</a>
             </div>
             <div class="col-xs-12 col-md-3 col-lg-3">
-                <h3 style="font-variant: small-caps;"><u>Informations</u></h3>
+                <h3 style="font-variant: small-caps;"><i class="fa fa-share"></i> <u>Informations</u></h3>
                 <address>
                     <div style="text-align: center;">
                         <span style="margin-bottom: 5%;" title="lieu de localisation" class="col-lg-12"><img class="" width="20"
@@ -31,63 +55,42 @@
                 </address>
             </div>
             <div class="col-xs-12 col-md-3 col-lg-3">
-                <h3 style="font-variant: small-caps;"><u>Mes Derniers Tweets</u></h3>
-                <span class="col-lg-12" title="Gestion de la paie">
-                <span style="float: left;"><img class="img-responsive" width="15"
-                                                src="../Public/img/socials/mobile.png"></span>
-                <span style="font-size: small; float: left;">→Création d'une plate-forme web<br><small> <?= date('d, m Y'); ?>
-                    Statut:<span style="color: #c9c9c9;"> Encours...</span></small></span><br>
-                </span>
-
-                <span class="col-lg-12">
-                <span style="float: left;"><img class="img-responsive" width="15" title="Numéro de Téléphone"
-                                                src="../Public/img/socials/mobile.png"></span>
-                <span style="font-size: small; float: left;">→Création d'une plate-forme web<br><small> <?= date('d, m Y'); ?>
-                    Statut:<span style="color: #c9c9c9;"> Encours...</span></small></span><br>
-                </span>
-
-                <span class="col-lg-12">
-                <span style="float: left;"><img class="img-responsive" width="15" title="Numéro de Téléphone"
-                                                src="../Public/img/socials/mobile.png"></span>
-                <span style="font-size: small; float: left;">→Création d'une plate-forme web<br><small> <?= date('d, m Y'); ?>
-                    Statut:<span style="color: #c9c9c9;"> Encours...</span></small></span><br>
-                </span>
-
-                <span class="col-lg-12">
-                <span style="float: left;"><img class="img-responsive" width="15" title="Numéro de Téléphone"
-                                                src="../Public/img/socials/mobile.png"></span>
-                <span style="font-size: small; float: left;">→Création d'une plate-forme web<br><small> <?= date('d, m Y'); ?>
-                    Statut:<span style="color: #c9c9c9;"> Encours...</span></small></span><br>
-                </span>
+                <h3 style="font-variant: small-caps;"><i class="fa fa-twitter"></i> <u>Mes Derniers Tweets</u></h3>
+                <?php
+                require '../App/Twitter/Twitter.php';
+                $twitter = new \App\Twitter\Twitter('AxSTgl8sck76P9HFW2ncgT1jF', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX',__DIR__.'/tmp/cache.tmp');
+                ?>
+                <ul style="font-size: small;">
+                    <?php foreach ($twitter->lastTweets('bertin_dev', '3') as $tweet): ?>
+                        <li>→ <?=\App\Twitter\Twitter::autolink(substr($tweet->text, 0, 72)); ?>...<br><small style="font-size: 10px;"><?= \App\Twitter\Twitter::timeTag($tweet->created_at); ?></small></li>
+                    <?php endforeach; ?>
+                </ul>
+<!------------------------------------------------------->
             </div>
-            <div class="col-xs-12 col-md-3 col-lg-3">
-                <div class="col-xs-12 col-lg-12">
-                    <h3 style="font-variant: small-caps;"><u>Ou me Trouver</u> ???</h3>
-                    <a href="https://github.com/bertin-dev/AppWebPerso-v2.0"><img src="../Public/img/socials/Github_Bertin-Mounok.svg" alt="Github Bertin-Mounok"
+            <div class="col-xs-12 col-md-3 col-lg-3 text-center">
+
+                    <h3 style="font-variant: small-caps;"><i class="fa fa-search-plus"></i> <u>Ou me Trouver</u> ???</h3>
+                    <a class="col-xs-3 col-lg-3" href="https://github.com/bertin-dev/AppWebPerso-v2.0"><img src="../Public/img/socials/Github_Bertin-Mounok.svg" alt="Github Bertin-Mounok"
                                     title="Github Bertin Mounok" class="img-responsive"
-                                    style="float: left; margin: 0 0 0 15px;" width="32"/>
+                                     width="32"/>
                     </a>
-                    <a href="https://www.linkedin.com/in/bertin-mounok-415754120/">
+                    <a class="col-xs-3 col-lg-3" href="https://www.linkedin.com/in/bertin-mounok-415754120/">
                         <img src="../Public/img/socials/LinkedIn-Bertin-Mounok.svg" alt="LinkedIn Bertin-Mounok"
                              title="LinkedIn Bertin Mounok" class="img-responsive"
-                             style="float: left; margin: 0 0 0 5px;" width="32"/>
+                              width="32"/>
                     </a>
-                    <a href="https://www.facebook.com/Ndembapipo">
+                    <a class="col-xs-3 col-lg-3" href="https://www.facebook.com/Ndembapipo">
                         <img src="../Public/img/socials/Facebook-Bertin-Mounok.svg" alt="Facebook Bertin-Mounok"
                              title="Facebook Bertin Mounok" class="img-responsive"
-                             style="float: left; margin: 0 0 0 5px;" width="32"/>
+                              width="32"/>
                     </a>
-                    <a href="https://plus.google.com/u/0/?tab=wX">
-                        <img src="../Public/img/socials/Google+-Bertin-Mounok.svg" alt="Google+ Bertin-Mounok"
-                             title="Google+ Bertin Mounok" class="img-responsive"
-                             width="32" style="float: left; margin: 0 0 0 5px;"/>
-                    </a>
-                    <a href="http://www.viadeo.com/p/0021658i7bpwsd5p">
+
+                    <a class="col-xs-3 col-lg-3" href="http://www.viadeo.com/p/0021658i7bpwsd5p">
                         <img src="../Public/img/socials/Viadeo-Bertin-Mounok.svg" alt="Viadeo Bertin-Mounok"
                              title="Viadeo Bertin Mounok" class="img-responsive"
-                             style="float: left; margin: 0 0 0 5px;" width="32"/>
+                              width="32"/>
                     </a>
-                </div>
+
                 <strong>Entrez votre Email </strong>
 
                     <form id="newsletters" method="post" onsubmit="return false;" accept-charset="UTF-8">
@@ -109,16 +112,13 @@
     </nav>
 
     <span class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin: 0;">
-                <span style="font-variant: small-caps;" title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php  echo date("Y", time()); ?>
-                    , bertin.dev, Inc.</em></small></span>
+                <span style="font-variant: small-caps;" title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php  echo date("Y", time()); ?>, bertin.dev, Inc.</em></small></span>
             </span>
 
     <span class="col-sm-12 col-md-6 col-lg-6">
         <span title="Appels Disponible pour tous projets sérieux" style=" float: right; padding: 0; margin: 0;"><small><li
                 style="list-style-type: none;"><em>→ +237 694 048 925</em></li></small></span>
-        <span style="float: right; padding: 0; margin: 0;"><img class="img-responsive" width="15"
-                                                                title="Numéro de Téléphone"
-                                                                src="../Public/img/socials/mobile.png"></span>
+        <span style="float: right; padding: 0; margin: 0;"><i class="fa fa-mobile"></i></span>
     </span>
 
 
@@ -134,6 +134,8 @@
 
 <!-- Other file JavaScript -->
 <script src="../Public/js/jquery.easing.min.js"></script>
+
+<script src="../Public/js/jquery.timego.js"></script>
 
 
 

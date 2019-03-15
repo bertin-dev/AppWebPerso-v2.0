@@ -51,10 +51,10 @@ require_once('page_number.php'); ?>
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2016 . ' ans d\'expérience'; ?></span>
                         </p><img class="img-responsive" src="../Public/img/competences/bootstrap.png" alt="PHP"
                                  title="Bootstrap de Twitter"></div>
-                    <div class="col-lg-3"><p><strong>Symfony</strong><br><span
-                                    title="<?= date("Y") - 2017 . ' an d\'expérience dans l\'utilisation de Symfony Pour PHP'; ?>"
-                                    style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2017 . ' an d\'expérience'; ?></span>
-                        </p><img class="img-responsive" src="../Public/img/competences/symfony.png" alt="Symfony"
+                    <div class="col-lg-3"><p><strong>Laravel</strong><br><span
+                                    title="<?= date("Y") - 2018 . ' an d\'expérience dans l\'utilisation de Laravel Pour PHP'; ?>"
+                                    style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2018 . ' an d\'expérience'; ?></span>
+                        </p><img class="img-responsive" src="../Public/img/competences/laravel.png" alt="Symfony"
                                  title="Symfony"></div>
 
                     <div class="col-lg-3"><p><strong>XAMARIN</strong><br><span
@@ -71,11 +71,6 @@ require_once('page_number.php'); ?>
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2015 . ' ans d\'expérience'; ?></span>
                         </p><img class="img-responsive" src="../Public/img/competences/wordpress.png" alt="Wordpress"
                                  title="Wordpress"></div>
-                    <div class="col-lg-3"><p><strong>Prestashop</strong><br><span
-                                    title="<?= date("Y") - 2016 . ' ans d\'expérience dans l\'utilisation de Prestashop'; ?>"
-                                    style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2016 . ' ans d\'expérience'; ?></span>
-                        </p><img class="img-responsive" src="../Public/img/competences/prestashop.png" alt="Prestashop"
-                                 title="Prestashop"></div>
                 </div>
 
             </article>
@@ -112,11 +107,6 @@ require_once('page_number.php'); ?>
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2015 . ' ans d\'expérience'; ?></span>
                         </p><img class="img-responsive" width="70" src="../Public/img/competences/csharp.png"
                                  alt="Langage C#" title="Langage C#"></div>
-                    <div class="col-lg-3"><p><strong>JAVA SE</strong><br><span
-                                    title="<?= date("Y") - 2016 . ' ans d\'expérience dans l\'utilisation du Langage Java'; ?>"
-                                    style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2016 . ' ans d\'expérience'; ?></span>
-                        </p><img class="img-responsive" src="../Public/img/competences/java se.png" alt="Langage Java"
-                                 title="Langage Java"></div>
                 </div>
 
                 <h1 align="center">OS</h1>
@@ -126,11 +116,6 @@ require_once('page_number.php'); ?>
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2007 . ' ans d\'expérience'; ?></span>
                         </p><img class="img-responsive" src="../Public/img/competences/windows.png" alt="Windows"
                                  title="Windows"></div>
-                    <div class="col-lg-3"><p><strong>Linux</strong><br><span
-                                    title="<?= date("Y") - 2012 . ' ans d\'expérience dans l\'utilisation de Linux'; ?>"
-                                    style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2012 . ' ans d\'expérience'; ?></span>
-                        </p><img class="img-responsive" src="../Public/img/competences/kali linux.png" alt="Linux"
-                                 title="Linux"></div>
                     <div class="col-lg-3"><p><strong>Android</strong><br><span
                                     title="<?= date("Y") - 2013 . ' ans d\'expérience dans l\'utilisation d\'Android'; ?>"
                                     style="color: #8d8f92; font-size: 11px;"><?= date("Y") - 2013 . ' ans d\'expérience'; ?></span>
@@ -144,33 +129,33 @@ require_once('page_number.php'); ?>
             <h4 align="left">Technologies
                 <small><em> Les outils que j'utilise</em></small>
             </h4>
-            <article class="col-lg-12 well" align="center" style="background: url('../Public/img/pattern15.png');">
+            <article class="col-lg-12 well text-center" style="background: url('../Public/img/pattern15.png');">
                 <div class="col-lg-2"><p><strong>IntelliJ IDEA</strong><br><span title="IntelliJ IDEA"
-                                                                                 style="color: #8d8f92; font-size: 13px;">Editeur</span>
+                                                                                 style="color: #8d8f92; font-size: 13px;">IDE POUR WEB</span>
                     </p><img class="img-responsive" src="../Public/img/competences/intellij.png" alt="IntelliJ IDEA"
                              title="IntelliJ IDEA"></div>
-                <div class="col-lg-2"><p><strong>PHPSTORM 2017.1.4</strong><br><span title="PHPSTORM 2017.1.4"
-                                                                                     style="color: #8d8f92; font-size: 13px;">Editeur</span>
+                <div class="col-lg-2"><p><strong>PHPSTORM 2018.3.4</strong><br><span title="PHPSTORM 2017.1.4"
+                                                                                     style="color: #8d8f92; font-size: 13px;">IDE POUR WEB</span>
                     </p><img class="img-responsive" src="../Public/img/competences/phpstorm.png" WIDTH="110"
                              alt="phpstorm" title="PHPSTORM 2017.1.1"></div>
                 <div class="col-lg-2"><p><strong>VISUAL STUDIO CODE</strong><br><span title="MS VISUAL STUDIO CODE"
-                                                                                      style="color: #8d8f92; font-size: 13px;">Editeur</span>
+                                                                                      style="color: #8d8f92; font-size: 13px;">IDE POUR WEB</span>
                     </p><img class="img-responsive" src="../Public/img/competences/ms_vs_code.png" WIDTH="110"
                              alt="ms_vs_code" title="MS VISUAL STUDIO CODE"></div>
                 <div class="col-lg-2"><p><strong>VS ENTERPRISE 2017</strong><br><span
                                 title="MS VISUAL STUDIO PREMIUM 2017"
-                                style="color: #8d8f92; font-size: 13px;">Editeur</span></p><img class="img-responsive"
+                                style="color: #8d8f92; font-size: 13px;">IDE WEB-MOBILE-DESKTOP</span></p><img class="img-responsive"
                                                                                                 src="../Public/img/competences/ms_vs_studio.png"
                                                                                                 WIDTH="110"
                                                                                                 alt="ms_vs_studio"
                                                                                                 title="MS VISUAL STUDIO PREMIUM 2017">
                 </div>
                 <div class="col-lg-2"><p><strong>ECLIPSE LUMIA</strong><br><span title="ECLIPSE LUMIA"
-                                                                                 style="color: #8d8f92; font-size: 13px;">Editeur</span>
+                                                                                 style="color: #8d8f92; font-size: 13px;">IDE POUR WEB-DESKTOP</span>
                     </p><img class="img-responsive" src="../Public/img/competences/eclipse_lumia.png" WIDTH="110"
                              alt="eclipse_lumia" title="ECLIPSE LUMIA"></div>
                 <div class="col-lg-2"><p><strong>ANDROID STUDIO 2.0</strong><br><span title="ANDROID STUDIO 2.0"
-                                                                                      style="color: #8d8f92; font-size: 13px;">Editeur</span>
+                                                                                      style="color: #8d8f92; font-size: 13px;">IDE POUR MOBILE</span>
                     </p><img class="img-responsive" src="../Public/img/competences/android_studio.png" WIDTH="110"
                              alt="Android Studio" title="ANDROID STUDIO 2.0"></div>
             </article>
