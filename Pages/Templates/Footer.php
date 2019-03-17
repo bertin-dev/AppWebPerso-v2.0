@@ -8,25 +8,22 @@
             <div class="col-xs-12 col-md-3 col-lg-3 text-center">
                 <h3 style="font-variant: small-caps;"><i class="fa fa-link"></i> <u>Réseaux Sociaux</u></h3>
 
-                <div class="col-lg-4">
-                    <button style="background-color: #0077b5; font-size: 10px;" class="button share_linkedin btn-customizable waves-effect waves-light" data-url="http://....">
-                        Partage Linkedin
-                    </button>
+                <div class="col-xs-12 col-lg-4">
+                    <button title="partager sur LinkedIn" style="width: 100%; background-color: #0077b5; font-size: 10px; margin-bottom: 2px; padding: 6px 1px;" class="button share_linkedin btn btn-primary" data-url="https://www.bertin-mounok.com/Public/index.php?id_page=<?=$_ENV['id_page'];?>">
+                        <i class="fa fa-share"></i>LinkedIn</button>
                 </div>
-                <div class="col-lg-4">
-                    <button style="background-color: #00aced;font-size: 10px;" class="button share_twitter btn-customizable waves-effect waves-light" data-url="http://....">
-                        Partage Twitter
-                    </button>
+                <div class="col-xs-12 col-lg-4">
+                    <button title="partager sur Twitter" style="width: 100%; background-color: #00aced;font-size: 10px; margin-bottom: 2px; padding: 6px 1px;" class="button share_twitter btn btn-primary" data-url="https://www.bertin-mounok.com/Public/index.php?id_page=<?=$_ENV['id_page'];?>">
+                        <i class="fa fa-share"></i>Twitter</button>
                 </div>
-                <div class="col-lg-4">
-                    <button class="button share_facebook btn-customizable waves-effect waves-light" style="background-color: #3b5998;font-size: 10px;" data-url="https://bertin.dev/AppWebPerso@Project-v2.0/Public/">
-                        Partage Facebook
-                    </button>
+                <div class="col-xs-12 col-lg-4">
+                    <button title="partager sur Facebook" class="button share_facebook btn btn-primary" style="width: 100%; background-color: #3b5998;font-size: 10px; margin-bottom: 2px; padding: 6px 1px;" data-url="https://www.bertin-mounok.com/Public/index.php?id_page=<?=$_ENV['id_page'];?>">
+                        Facebook</button>
                 </div>
 
                 <div class="col-lg-12">
                     <form action="" role="form" class="form-group">
-                        <label for="langue">Choisir La Langue</label>
+                        <label for="langue"><i class="fa fa-globe"></i> Choisir La Langue</label>
                         <select name="" id="langue" class="form-control">
                             <option value="francais">Français</option>
                             <option value="Anglais">Anglais</option>
@@ -36,7 +33,7 @@
                 <a href="#" class="white-text">Statistiques du Site</a>
             </div>
             <div class="col-xs-12 col-md-3 col-lg-3">
-                <h3 style="font-variant: small-caps;"><i class="fa fa-share"></i> <u>Informations</u></h3>
+                <h3 style="font-variant: small-caps;"><i class="fa fa-info"></i> <u>Informations</u></h3>
                 <address>
                     <div style="text-align: center;">
                         <span style="margin-bottom: 5%;" title="lieu de localisation" class="col-lg-12"><img class="" width="20"
@@ -57,14 +54,24 @@
             <div class="col-xs-12 col-md-3 col-lg-3">
                 <h3 style="font-variant: small-caps;"><i class="fa fa-twitter"></i> <u>Mes Derniers Tweets</u></h3>
                 <?php
+                if(connection_status()!=0){
                 require '../App/Twitter/Twitter.php';
                 $twitter = new \App\Twitter\Twitter('AxSTgl8sck76P9HFW2ncgT1jF', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX',__DIR__.'/tmp/cache.tmp');
                 ?>
                 <ul style="font-size: small;">
                     <?php foreach ($twitter->lastTweets('bertin_dev', '3') as $tweet): ?>
-                        <li>→ <?=\App\Twitter\Twitter::autolink(substr($tweet->text, 0, 72)); ?>...<br><small style="font-size: 10px;"><?= \App\Twitter\Twitter::timeTag($tweet->created_at); ?></small></li>
-                    <?php endforeach; ?>
+                        <li>→ <?= \App\Twitter\Twitter::autolink(substr($tweet->text, 0, 72)); ?>...<br>
+                            <small style="font-size: 10px;"><?= \App\Twitter\Twitter::timeTag($tweet->created_at); ?></small>
+                        </li>
+                    <?php endforeach;
+                    ?>
                 </ul>
+                <?php
+                }
+                else{
+                    echo 'Impossible de se connecter';
+                }
+                ?>
 <!------------------------------------------------------->
             </div>
             <div class="col-xs-12 col-md-3 col-lg-3 text-center">
@@ -85,11 +92,17 @@
                               width="32"/>
                     </a>
 
-                    <a class="col-xs-3 col-lg-3" href="http://www.viadeo.com/p/0021658i7bpwsd5p">
+                    <!--<a class="col-xs-3 col-lg-3" href="http://www.viadeo.com/p/0021658i7bpwsd5p">
                         <img src="../Public/img/socials/Viadeo-Bertin-Mounok.svg" alt="Viadeo Bertin-Mounok"
                              title="Viadeo Bertin Mounok" class="img-responsive"
                               width="32"/>
-                    </a>
+                    </a>-->
+
+                <a class="col-xs-3 col-lg-3" href="https://bertin-dev.visualstudio.com/">
+                    <img src="../Public/img/socials/Windows bertin-mounok.png" alt="Microsoft Azure Devops"
+                         title="Azure Devops Bertin Mounok" class="img-responsive"
+                         width="32"/>
+                </a>
 
                 <strong>Entrez votre Email </strong>
 
@@ -140,7 +153,28 @@
 
 
 <script>
+    // French
+    jQuery.timeago.settings.strings = {
+        // environ ~= about, it's optional
+        prefixAgo: "il y a",
+        prefixFromNow: "d'ici",
+        seconds: "moins d'une minute",
+        minute: "environ une minute",
+        minutes: "environ %d minutes",
+        hour: "environ une heure",
+        hours: "environ %d heures",
+        day: "environ un jour",
+        days: "environ %d jours",
+        month: "environ un mois",
+        months: "environ %d mois",
+        year: "un an",
+        years: "%d ans"
+    };
 
+
+    jQuery(document).ready(function() {
+        $("time.timeago").timeago();
+    });
     /* ==========================================================================
 SYSTME DE NAVIGATION EN AJAX
    ========================================================================== */

@@ -39,7 +39,7 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
           break;
 
       case 2:
-          require '../pages/Portfolio.php';
+          require '../Pages/Portfolio.php';
           break;
 
       case 3:
@@ -99,7 +99,8 @@ isset($_GET['id_page']) ? $page = $_GET['id_page'] : $page=1;
   }
 
 $contenu = ob_get_clean();
-require '../Pages/Templates/default.php';
+
+require '../Pages/Templates/Default.php';
 
 
 

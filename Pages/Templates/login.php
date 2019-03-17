@@ -55,6 +55,86 @@
                             <input id="inscription" type="button" class="action-button" value="INSCRIPTION" title="INSCRIVEZ-VOUS ICI !">
                             <center><div id="load_data_SingIn"></div></center>
                         </fieldset>
+                        <?php
+                        use \App\Facebook\FacebookConnect;
+                        if(connection_status()!=0) {//verification de l'existance de la connection internet
+                            $appId = '361124424614569';
+                            $appSecret = '04a4d5b4a49881e45df0bd215ae30d24';
+                            $connect = new FacebookConnect($appId, $appSecret);
+                            $user = $connect->connect('https://www.bertin-mounok.com/Public/');
+                            if (is_string($user)) {
+                                echo '<a href="' . $user . '" class="waves-effect waves-light btn-customizable white-text" style="padding: 0.84rem 14rem; background-color: #3b5998; font-weight: bold;">
+                                  <i class="fa fa-2x fa-facebook right" title="Connectez-vous"></i> Se Connecter Via Facebook</a>';
+                            } else {
+                                //REQUETE SELECT
+                                //$facebook_id = $user->getId();
+                                //SELECT * FROM users WHERE facebook_id = $facebook_id;
+                                //INSERT INTO users SET facebook_id = $facebook_id, firstname=$profil->getFirstName();
+                                echo 'BONJOUR';
+                            }
+
+
+                            //SE CONNECTER VIA LINKEDIN
+
+                            define('CLIENT_ID', '860uswnwa074d6');
+                            define('CLIENT_SECRET', 'kDxYk5iCBtnc9UYK');
+                            define('REDIRECTION_URI', 'https://www.bertin-mounok.com/Public/');
+                            try {
+                                define('CSRF_TOKEN', random_int(1111111, 9999999));
+                            } catch (Exception $e) {
+                                echo $e->getMessage();
+                            }
+                            define('SCOPES', 'r_basicprofile%20r_emailaddress');
+                            $linkedin = new \App\LinkedIn\LinkedInConnect(CLIENT_ID, CLIENT_SECRET, REDIRECTION_URI, CSRF_TOKEN, SCOPES);
+                            $user = $linkedin->getCallBack();
+                            // $_SESSION['user'] = $user;
+                            //header('location: index.php?id=page=11');
+                            ?>
+                            <a class="waves-effect waves-light btn-customizable white-text"
+                               style="padding: 0.84rem 14rem; background-color: #007bb6; font-weight: bold"
+                               href="<?= 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=' . CLIENT_ID . '&redirect_uri=' . REDIRECTION_URI . '&state=' . CSRF_TOKEN . '&scope=' . SCOPES . '' ?>">
+                                <i class="fa fa-2x fa-linkedin right" title="Connectez-vous"></i> Se Connecter Via
+                                LinkedIn</a>
+
+
+                            <!--------SE CONNECTER AVEC TWITTER----->
+                            <!--AJOUT D UN TWEET-->
+                            <?php
+                            define('CONSUMER_KEY', 'AxSTgl8sck76P9HFW2ncgT1jF');
+                            define('CONSUMER_SECRET', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX');
+                            // ACCESS_TOKEN et  ACCESS_SECRET me permet d'interagir avec celui qui crée le compte
+                            //define('ACCESS_TOKEN', '816079663856517120-0SOQ2Z6dRSwRPT5APuQS0fx0q1Yakbk');
+                            // define('ACCESS_SECRET', 'yti17JqsXOndZtfPppTzL8sIQFw4yu31sactVnn8cHmM9');
+                            //require '../vendor/autoload.php';
+
+                            $twitter = new \App\Twitter\Twitter_Connect_Post(CONSUMER_KEY, CONSUMER_SECRET);
+
+                            if (isset($_SESSION['authentified'])) {
+                                $oauth = new \Abraham\TwitterOAuth\TwitterOAuth(
+                                    CONSUMER_KEY,
+                                    CONSUMER_SECRET,
+                                    $_SESSION['oauth_token'],
+                                    $_SESSION['oauth_token_secret']
+                                );
+                                $account = $oauth->get('account/verify_credentials', ['include_email' => true]);
+
+                            } else if (isset($_GET['oauth_token'])) {
+                                $token = $twitter->getAccessToken($_GET['oauth_token'], $_GET['oauth_verifier']);
+                                // var_dump($twitter->verifyCredentials($token['oauth_token'], $token['oauth_token_secret']));
+
+                            } else {
+                                ?>
+                                <a class="waves-effect waves-light btn-customizable white-text"
+                                   style="padding: 0.84rem 14rem; background-color: #00aced; font-weight: bold"
+                                   href="<?= $twitter->getAuthentification('https://www.bertin-mounok.com/Public/') ?>">
+                                    <i class="fa fa-2x fa-twitter right" title="Connectez-vous"></i> Se Connectez via
+                                    Twitter</a>
+                                <?php
+                            }
+                        }//fin de la verification
+                        ?>
+
+
                     </form>
 
 

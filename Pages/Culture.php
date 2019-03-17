@@ -635,7 +635,7 @@ require_once('page_number.php');
 
                             <div class="col-lg-12">
                                 <div class="col-lg-3"><p><strong>Disons Tout</strong><br><span title="Disons Tout"
-                                                                                               style="color: #8d8f92; font-size: 11px;">Equinox TV</span>
+                                                                                               style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="Disons Tout"><img class="img-responsive"
                                                                              src="../Public/img/culture/emission tv/disons_tout.jpg"
                                                                              alt="Disons Tout" title="Disons Tout"> </a>
@@ -691,42 +691,42 @@ require_once('page_number.php');
 
                             <div class="col-lg-12">
                                 <div class="col-lg-3"><p><strong>REGARD SOCIAL</strong><br><span
-                                                title="REGARD SOCIAL" style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                                title="REGARD SOCIAL" style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="REGARD SOCIAL"><img class="img-responsive"
                                                                                        src="../Public/img/culture/emission tv/regardsocial.jpg"
                                                                                        alt="REGARD SOCIAL"
                                                                                        title="REGARD SOCIAL">
                                     </a></div>
                                 <div class="col-lg-3"><p><strong>PAROLE DE FEMMES</strong><br><span title="PAROLE DE FEMMES"
-                                                                                               style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                                                                               style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="PAROLE DE FEMMES"><img class="img-responsive"
                                                                              src="../Public/img/culture/emission tv/paroledefemme.jpg"
                                                                              alt="PAROLE DE FEMMES" title="PAROLE DE FEMMES"> </a>
                                 </div>
                                 <div class="col-lg-3"><p><strong>REVUE DES GRANDES UNES</strong><br><span title="REVUE DES GRANDES UNES"
-                                                                                                  style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                                                                                  style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="REVUE DES GRANDES UNES"><img class="img-responsive"
                                                                                 src="../Public/img/culture/emission tv/revuedesunes.jpg"
                                                                                 alt="REVUE DES GRANDES UNES"
                                                                                 title="REVUE DES GRANDES UNES"> </a></div>
-                                <div class="col-lg-3"><p><strong>EQUINOX SOIR</strong><br><span title="EQUINOX SOIR"
-                                                                                               style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
-                                    </p><a href="#" title="EQUINOX SOIR"><img class="img-responsive"
-                                                                             src="../Public/img/culture/emission tv/equinoxsoir.jpg"
-                                                                             alt="EQUINOX SOIR" title="EQUINOX SOIR"> </a>
+                                <div class="col-lg-3"><p><strong>Equinoxe SOIR</strong><br><span title="Equinoxe SOIR"
+                                                                                               style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
+                                    </p><a href="#" title="Equinoxe SOIR"><img class="img-responsive"
+                                                                             src="../Public/img/culture/emission tv/Equinoxesoir.jpg"
+                                                                             alt="Equinoxe SOIR" title="Equinoxe SOIR"> </a>
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="col-lg-3"><p><strong>JOURNAL DE 20H</strong><br><span
-                                                title="JOURNAL DE 20H" style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                                title="JOURNAL DE 20H" style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="JOURNAL DE 20H"><img class="img-responsive"
                                                                                        src="../Public/img/culture/emission tv/20heuinoxtv.jpg"
                                                                                        alt="JOURNAL DE 20H"
                                                                                        title="JOURNAL DE 20H">
                                     </a></div>
                                 <div class="col-lg-3"><p><strong>10-12h LE ZENITH</strong><br><span title="10-12 LE ZENITH"
-                                                                                               style="color: #8d8f92; font-size: 11px;">EQUINOX TV</span>
+                                                                                               style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="10-12h LE ZENITH"><img class="img-responsive"
                                                                              src="../Public/img/culture/emission tv/10-12hzenith.jpg"
                                                                              alt="10-12h LE ZENITH" title="10-12h LE ZENITH"> </a>
