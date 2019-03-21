@@ -814,6 +814,19 @@ background: inherit;
 
 */
 
+@media screen and (max-width: 767px) {
+    #sidebar {
+        display: block!important;
+        top: 50px!important;
+        right: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        background: #282828!important;
+        z-index: 5!important;
+        position: relative!important;
+    }
+}
+
 #sidebar {
     display: block;
     position: fixed;

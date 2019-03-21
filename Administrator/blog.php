@@ -154,38 +154,7 @@ endforeach;
                     </form>
                     </div>
                 </div>
-
                 <!--AJOUT D UN TWEET-->
-                <?php
-                define('CONSUMER_KEY', 'AxSTgl8sck76P9HFW2ncgT1jF');
-                define('CONSUMER_SECRET', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX');
-                // ACCESS_TOKEN et  ACCESS_SECRET me permet d'interagir avec celui qui crée le compte
-                //define('ACCESS_TOKEN', '816079663856517120-0SOQ2Z6dRSwRPT5APuQS0fx0q1Yakbk');
-                // define('ACCESS_SECRET', 'yti17JqsXOndZtfPppTzL8sIQFw4yu31sactVnn8cHmM9');
-                require '../vendor/autoload.php';
-
-                $twitter = new \App\Twitter\Twitter_Connect_Post(CONSUMER_KEY, CONSUMER_SECRET);
-
-                if(isset($_SESSION['authentified'])){
-                    $oauth = new \Abraham\TwitterOAuth\TwitterOAuth(
-                        CONSUMER_KEY,
-                        CONSUMER_SECRET,
-                        $_SESSION['oauth_token'],
-                        $_SESSION['oauth_token_secret']
-                    );
-                    $account = $oauth->get('account/verify_credentials', ['include_email'=>true]);
-
-                }
-                else if(isset($_GET['oauth_token'])){
-                    $token = $twitter->getAccessToken($_GET['oauth_token'], $_GET['oauth_verifier']);
-                   // var_dump($twitter->verifyCredentials($token['oauth_token'], $token['oauth_token_secret']));
-
-                }else{
-                ?>
-                <a href="<?= $twitter->getAuthentification('http://www.bertin-mounok.com') ?>">Se Connectez via Twitter</a>
-                <?php
-                }
-                ?>
             </div>
         </div>
     </div>

@@ -121,10 +121,9 @@
                 </div>
 
 
-                <div class="right-sidebar col-lg-6 wow fadeInDown" style="text-align: center; ">
+                <div class="right-sidebar col-lg-6 wow fadeInDown" style="text-align: center;">
                     <h4>Générez Dynamiquement votre Devis</h4>
                    <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
-
                      <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>
 
 

@@ -172,70 +172,26 @@ endforeach;
 
 
                     </div>
-                    <div class="col-lg-4"  style="border-left: 2px solid white; border-right: 2px solid white;">
-                        <div id="servicesRapport" class="alert alert-danger" style="display:none;"></div>
-                        <form id="services" method="post" action="traitement.php?services=services">
-                            <div class="form-group">
-                                <label>LISTING TYPE FONCTIONNALITES <b>*</b></label>
-                                <select style="background-color: white;" id="fonctionnality" name="fonctionnality" class="form-control">
-                                    <?php
-                                    foreach (App::getDB()->query('SELECT id_typeF, libelle FROM type_fonctionnalite ORDER BY id_typeF DESC') AS $cat):
-                                        echo '<option value="'.$cat->id_typeF.'">'.$cat->libelle.'</option>';
-                                    endforeach;
-                                    ?>
-                                </select>
-                            </div>
 
-                            <div class="form-group">
-                                <label>LISTE DE MODELES <b>*</b></label>
-                                <select style="background-color: white;" id="cat_services_models" name="cat_services_models" class="form-control">
-                                    <?php
-                                    foreach (App::getDB()->query('SELECT id_model, libelle FROM model ORDER BY id_model DESC') AS $cat):
-                                        echo '<option value="'.$cat->id_model.'">'.$cat->libelle.'</option>';
-                                    endforeach;
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>LISTE DE CATEGORIES SERVICES <b>*</b></label>
-                                <select style="background-color: white;" id="bloc_services" name="bloc_services" class="form-control">
-                                    <?php
-                                    foreach (App::getDB()->query('SELECT id_cat_serv, libelle FROM categorie_services ORDER BY id_cat_serv DESC') AS $cat):
-                                        echo '<option value="'.$cat->id_cat_serv.'">'.$cat->libelle.'</option>';
-                                    endforeach;
-                                    ?>
-                                </select>
-                            </div>
+                    <div class="col-lg-4"  style="border-left: 2px solid white; border-right: 2px solid white;">
+                        <h2>BLOC ACTIVITE ENCOURS...</h2>
+                        <div id="activiteRapport" class="alert alert-danger" style="display:none;"></div>
+                        <form id="activite" method="post" action="traitement.php?activite=activite">
 
                             <div class="form-group">
                                 <label>TITRE <b>*</b></label>
-                                <input type="text" name="titreServices" class="form-control" required="required" placeholder="Entrez votre Titre" value="<?php if(isset($_POST['titreService'])){echo $_POST['titreService'];}?>">
+                                <input type="text" name="titreActivite" class="form-control" required="required" placeholder="Entrez votre Titre" value="<?php if(isset($_POST['titreActivite'])){echo $_POST['titreActivite'];}?>">
                             </div>
 
 
                             <div class="form-group">
                                 <label>DESCRIPTION <b>*</b></label>
-                                <textarea name="descriptionServices" class="form-control" title="Description">Entrez votre Description</textarea>
+                                <textarea name="descriptionActtivite" class="form-control" title="Description" placeholder="Entrez votre Description"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-lg-6">
-                                    <label>ESTIMATION FINANCIERE <b>*</b></label>
-                                    <input type="number" name="prixServices" class="form-control" required="required" placeholder="Entrez votre Estimation" value="<?php if(isset($_POST['prixServices'])){echo $_POST['prixServices'];}?>">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label>UNITES <b>*</b></label>
-                                    <select style="background-color: white;" id="unites_services" name="unites_services" class="form-control">
-                                        <option value="FCFA">FCFA</option>
-                                        <option value="DOLLAR">DOLLAR</option>
-                                        <option value="EURO">EURO</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-lg" required="" value="AJOUT SERVICE">
-                                <img src="images/ajax-loader.gif" class="servicesUploads" style="display:none;">
+                                <input type="submit" class="btn btn-primary btn-lg" required="" value="AJOUT ACTIVITE">
+                                <img src="images/ajax-loader.gif" class="activiteUploads" style="display:none;">
                             </div>
 
 

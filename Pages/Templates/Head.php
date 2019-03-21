@@ -60,7 +60,8 @@
 
                                 </em></small>
                         </li>
-                        <span style="margin-left: 2%; "><small><em>Encours... : Conception et implémentation d'une ERP </em></small></span>
+                        <span style="margin-left: 2%; "><small><em>Encours... : <?php $projet = App::getDB()->prepare_request('SELECT titre FROM projets_encours ORDER BY id_projet DESC LIMIT 1', array());
+                        echo utf8_encode($projet['titre']); ?> </em></small></span>
                        <!-- <marquee width="700" behavior="alternate" hspace="20" direction="left" scrollamount="1" SCROLLDELAY="10"></marquee>-->
 
 

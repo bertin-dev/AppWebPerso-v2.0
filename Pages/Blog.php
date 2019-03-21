@@ -33,9 +33,9 @@ require_once('page_number.php'); ?>
                                             WHERE id_sujet="'.intval($_GET['comments']).'" ORDER BY id_sujet DESC') AS $blog_item):
 
     echo '
-<article class="col-xs-12 col-md-10 col-lg-10">
+<article class="col-xs-12 col-sm-10 col-lg-10">
                        <!--BLOC 1-->
-            <div class="col-xs-9 col-md-7 col-lg-6 blog-article-1"> 
+            <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
             <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;comments='.intval($blog_item->id_sujet).'" class="" title="'.$blog_item->titre.'">'.
         $blog_item->titre
@@ -47,7 +47,7 @@ require_once('page_number.php'); ?>
         </p>
         </div>
                        <!--BLOC 2-->
-            <div class="col-xs-6 col-md-2 col-lg-2 papou">
+            <div class="col-xs-12 col-sm-2 col-lg-2 papou">
         <div class="col-lg-12">
         <time>
                         <span class="date">
@@ -88,7 +88,7 @@ require_once('page_number.php'); ?>
        </div>
     </div>   
                       <!--BLOC 3-->
-            <div class="col-xs-9 col-md-3 col-lg-4 illu-article">
+            <div class="col-xs-12 col-sm-3 col-lg-4 illu-article">
             <a href="index.php?id_page='.intval($_GET['id_page']).'&amp;comments='.intval($blog_item->id_sujet).'" tabindex="-1">
                 <img class="img-responsive" src="'.$blog_item->image.'" alt="'.$blog_item->titre.'" title="'.$blog_item->titre.'">
             </a>
@@ -151,9 +151,9 @@ require_once('page_number.php'); ?>
         $blog->execute();
         while ($blog_item = $blog->fetch()) {
             echo '
-<article class="col-xs-12 col-md-10 col-lg-10">
+<article class="col-xs-12 col-sm-10 col-lg-10">
                          <!--BLOC 1-->
-          <div class="col-xs-9 col-md-7 col-lg-6 blog-article-1"> 
+          <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
             <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" class="" title="' . $blog_item['titre'] . '">' .
                 $blog_item['titre']
@@ -165,7 +165,7 @@ require_once('page_number.php'); ?>
         </p>
         </div>
                          <!--BLOC 2-->
-          <div class="col-xs-4 col-md-2 col-lg-2 papou">
+          <div class="col-xs-12 col-sm-2 col-lg-2 papou">
         <div class="col-lg-12">
         <time>
                         <span class="date">
@@ -204,7 +204,7 @@ require_once('page_number.php'); ?>
        </div>
     </div>
                          <!--BLOC 3-->
-          <div class="col-xs-9 col-md-3 col-lg-4 illu-article">
+          <div class="col-xs-12 col-sm-3 col-lg-4 illu-article">
             <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" tabindex="-1">
                 <img class="img-responsive" src="' . $blog_item['image'] . '" alt="' . $blog_item['titre'] . '" title="' . $blog_item['titre'] . '">
             </a>
@@ -239,9 +239,9 @@ require_once('page_number.php'); ?>
         $blog->execute();
         while ($blog_item = $blog->fetch()) {
             echo '
-<article class="col-xs-12 col-md-10 col-lg-10">
+<article class="col-xs-12 col-sm-10 col-lg-10">
                          <!--BLOC 1-->
-          <div class="col-xs-9 col-md-7 col-lg-6 blog-article-1"> 
+          <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
             <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" class="" title="' . $blog_item['titre'] . '">' .
                 $blog_item['titre']
@@ -253,7 +253,7 @@ require_once('page_number.php'); ?>
         </p>
         </div>
                          <!--BLOC 2-->
-          <div class="col-xs-4 col-md-2 col-lg-2 papou">
+          <div class="col-xs-12 col-sm-2 col-lg-2 papou">
         <div class="col-lg-12">
         <time>
                         <span class="date">
@@ -293,7 +293,7 @@ require_once('page_number.php'); ?>
        </div>
     </div>
                          <!--BLOC 3-->
-          <div class="col-xs-9 col-md-3 col-lg-4 illu-article">
+          <div class="col-xs-12 col-sm-3 col-lg-4 illu-article">
             <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" tabindex="-1">
                 <img class="img-responsive" src="' . $blog_item['image'] . '" alt="' . $blog_item['titre'] . '" title="' . $blog_item['titre'] . '">
             </a>
@@ -304,7 +304,7 @@ require_once('page_number.php'); ?>
     }
     ?>
         <!--BLOC DE ASIDE LATERALE -->
-    <aside id="sidebar" class="col-xs-12 col-md-2 col-lg-2">
+    <aside id="sidebar" class="col-xs-12 col-sm-12 col-lg-2">
         <span id="vertical-bar-border"></span>
         <div id="search" class="sidebar-bloc">
             <span class="title">Rechercher</span>
@@ -404,7 +404,7 @@ require_once('page_number.php'); ?>
 
        //  $publication = App::getDB()->prepare_request('SELECT * FROM sujets', null);
         // Puis on fait une boucle pour écrire les liens vers chacune des pages
-              echo '<div class="col-xs-12 col-md-10 col-lg-12">
+              echo '<div class="col-xs-12 col-sm-10 col-lg-12">
                     <div class="pagination1">';
         /* Boucle sur les pages */
         for ($i = 1 ; $i <= $nombreDePages ; $i++) {

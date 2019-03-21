@@ -687,6 +687,69 @@ if(isset($_GET['img']))
 }
 
 
+
+/* ==========================================================================
+GESTION DU SYSTEME DE L'ACTIVITE ENCOURS...
+========================================================================== */
+
+if(isset($_GET['activite']))
+{
+
+    // Vérification de la validité des champs
+    if(!isset($_POST['titreActivite']))
+    {
+        $i++;
+        $message .= "Titre Inexistant<br />\n";
+    }
+    else
+    {
+        $_POST['titreActivite'] = strtolower(stripslashes(htmlspecialchars($_POST['titreActivite'])));
+        $_POST['descriptionActtivite'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['descriptionActtivite'])))), ENT_QUOTES);
+
+        // Connexion à la base de données
+        require '../App/Config/Config_Server.php';
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id_projet FROM projets_encours WHERE titre="'.$_POST['titreActivite'].'" ');
+
+        // Si une erreur survient
+        if($result > 0 )
+        {
+            $i++;
+            $message .= "Ce Titre Existe déjà<br/>";
+        }
+        else
+        {
+            $connexion->insert('INSERT INTO projets_encours(ref_id_admin, titre, description, date_creation)
+                                               VALUES(:id_admin, :title, :description, :date_ajout)',
+                array('id_admin'=>0,
+                    'title'=>$_POST['titreActivite'],
+                    'description'=>$_POST['descriptionActtivite'],
+                    'date_ajout'=>time()
+                ));
+            $message .= 'success';
+        }
+    }
+
+    if(isset($message)&& $message!='')
+    {
+
+        if($i==1)
+        {
+            echo 'il y a '. $i .' erreur<br/>';
+            echo $message;
+        }
+        else if($i>1)
+        {
+            echo 'il y a '. $i .' erreurs<br/>';
+            echo $message;
+        }
+        else echo $message;
+    }
+}
 /* ==========================================================================
 GESTION DU SYSTEME D INSERTION DES SERVICES DANS LE BD
 ========================================================================== */
