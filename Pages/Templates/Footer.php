@@ -54,22 +54,21 @@
             <div class="col-xs-12 col-md-3 col-lg-3">
                 <h3 style="font-variant: small-caps;"><i class="fa fa-twitter"></i> <u>Mes Derniers Tweets</u></h3>
                 <?php
-                if(connection_status()!=0){
-                require '../App/Twitter/Twitter.php';
-                $twitter = new \App\Twitter\Twitter('AxSTgl8sck76P9HFW2ncgT1jF', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX',__DIR__.'/tmp/cache.tmp');
-                ?>
-                <ul style="font-size: small;">
-                    <?php foreach ($twitter->lastTweets('bertin_dev', '3') as $tweet): ?>
-                        <li>→ <?= \App\Twitter\Twitter::autolink(substr($tweet->text, 0, 72)); ?>...<br>
-                            <small style="font-size: 10px;"><?= \App\Twitter\Twitter::timeTag($tweet->created_at); ?></small>
-                        </li>
-                    <?php endforeach;
+                if(!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)){
+                    echo 'VOUS ÊTES HORS LIGNE !';
+                }else{
+                    require '../App/Twitter/Twitter.php';
+                    $twitter = new \App\Twitter\Twitter('AxSTgl8sck76P9HFW2ncgT1jF', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX',__DIR__.'/tmp/cache.tmp');
                     ?>
-                </ul>
-                <?php
-                }
-                else{
-                    echo 'Impossible de se connecter';
+                    <ul style="font-size: small;">
+                        <?php foreach ($twitter->lastTweets('bertin_dev', '3') as $tweet): ?>
+                            <li>→ <?= \App\Twitter\Twitter::autolink(substr($tweet->text, 0, 72)); ?>...<br>
+                                <small style="font-size: 10px;"><?= \App\Twitter\Twitter::timeTag($tweet->created_at); ?></small>
+                            </li>
+                        <?php endforeach;
+                        ?>
+                    </ul>
+                    <?php
                 }
                 ?>
 <!------------------------------------------------------->
@@ -151,6 +150,16 @@
 <script src="../Public/js/jquery.timego.js"></script>
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136685527-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136685527-1');
+</script>
+
 
 <script>
     // French
@@ -159,14 +168,14 @@
         prefixAgo: "il y a",
         prefixFromNow: "d'ici",
         seconds: "moins d'une minute",
-        minute: "environ une minute",
-        minutes: "environ %d minutes",
-        hour: "environ une heure",
-        hours: "environ %d heures",
-        day: "environ un jour",
-        days: "environ %d jours",
-        month: "environ un mois",
-        months: "environ %d mois",
+        minute: "une minute",
+        minutes: "%d minutes",
+        hour: "une heure",
+        hours: "%d heures",
+        day: "un jour",
+        days: "%d jours",
+        month: "un mois",
+        months: "%d mois",
         year: "un an",
         years: "%d ans"
     };
@@ -426,6 +435,7 @@ if(isset($_ENV['id_page']) && $_ENV['id_page']==7)
 ?>
 <script>
     $(function () {
+        //enlève entête et pied de page dans le BLOG
         $('#notif_chemin_fer').remove();
             $('footer').remove();
     });
@@ -1337,11 +1347,13 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
 
     //fonction de verification du Nom en ajax
     function search() {
+        var contenu =  $('#search_contenu').val();
+        var retour = '';
         $.ajax({
             type: 'GET',
-            url: '../Core/Controller/verification.php?search=search',
+            url: '../Core/Controller/verification.php',
             data: {
-                'search_contenu': $('#search_contenu').val()
+                'search_contenu': contenu
             },
             dataType: 'json',
             success: function (data) {
@@ -1360,16 +1372,18 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 }
                 else
                 {
-                    //$('#output_search').empty();
-                    $('#blog-list').load('../Pages/Blog_resultat.php?id=1', function() {
-                        $('#blog-list').html(data.resultat);
-                    });
+                    if(data.compteur <= 1)
+                        retour += data.compteur + ' résultat trouvé';
+                    else
+                        retour += data.compteur + ' résultats trouvés';
+
+                    $('#articles').html(data.resultat);
                     $('#output_search').css({
                         'font-weight': 'bold',
                         'margin': 'initial',
                         'padding': 'initial',
                         'font-size': '65%'
-                    }).html(data.compteur + ' résultats trouvés');
+                    }).html(retour);
 
                 }
 
@@ -1378,6 +1392,59 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
 
     }
 
+
+
+    //chargement dynamique des Catégories
+    $('.categorie').on('click', function (e) {
+        e.preventDefault();
+        $('#loader_blog').show();
+        var content = $(this).attr('data');
+        var tab = content.split('&');
+        eval(tab[0]);
+        if(cat==='')
+            return;
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                categorie: cat
+            },
+            dataType: 'text',
+            success:function (data) {
+                $('#articles').html(data);
+                $('#loader_blog').hide();
+            }
+        });
+
+    });
+
+    //chargement dynamique des Archives
+    $('.archive').click(function (e) {
+        e.preventDefault();
+        $('#loader_blog').show();
+        var content = $(this).attr('data');
+        var tab = content.split('&');
+        eval(tab[0]);
+        eval(tab[1]);
+        if(mois==='' || annee==='')
+            return;
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                m: mois,
+                y: annee
+            },
+            dataType: 'text',
+            success:function (data) {
+                $('#articles').html(data);
+                $('#loader_blog').hide();
+            }
+        });
+
+    });
+
+//fermeture jquery
 });
       <?php
       }

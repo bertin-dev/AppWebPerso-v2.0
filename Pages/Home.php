@@ -449,7 +449,7 @@ endforeach;
 
 
                 <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-pushpin"></span><em> Article Publié <small>
-                            il y a
+                            <!--il y a-->
                             <?php
                             $now = time();
                             foreach (\App::getDB()->query('
@@ -457,9 +457,9 @@ endforeach;
                             INNER JOIN categorie
                             ON sujets.ref_id_categorie=categorie.id_categorie
                             ORDER BY id_sujet') as $projet):
-
-                            echo Diff_entre_2Jours($now, $projet->D_enreg_Article);
-                               echo Diff_entre_2Jours($now, $projet->D_enreg_Article)==1 ? ' Jour' : ' Jours';
+                                echo str_replace('O', '', App\Twitter\Twitter::timeTag($projet->D_enreg_Article));
+                           /* echo Diff_entre_2Jours($now, strtotime($projet->D_enreg_Article));
+                               echo Diff_entre_2Jours($now, strtotime($projet->D_enreg_Article))==1 ? ' Jour' : ' Jours';*/
                             endforeach;
 
 
