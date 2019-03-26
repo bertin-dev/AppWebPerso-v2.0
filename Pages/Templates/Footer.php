@@ -150,7 +150,7 @@
 <script src="../Public/js/jquery.timego.js"></script>
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics (PERMET D'AVOIR LES STATISTIQUES SUR LE SITE WEB)-->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136685527-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -404,7 +404,6 @@ SYSTEME D'INDICATEUR BLEU PENDANT LE SCROLL
     });
 </script>
 
-
 <!--
   ==========================================================================
 Affiche le service devis si tu es authentifié
@@ -438,6 +437,10 @@ if(isset($_ENV['id_page']) && $_ENV['id_page']==7)
         //enlève entête et pied de page dans le BLOG
         $('#notif_chemin_fer').remove();
             $('footer').remove();
+
+
+
+
     });
 </script>
 <?php
@@ -1364,7 +1367,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                         'padding': 'initial',
                         'font-size': '65%'
                     }).html('Aucun résultat trouvé');
-
+                    $('#articles').empty();
                     /*setTimeout(function () {
                         $('#output_search').hide();
 
@@ -1393,6 +1396,29 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     }
 
 
+    //chargement dynamique des Articles
+    $('.link_articles').on('click', function (e) {
+        e.preventDefault();
+        $('#loader_blog').show();
+        var content = $(this).attr('data');
+        var tab = content.split('&');
+        eval(tab[0]);
+        if(articles==='')
+            return;
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                articles_click: articles
+            },
+            dataType: 'text',
+            success:function (data) {
+                $('#articles').html(data);
+                $('#loader_blog').hide();
+            }
+        });
+
+    });
 
     //chargement dynamique des Catégories
     $('.categorie').on('click', function (e) {
@@ -1442,6 +1468,56 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
             }
         });
 
+    });
+
+
+    //chargement dynamique de la Pagination
+    $('.pagination_link').on('click', function (e) {
+        e.preventDefault();
+        $('#loader_blog').show();
+        var content = $(this).attr('data');
+        var tab = content.split('&');
+        eval(tab[0]);
+        eval(tab[1]);
+        if(pages==='' || MessagesParPage==='')
+            return;
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                pagination: pages,
+                nbre_Article: MessagesParPage
+            },
+            dataType: 'text',
+            success:function (data) {
+                $('#articles').html(data);
+                $('#loader_blog').hide();
+            }
+        });
+
+    });
+
+    //EVENEMENT SUR LES ELEMENTS CREES DYNAMIQUE(CATEGORIES, ARCHIVES, PAGINATION) AVEC L UTILISATION DES DELEGATES DE JQUERY
+    $('#articles').on('click','.link_articles' , function (e) {
+        e.preventDefault();
+       // $('#loader_blog').show();
+        var content = $(this).attr('data');
+        var tab = content.split('&');
+        eval(tab[0]);
+        if(articles==='')
+            return;
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'POST',
+            data: {
+                articles_click: articles
+            },
+            dataType: 'text',
+            success:function (data) {
+                $('#articles').html(data);
+                $('#loader_blog').hide();
+            }
+        });
     });
 
 //fermeture jquery

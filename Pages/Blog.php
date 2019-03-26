@@ -7,7 +7,13 @@
  */
 ?>
 <?php
-require_once('page_number.php'); ?>
+require_once('page_number.php');
+require ('../App/jBBCode/Parser.php');
+use \JBBCode\Parser;
+use \JBBCode\DefaultCodeDefinitionSet;
+$parser = new Parser();
+$parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
+?>
 
 <section id="blog" class="blog-section">
     <div id="blog-list">
@@ -21,18 +27,9 @@ require_once('page_number.php'); ?>
 
             <?php
             $nombreDeMessagesParPage = 5; // Essayez de changer ce nombre pour voir :o)
-            // Maintenant, on va afficher les messages
-            if (isset($_GET['blog1']))
-            {
-                $blog1 = $_GET['blog1']; // On récupère le numéro de la page indiqué dans l'adresse (livreor.php?page=4)
-            }
-            else // La variable n'existe pas, c'est la première fois qu'on charge la page
-            {
-                $blog1 = 1; // On se met sur la page 1 (par défaut)
-            }
-
+                $pages = 1; // On se met sur la page 1 (par défaut)
             // On calcule le numéro du premier message qu'on prend pour le LIMIT de MySQL
-            $premierMessageAafficher = ($blog1 - 1) * $nombreDeMessagesParPage;
+            $premierMessageAafficher = ($pages - 1) * $nombreDeMessagesParPage;
 
             $blog = App::getDB()->compteur_start_end('SELECT id_sujet, titre, paragraphe, image, sujets.date_enreg, libelle FROM sujets 
                                                             INNER JOIN categorie
@@ -47,13 +44,16 @@ require_once('page_number.php'); ?>
                          <!--BLOC 1-->
           <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
-            <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" class="" title="' . $blog_item['titre'] . '">' .
-                    $blog_item['titre']
+            <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" class="link_articles" title="' . $blog_item['titre'] . '">' .
+                    utf8_encode($blog_item['titre'])
                     . '</a>
         </h1>
-            <p class="blog-article-1-p-1">'.substr($blog_item['paragraphe'], 0, 50).'</p>
-         <p class="blog-article-1-p-2">
-            <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" tabindex="-1" title="' . $blog_item['titre'] . '">Lire la suite</a>
+            <p class="blog-article-1-p-1">';
+                $parser->parse(substr(utf8_encode($blog_item['paragraphe']), MIN_CHARACTER, MAX_CHARACTER));
+                echo \App\Twitter\Twitter::autolink($parser->getAsHTML());
+               echo '</p>';
+         echo '<p class="blog-article-1-p-2">
+            <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" class="link_articles" tabindex="-1" title="' . $blog_item['titre'] . '">Lire la suite</a>
         </p>
         </div>
                          <!--BLOC 2-->
@@ -73,7 +73,7 @@ require_once('page_number.php'); ?>
         <div class="col-lg-12">
 <!--cette partie est a gerer-->
         <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie À Propos">'.$blog_item['libelle'].'</a>
-        <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" class="comments">';
+        <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" data-title="Lire Les commentaires" class="comments link_articles">';
                 $totalComments = App::getDB()->rowCount('SELECT * FROM comments
                                                      INNER JOIN compte
                                                      ON comments.ref_id_compte=compte.id_compte
@@ -100,7 +100,7 @@ require_once('page_number.php'); ?>
     </div>
                          <!--BLOC 3-->
           <div class="col-xs-12 col-sm-3 col-lg-4 illu-article">
-            <a href="index.php?id_page=' . intval($_GET['id_page']) . '&amp;comments=' . intval($blog_item['id_sujet']) . '" tabindex="-1">
+            <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" tabindex="-1" class="link_articles">
                 <img class="img-responsive" src="' . $blog_item['image'] . '" alt="' . $blog_item['titre'] . '" title="' . $blog_item['titre'] . '">
             </a>
     </div>
@@ -115,43 +115,32 @@ require_once('page_number.php'); ?>
 
 
         <?php
-        if(!isset($_GET['comments'])){
-            // On met dans une variable le nombre de messages qu'on veut par page
-            // On récupère le nombre total de messages
-            if(isset($_GET['cat']) && !empty($_GET['cat']))
-                $totalDesMessages = App::getDB()->rowCount('SELECT id_sujet FROM sujets INNER JOIN categorie ON sujets.ref_id_categorie=categorie.id_categorie WHERE id_categorie="'.intval($_GET['cat']).'" ORDER BY id_sujet DESC');
-            else
                 $totalDesMessages = App::getDB()->rowCount('SELECT id_sujet FROM sujets ORDER BY id_sujet DESC');
             // On calcule le nombre de pages à créer
             $nombreDePages  = ceil($totalDesMessages / $nombreDeMessagesParPage);
-            /*var_dump($nombreDePages);
-    var_dump($totalDesMessages);
-    var_dump($nombreDeMessagesParPage);
-            die();*/
-
-            //  $publication = App::getDB()->prepare_request('SELECT * FROM sujets', null);
             // Puis on fait une boucle pour écrire les liens vers chacune des pages
             echo '<div class="col-xs-12 col-sm-10 col-lg-12">
-                    <div class="pagination1">';
+                    <div class="pagination1" id="resultat_pagination">';
             /* Boucle sur les pages */
             for ($i = 1 ; $i <= $nombreDePages ; $i++) {
-                if ($i < ($blog1-3) )
-                    $i = $blog1 - 3;
-                if ($i >= $blog1 + 3 AND $i <= $nombreDePages - 3)
+                if ($i < ($pages-3) )
+                    $i = $pages - 3;
+                if ($i >= $pages + 3 AND $i <= $nombreDePages - 3)
                     echo "...";
-                if ($i > ($blog1+2) )
+                if ($i > ($pages+2) )
                     $i = $nombreDePages ;
-                if ($i == $blog1 )
-                    echo "<span id='current'>$i</span>";
+                if ($i == $pages )
+                    echo "<span id='current' title='page 1'>$i</span>";
                 else
-                    echo '<span class="page"><a href="index.php?id_page='.$_GET['id_page'].'&blog1='.$i.'" class="nav-js">'.$i.'</a></span>
-                     ';
+                    echo '<span class="page"><a data="pages='.$i.'&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" data-title="page '.$i.'">'.$i.'</a></span>';
             }
-            echo '<!--<span class="next"><a href="index.php?id_page=7&blog1=1" class="nav-js">&gt;</a></span>
-              <span class="last"><a href="blog/page/2.html" class="nav-js">&gt;&gt;</a></span>-->
+            echo '
+              <span class="last"><a data="pages=';
+        if($i==1) echo $i; else echo ($i-1);
+            echo '&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" title="Suivant">&gt;&gt;</a></span>
               </div>
               </div>';
-        }
+        //}
 
 
         ?>

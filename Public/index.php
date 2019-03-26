@@ -14,10 +14,8 @@ require '../Core/Controller/Cache.php';
 define('ROOT', dirname(__FILE__));
 $Cache = new Cache(ROOT.'/tmp', 5);
 
-
-
-
-
+define('MIN_CHARACTER', 0);
+define('MAX_CHARACTER', 100);
 
 /*<?php setcookie('pseudo', 'M@teo21', time() + 365*24*3600, null, null, false, true); ?>*/
 //page de demarrage

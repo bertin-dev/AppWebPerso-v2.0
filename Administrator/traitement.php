@@ -209,15 +209,14 @@ if(isset($_GET['blog']))
                 }
 
 
-            $connexion->insert('INSERT INTO sujets(ref_id_blog, ref_id_categorie, ref_id_archive, titre, paragraphe, image, date_enreg)
-                                               VALUES(:blog, :cat, :archive, :titre, :paragraphe, :img, :temps)',
+            $connexion->insert('INSERT INTO sujets(ref_id_blog, ref_id_categorie, ref_id_archive, titre, paragraphe, image)
+                                               VALUES(:blog, :cat, :archive, :titre, :paragraphe, :img)',
                                                array('blog'=>intval($_POST['id_blog']),
                                                    'cat'=>intval($_POST['blogCategorie']),
                                                    'archive'=>0,
                                                    'titre'=>$_POST['blogTitre'],
                                                    'paragraphe'=>$_POST['blogParagraphe'],
-                                                   'img'=>$chemin,
-                                                   'temps'=>time()
+                                                   'img'=>$chemin
                                                ));
             $message .= 'success';
         }

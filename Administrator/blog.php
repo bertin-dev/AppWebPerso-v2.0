@@ -46,6 +46,7 @@ endforeach;
     <link href="../Public/css/bootstrap.css" rel="stylesheet">
     <link href="../Public/css/design.css" rel="stylesheet">
     <link href="../Public/css/simple-sidebar.css" rel="stylesheet">
+    <link href="wysibb/default/wbbtheme.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../Public/css/scrolling-nav.css" rel="stylesheet">
@@ -115,8 +116,8 @@ endforeach;
 
 
                             <div class="form-group">
-                                <label>PARAGRAPHE <b>*</b></label>
-                                <textarea name="blogParagraphe" id="blogParagraphe" class="form-control" title="paragraphe">Entrez votre Paragraphe</textarea>
+                                <label >PARAGRAPHE <b>*</b></label>
+                                <textarea style="color: black;" name="blogParagraphe" id="blogParagraphe" class="wysibb" title="paragraphe">Entrez votre Paragraphe</textarea>
                             </div>
 
                             <div class="form-group">
@@ -173,6 +174,9 @@ endforeach;
 
 <script src="traitement.js"></script>
 
+<script src="wysibb/jquery.wysibb.min.js"></script>
+<script src="wysibb/lang/fr.js"></script>
+
 <!-- Menu Toggle Script -->
 <script>
     $("#menu-toggle").click(function(e) {
@@ -181,8 +185,19 @@ endforeach;
     });
 </script>
 
-</body>
+<!-- Init WysiBB BBCode editor -->
+<script>
+    $(function() {
+        var wbbOpt = {
+            buttons: "bold,italic,underline,|,img,link,|,code,quote",
+            lang:'fr'
+        }
+        $(".wysibb").wysibb(wbbOpt);
+    })
+</script>
 
+
+</body>
 </html>
 
 
