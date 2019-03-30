@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <article class="title-big col-lg-12">
-                <div class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-lg-6 wow fadeInDown"><!-- data-wow-duration="1000ms" data-wow-delay="600ms"-->
                     <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30" >
                         Bienvenue
                     </div>
@@ -62,7 +62,7 @@
 
                 </div>
 
-                <div class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center;">
+                <div class="col-lg-6 wow fadeInDown" style="text-align: center;">
                     <h1>Recherchez-vous un Développeur Consultant ???</h1>
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
@@ -80,8 +80,8 @@
                 <!--<a class="btn btn-default page-scroll" href="#about" title="ppppppppppppppp">Click Me to Scroll Down!</a>-->
             </article>
 
-            <article class="col-xs-12 col-md-4 col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center;">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
+            <article class="col-xs-12 col-md-4 col-lg-12 wow fadeInDown" style="text-align: center;">
+                <h4 class="wow fadeInRightBig" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
                         <small>Facteur de Motivation</small></em>
                 </h4>
                 <div class="ombrage col-lg-3">
@@ -107,11 +107,11 @@
             </article>
 
             <article class="title-big col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig col-lg-6" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><i class="fa fa-ticket"></i><em> TRANSFORMATION DIGITALE
+                <h4 class="wow fadeInRightBig col-lg-6" style="font-variant: small-caps;"><i class="fa fa-ticket"></i><em> TRANSFORMATION DIGITALE
                         <small>Optez Pour des Solutions sur Mesures</small></em>
                 </h4>
 
-                <h4 class="wow fadeInLeft col-lg-6 text-right visible-md visible-lg" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
+                <h4 class="wow fadeInLeft col-lg-6 text-right visible-md visible-lg" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
                         <small>au format PDF dans votre boîte mail.</small></em>
                 </h4>
 
@@ -121,7 +121,7 @@
                     <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Suivez votre Projets à distance"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
                 </div>
 
-                <div class="right-sidebar col-lg-4 wow fadeInDown text-center" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="right-sidebar col-lg-4 wow fadeInDown text-center">
                     <h4 style="font-variant: small-caps; font-size: 22px;">Des Solutions pour tous vos enjeux de Transformation</h4>
                     <h5>Transformation digitale<small><em> Votre Entreprise est-elle prête ?</em></small></h5>
                    <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
@@ -143,10 +143,10 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-home"></span><em> ENTREPRISE
+                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-home"></span><em> ENTREPRISE
                         <small>L'innovation Technologique</small></em>
                 </h4>
-                <div class="col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-lg-12 wow fadeInDown">
                     <?php
                     $i=0;
                     foreach (App::getDB()->query('SELECT title, description, chemin FROM images
@@ -190,10 +190,10 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-transfer"></span><em> QUALIFICATIONS
+                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-transfer"></span><em> QUALIFICATIONS
                         <small>Mon Périmètre de Compétence s'Articule Autour de</small></em>
                 </h4>
-                <div class="col-lg-8 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-lg-8 wow fadeInLeft">
                     <div class = "panel panel-primary" style="background-color: inherit;">
                         <div class = "panel-heading">
                             <h3 class = "panel-title">SERVICES DISPONIBLE</h3>
@@ -226,7 +226,7 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> MES DERNIERES REALISATIONS
+                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> MES DERNIERES REALISATIONS
                         <small> → Derniers Projets</small></em>
                 </h4>
                 <div id="last_realisation" class="wow fadeInUp">
@@ -254,7 +254,7 @@ foreach (App::getDB()->query('SELECT title, chemin FROM images
                                                          WHERE destination="Milieu" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $parallax):
       $title = explode('-', $parallax->title);
     echo '<div class="parallax" style="background: url('.$parallax->chemin.') no-repeat center;background-size: cover;background-attachment: fixed;height: 200px;text-align: center">
-          <h1 class="WOW bounceInDown animated" data-wow-duration="500ms" data-wow-delay="300ms" style="position: relative; top: 80px; font-variant: small-caps;">'.strtoupper(utf8_encode($title[0])). '<br>'.strtoupper(utf8_encode($title['1'])).'</h1>
+          <h1 class="WOW bounceInDown animated" style="position: relative; top: 80px; font-variant: small-caps;">'.strtoupper(utf8_encode($title[0])). '<br>'.strtoupper(utf8_encode($title['1'])).'</h1>
           </div>';
 endforeach;
 ?>
@@ -266,7 +266,7 @@ endforeach;
     <div class="container">
         <div class="row">
             <article class="col-xs-12 col-md-8 col-lg-9">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-book"></span><em> CITATIONS
+                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-book"></span><em> CITATIONS
                         <small>Sur la Vie</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px;">
@@ -313,7 +313,7 @@ endforeach;
 <!-------->
                 </div>
 
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-new-window"></span><em> NOUVEAUTES
+                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-new-window"></span><em> NOUVEAUTES
                         <small>Dernières Technologies Déployés par Microsoft & Xamarin</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 view peach-gradient wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
@@ -335,8 +335,8 @@ endforeach;
                 </div>
                 </div>
 
-                <div class="col-xs-12 col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
-                    <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-cloud-download"></span><em> CLOUD
+                <div class="col-xs-12 col-lg-12 wow fadeInDown" style="margin-bottom: 20px;">
+                    <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-cloud-download"></span><em> CLOUD
                             <small>Traitement, Stockage, Restoration des Données Distantes</small></em>
                     </h4>
                     <?php
@@ -516,7 +516,7 @@ endforeach;
                 <h5 class="titreWidget" style="font-variant: small-caps; margin-top: 20px"><em>Ma Story</em></small> </h5>
                 <div class="widget">
                     <div class="itemmoitie peach-gradient"></div>
-                    <div class="box-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="box-item wow fadeInDown">
                         <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
                         <h5 style="font-variant: small-caps; padding: initial;margin: initial;" title="Software Developper Xamarin"><small><em>Software Developper</em></small></h5>
                         <h3 style="border-bottom: 1px solid black">Bertin Story</h3>
