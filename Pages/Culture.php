@@ -712,7 +712,7 @@ require_once('page_number.php');
                                 <div class="col-lg-3"><p><strong>Equinoxe SOIR</strong><br><span title="Equinoxe SOIR"
                                                                                                style="color: #8d8f92; font-size: 11px;">Equinoxe TV</span>
                                     </p><a href="#" title="Equinoxe SOIR"><img class="img-responsive"
-                                                                             src="../Public/img/culture/emission tv/Equinoxesoir.jpg"
+                                                                             src="../Public/img/culture/emission tv/equinoxsoir.jpg"
                                                                              alt="Equinoxe SOIR" title="Equinoxe SOIR"> </a>
                                 </div>
                             </div>

@@ -44,7 +44,7 @@
                                                                            src="../Public/img/socials/email.png"> → bertin.dev@outlook.fr</span><br>
                         <span style="margin-bottom: 5%;" title="Numéro Téléphone" class="col-lg-12"><img class="" width="20"
                                                                               title="Numéro de Téléphone"
-                                                                              src="../Public/img/socials/mobile.png"> → (+237) 694 048 925</span><br>
+                                                                              src="../Public/img/socials/mobile.png"> → (+237) 694 04 89 25</span><br>
                         <span style="margin-bottom: 5%;" title="Code Postal" class="col-lg-12"><img class="" width="20"
                                                                          title="Code Postal"
                                                                          src="../Public/img/socials/Sticky_1-128.png">→ BP: 1492</span>
@@ -129,7 +129,7 @@
 
     <span class="col-sm-12 col-md-6 col-lg-6">
         <span title="Appels Disponible pour tous projets sérieux" style=" float: right; padding: 0; margin: 0;"><small><li
-                style="list-style-type: none;"><em>→ +237 694 048 925</em></li></small></span>
+                style="list-style-type: none;"><em>→ +237 694 04 89 25</em></li></small></span>
         <span style="float: right; padding: 0; margin: 0;"><i class="fa fa-mobile"></i></span>
     </span>
 
@@ -156,7 +156,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-136685527-1');
 </script>
 
@@ -438,6 +437,42 @@ if(isset($_ENV['id_page']) && $_ENV['id_page']==7)
         $('#notif_chemin_fer').remove();
             $('footer').remove();
 
+   var lien = $('section article a, aside a, .blog-article-1-p-2 a, .papou a, span a, #search_contenu');
+        lien.on({
+            click: function(even){
+                even.preventDefault();
+                if(lien.hasClass('link_articles')){
+                    lien.removeClass('pagination_link link_articles');
+                    lien.removeAttr('data');
+
+                    lien.each(function () {
+                        lien.attr({
+                            'data-toggle': 'modal',
+                            'data-target': '#login_1'
+                        });
+                    });
+
+                }
+            },
+            focus: function(){
+                if(lien.hasClass('link_articles')){
+                    lien.removeClass('pagination_link link_articles');
+                    lien.removeAttr('data');
+
+                    lien.each(function () {
+                        lien.attr({
+                            'data-toggle': 'modal',
+                            'data-target': '#login_1'
+                        });
+                    });
+
+                }
+                $('#search_contenu').prop('disabled', true);
+            }
+
+        });
+
+
 
 
 
@@ -529,10 +564,22 @@ SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION 
    ========================================================================== */
 
 $(function(){
+    //ZONE DE TRANSFORMATION DIGITALE
+    $('#projet').click(function(e){
+        e.preventDefault();
+        $('body').notif({
+            title: 'Message d\'erreur',
+            content: 'Vous n\'avez pas de Projet Encours d\'exécution !',
+            img: 'img/icons/error-notif.png',
+            cls: 'error1'
+        });
+    });
     //ZONE DE CITATION A L ACCUEIL
     $('.item').first().addClass('active');
     //ZONE ENTREPRISE A L ACCUEIL
     $('#card1').removeClass('rgba-black-strong').addClass('rgba-indigo-strong');
+    $('#card1 .pink-text').removeClass('pink-text').addClass('orange-text');
+    $('#card0 a, #card1 a, #card2 a').remove();
 
     var realisation = '1';
     $('#loader_realisation').show();
@@ -551,6 +598,71 @@ $(function(){
         });
     }
     chargement_realisation();
+
+    //CHARGEMENT BOUTON PLUS DE REALISATIONS SECTION REALISATIONS
+
+    //chargement dynamique des Archives
+    $('.more_load_project').on({
+        click:function(e){
+            e.preventDefault();
+            var content = $(this).attr('data');
+            eval(content);
+            $.ajax({
+                url: '../Core/Controller/verification.php',
+                method: 'POST',
+                data: {
+                    plus_realisations: project_real
+                },
+                dataType: 'text',
+                beforeSend: function () {
+                    $('#loader_realisation').show();
+                    $('.more_load_project').html('<i class="fa fa-spinner left"></i>Chargement Encours...');
+                },
+                success:function (data) {
+                    $('#last_realisation').html(data);
+                },
+                error: function(data){
+                    console.log('Erreur de Chargement de Plus de Réalisations');
+                },
+                complete: function (data) {
+                    $('#loader_realisation').hide();
+                    $('.more_load_project').html('<i class="fa fa-play left"></i> Chargement Terminé');
+                }
+            });
+
+        },
+        mouseenter: function () {
+            var content = $(this).attr('data'),
+            load_project = $('a[id=more_load_project]');
+            eval(content);
+            $.ajax({
+                url: '../Core/Controller/verification.php',
+                method: 'POST',
+                data: {
+                    plus_realisations_title: project_real
+                },
+                dataType: 'text',
+                beforeSend: function () {
+                   // load_project.attr('title', 'Chargement...');
+                   /* load_project.tooltip({
+                        title: 'Chargement...'
+                    });*/
+                },
+                success:function (data) {
+                    load_project.tooltip({
+                        title: data,
+                        html: true
+                    });
+                },
+                error: function(data){
+                    console.log('Erreur de Chargement de Plus de Réalisations dans title');
+                },
+                complete: function (data) {
+                    //console.log('Chargement de Plus de Réalisations dans title Terminé');
+                }
+            });
+        }
+    });
 });
 
 
@@ -571,7 +683,7 @@ $(function(){
             },
             cache: false,
             success:function (data) {
-                $('#last_fonctionnality').append(data);
+                $('.last_fonctionnality').append(data);
                 $('#loader_fonctionnality').hide();
             }
         });
@@ -1399,7 +1511,6 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     //chargement dynamique des Articles
     $('.link_articles').on('click', function (e) {
         e.preventDefault();
-        $('#loader_blog').show();
         var content = $(this).attr('data');
         var tab = content.split('&');
         eval(tab[0]);
@@ -1412,9 +1523,18 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 articles_click: articles
             },
             dataType: 'text',
+            beforeSend: function () {
+                $('.loader_blog').show();
+            },
             success:function (data) {
                 $('#articles').html(data);
-                $('#loader_blog').hide();
+                $('.loader_blog').hide();
+            },
+            error: function(data){
+                console.log('Erreur de Chargement des Articles');
+            },
+            complete: function (data) {
+                $('.loader_blog').hide();
             }
         });
 
@@ -1423,7 +1543,6 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     //chargement dynamique des Catégories
     $('.categorie').on('click', function (e) {
         e.preventDefault();
-        $('#loader_blog').show();
         var content = $(this).attr('data');
         var tab = content.split('&');
         eval(tab[0]);
@@ -1436,9 +1555,17 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 categorie: cat
             },
             dataType: 'text',
+            beforeSend: function () {
+                $('.loader_blog').show();
+            },
             success:function (data) {
                 $('#articles').html(data);
-                $('#loader_blog').hide();
+            },
+            error: function(data){
+                console.log('Erreur de Chargement des Catégories');
+            },
+            complete: function (data) {
+                $('.loader_blog').hide();
             }
         });
 
@@ -1447,7 +1574,6 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     //chargement dynamique des Archives
     $('.archive').click(function (e) {
         e.preventDefault();
-        $('#loader_blog').show();
         var content = $(this).attr('data');
         var tab = content.split('&');
         eval(tab[0]);
@@ -1462,9 +1588,17 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 y: annee
             },
             dataType: 'text',
+            beforeSend: function () {
+                $('.loader_blog').show();
+            },
             success:function (data) {
                 $('#articles').html(data);
-                $('#loader_blog').hide();
+            },
+            error: function(data){
+                console.log('Erreur de Chargement des Archives');
+            },
+            complete: function (data) {
+                $('.loader_blog').hide();
             }
         });
 
@@ -1474,7 +1608,6 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     //chargement dynamique de la Pagination
     $('.pagination_link').on('click', function (e) {
         e.preventDefault();
-        $('#loader_blog').show();
         var content = $(this).attr('data');
         var tab = content.split('&');
         eval(tab[0]);
@@ -1489,9 +1622,17 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 nbre_Article: MessagesParPage
             },
             dataType: 'text',
+            beforeSend: function () {
+                $('.loader_blog').show();
+            },
             success:function (data) {
                 $('#articles').html(data);
-                $('#loader_blog').hide();
+            },
+            error: function(data){
+                console.log('Erreur de Chargement des Paginations');
+            },
+            complete: function (data) {
+                $('.loader_blog').hide();
             }
         });
 
@@ -1500,7 +1641,6 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     //EVENEMENT SUR LES ELEMENTS CREES DYNAMIQUE(CATEGORIES, ARCHIVES, PAGINATION) AVEC L UTILISATION DES DELEGATES DE JQUERY
     $('#articles').on('click','.link_articles' , function (e) {
         e.preventDefault();
-       // $('#loader_blog').show();
         var content = $(this).attr('data');
         var tab = content.split('&');
         eval(tab[0]);
@@ -1513,9 +1653,17 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 articles_click: articles
             },
             dataType: 'text',
+            beforeSend: function () {
+                $('.loader_blog').show();
+            },
             success:function (data) {
                 $('#articles').html(data);
-                $('#loader_blog').hide();
+            },
+            error: function(data){
+                console.log('Erreur de Chargement des éléments créé dynamiquement');
+            },
+            complete: function (data) {
+                $('.loader_blog').hide();
             }
         });
     });

@@ -113,6 +113,20 @@ endforeach;
         </div>
     </form>
 
+
+    <div style="margin-bottom: 100px;"></div>
+    <div id="typeFRapport" class="alert alert-danger" style="display:none;"></div>
+    <form id="typeFonctionnalites" action="traitement.php?typeF=typeF" method="post" style="border-top: 2px dashed white;">
+        <div class="form-group">
+            <label>TYPE DE FONCTIONNALITES <b>*</b></label>
+            <input type="text" name="addTypeF" class="form-control" required="" placeholder="TYPE DE FONCTIONNALITES">
+        </div>
+        <div class="form-group">
+            <img src="images/ajax-loader.gif" class="typeFUploads" style="display:none;">
+            <input type="submit" class="form-control" value="AJOUTER TYPE FONCTIONNALITES">
+        </div>
+    </form>
+
 </div>
                     <div class="col-lg-6"  style="border-left: 2px solid white; border-right: 2px solid white;">
                         <div id="servicesRapport" class="alert alert-danger" style="display:none;"></div>
@@ -129,7 +143,7 @@ endforeach;
                             </div>
 
                             <div class="form-group">
-                                <label>LISTE DE MODELES <b>*</b></label>
+                                <label>LISTE DE MODELS <b>*</b></label>
                                 <select style="background-color: white;" id="cat_services_models" name="cat_services_models" class="form-control">
                                     <?php
                                     foreach (App::getDB()->query('SELECT id_model, libelle FROM model ORDER BY id_model DESC') AS $cat):
@@ -187,32 +201,31 @@ endforeach;
 
 
                     <div class="col-lg-3">
-                        <div id="typeFRapport" class="alert alert-danger" style="display:none;"></div>
-
-                        <form id="typeFonctionnalites" action="traitement.php?typeF=typeF" method="post">
+                       <h1><small>BLOC</small> SPECIALITE</h1>
+                        <div id="specialiteRapport" class="alert alert-danger" style="display:none;"></div>
+                        <form id="specialite" action="traitement.php?specialite=specialite" method="post">
                             <div class="form-group">
-                                <label>TYPE DE FONCTIONNALITES <b>*</b></label>
-                                <input type="text" name="addTypeF" class="form-control" required="" placeholder="TYPE DE FONCTIONNALITES">
+                                <label>LISTE DE MODELS <b>*</b></label>
+                                <select style="background-color: white;" id="cat_serv_models" name="cat_serv_models" class="form-control">
+                                    <?php
+                                    foreach (App::getDB()->query('SELECT id_model, libelle FROM model ORDER BY id_model DESC') AS $cat):
+                                        echo '<option value="'.$cat->id_model.'">'.$cat->libelle.'</option>';
+                                    endforeach;
+                                    ?>
+                                </select>
                             </div>
+
                             <div class="form-group">
-                                <img src="images/ajax-loader.gif" class="typeFUploads" style="display:none;">
-                                <input type="submit" class="form-control" value="AJOUTER TYPE FONCTIONNALITES">
+                                <label>DESCRIPTION SPECIALITE  <b>*</b></label>
+                                <textarea name="addspecialite" class="form-control" required="" placeholder="DESCRIPTION"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <img src="images/ajax-loader.gif" class="specialiteUploads" style="display:none;">
+                                <input type="submit" class="form-control" value="AJOUT SPECIALITE">
                             </div>
                         </form>
-
                         <div style="margin-bottom: 100px;"></div>
-                       <!-- <div id="fonctionnaliteRapport" class="alert alert-danger" style="display:none;"></div>
-                        <form id="fonctionnalites" action="traitement.php?fonctionnalites=fonctionnalites" method="post" style="border-top: 2px dashed white; padding-top: 20px;">
-                            <div class="form-group">
-                                <label>FONCTIONNALITES <b>*</b></label>
-                                <input type="text" name="addfonctionnalites" class="form-control" required="" placeholder="CATEGORIE">
-                            </div>
-
-                            <div class="form-group">
-                                <img src="images/ajax-loader.gif" class="fonctionnalitesUploads" style="display:none;">
-                                <input type="submit" class="form-control" value="AJOUT FONCTIONNALITE">
-                            </div>
-                        </form>-->
                     </div>
 
                 </div>

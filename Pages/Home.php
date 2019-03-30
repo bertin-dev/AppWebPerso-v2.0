@@ -25,10 +25,9 @@
                             endforeach;
                             ?>
                             <!--<div class="mask"> </div>-->
-                            <h3 class="text-left ecriture" style="font-size: 25px;">Chez Bertin.dev<br>Software Developper
-                                <i class="fa fa-windows"></i>
-                                <i class="fa fa-cloud"></i>
-                                <i class="fa fa-android"></i>
+                            <h3 class="text-left ecriture" style="font-size: 25px;">Sur ma Plate-forme Web. <br>Je suis Developpeur
+                                <i class="fa fa-windows"></i> /
+                                <i class="fa fa-globe"></i>
                             </h3>
 
                             <div class="bottom ecriture">
@@ -71,7 +70,7 @@
                             href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-left"></span></a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
                     <details>
-                        <summary><h1 title="Solutions Informatique">UN PROJET EST UN CHALLENGE !</h1></summary>
+                        <summary><h1 title="Solutions Informatique">TOUT PROJET EST UN CHALLENGE </h1></summary>
                         <summary><h4>Audit & Conseils</h4></summary>
                         <summary><h4>Transfert de Compétences</h4></summary>
                         <summary><h4>Analyse, Conception, Implémentation et Déploiment</h4></summary>
@@ -92,7 +91,7 @@
 
                 <div class="ombrage col-lg-3">
                     <h1>QUALITE</h1>
-                    <p>Je respecte les derniers standards et les bonnes pratiques afin de produire un code de qualité</p>
+                    <p>Je respecte les derniers standards et les bonnes pratiques afin de produire un code de qualité.</p>
                 </div>
 
                 <div class="ombrage col-lg-3">
@@ -108,26 +107,37 @@
             </article>
 
             <article class="title-big col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
+                <h4 class="wow fadeInRightBig col-lg-6" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><i class="fa fa-ticket"></i><em> TRANSFORMATION DIGITALE
                         <small>Optez Pour des Solutions sur Mesures</small></em>
                 </h4>
-                <div class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center; ">
-                    <h4>Des Solutions pour tous vos enjeux de Transformation</h4>
+
+                <h4 class="wow fadeInLeft col-lg-6 text-right visible-md visible-lg" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
+                        <small>au format PDF dans votre boîte mail.</small></em>
+                </h4>
+
+                <div class="col-lg-4">
+                    <img src="../Public/img/icons/demain-entrepreneur.png" title="Entrepreneur de demain" class="img-responsive" alt="Entrepreneur de demain">
+                    <h5>Voua avez la possibilité de suivre l'évolution de votre projet à distance<small><em> Cliquez sur le bouton juste en dessous</em></small></h5>
+                    <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Suivez votre Projets à distance"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
+                </div>
+
+                <div class="right-sidebar col-lg-4 wow fadeInDown text-center" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <h4 style="font-variant: small-caps; font-size: 22px;">Des Solutions pour tous vos enjeux de Transformation</h4>
                     <h5>Transformation digitale<small><em> Votre Entreprise est-elle prête ?</em></small></h5>
                    <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
-                    <!--  <h5>Une Technologie de Pointe <small><em>Adapté pour votre entreprise</em></small></h5>-->
-                    <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Voir"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
-
+                    <h5>Une Technologie de Pointe <small><em>Adapté pour votre entreprise.</em></small></h5>
                 </div>
 
 
-                <div class="right-sidebar col-lg-6 wow fadeInDown" style="text-align: center;">
-                    <h4>Générez Dynamiquement votre Devis</h4>
-                   <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
-                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>
-
-
-
+                <div class="right-sidebar col-lg-4 wow fadeInDown">
+                    <h4 style="font-variant: small-caps; font-size: 22px;">Générez Dynamiquement votre Devis</h4>
+                    <div class="col-xs-3 col-lg-3">
+                        <img src="../Public/img/Accueil/devis.png" class="img-responsive img-thumbnail" alt="dévis" title="Exemplaire de dévis">
+                    </div>
+                    <div class="col-xs-9 col-lg-9">
+                        <h5>Votre offre sans engagement<small><em> dans votre boîte mail en 1 Min chrono!</em></small></h5>
+                        <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>
+                    </div>
                 </div>
 
             </article>
@@ -176,22 +186,6 @@
                                     $i++;
                          endforeach;
                     ?>
-                    <!--<div class="col-lg-4">
-                    <div class="card card-image mb-3" style="background-image: url('img/Accueil/Ecole/DSCN9729.jpg');">
-                        <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-5 px-4">
-                            <div>
-                                <h5 class="orange-text">
-                                    <i class="fa fa-desktop"></i> Software</h5>
-                                <h3 class="card-title pt-2">
-                                    <strong>This is card title</strong>
-                                </h3>
-                                <p>Créativité Facteur d'Epanouissement au Travail</p>
-                                <a class="btn-customizable btn-deep-orange waves-effect waves-light">
-                                    <i class="fas fa-camera left"></i> View project</a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>-->
                 </div>
             </article>
 
@@ -200,67 +194,59 @@
                         <small>Mon Périmètre de Compétence s'Articule Autour de</small></em>
                 </h4>
                 <div class="col-lg-8 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class = "panel panel-primary">
+                    <div class = "panel panel-primary" style="background-color: inherit;">
                         <div class = "panel-heading">
-                            <h3 class = "panel-title">SERVICES</h3>
+                            <h3 class = "panel-title">SERVICES DISPONIBLE</h3>
                         </div>
 
-                        <div id="last_qualification" class="panel-body" style="color: black; text-align: center;">
-                            <center>
-                                <div id="loader_qualification" style="display: none;">
+                        <div id="last_qualification" class="panel-body">
+                                <div id="loader_qualification" style="display: none;text-align: center!important;">
                                     <span class="loader loader-circle"></span>
                                     Chargement......
                                 </div>
-                            </center>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="col-lg-4 wow fadeInRight">
-                    <div class = "panel panel-primary">
+                    <div class = "panel panel-primary" style="background-color: inherit;">
                         <div class = "panel-heading">
                             <h3 class = "panel-title">FONCTIONNALITES METIERS DEPLOYES</h3>
                         </div>
-
-                        <div class="panel-body" style="color: black;">
-
-                            <div id="last_fonctionnality" class="panel-group" id="accordion">
-                                <center>
-                                    <div id="loader_fonctionnality" style="display: none;">
+                        <div class="panel-body">
+                            <div class="panel-group last_fonctionnality" id="accordion">
+                                    <div id="loader_fonctionnality" style="display: none;text-align: center!important;">
                                         <span class="loader loader-circle"></span>
                                         Chargement......
                                     </div>
-                                </center>
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
 
-
-
-
-
             <article class="col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> DERNIERES REALISATIONS
-                        <small>Mes Derniers Projets</small></em>
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> MES DERNIERES REALISATIONS
+                        <small> → Derniers Projets</small></em>
                 </h4>
                 <div id="last_realisation" class="wow fadeInUp">
-                    <center>
-                        <div id="loader_realisation" style="display: none;">
+                        <div id="loader_realisation" style="display: none;text-align: center!important;">
                             <span class="loader loader-circle"></span>
                             Chargement......
                         </div>
-                    </center>
-
                 </div>
+                    <div class="text-center" style="margin-bottom: initial; padding-bottom: initial;">
+                        <a id="more_load_project" data-placement="bottom" data-toggle="tooltip" data="project_real=1" class="btn-primary waves-effect waves-light btn-customizable more_load_project" style="margin-bottom: initial;">
+                        <i class="fa fa-play left"></i> Voir Plus De Réalisations
+                        </a>
+                    </div>
+
             </article>
         </div>
     </div>
 </section>
 
-<section class="title-big">
+<section class="title-big" style="padding-top: initial">
 <?php
 foreach (App::getDB()->query('SELECT title, chemin FROM images
                                                          INNER JOIN page

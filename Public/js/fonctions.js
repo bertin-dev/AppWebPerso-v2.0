@@ -12,7 +12,8 @@ new WOW().init();
 GESTION DU SYSTEME D'INFOBULLE
    ========================================================================== */
 $(function (){
-   $('span, a, button, input, textarea, img, ul li').tooltip();
+
+   $('span, a:not(#more_load_project), button, input, textarea, img, ul li').tooltip();
 });
 
 /* ==========================================================================
@@ -72,7 +73,7 @@ $(".next").click(function(){
     next_fs = $(this).parent().next();
 
     //activate next step on progressbar using the index of next_fs
-    $('#progressbar li').eq($('fieldset').index(next_fs)).addClass('active');
+    $('#progressBarByStep li').eq($('fieldset').index(next_fs)).addClass('active');
 
     //show the next fieldset
     next_fs.show();
@@ -102,7 +103,7 @@ $('.previous').click(function(){
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
     //activate next step on progressbar using the index of next_fs
-    $('#progressbar li').eq($('fieldset').index(current_fs)).removeClass('active');
+    $('#progressBarByStep li').eq($('fieldset').index(current_fs)).removeClass('active');
 
     //show the next fieldset
     previous_fs.show();

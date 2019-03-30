@@ -749,52 +749,39 @@ if(isset($_GET['activite']))
         else echo $message;
     }
 }
+
 /* ==========================================================================
-GESTION DU SYSTEME D INSERTION DES SERVICES DANS LE BD
+GESTION DE L'AJOUT DE L'AGENDA DANS LA ZONE CONFIG PAGE
 ========================================================================== */
-
-/*if(isset($_GET['fonctionnalites']))
+if(isset($_GET['specialite']))
 {
-
-    // Vérification de la validité des champs
-    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['addfonctionnalites']))
-    {
-        $i++;
-        $message .= "Fonctionnalité Invalid<br />\n";
-    }
-    else
-    {
-        $_POST['addfonctionnalites'] = stripslashes(htmlspecialchars($_POST['addfonctionnalites']));
-
         // Connexion à la base de données
         require '../App/Config/Config_Server.php';
+    $_POST['addspecialite'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['addspecialite'])))), ENT_QUOTES);
 
         nettoieProtect();
         extract($_POST);
 
         $connexion = App::getDB();
-        $result = $connexion->rowCount('SELECT id_fonctionnalite FROM fonctionnalite WHERE libelle="'.$addfonctionnalites.'"');
+        $result = $connexion->rowCount('SELECT id_specialite FROM specialite WHERE description="'.$addspecialite.'"');
 
         // Si une erreur survient
         if($result > 0 )
         {
             $i++;
-            $message .= "Cette Fonctionnalité Existe déjà<br/>";
+            $message .= "Cette Spécialité Existe déjà<br/>";
         }
         else
         {
+                $connexion->insert('INSERT INTO specialite(ref_id_admin, ref_id_model, description, date_creation) 
+                                               VALUES(?, ?, ?, ?)', array(0, $cat_serv_models, $addspecialite, time()));
+                $message .= 'success';
 
-            $connexion->insert('INSERT INTO fonctionnalite(ref_id_admin, ref_id_typeF, fonctionnalite.libelle, date_creation)
-                                               VALUES(:id_admin, :id_typeF, :titre, :temps)',
-                array(
-                    'id_admin'=>0,
-                    'id_typeF'=>intval($_POST['fonctionnality']),
-                    'titre'=>$addfonctionnalites,
-                    'temps'=>time()
-                ));
-            $message .= 'success';
+
         }
-    }
+
+
+
 
     if(isset($message)&& $message!='')
     {
@@ -811,4 +798,4 @@ GESTION DU SYSTEME D INSERTION DES SERVICES DANS LE BD
         }
         else echo $message;
     }
-}*/
+}

@@ -562,6 +562,55 @@ $(function() {
 });
 
 
+/* ==========================================================================
+GESTION DE L'AJOUT DE L'IMAGE DANS LA ZONE CONFIG PAGE
+========================================================================== */
+$(function() {
+
+    $('#specialite').on('submit', function (e) {
+        // On empêche le navigateur de soumettre le formulaire
+        e.preventDefault();
+        $('.specialiteUploads').show();
+        var $form = $(this);
+        var formdata = (window.FormData) ? new FormData($form[0]) : null;
+        var data = (formdata !== null) ? formdata : $form.serialize();
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            contentType: false, // obligatoire pour de l'upload
+            processData: false, // obligatoire pour de l'upload
+            dataType: 'html', // selon le retour attendu
+            data:data,
+            success:function(data){
+                var cat = $('#specialiteRapport');
+                if(data != 'success'){
+                    if(cat.hasClass('alert-success')){
+                        cat.removeClass('alert-success');
+                        cat.addClass('alert-danger');
+                    }
+                    cat.html(data).show();
+                    $('.imgUploads').hide();
+                }
+                else
+                {
+                    $('.specialiteUploads').hide();
+                    cat.removeClass('alert-danger');
+                    cat.addClass('alert-success');
+                    cat.html('Vous avez Ajouté une Nouvelle Spécialité').show();
+                    setTimeout(function () {
+                        cat.html('Vous avez AJouté une Nouvelle Spécialité').slideDown().hide();
+                    }, 5000);
+
+                }
+
+            }
+
+        });
+    });
+});
+
+
 
 
 /* ==========================================================================

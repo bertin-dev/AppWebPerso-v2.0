@@ -20,7 +20,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
 
         <div id="articles">
 
-                <div id="loader_blog" style="display: none; position: relative; top: 300px; text-align: center">
+                <div class="loader_blog" style="display: none; position: relative; top: 300px; text-align: center">
                     <span class="loader loader-circle"></span>
                     Chargement......
                 </div>
@@ -135,7 +135,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
                     echo '<span class="page"><a data="pages='.$i.'&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" data-title="page '.$i.'">'.$i.'</a></span>';
             }
             echo '
-              <span class="last"><a data="pages=';
+              <span class="last"><a class="pagination_link" data="pages=';
         if($i==1) echo $i; else echo ($i-1);
             echo '&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" title="Suivant">&gt;&gt;</a></span>
               </div>
