@@ -41,11 +41,14 @@
                     <ul class="breadcrumb">
                         <!--<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>Accueil</li>-->
                         <li><a href="../Public/index.php" title="Accueil"><img class="img-responsive" width="15"
-                                                                               align="left" title="Lieu de Localisation"
+                                                                               align="left" title="Home Page"
                                                                                src="../Public/img/socials/home.png"></a>
                         </li>
                         <li class="active">
-                            <small><em> <?php if ($_ENV['titre'] == "Accueil") echo '';
+                            <small><em> <?php if ($_ENV['titre'] == "Accueil"){
+                                $projet = App::getDB()->prepare_request('SELECT titre FROM projets_encours ORDER BY id_projet DESC LIMIT 1', array());
+                                echo 'Projet Encours... : '.utf8_encode($projet['titre']);
+                            }
                                     else if ($_ENV['titre'] == "Portfolio") echo utf8_encode($_ENV['titre']) . ' → Mes Réalisations.';
                                     else if (utf8_encode($_ENV['titre']) == "Compétences") echo 'Mes ' . utf8_encode($_ENV['titre']) . ' → Ce que je sais faire.';
                                     else if ($_ENV['titre'] == "Culture") echo utf8_encode($_ENV['titre']) . ' → Ce que J\'aime.';
@@ -57,21 +60,16 @@
                                     else if (!isset($_ENV['titre']) OR empty($_ENV['titre'])) echo ' → Page Introuvable.';
                                    // else echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
                                     ?>
-
                                 </em></small>
                         </li>
-                        <span style="margin-left: 2%; "><small><em>Encours... : <?php $projet = App::getDB()->prepare_request('SELECT titre FROM projets_encours ORDER BY id_projet DESC LIMIT 1', array());
-                        echo utf8_encode($projet['titre']); ?> </em></small></span>
-                       <!-- <marquee width="700" behavior="alternate" hspace="20" direction="left" scrollamount="1" SCROLLDELAY="10"></marquee>-->
 
-
-                        <li class="dropdown" style="float: right;">
+                        <span class="dropdown" style="float: right;">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="label count" style="font-size: 65%;position: absolute; left: 50%; background-color: #FF1300;"></span>
                                <img src="img/icons8-sms-32.png" alt="Projets Réalisés" title="Projets Réalisés" class="img-circle" width="25" >
                             </a>
                             <div id="competences" class="page-container current aube menu"></div>
-                        </li>
+                        </span>
 
                         <!--
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
