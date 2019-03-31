@@ -214,7 +214,7 @@ $(function () {
             $('body').notif({
                 title: 'Message d\'erreur',
                 content: 'Veuillez Remplir Tous les Champs !',
-                img: 'img/bertin-mounok.png',
+                img: 'img/icons/error-notif.png',
                 cls: 'error1'
             });
         }
@@ -247,7 +247,7 @@ $(function () {
                         $('body').notif({
                             title: 'Message d\'Erreur',
                             content: data,
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/error-notif.png',
                             cls: 'error1'
                         });
                     }
@@ -265,7 +265,7 @@ $(function () {
                         $('body').notif({
                             title: etat,
                             content: 'Soyez La Bienvenue',
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/success-notif.jpg',
                             cls: 'success1'
                         });
 
@@ -450,7 +450,7 @@ GESTION DU SYSTEME D'INSCRIPTION
             $('body').notif({
                 title: 'Message d\'erreur',
                 content: 'Veuillez Remplir Tous les Champs !',
-                img: 'img/bertin-mounok.png',
+                img: 'img/icons/error-notif.png',
                 cls: 'error1'
             });
         }
@@ -484,7 +484,7 @@ GESTION DU SYSTEME D'INSCRIPTION
                         $('body').notif({
                             title: 'Message d\'erreur',
                             content: data,
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/error-notif.png',
                             cls: 'error1'
                         });
                     }
@@ -499,8 +499,8 @@ GESTION DU SYSTEME D'INSCRIPTION
                             $('body').notif({
                                 title: 'Courrier Electronique',
                                 content: 'Votre compte utilisateur a partiellement été créée <br> Un Email vient d\'être Envoyé à cette Adresse: ' + email1,
-                                img: 'img/bertin-mounok.png',
-                                cls: 'success1'
+                                img: 'img/socials/email.png',
+                                cls: 'alert-info'
                             });
                        /* $('#nomSingUp').val("");
                         $('#prenomSingUp').val("");
@@ -568,7 +568,7 @@ $(function () {
         $('body').notif({
             title: 'Mon titre',
             content: 'Mon contenu',
-            img: 'img/bertin-mounok.png',
+            img: 'img/icons/success-notif.jpg',
             cls: 'success1'
         });
     });
@@ -631,7 +631,7 @@ $(function () {
             $('body').notif({
                 title: 'Message d\'erreur',
                 content: 'Veuillez Remplir le Champs !',
-                img: 'img/bertin-mounok.png',
+                img: 'img/icons/error-notif.png',
                 cls: 'error1'
             });
         }
@@ -658,7 +658,7 @@ $(function () {
                         $('body').notif({
                             title: 'Message d\'erreur',
                             content: data,
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/error-notif.png',
                             cls: 'error1'
                         });
                     }
@@ -669,7 +669,7 @@ $(function () {
                         $('body').notif({
                             title: 'Opération Réussie',
                             content: 'Merci de Nous avoir fait Confiance !',
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/success-notif.jpg',
                             cls: 'success1'
                         });
                         setTimeout(function () {
@@ -745,7 +745,7 @@ $(function () {
             $('body').notif({
                 title: 'Message d\'erreur',
                 content: 'Veuillez Remplir le Champs !',
-                img: 'img/bertin-mounok.png',
+                img: 'img/icons/error-notif.png',
                 cls: 'error1'
             });
         }
@@ -772,7 +772,7 @@ $(function () {
                         $('body').notif({
                             title: 'Message d\'erreur',
                             content: data,
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/error-notif.png',
                             cls: 'error1'
                         });
                     }
@@ -783,7 +783,7 @@ $(function () {
                         $('body').notif({
                             title: 'Opération Réussie',
                             content: 'Merci de Nous avoir fait Confiance !',
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/success-notif.jpg',
                             cls: 'success1'
                         });
                         /* setTimeout(function () {

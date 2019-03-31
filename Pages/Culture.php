@@ -19,12 +19,12 @@ require_once('page_number.php');
             <article>
                 <div class="col-lg-12 well" style="background: url('../Public/img/pattern15.png');">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#music" title="MUSIQUE" data-toggle="tab"><i
+                        <li class="active"><a href="#music" class="music" title="MUSIQUE" data-toggle="tab"><i
                                         class="icon-briefcase"></i>MUSIQUE</a></li>
-                        <li><a href="#series" title="SERIES" data-toggle="tab">SERIES</a></li>
-                        <li><a href="#jeux" title="JEUX" data-toggle="tab">JEUX</a></li>
-                        <li><a href="#emissionTV" title="EMISSION TV" data-toggle="tab">EMISSION TV</a></li>
-                        <li><a href="#sport" title="SPORT" data-toggle="tab">SPORT</a></li>
+                        <li><a href="#series" class="series" title="SERIES" data-toggle="tab">SERIES</a></li>
+                        <li><a href="#jeux" class="jeux" title="JEUX" data-toggle="tab">JEUX</a></li>
+                        <li><a href="#emissionTV" class="emissionTV" title="EMISSION TV" data-toggle="tab">EMISSION TV</a></li>
+                        <li><a href="#sport" class="sport" title="SPORT" data-toggle="tab">SPORT</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -423,6 +423,81 @@ require_once('page_number.php');
                                                                                   alt="MANEUH"
                                                                                   title="MANEUH"> </a></div>
                             </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>SMALLVILLE</strong><br><span title="SMALLVILLE"
+                                                                                                           style="color: #8d8f92; font-size: 11px;">Série Américaine</span>
+                                    </p><a href="#" title="SMALLVILLE"><img class="img-responsive"
+                                                                                         src="../Public/img/culture/series/smallville.jpg"
+                                                                                         alt="SMALLVILLE" title="SMALLVILLE">
+                                    </a></div>
+                                <div class="col-lg-3"><p><strong>GREAT TEACHER ONIZUKA</strong><br><span title="GREAT TEACHER ONIZUKA"
+                                                                                          style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="G.T.O"> <img class="img-responsive"
+                                                                         src="../Public/img/culture/series/gto.jpg"
+                                                                         alt="G.T.O" title="G.T.O"> </a></div>
+                                <div class="col-lg-3"><p><strong>AMERICAN PIE</strong><br><span title="AMERICAN PIE"
+                                                                                            style="color: #8d8f92; font-size: 11px;">Série Américaine</span>
+                                    </p><a href="#" title="AMERICAN PIE"><img class="img-responsive"
+                                                                          src="../Public/img/culture/series/american_pie.jpg"
+                                                                          alt="AMERICAN PIE" title="AMERICAN PIE"> </a></div>
+                                <div class="col-lg-3"><p><strong>NIKITA</strong><br><span
+                                                title="NIKITA" style="color: #8d8f92; font-size: 11px;">Série Amécaine</span>
+                                    </p><a href="#" title="NIKITA"><img class="img-responsive"
+                                                                        src="../Public/img/culture/series/nikita.jpg"
+                                                                        alt="NIKITA"
+                                                                        title="NIKITA"> </a></div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>DRAGON BALL SUPER</strong><br><span title="DRAGON BALL SUPER"
+                                                                                                           style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="DRAGON BALL SUPER"><img class="img-responsive"
+                                                                                         src="../Public/img/culture/series/dragon-ball-super.jpg"
+                                                                                         alt="DRAGON BALL SUPER" title="DRAGON BALL SUPER">
+                                    </a></div>
+                                <div class="col-lg-3"><p><strong>GOHOU MICHEL</strong><br><span title="GOHOU MICHEL"
+                                                                                          style="color: #8d8f92; font-size: 11px;">Série Ivoirien</span>
+                                    </p><a href="#" title="GOHOU MICHEL"> <img class="img-responsive"
+                                                                         src="../Public/img/culture/series/Gohou-Michel.jpg"
+                                                                         alt="GOHOU MICHEL" title="GOHOU MICHEL"> </a></div>
+                                <div class="col-lg-3"><p><strong>DEATH NOTE</strong><br><span title="DEATH NOTE"
+                                                                                            style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="DEATH NOTE"><img class="img-responsive"
+                                                                          src="../Public/img/culture/series/note.jpeg"
+                                                                          alt="DEATH NOTE" title="DEATH NOTE"> </a></div>
+                                <div class="col-lg-3"><p><strong>SHERLOCK-HOLMES</strong><br><span
+                                                title="SHERLOCK-HOLMES" style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="SHERLOCK-HOLMES"><img class="img-responsive"
+                                                                        src="../Public/img/culture/series/sherlock-holmes.jpg"
+                                                                        alt="SHERLOCK-HOLMES"
+                                                                        title="SHERLOCK-HOLMES"> </a></div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>ATTAQUE DES TITANS</strong><br><span title="ATTAQUE DES TITANS"
+                                                                                                     style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="ATTAQUE DES TITANS"><img class="img-responsive"
+                                                                                   src="../Public/img/culture/series/Attaque-des-Titans.jpg"
+                                                                                   alt="ATTAQUE DES TITANS" title="ATTAQUE DES TITANS">
+                                    </a></div>
+                                <div class="col-lg-3"><p><strong>LES SIMPSON</strong><br><span title="LES SIMPSON"
+                                                                                                style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="LES SIMPSON"> <img class="img-responsive"
+                                                                               src="../Public/img/culture/series/simpson.jpg"
+                                                                               alt="LES SIMPSON" title="LES SIMPSON"> </a></div>
+                                <div class="col-lg-3"><p><strong>CATCH</strong><br><span title="DEATH NOTE"
+                                                                                              style="color: #8d8f92; font-size: 11px;">CATCH</span>
+                                    </p><a href="#" title="CATCH"><img class="img-responsive"
+                                                                            src="../Public/img/culture/series/wwe.jpg"
+                                                                            alt="CATCH" title="CATCH"> </a></div>
+                                <!--<div class="col-lg-3"><p><strong>test</strong><br><span
+                                                title="SHERLOCK-HOLMES" style="color: #8d8f92; font-size: 11px;">Dessin Animé</span>
+                                    </p><a href="#" title="SHERLOCK-HOLMES"><img class="img-responsive"
+                                                                                 src="../Public/img/culture/series/IMG-20160314-WA0002.webp"
+                                                                                 alt="SHERLOCK-HOLMES"
+                                                                                 title="SHERLOCK-HOLMES"> </a></div>-->
+                            </div>
                         </div>
 
 
@@ -583,23 +658,81 @@ require_once('page_number.php');
 
 
                             <div class="col-lg-12">
-                                <div class="col-lg-4"><p><strong>Need For Speed</strong><br><span title="Need For Speed"
+                                <div class="col-lg-3"><p><strong>Need For Speed</strong><br><span title="Need For Speed"
                                                                                             style="color: #8d8f92; font-size: 11px;">Jeu de Course</span>
                                     </p><a href="#" title="Need For Speed"><img class="img-responsive"
                                                                           src="../Public/img/culture/jeux/needforspeed.jpg"
                                                                           alt="Need For Speed"
                                                                           title="Need For Speed"> </a></div>
-                                <div class="col-lg-4"><p><strong>PES 2019</strong><br><span
+                                <div class="col-lg-3"><p><strong>PES 2019</strong><br><span
                                                 title="PES 2019" style="color: #8d8f92; font-size: 11px;">Jeu de Football</span>
                                     </p><a href="#" title="PES 2019"><img class="img-responsive"
                                                                                  src="../Public/img/culture/jeux/pes2019.jpg"
                                                                                  alt="PES 2019"
                                                                                  title="PES 2019"> </a></div>
-                                <div class="col-lg-4"><p><strong>Superman</strong><br><span title="Teken"
+                                <div class="col-lg-3"><p><strong>Superman</strong><br><span title="Teken"
                                                                                            style="color: #8d8f92; font-size: 11px;">Jeu d' Aventure</span>
                                     </p><a href="#" title="Superman"><img class="img-responsive"
                                                                          src="../Public/img/culture/jeux/superman.jpg"
                                                                          alt="Superman" title="Superman"> </a></div>
+                                <div class="col-lg-3"><p><strong>SNK VS CAPCOM</strong><br><span title="SNK VS CAPCOM"
+                                                                                            style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="SNK VS CAPCOM"><img class="img-responsive"
+                                                                          src="../Public/img/culture/jeux/snk.jpg"
+                                                                          alt="SNK VS CAPCOM" title="SNK VS CAPCOM"> </a></div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>ASSASSIN'S CREED ODYSSEY</strong><br><span title="ASSASSIN'S CREED ODYSSEY"
+                                                                                                  style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="ASSASSIN'S CREED ODYSSEY"><img class="img-responsive"
+                                                                                src="../Public/img/culture/jeux/assassins_creed.jpg"
+                                                                                alt="ASSASSIN'S CREED ODYSSEY"
+                                                                                title="ASSASSIN'S CREED ODYSSEY"> </a></div>
+                                <div class="col-lg-3"><p><strong>BATTLEFIELD 5</strong><br><span
+                                                title="BATTLEFIELD 5" style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="BATTLEFIELD 5"><img class="img-responsive"
+                                                                          src="../Public/img/culture/jeux/battlefield-5.jpg"
+                                                                          alt="BATTLEFIELD 5"
+                                                                          title="BATTLEFIELD 5"> </a></div>
+                                <div class="col-lg-3"><p><strong>COUNTER STRIKER</strong><br><span title="Teken"
+                                                                                            style="color: #8d8f92; font-size: 11px;">Jeu de Guerre</span>
+                                    </p><a href="#" title="Superman"><img class="img-responsive"
+                                                                          src="../Public/img/culture/jeux/counter striker.jpg"
+                                                                          alt="COUNTER STRIKER" title="COUNTER STRIKER"> </a></div>
+
+                                <div class="col-lg-3"><p><strong>MAX PAYNE</strong><br><span title="MAX PAYNE"
+                                                                                                            style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="MAX PAYNE"><img class="img-responsive"
+                                                                                          src="../Public/img/culture/jeux/max_payne.jpg"
+                                                                                          alt="MAX PAYNE"
+                                                                                          title="MAX PAYNE"> </a></div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3"><p><strong>ONE PIECE WORLD SEEKER</strong><br><span title="ONE PIECE WORLD SEEKER"
+                                                                                                  style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="ONE PIECE WORLD SEEKER"><img class="img-responsive"
+                                                                                src="../Public/img/culture/jeux/one_piece_world_seeker.jpg"
+                                                                                alt="ONE PIECE WORLD SEEKER"
+                                                                                title="ONE PIECE WORLD SEEKER"> </a></div>
+                                <div class="col-lg-3"><p><strong>DRAGON BALL XENOVERSE</strong><br><span
+                                                title="DRAGON BALL XENOVERSE" style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="DRAGON BALL XENOVERSE"><img class="img-responsive"
+                                                                          src="../Public/img/culture/jeux/Dragon_ball_xenoverse.jpg"
+                                                                          alt="DRAGON BALL XENOVERSE"
+                                                                          title="DRAGON BALL XENOVERSE"> </a></div>
+                                <div class="col-lg-3"><p><strong>MORTAL KOMBAT</strong><br><span title="MORTAL KOMBAT"
+                                                                                            style="color: #8d8f92; font-size: 11px;">Jeu de Combat</span>
+                                    </p><a href="#" title="MORTAL KOMBAT"><img class="img-responsive"
+                                                                          src="../Public/img/culture/jeux/mortal_kombat.jpg"
+                                                                          alt="MORTAL KOMBAT" title="MORTAL KOMBAT"> </a></div>
+                                <div class="col-lg-3"><p><strong>SPLINTER CELL</strong><br><span title="SPLINTER CELL"
+                                                                                                          style="color: #8d8f92; font-size: 11px;">Jeu d'Aventure</span>
+                                    </p><a href="#" title="SPLINTER CELL"><img class="img-responsive"
+                                                                                        src="../Public/img/culture/jeux/splinter_cell.jpg"
+                                                                                        alt="SPLINTER CELL"
+                                                                                        title="SPLINTER CELL"> </a></div>
                             </div>
                         </div>
 
@@ -764,11 +897,11 @@ require_once('page_number.php');
                             </div>
 
                             <div class="col-lg-12">
-                                <div class="col-lg-3"><p><strong>US OPEN</strong><br><span title="US OPEN"
-                                                                                           style="color: #8d8f92; font-size: 11px;">Tennis</span>
+                                <div class="col-lg-3"><p><strong>CATCH ATTACK</strong><br><span title="US OPEN"
+                                                                                           style="color: #8d8f92; font-size: 11px;">WWWE</span>
                                     </p><a href="#" title="US OPEN"><img class="img-responsive"
-                                                                         src="../Public/img/culture/sport/us.png"
-                                                                         alt="US OPEN" title="US OPEN"> </a></div>
+                                                                         src="../Public/img/culture/sport/SMACKDOWN-15.jpg"
+                                                                         alt="CATCH ATTACK" title="CATCH ATTACK"> </a></div>
                                 <div class="col-lg-3"><p><strong>ALABA</strong><br><span title="ALABA"
                                                                                          style="color: #8d8f92; font-size: 11px;">Bayern Munich</span>
                                     </p><a href="#" title="ALABA"><img class="img-responsive"
@@ -908,6 +1041,12 @@ require_once('page_number.php');
                                                                                   src="../Public/img/culture/sport/zlatan.jpg"
                                                                                   alt="ZLATAN IBRAMOVIC"
                                                                                   title="ZLATAN IBRAMOVIC"> </a></div>
+                                <div class="col-lg-3"><p><strong>FRANCK RIBERY</strong><br><span
+                                                title="FRANCK RIBERY" style="color: #8d8f92; font-size: 11px;">Bayer Munich</span>
+                                    </p><a href="#" title="ZLATAN IBRAMOVIC"><img class="img-responsive"
+                                                                                  src="../Public/img/culture/sport/ribery.jpg"
+                                                                                  alt="FRANCK RIBERY"
+                                                                                  title="FRANCK RIBERY"> </a></div>
                             </div>
                         </div>
 

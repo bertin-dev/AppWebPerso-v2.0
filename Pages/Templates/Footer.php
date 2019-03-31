@@ -644,7 +644,7 @@ $(function(){
                 dataType: 'text',
                 beforeSend: function () {
                    // load_project.attr('title', 'Chargement...');
-                   /* load_project.tooltip({
+                  /* load_project.tooltip({
                         title: 'Chargement...'
                     });*/
                 },
@@ -1207,6 +1207,130 @@ $(window).load(function () {
 
 <?php
       }
+//CULTURE id_page=4
+       if(isset($_ENV['id_page']) && $_ENV['id_page'] == 4){
+     ?>
+     $(function(){
+
+        /*const  context = new window.AudioContext();
+         function playFile(filepath){
+             fetch(filepath)
+                 .then(response=>response.arrayBuffer());
+             data
+                 .then(arrayBuffer=>context.decodeAudioData(arrayBuffer))
+                 .then(audioBuffer=>{
+                 const soundSource = context.createBufferSource();
+                 soundSource.buffer = audioBuffer;
+                 soundSource.connect(context.destination);
+                 soundSource.start();
+             });
+         }
+
+         let successButton = document.querySelector('#good');
+         successButton.addEventListener('click', function(){
+             playFile('song/door-6-close.mp3');
+
+             let errorButton = document.querySelector('#bad');
+             errorButton.addEventListener('click', function(){
+                 playFile();
+             });
+         });*/
+
+
+
+        var body = $('body');
+
+        $(document).ready(function () {
+             body.notif({
+                 title: 'CULTURE',
+                 content: 'CE QUE J\AIME',
+                 img: 'img/icons/success-notif.jpg',
+                 cls: 'alert-success'
+             });
+         });
+
+        $('.music').on({
+            click:function(e){
+                e.preventDefault();
+                body.notif({
+                    title: 'NGUEA LAROUTE',
+                    content: 'ARTISTE FAVORIS',
+                    img: 'img/culture/musique/nguea.jpg',
+                    cls: 'alert-info'
+                });
+            }
+        });
+
+        $('.series').on({
+             click: function (e) {
+                 e.preventDefault();
+                 body.notif({
+                     title: 'ONE PIECE',
+                     content: 'EPISODE 876 VOSTFR HDTV ENCOURS...',
+                     img: 'img/culture/series/Luffy_contra_Big_Mom_en_Hope.png',
+                     cls: 'alert-info'
+                 });
+
+                 body.notif({
+                     title: 'SOUTH PARK',
+                     content: 'SAISON 22 VOSTFR HDTV ENCOURS...',
+                     img: 'img/culture/series/park.jpg',
+                     cls: 'alert-info'
+                 });
+
+                 body.notif({
+                     title: 'THE ORIGINALS',
+                     content: 'SAISON 5 VOSTFR HDTV ENCOURS...',
+                     img: 'img/culture/series/originals.jpg',
+                     cls: 'alert-info'
+                 });
+             }
+     });
+         $('.jeux').click(function (e) {
+             e.preventDefault();
+             body.notif({
+                 title: 'ONE PIECE WARRIORS 3',
+                 content: 'JEU QUE JOUS ACTUELLEMENT',
+                 img: 'img/culture/jeux/one_piece.jpg',
+                 cls: 'alert-info'
+             });
+         });
+
+         $('.emissionTV').click(function (e) {
+             e.preventDefault();
+             body.notif({
+                 title: 'EQUINOXE SOIR',
+                 content: 'CE QUE JE REGARDES REGULIEREMENT',
+                 img: 'img/culture/emission%20tv/equinoxsoir.jpg',
+                 cls: 'alert-info'
+             });
+             body.notif({
+                 title: '10-12H LE ZENITH',
+                 content: 'CE QUE JE REGARDES SOUVENT',
+                 img: 'img/culture/emission%20tv/10-12hzenith.jpg',
+                 cls: 'alert-info'
+             });
+         });
+
+         $('.sport').click(function (e) {
+             e.preventDefault();
+             body.notif({
+                 title: 'FC BAYER MUNICH',
+                 content: 'MON EQUIPE PREFERE',
+                 img: 'img/culture/sport/bayern.png',
+                 cls: 'alert-info'
+             });
+             body.notif({
+                 title: 'THIERRY HENRY',
+                 content: 'MON JOUEUR FAVORIS',
+                 img: 'img/culture/sport/henry.jpg',
+                 cls: 'alert-info'
+             });
+         });
+
+     });
+     <?php
+      }
          //BLOG id_page=7
       if(isset($_ENV['id_page']) && $_ENV['id_page'] == 7){
        ?>
@@ -1266,7 +1390,7 @@ $(function(){
             $('body').notif({
                 title: 'Message d\'erreur',
                 content: 'Veuillez Remplir le Champs Commentaire !',
-                img: 'img/bertin-mounok.png',
+                img: 'img/icons/error-notif.png',
                 cls: 'error1'
             });
         }
@@ -1293,7 +1417,7 @@ $(function(){
                         $('body').notif({
                             title: 'Message d\'erreur',
                             content: data,
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/error-notif.png',
                             cls: 'error1'
                         });
                     }
@@ -1305,7 +1429,7 @@ $(function(){
                         $('body').notif({
                             title: 'Opération Réussie',
                             content: 'Merci de Nous avoir fait Confiance !',
-                            img: 'img/bertin-mounok.png',
+                            img: 'img/icons/success-notif.jpg',
                             cls: 'success1'
                         });
                         // $('#contenuCommentaireUser').val("");
@@ -1398,7 +1522,7 @@ $(function(){
                 $('body').notif({
                     title: 'Message d\'erreur',
                     content: 'Veuillez Remplir le Champs Commentaire !',
-                    img: 'img/bertin-mounok.png',
+                    img: 'img/icons/error-notif.png',
                     cls: 'error1'
                 });
             }
@@ -1425,7 +1549,7 @@ $(function(){
                             $('body').notif({
                                 title: 'Message d\'erreur',
                                 content: data,
-                                img: 'img/bertin-mounok.png',
+                                img: 'img/icons/error-notif.png',
                                 cls: 'error1'
                             });
                         }
@@ -1437,7 +1561,7 @@ $(function(){
                             $('body').notif({
                                 title: 'Opération Réussie',
                                 content: 'Merci de Nous avoir fait Confiance !',
-                                img: 'img/bertin-mounok.png',
+                                img: 'img/icons/success-notif.jpg',
                                 cls: 'success1'
                             });
                             $('#reponse_commentaire_contenu').val("zzrezrzer");
