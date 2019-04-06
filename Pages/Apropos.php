@@ -319,18 +319,34 @@
                             </ul>
                         </li>
                     </ul>
+
+                    <!-- Card -->
+                    <div class="card card-cascade narrower col-xs-12 col-lg-12">
+                        <h4 style="font-variant: small-caps;color: black;">→ Ma Story</h4>
+                        <!-- Card image -->
+                        <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
+                            <p style="color: black;">
+                                <?= \App\Twitter\Twitter::autolink('#bertin-dev'); ?> un Geek de l'informatique en général et la programmation en particulier depuis
+                                l'âge de 17 ans. Au début je jouais beaucoup aux Jeux Vidéos (j'étais Gamer),
+                                ensuite j'ai attaqué l'installation des logiciels, des Jeux PC, des systèmes d'exploitations,
+                                le crackage des logiciels, le surf illégal, les téléchargements et
+                                très vite c'est devenu une passion que j'ai pu orienter vers le codage des logiciels d'entreprises
+                                depuis un bout de temps. <a href="">Lire la suite</a>
+                            </p>
+                        </div>
+
+
+                    </div>
                 </div>
 
                 <?php
             }
             ?>
-
         </div>
 
 
-
         <div class="col-xs-12 col-md-3 col-lg-3">
-            <div class="col-lg-12 mb-4 wow bounceInRight" data-wow-duration="1000ms" data-wow-delay="600ms" style="background: white; margin-bottom: 20px; color: black;">
+            <div class="col-md-12 col-lg-12 mb-4 wow bounceInRight" data-wow-duration="1000ms" data-wow-delay="600ms" style="background: white; margin-bottom: 20px; color: black;">
                 <!-- Card -->
                 <h4 style="font-variant: small-caps;" class="text-left">→ Mes Articles</h4>
                 <div class="card card-cascade narrower">
@@ -338,17 +354,15 @@
                     <div class="view view-cascade gradient-card-header peach-gradient" style="background-image: initial;">
                         <ul class="">
                             <li>
+                                <a href="index.php?id_page=6" class="white-text">
+                                    Mon Organigramme
+                                </a>
+                            </li>
+                            <li>
                                 <a href="index.php?id_page=6&amp;resume=1" class="white-text">
                                     Je Parle de Moi
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="index.php?id_page=6&amp;objectif=1" class="white-text">
-                                    Je Parle du Site Web
-                                </a>
-                            </li>
-
                             <li>
                                 <a href="index.php?id_page=6&amp;photos=1" class="white-text">
                                     Mes Photos
@@ -357,24 +371,24 @@
                         </ul>
                         <div class="card-body card-body-cascade text-center">
                         <h4 style="font-variant: small-caps;" class="text-left" >Mes Technologies</h4>
-                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/Accueil/Xamarin_logo_and_wordmark.png" alt="" class="img-responsive"></div>
-                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/Accueil/apple-android-windows-logos.png" alt="" class="img-responsive"></div>
-                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/Accueil/syncfusion.png" alt="" class="img-responsive"></div>
-                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/Accueil/TWD-Logo-dodgerblue.png" alt="" class="img-responsive"></div>
+                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/apropos/Xamarin_logo_and_wordmark.png" alt="" class="img-responsive"></div>
+                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/apropos/apple-android-windows-logos.png" alt="" class="img-responsive"></div>
+                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/apropos/syncfusion_Logo.png" alt="" class="img-responsive"></div>
+                        <div class="col-xs-6 col-sm-3 col-lg-6"><img src="img/apropos/TWD-Logo-dodgerblue.png" alt="" class="img-responsive"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="visible-lg">
+            <div class="">
                 <?php
                 foreach (App::getDB()->query('SELECT title,chemin FROM images
                                                          INNER JOIN page
                                                          ON images.ref_id_page=page.id_page
                                                          WHERE destination="Extreme Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $cover):
 
-                    echo '<div class="col-lg-12 apropos-cover" style="height: 100px;
+                    echo '<div class="col-xs-12 col-md-12 col-lg-12 apropos-cover" style="height: 100px;
     background: url('.$cover->chemin.') no-repeat center;
     /* background-color: #2F2F2E; */
     background-repeat: no-repeat;
@@ -387,18 +401,18 @@
     </div>';
                 endforeach;
                 ?>
-                <div class="col-lg-12" style="background: white; margin-bottom: 20px;">
+                <div class="col-xs-12 col-md-12 col-lg-12" style="background: white; margin-bottom: 20px;">
                     <?php
                     foreach (App::getDB()->query('SELECT title,chemin FROM images
                                                          INNER JOIN page
                                                          ON images.ref_id_page=page.id_page
                                                          WHERE destination="Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $profil):
-                        echo '<div class="col-lg-5">
+                        echo '<div class="col-xs-3 col-md-3 col-lg-5">
                 <img src="'.$profil->chemin.'" alt="'.$profil->title.'" title="'.$profil->title.'" style="float: right; margin-top: -45px; z-index: 10;" class="img-thumbnail">
                 </div>';
                     endforeach;
                     ?>
-                    <div class="col-lg-7" style="color: black">
+                    <div class="col-xs-9 col-md-9 col-lg-7" style="color: black">
                         <?php
                         foreach (App::getDB()->query('SELECT title,chemin FROM images
                                                          INNER JOIN page

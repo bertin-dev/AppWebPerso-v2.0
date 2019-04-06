@@ -30,9 +30,9 @@ require_once('page_number.php');
                     <div class="col-lg-12 well wow fadeInDown" style="background: url('img/pattern15.png');">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#<?= 'entreprise' . $portfolio->id_body; ?>"
-                                                  title="<?= $portfolio->entreprise; ?>" data-toggle="tab"><i
-                                            class="icon-briefcase"></i><?= $portfolio->entreprise; ?></a></li>
-                            <li><a href="#<?= 'travaux' . $portfolio->id_body; ?>" title="Travaux" data-toggle="tab">TRAVAUX</a>
+                                                  title="<?= utf8_encode($portfolio->entreprise); ?>" data-toggle="tab"><i
+                                            class="icon-briefcase"></i><?= utf8_encode($portfolio->entreprise); ?></a></li>
+                            <li><a href="#<?= 'travaux' . $portfolio->id_body; ?>" title="Travaux" data-toggle="tab">DESCRIPTION</a>
                             </li>
                             <li><a href="#<?= 'captures' . $portfolio->id_body; ?>" title="Captures"
                                    data-toggle="tab">CAPTURES</a></li>
@@ -43,35 +43,35 @@ require_once('page_number.php');
                         <div class="tab-content">
                             <div class="tab-pane active" id="<?= 'entreprise' . $portfolio->id_body; ?>">
                                 <div class="col-lg-6">
-                                    <strong>Année :</strong> <em>
-                                        <small><?= $portfolio->annee; ?></small>
+                                    <strong><u>Date de sortie</u>: </strong> <em>
+                                        <small><?= date('d/m/Y', strtotime($portfolio->annee)); ?></small>
                                     </em><br>
-                                    <strong>Entreprise:</strong> <em>
-                                        <small><?= $portfolio->entreprise; ?></small>
+                                    <strong><u>Entreprise</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->entreprise); ?></small>
                                     </em><br>
-                                    <strong>Activité:</strong> <em>
-                                        <small><?= $portfolio->activite; ?></small>
+                                    <strong><u>Activité</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->activite); ?></small>
                                     </em><br>
-                                    <strong>Ville:</strong> <em>
-                                        <small><?= $portfolio->ville; ?></small>
+                                    <strong><u>Ville</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->ville); ?></small>
                                     </em>
                                 </div>
                                 <div class="col-lg-6">
-                                    <strong>Section:</strong> <em>
-                                        <small><?= $portfolio->section; ?></small>
+                                    <strong><u>Section</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->section); ?></small>
                                     </em><br>
-                                    <strong>Matricule:</strong> <em>
-                                        <small><?= $portfolio->matricule; ?></small>
+                                    <strong><u>Matricule</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->matricule); ?></small>
                                     </em><br>
-                                    <strong>Poste:</strong> <em>
-                                        <small><?= $portfolio->poste_occupe; ?></small>
+                                    <strong><u>Poste</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->poste_occupe); ?></small>
                                     </em>
                                 </div>
 
                             </div>
 
                             <div class="tab-pane" id="<?= 'travaux' . $portfolio->id_body; ?>">
-                                <p><em><?= $portfolio->travaux_effectue; ?></em></p>
+                                <p><em><?= utf8_encode($portfolio->travaux_effectue); ?></em></p>
                             </div>
 
 
@@ -80,7 +80,7 @@ require_once('page_number.php');
                                 <?php
                                 $img = explode('-', $portfolio->screenshot_App);
                                 for($i=0;$i<count($img)-1;$i++)
-                                    echo '<img src="'.$img[$i].'" class="img-responsive" title="'.$portfolio->entreprise.'"alt="'.$portfolio->entreprise.'"/>';
+                                    echo '<br><img src="'.$img[$i].'" class="img-responsive" title="'.utf8_encode($portfolio->entreprise).'"alt="'.utf8_encode($portfolio->entreprise).'"/>';
                                 ?>
                             </div>
 
@@ -89,39 +89,46 @@ require_once('page_number.php');
 
                                 <div class=" col-lg-6">
                                     <h4 align="center"><u>Fonctionalités</u>:</h4>
-                                    <em><?= $portfolio->fonctionnalites; ?></em>
+                                    <em><?php
+                                        $tab = explode('-', utf8_encode($portfolio->fonctionnalites));
+                                        for($j=1; $j<count($tab); $j++){
+                                            echo '#'.$j.'-'.$tab[$j].'<br>';
+                                        } ?></em>
                                 </div>
 
-                                <div class="right-sidebar col-lg-6">
+                                <div class="right-sidebar col-lg-6" style="margin-top: initial;">
                                     <h4 align="center"><u>Caractéristiques</u>:</h4>
-                                    <strong>Technologie :</strong> <em>
-                                        <small><?= $portfolio->app_dev; ?></small>
+                                    <strong><u>Technologie</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->app_dev); ?></small>
                                     </em><br>
-                                    <strong>Type:</strong> <em>
-                                        <small><?= $portfolio->type_app; ?></small>
+                                    <strong><u>Type</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->type_app); ?></small>
                                     </em><br>
-                                    <strong>Architecture:</strong> <em>
-                                        <small><?= $portfolio->architecture; ?></small>
+                                    <strong><u>Architecture</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->architecture); ?></small>
                                     </em><br>
-                                    <strong> Méthode d'Analyse:</strong> <em>
-                                        <small><?= $portfolio->methode_analyse; ?></small>
+                                    <strong> <u>Méthode d'Analyse</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->methode_analyse); ?></small>
                                     </em><br>
-                                    <strong>IDE:</strong> <em>
-                                        <small><?= $portfolio->ide; ?></small>
+                                    <strong><u>IDE</u>:</strong> <em>
+                                        <small><?= utf8_encode($portfolio->ide); ?></small>
                                     </em><br>
-                                    <strong>Langage:</strong> <em>
-                                        <small><?= $portfolio->langage; ?></small>
+                                    <strong><u>Langage</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->langage); ?></small>
                                     </em><br>
-                                    <strong>SGBD:</strong> <em>
-                                        <small><?= $portfolio->sgbd; ?></small>
+                                    <strong><u>SGBD</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->sgbd); ?></small>
                                     </em><br>
-                                    <strong>Outils:</strong> <em>
-                                        <small><?= $portfolio->outils; ?></small>
+                                    <strong><u>Outils</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->outils); ?></small>
                                     </em><br>
-                                    <strong>Framework/CMS:</strong> <em>
-                                        <small><?= $portfolio->framework; ?></small>
+                                    <strong><u>Framework/CMS</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->framework); ?></small>
                                     </em><br>
-                                    <strong>URL:</strong> <em>
+                                    <strong><u>Déploiement</u>: </strong> <em>
+                                        <small><?= utf8_encode($portfolio->deploiement); ?></small>
+                                    </em><br>
+                                    <strong><u>URL</u>:</strong> <em>
                                         <small><a href="<?= $portfolio->url; ?>" alt="<?= $portfolio->url; ?>"
                                                   title="<?= $portfolio->url; ?>"><?= $portfolio->url; ?></a></small>
                                     </em>

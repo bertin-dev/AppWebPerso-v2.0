@@ -214,7 +214,7 @@ if(isset($_GET['singIn'])) {
 
     /*---------------------------------------------------*/
 
-    if (!preg_match('/^[A-Za-z0-9_ ]{4,16}$/', $_POST['passwordSingIn'])) {
+    if (!preg_match('/^[A-Za-z0-9_-]{4,30}$/', $_POST['passwordSingIn'])) {
         echo $message = "password Invalid";
         exit();
     }
@@ -233,8 +233,6 @@ if(isset($_GET['singIn'])) {
     }
 
     else {
-       // session_start();
-
         $nbre_con =  $connexion->prepare_request('SELECT id_compte, nom, email, nbre_connexion FROM compte WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
             ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
 
@@ -244,13 +242,13 @@ if(isset($_GET['singIn'])) {
         //gestion du checkbox qui est sur l'authentification
         if(isset($_POST['t_and_c']) && $_POST['t_and_c']=='1')
         {
-            setcookie('ID', $nbre_con['id_compte'], time() + 30*24*3600, null, null, false, true);
-            setcookie('Nom', $nbre_con['nom'], time() + 30*24*3600, null, null, false, true);
-            setcookie('Email', $nbre_con['email'], time() + 30*24*3600, null, null, false, true);
+            setcookie('ID_USER', $nbre_con['id_compte'], time() + 30*24*3600, null, null, false, true);
+            setcookie('NOM_USER', $nbre_con['nom'], time() + 30*24*3600, null, null, false, true);
+            setcookie('EMAIL_USER', $nbre_con['email'], time() + 30*24*3600, null, null, false, true);
         }
          else{
-             $_SESSION['ID'] = $nbre_con['id_compte'];
-             $_SESSION['EMAIL'] = $nbre_con['email'];
+             $_SESSION['ID_USER'] = $nbre_con['id_compte'];
+             $_SESSION['EMAIL_USER'] = $nbre_con['email'];
          }
             echo 'success';
     }
@@ -380,9 +378,9 @@ if(isset($_GET['visitor'])) {
        {
            $newsletter['id_newsletter'] = 0;
            /***verification si votre compte existe****/
-           if( (isset($_SESSION['ID']) && !empty($_SESSION['ID'])) || (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) ){
-               if(isset($_SESSION['ID'])) $compte = intval($_SESSION['ID']);
-               if(isset($_COOKIE['ID'])) $compte = intval($_COOKIE['ID']);
+           if( (isset($_SESSION['ID_USER']) && !empty($_SESSION['ID_USER'])) || (isset($_COOKIE['ID_USER']) && !empty($_COOKIE['ID_USER'])) ){
+               if(isset($_SESSION['ID_USER'])) $compte = intval($_SESSION['ID_USER']);
+               if(isset($_COOKIE['ID_USER'])) $compte = intval($_COOKIE['ID_USER']);
                $connexion->insert('INSERT INTO visiteur(ref_id_compte, ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
                                       VALUES(?,?,?,?,?,?,?)', [$compte, $newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
            }
@@ -395,9 +393,9 @@ if(isset($_GET['visitor'])) {
           }
        else{
            /***verification si votre compte existe****/
-           if( (isset($_SESSION['ID']) && !empty($_SESSION['ID'])) || (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) ){
-               if(isset($_SESSION['ID'])) $compte = intval($_SESSION['ID']);
-               else if(isset($_COOKIE['ID'])) $compte = intval($_COOKIE['ID']);
+           if( (isset($_SESSION['ID_USER']) && !empty($_SESSION['ID_USER'])) || (isset($_COOKIE['ID_USER']) && !empty($_COOKIE['ID_USER'])) ){
+               if(isset($_SESSION['ID_USER'])) $compte = intval($_SESSION['ID_USER']);
+               else if(isset($_COOKIE['ID_USER'])) $compte = intval($_COOKIE['ID_USER']);
                else $compte = 0;
                $connexion->insert('INSERT INTO visiteur(ref_id_compte, ref_id_newsletter, nom_prenom_visiteur, email_visiteur, message_visiteur, heure_envoi_msg_admin, ip_visiteur) 
                                       VALUES(?,?,?,?,?,?,?)', [$compte, $newsletter['id_newsletter'], $_POST['identite_visitor'], $_POST['email_visitor'], $_POST['message_visitor'], time(), get_ip()]);
@@ -475,8 +473,8 @@ if(isset($_GET['commentaire'])) {
         nettoieProtect();
         extract($_POST);
 
-        if(isset($_SESSION['ID'])) $compte = intval($_SESSION['ID']);
-        else if(isset($_COOKIE['ID'])) $compte = intval($_COOKIE['ID']);
+        if(isset($_SESSION['ID_USER'])) $compte = intval($_SESSION['ID_USER']);
+        else if(isset($_COOKIE['ID_USER'])) $compte = intval($_COOKIE['ID_USER']);
         else $compte = 0;
 
         $connexion->insert('INSERT INTO comments(ref_id_sujet, ref_id_compte, commentaires, data_ajout_commentaires) VALUES (:ref_sujet, :ref_compte, :comments, :temps)',
@@ -499,6 +497,41 @@ if(isset($_GET['commentaire'])) {
 }
 
 
+
+/* ==========================================================================
+SYSTEME DE SOUMISSION DES REACTIONS DES COMMENTAIRES
+   ========================================================================== */
+// Une fois le formulaire envoyé
+if(isset($_GET['reponse_commentaires'])) {
+
+    if(isset($_POST['reponse_commentaire_contenu0'])){
+        echo 'bonjour';
+    }
+
+    if(strlen($_POST['message']) < 4 || strlen($_POST['message']) > 5000 ){
+        echo 'Le Commentaire est compris entre 3 et 5000 caractères';
+        exit;
+    }
+
+    /* htmlentities empêche l'excution du code HTML
+     * le ENT_QUOTES pour dire à htmlentities qu'on veut en plus transformer les apostrophes et guillemets*/
+    $_POST['message'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['message'])))), ENT_QUOTES);
+
+
+    // Connexion à la base de données
+    $connexion = App::getDB();
+        nettoieProtect();
+        //extract($_POST);
+
+        if(isset($_SESSION['ID_USER'])) $compte = intval($_SESSION['ID_USER']);
+        else if(isset($_COOKIE['ID_USER'])) $compte = intval($_COOKIE['ID_USER']);
+        else $compte = 0;
+
+    $connexion->insert('INSERT INTO feedback_comments(ref_id_compte, ref_id_commentaires, reactions_commentaires, date_ajout_react) VALUES (:ref_compte, :ref_commentaires, :feedback, :temps)',
+            ['ref_compte'=>$compte, 'ref_commentaires'=>intval($_SESSION['id_comment']), 'feedback'=>$_POST['message'], 'temps'=>time()]);
+
+        echo 'success';
+}
 
 
 // Une fois le formulaire envoyé

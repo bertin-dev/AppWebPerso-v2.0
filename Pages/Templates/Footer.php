@@ -1,5 +1,5 @@
 
-<footer class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+<footer class="wow fadeInDown">
 
     <!-- Navigation -->
     <nav class="navbarRetouche navbar-default" role="navigation">
@@ -124,8 +124,8 @@
     </nav>
 
     <span class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin: 0;">
-                <span style="font-variant: small-caps;" title="bertin.dev → Développeur. STATUT : Freelance"><small><em>  &copy; <?php  echo date("Y", time()); ?>, bertin.dev, Inc.</em></small></span>
-            </span>
+                <span style="font-variant: small-caps;" title="Consultant Développeur"><small><em>  &copy; <?php  echo date("Y", time()); ?>, bertin.dev, Inc.</em></small></span>
+    </span>
 
     <span class="col-sm-12 col-md-6 col-lg-6">
         <span title="Appels Disponible pour tous projets sérieux" style=" float: right; padding: 0; margin: 0;"><small><li
@@ -405,25 +405,6 @@ SYSTEME D'INDICATEUR BLEU PENDANT LE SCROLL
 
 <!--
   ==========================================================================
-Affiche le service devis si tu es authentifié
-   ==========================================================================
-  -->
-<?php
-if( (isset($_SESSION['ID']) && !empty($_SESSION['ID'])) OR (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) )
-{
-?>
-<script>
-    $('#devis_service').on('click', function () {
-        $(location).attr('href',"index.php?id_page=9");
-    });
-</script>
-<?php
-}
-?>
-
-
-<!--
-  ==========================================================================
 Empêche l'affichage du pied de page (footer) et (du chemin de fer + Notification) dans le blog
    ==========================================================================
   -->
@@ -436,46 +417,6 @@ if(isset($_ENV['id_page']) && $_ENV['id_page']==7)
         //enlève entête et pied de page dans le BLOG
         $('#notif_chemin_fer').remove();
             $('footer').remove();
-
-   var lien = $('section article a, aside a, .blog-article-1-p-2 a, .papou a, span a, #search_contenu');
-        lien.on({
-            click: function(even){
-                even.preventDefault();
-                if(lien.hasClass('link_articles')){
-                    lien.removeClass('pagination_link link_articles');
-                    lien.removeAttr('data');
-
-                    lien.each(function () {
-                        lien.attr({
-                            'data-toggle': 'modal',
-                            'data-target': '#login_1'
-                        });
-                    });
-
-                }
-            },
-            focus: function(){
-                if(lien.hasClass('link_articles')){
-                    lien.removeClass('pagination_link link_articles');
-                    lien.removeAttr('data');
-
-                    lien.each(function () {
-                        lien.attr({
-                            'data-toggle': 'modal',
-                            'data-target': '#login_1'
-                        });
-                    });
-
-                }
-                $('#search_contenu').prop('disabled', true);
-            }
-
-        });
-
-
-
-
-
     });
 </script>
 <?php
@@ -558,7 +499,21 @@ SYSTEME DE GESTION DES CHARGEMENTS CONDITIONNES EN FONCTION DES PAGES
 <?php
         //HOMEPAGE id_page=1
        if(isset($_ENV['id_page']) && $_ENV['id_page'] == 1){
-        ?>
+
+/* ==========================================================================
+SYSTEME DE VERIFICATION DU BOUTON DEVIS DE LA HOMEPAGE
+   ========================================================================== */
+        if( isset($_SESSION['ID_USER']) || isset($_COOKIE['ID_USER']) )
+          {
+          ?>
+          $(function () {
+              $('#devis_service').click(function () {
+                  $(location).attr('href',"index.php?id_page=9");
+              });
+          });
+        <?php
+          }
+           ?>
 /* ==========================================================================
 SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION REALISATION
    ========================================================================== */
@@ -568,10 +523,10 @@ $(function(){
     $('#projet').click(function(e){
         e.preventDefault();
         $('body').notif({
-            title: 'Message d\'erreur',
-            content: 'Vous n\'avez pas de Projet Encours d\'exécution !',
-            img: 'img/icons/error-notif.png',
-            cls: 'error1'
+            title: 'Notification d\'Information',
+            content: 'Vous devez d\'abord vous identifier !',
+            img: 'img/icons/information.png',
+            cls: 'alert-info'
         });
     });
     //ZONE DE CITATION A L ACCUEIL
@@ -580,6 +535,7 @@ $(function(){
     $('#card1').removeClass('rgba-black-strong').addClass('rgba-indigo-strong');
     $('#card1 .pink-text').removeClass('pink-text').addClass('orange-text');
     $('#card0 a, #card1 a, #card2 a').remove();
+
 
     var realisation = '1';
     $('#loader_realisation').show();
@@ -1258,6 +1214,12 @@ $(window).load(function () {
                     img: 'img/culture/musique/nguea.jpg',
                     cls: 'alert-info'
                 });
+                body.notif({
+                    title: 'BEN DECCA',
+                    content: 'ARTISTE FAVORIS N°2',
+                    img: 'img/culture/musique/Ben_Decca.jpg',
+                    cls: 'alert-info'
+                });
             }
         });
 
@@ -1290,7 +1252,7 @@ $(window).load(function () {
              e.preventDefault();
              body.notif({
                  title: 'ONE PIECE WARRIORS 3',
-                 content: 'JEU QUE JOUS ACTUELLEMENT',
+                 content: 'JEU QUE JE JOUS ACTUELLEMENT',
                  img: 'img/culture/jeux/one_piece.jpg',
                  cls: 'alert-info'
              });
@@ -1333,6 +1295,49 @@ $(window).load(function () {
       }
          //BLOG id_page=7
       if(isset($_ENV['id_page']) && $_ENV['id_page'] == 7){
+
+          //SYSTEME D'AUTHENTIFICATION DE TOUS LES LIEN DU BLOG
+          if(!isset($_SESSION['ID_USER']) && !isset($_COOKIE['ID_USER'])){
+           ?>
+$(function () {
+
+    var lien = $('section article a, aside a, .blog-article-1-p-2 a, .papou a, span a, #search_contenu');
+    lien.on({
+        click: function(even){
+            even.preventDefault();
+            if(lien.hasClass('link_articles')){
+                lien.removeClass('pagination_link link_articles');
+                lien.removeAttr('data');
+
+                lien.each(function () {
+                    lien.attr({
+                        'data-toggle': 'modal',
+                        'data-target': '#login_1'
+                    });
+                });
+
+            }
+        },
+        focus: function(){
+            if(lien.hasClass('link_articles')){
+                lien.removeClass('pagination_link link_articles');
+                lien.removeAttr('data');
+
+                lien.each(function () {
+                    lien.attr({
+                        'data-toggle': 'modal',
+                        'data-target': '#login_1'
+                    });
+                });
+
+            }
+            $('#search_contenu').prop('disabled', true);
+        }
+
+    });
+});
+          <?php
+          }
        ?>
 
 /* ==========================================================================
@@ -1340,11 +1345,7 @@ SYSTEME DE GESTION DES COMMENTAIRES UTILISATEURS DU BLOG
 ========================================================================== */
 $(function(){
 
-    /*var $timer = setInterval(function () {
-        load_comments();
-    }, 3000);*/
-
-    $('#contenuCommentaireUser').keyup(function () {
+    $('#articles').on('keyup', '#contenuCommentaireUser', function () {
         commentaire();
     });
 
@@ -1382,7 +1383,7 @@ $(function(){
 
 
 
-    $('#commentaire_user').submit(function () {
+    $('#articles').on('submit', '#commentaire_user', function () {
         var contentComments = $('#contenuCommentaireUser').val();
 
 
@@ -1406,6 +1407,10 @@ $(function(){
                 processData: false, // obligatoire pour de l'upload
                 data: donnee,
                 beforeSend: function () {
+                    /*var $timer = setInterval(function () {
+                        load_comments();
+                    }, 1000);*/
+                    load_comments();
                     $('#enreg_commentaires').attr('value', 'En cours...');
                     $('.commentaire-error-msg').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
                 },
@@ -1422,7 +1427,6 @@ $(function(){
                         });
                     }
                     else {
-                        clearInterval($timer);
                         $('#enreg_commentaires').attr('value', 'Envoyer');
                         $('.commentaire-error-msg').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
 
@@ -1432,6 +1436,8 @@ $(function(){
                             img: 'img/icons/success-notif.jpg',
                             cls: 'success1'
                         });
+                        load_comments();
+                        //clearInterval($timer);
                         // $('#contenuCommentaireUser').val("");
                         /* setTimeout(function () {
                              $('#output_visitor').fadeOut().hide();
@@ -1479,19 +1485,39 @@ $(function(){
         });
     }
 
+    //capture l'id du commentaire apres un click sur le bouton repondre du blog
+    $('#articles').on('click', '.commentaire-wrapper a', function (e) {
+        e.preventDefault();
+        var id_commentaire = $(this).attr('data');
+        $.ajax({
+            url: '../Core/Controller/verification.php',
+            method: 'GET',
+            data: {
+                id_comment: eval(id_commentaire)
+            },
+            dataType: 'text',
+            success:function (data) {console.log(data);                return true;
+            },
+            error: function(){
+                console.log('Erreur de Chargement de l\'id du commentaire créé dynamiquement dans le bouton repondre du blog');
+            }
+        });
+    });
 
-//REPONSES DES COMMENTAIRES
-    /*
-        $('#reponse_commentaire_contenu').keyup(function () {
-            reponse_commentaire();
+//REPONSES DES COMMENTAIRES UTILISATEURS
+    var I, reponse_comment_content;
+        $('#articles').on('keyup', '.commentaire-reponses form textarea', function () {
+        I = $(this).attr('data');
+        reponse_comment_content = $('#reponse_commentaire_contenu' + I).val();
+        reponse_commentaire();
         });
 
         function reponse_commentaire() {
             $.ajax({
-                type: 'post',
-                url: '../Core/Controller/verification.php?reponse_commentaire=reponse_commentaire',
+                type: 'POST',
+                url: '../Core/Controller/verification.php',
                 data: {
-                    'reponse_commentaire_contenu': $('#reponse_commentaire_contenu').val()
+                    'reponse_commentaire_contenu': reponse_comment_content
                 },
                 success: function (data) {
                     if(data=='success'){
@@ -1502,48 +1528,37 @@ $(function(){
                         $('.commentaire-error-msg-reponse').css({
                             'font-size': '8px',
                             'margin-top': '-5px',
-                            'margin-bottom': '-20px',
-                            'color': 'red'
+                            'margin-bottom': '-20px'
                         }).html(data);
                     }
                 }
             });
-
-
         }
 
 
-
-        $('.ajouter-commentaire').submit(function () {
-            var reponse_commentaire_contenu = $('#reponse_commentaire_contenu').val();
-
-
-            if (reponse_commentaire_contenu == '') {
+        $('#articles').on('submit', '.commentaire-reponses form', function () {
+            if (reponse_comment_content === '') {
                 $('body').notif({
                     title: 'Message d\'erreur',
-                    content: 'Veuillez Remplir le Champs Commentaire !',
+                    content: 'Veuillez Remplir le Champs vide !',
                     img: 'img/icons/error-notif.png',
                     cls: 'error1'
                 });
             }
             else {
-                var $form = $(this);
-                var formdata = (window.FormData) ? new FormData($form[0]) : null;
-                var donnee = (formdata !== null) ? formdata : $form.serialize();
-
+                // On encode le message pour faire passer les caractères spéciaux comme +
+                var message = encodeURIComponent(reponse_comment_content);
                 $.ajax({
-                    type: 'post',
-                    url: '../Core/Controller/submit.php?reponse_commentaire=reponse_commentaire',
-                    contentType: false, // obligatoire pour de l'upload
-                    processData: false, // obligatoire pour de l'upload
-                    data: donnee,
+                    type: 'POST',
+                    url: '../Core/Controller/submit.php?reponse_commentaires=reponse_commentaires',
+                    data: "message="+message,
                     beforeSend: function () {
-                        $('#enreg_reponse_commentaires').attr('value', 'En cours...');
+                        $('#enreg_reponse_commentaires' + I).attr('value', 'En cours...');
                         $('.commentaire-error-msg-reponse').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
                     },
                     success: function (data) {
                         if(data != 'success'){
-                            $('#enreg_reponse_commentaires').attr('value', 'Envoyer');
+                            $('#enreg_reponse_commentaires' + I).attr('value', 'Envoyer');
                             $('.commentaire-error-msg-reponse').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
 
                             $('body').notif({
@@ -1553,9 +1568,10 @@ $(function(){
                                 cls: 'error1'
                             });
                         }
+
                         else {
-                            clearInterval($timer);
-                            $('#enreg_reponse_commentaires').attr('value', 'Envoyer');
+                            //clearInterval($timer);
+                            $('#enreg_reponse_commentaires' + I).attr('value', 'Envoyer');
                             $('.commentaire-error-msg-reponse').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
 
                             $('body').notif({
@@ -1564,7 +1580,8 @@ $(function(){
                                 img: 'img/icons/success-notif.jpg',
                                 cls: 'success1'
                             });
-                            $('#reponse_commentaire_contenu').val("zzrezrzer");
+                            load_comments();
+                            reponse_comment_content.val("");
                         }
                     }
 
@@ -1574,7 +1591,7 @@ $(function(){
 
 
         });
-        */
+
 
 
     /* ==========================================================================
@@ -1659,6 +1676,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
             },
             complete: function (data) {
                 $('.loader_blog').hide();
+                load_comments();
             }
         });
 

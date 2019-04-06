@@ -59,5 +59,6 @@
 
         </ul>
     </div>
+                <span class="visible-sm visible-lg" style="font-variant: small-caps; position: absolute;bottom: 9%; left: 15%; -moz-box-sizing: border-box; box-sizing: border-box;" title="Consultant Développeur"><small><em>  &copy; <?php  echo date("Y", time()); ?>, bertin.dev, Inc.</em></small></span>
 
 </aside>

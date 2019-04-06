@@ -606,6 +606,20 @@ float: left;
     left: 12px;
 }
 
+.commentaire-reponses form:before, .reaction header:before {
+    top: -25px;
+}
+
+.commentaire-reponses form:before, .commentaire-reponses article:before, .reaction header:before {
+    content: "";
+    display: block;
+    height: 25px;
+    width: auto;
+    border-left: 3px solid #1c455f;
+    position: absolute;
+    left: 48px;
+}
+
 .commentaires form .commentaire-input {
     float: left;
     width: 42%;
@@ -633,6 +647,13 @@ form textarea {
     margin: 10px;
 }
 
+.commentaire-error-msg-reponse {
+    display: block;
+    float: left;
+    color: #1073b2;
+    width: 50%;
+    margin: 10px;
+}
 
 .commentaires-liste {
     margin-left: -94px;

@@ -19,7 +19,6 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
     <div id="blog-list">
 
         <div id="articles">
-
                 <div class="loader_blog" style="display: none; position: relative; top: 300px; text-align: center">
                     <span class="loader loader-circle"></span>
                     Chargement......
@@ -45,7 +44,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
           <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
             <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" class="link_articles" title="' . $blog_item['titre'] . '">' .
-                    utf8_encode($blog_item['titre'])
+                    $blog_item['id_sujet'].'# '.utf8_encode($blog_item['titre'])
                     . '</a>
         </h1>
             <p class="blog-article-1-p-1">';
@@ -119,7 +118,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
             // On calcule le nombre de pages à créer
             $nombreDePages  = ceil($totalDesMessages / $nombreDeMessagesParPage);
             // Puis on fait une boucle pour écrire les liens vers chacune des pages
-            echo '<div class="col-xs-12 col-sm-10 col-lg-12">
+            echo '<div class="visible-lg visible-sm col-xs-12 col-sm-10 col-lg-12">
                     <div class="pagination1" id="resultat_pagination">';
             /* Boucle sur les pages */
             for ($i = 1 ; $i <= $nombreDePages ; $i++) {
@@ -140,11 +139,6 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
             echo '&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" title="Suivant">&gt;&gt;</a></span>
               </div>
               </div>';
-        //}
-
-
         ?>
-
-
     </div>
 </section>

@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="col-lg-6 wow fadeInDown" style="text-align: center;">
-                    <h1>Recherchez-vous un Développeur Consultant ???</h1>
+                    <h1>Recherchez-vous un Consultant Développeur ???</h1>
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
                     <a href="index.php?id_page=5" title="contactez-moi">Contacter <span class="glyphicon glyphicon-send"></span></a> ou regardez <a
@@ -317,7 +317,7 @@ endforeach;
                         <small>Dernières Technologies Déployés par Microsoft & Xamarin</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 view peach-gradient wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
-                <div class="col-lg-5 ">
+                <div class="col-xs-12 col-lg-5">
                         <ul style="text-align: center; padding: initial; margin: initial">
                         <li>Il y a tout juste <?= date('Y')-2018;?> an que j'utilise cette techno mais putin je suis hyper faciné par cette dernière.
                             Les applications universelles (Windows 10, windows 10 Mobile) et Xamarin
@@ -326,12 +326,12 @@ endforeach;
                         </ul>
                 </div>
 
-                 <div class = "col-lg-3" style="text-align: center; padding: initial; margin: initial">
-                     <img src="img/Accueil/xamarin-native.png" class="img-responsive" alt="">
+                 <div class = "col-xs-6 col-lg-3" style="text-align: center; padding: initial; margin: initial">
+                     <img src="img/Accueil/xamarin-native.png" class="img-responsive"  alt="">
                  </div>
 
-                <div class="col-lg-4" style="text-align: center; padding: initial; margin: initial">
-                    <img src="img/Accueil/crossplaforme.png" class="img-responsive" alt="">
+                <div class="col-xs-6 col-lg-4" style="text-align: center; padding: initial; margin: initial">
+                    <img src="img/Accueil/media-774068_960_720.png" class="img-responsive" width="196" alt="">
                 </div>
                 </div>
 
@@ -345,7 +345,7 @@ endforeach;
                                                          ON images.ref_id_page=page.id_page
                                                          WHERE destination="Extreme Bas" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 3') AS $facteur):
 
-                        echo '<div class="col-lg-4 mb-4">
+                        echo '<div class="col-md-4 col-lg-4 mb-4">
                         <!-- Card -->
                         <div class="card card-cascade narrower">
                             <!-- Card image -->
@@ -377,8 +377,6 @@ endforeach;
 
                 echo $variable;
                 ?>
-
-
                 <div class="col-lg-12">
                     <p>la page a mis <span class="label secondary"><?= round(microtime(TRUE) - $_SESSION['time'], 3); ?>s</span> à se générer à peu près</p>
                 </div>
@@ -422,12 +420,10 @@ endforeach;
                         <!-- Card content -->
                         <div class="card-body card-body-cascade text-center">
                             <marquee id="last_agenda" class="text-center" behavior="" direction="UP" scrollamount="1" height="50">
-                                <center>
-                                    <div id="loader_agenda" style="display: none;">
+                                    <div id="loader_agenda" style="display: none; text-align: center!important;">
                                         <span class="loader loader-circle"></span>
                                         Chargement......
                                     </div>
-                                </center>
                             </marquee>
                         </div>
                     </div
@@ -472,12 +468,10 @@ endforeach;
                 <div class="card card-cascade wider">
                     <!-- Card image -->
                     <div id="last_article" class="view view-cascade gradient-card-header peach-gradient">
-                        <center>
-                            <div id="loader_article" style="display: none;">
+                            <div id="loader_article" style="display: none; text-align: center!important;">
                                 <span class="loader loader-circle"></span>
                                 Chargement......
                             </div>
-                        </center>
                     </div>
                 </div>
 
@@ -500,40 +494,13 @@ endforeach;
                                     </div>
                                     <div class="panel-body">
                                         <ul id="last_comments" class="list-group"> </ul>
-                                        <center>
-                                            <div id="loader_last_comments" style="display: none;">
+                                            <div id="loader_last_comments" style="display: none; text-align: center!important;">
                                                 <span class="loader loader-circle"></span>
                                                 Chargement......
                                             </div>
-                                        </center>
                                         <a id="more_commentaire" href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Plus de Commentaires</a>
                                     </div>
                                 </div>
-
-
-                </div>
-
-                <h5 class="titreWidget" style="font-variant: small-caps; margin-top: 20px"><em>Ma Story</em></small> </h5>
-                <div class="widget">
-                    <div class="itemmoitie peach-gradient"></div>
-                    <div class="box-item wow fadeInDown">
-                        <a href="#"><img src="img/portfolio/cacam.jpg" title="icon-name" class="img-circle" width="100" height="100" style="margin-top: -50px;"></a>
-                        <h5 style="font-variant: small-caps; padding: initial;margin: initial;" title="Software Developper Xamarin"><small><em>Software Developper</em></small></h5>
-                        <h3 style="border-bottom: 1px solid black">Bertin Story</h3>
-                        <p style="font-size: 12px;">
-                            #bertin.dev un Geek de l'informatique en général et la programmation en particulier depuis
-                            l'âge de 17 ans.<!-- Au début j'avais commencé par être passionné des Jeux Vidéos (Gamer),
-                        ensuite j'ai attaqué l'installation des logiciels, des Jeux PC, des systèmes d'exploitations,
-                        le crackage, le surf illégal, les téléchargements et
-                        très vite c'est devenu une passion que j'ai pu orienter vers le codage des logiciels d'entreprises
-                        depuis un bout de temps.-->
-                            <br><a
-                                    href="#">Lire la Suite</a></p>
-                        <div style="border-bottom: 1px solid black;"></div>
-                        <h6 style="margin: 5px;">Spécialisé dans les Techno Suivantes:</h6>
-                        <img src="img/Accueil/microsoft.jpg" title="icon-name" class="img-thumbnail" width="100" height="100">
-                        <img src="img/Accueil/TWD-Logo-dodgerblue.png" title="icon-name" class="img-thumbnail" width="100" height="100">
-                    </div>
                 </div>
             </aside>
         </div>
