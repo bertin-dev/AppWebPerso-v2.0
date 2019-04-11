@@ -58,7 +58,7 @@
                     echo 'VOUS ÊTES HORS LIGNE !';
                 }else{
                     require '../App/Twitter/Twitter.php';
-                    $twitter = new \App\Twitter\Twitter('AxSTgl8sck76P9HFW2ncgT1jF', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX',__DIR__.'/tmp/cache.tmp');
+                    $twitter = new \App\Twitter\Twitter('', '',__DIR__.'/tmp/cache.tmp');
                     ?>
                     <ul style="font-size: small;">
                         <?php foreach ($twitter->lastTweets('bertin_dev', '3') as $tweet): ?>
