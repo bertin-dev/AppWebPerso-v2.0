@@ -498,7 +498,7 @@ GESTION DU SYSTEME D'INSCRIPTION
 
                             $('body').notif({
                                 title: 'Courrier Electronique',
-                                content: 'Votre compte utilisateur a partiellement été créée <br> Un Email vient d\'être Envoyé à cette Adresse: ' + email1,
+                                content: 'Votre compte utilisateur a partiellement été créée. Un Email vient d\'être Envoyé à cette Adresse: ' + email1,
                                 img: 'img/socials/email.png',
                                 cls: 'alert-info'
                             });
@@ -904,12 +904,12 @@ SYSTEME DE GESTION DES RESEAUX SOCIAUX (PARTAGER)
         popupCenter(shareUrl, "Partager sur facebook");
     });
 
-    document.querySelector('.share_gplus').addEventListener('click', function(e){
+    /*document.querySelector('.share_gplus').addEventListener('click', function(e){
         e.preventDefault();
         var url = this.getAttribute('data-url');
         var shareUrl = "https://plus.google.com/share?url=" + encodeURIComponent(url);
         popupCenter(shareUrl, "Partager sur Google+");
-    });
+    });*/
 
     document.querySelector('.share_linkedin').addEventListener('click', function(e){
         e.preventDefault();
@@ -919,5 +919,52 @@ SYSTEME DE GESTION DES RESEAUX SOCIAUX (PARTAGER)
     });
 
 })();
+
+
+/* ==========================================================================
+SYSTEME DE GESTION DES RESEAUX SOCIAUX (PARTAGER) DANS LE BLOG AVEC LES DELEGUATE
+========================================================================== */
+$(function(){
+
+    var popupCenter = function(url, title, width, height){
+        var popupWidth = width || 640;
+        var popupHeight = height || 320;
+        var windowLeft = window.screenLeft || window.screenX;
+        var windowTop = window.screenTop || window.screenY;
+        var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+        var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        var popupLeft = windowLeft + windowWidth / 2 - popupWidth / 2 ;
+        var popupTop = windowTop + windowHeight / 2 - popupHeight / 2;
+        var popup = window.open(url, title, 'scrollbars=yes, width=' + popupWidth + ', height=' + popupHeight + ', top=' + popupTop + ', left=' + popupLeft);
+        //popup.focus();
+        return true;
+    };
+
+    var content_blog = $('#articles');
+
+    content_blog.on('click', '.share_twitter' , function(e){
+        e.preventDefault();
+        var url = this.getAttribute('data-url');
+        var shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.title) +
+            "&via=bertin_dev" +
+            "&url=" + encodeURIComponent(url);
+        popupCenter(shareUrl, "Partager sur Twitter");
+    });
+
+    content_blog.on('click', '.share_facebook', function(e){
+        e.preventDefault();
+        var url = this.getAttribute('data-url');
+        var shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+        popupCenter(shareUrl, "Partager sur facebook");
+    });
+
+    content_blog.on('click', '.share_linkedin', function(e){
+        e.preventDefault();
+        var url = this.getAttribute('data-url');
+        var shareUrl = "https://www.linkedin.com/shareArticle?url=" + encodeURIComponent(url);
+        popupCenter(shareUrl, "Partager sur Linkedin");
+    });
+
+});
 
 

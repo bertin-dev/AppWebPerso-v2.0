@@ -15,6 +15,7 @@
     "require": {
         "facebook/php-sdk-v4": "4.0.*",
         "abraham/twitteroauth": "^1.0",
-        "nojimage/twitter-text-php": "^3.0"
+        "nojimage/twitter-text-php": "^3.0",
+        "phpmailer/phpmailer": "~6.0"
     }
 }

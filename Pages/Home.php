@@ -118,7 +118,9 @@
                 <div class="col-lg-4">
                     <img src="../Public/img/icons/demain-entrepreneur.png" title="Entrepreneur de demain" class="img-responsive" alt="Entrepreneur de demain">
                     <h5>Voua avez la possibilité de suivre l'évolution de votre projet à distance<small><em> Cliquez sur le bouton juste en dessous</em></small></h5>
+                <div class="text-center">
                     <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Suivez votre Projets à distance"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
+                </div>
                 </div>
 
                 <div class="right-sidebar col-lg-4 wow fadeInDown text-center">
@@ -136,7 +138,14 @@
                     </div>
                     <div class="col-xs-9 col-lg-9">
                         <h5>Votre offre sans engagement<small><em> dans votre boîte mail en 1 Min chrono!</em></small></h5>
-                        <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>
+                        <?php
+                        if( isset($_SESSION['ID_USER']) || isset($_COOKIE['ID_USER']) )
+                        {
+                        echo '<a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion"><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>';
+                        }else{
+                            echo '<a href="#" onclick="return false;" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>';
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -435,10 +444,10 @@ endforeach;
                             <?php
                             $now = time();
                             foreach (\App::getDB()->query('
-                            SELECT MAX(id_sujet), sujets.date_enreg AS D_enreg_Article FROM sujets
+                            SELECT id_sujet, sujets.date_enreg AS D_enreg_Article FROM sujets
                             INNER JOIN categorie
                             ON sujets.ref_id_categorie=categorie.id_categorie
-                            ORDER BY id_sujet') as $projet):
+                            ORDER BY id_sujet DESC LIMIT 1') as $projet):
                                 echo str_replace('O', '', App\Twitter\Twitter::timeTag($projet->D_enreg_Article));
                            /* echo Diff_entre_2Jours($now, strtotime($projet->D_enreg_Article));
                                echo Diff_entre_2Jours($now, strtotime($projet->D_enreg_Article))==1 ? ' Jour' : ' Jours';*/

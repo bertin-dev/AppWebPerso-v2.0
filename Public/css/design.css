@@ -526,7 +526,37 @@ GESTION DU BLOG
     transition: all .2s;
 }
 
+.social {
+    background: rgba(0,0,0,.2);
+    padding: 0 17px;
+    margin: 50px 0 0;
+    height: 40px;
+    line-height: 40px;
+}
 
+.social a {
+    float: right;
+    display: block;
+    height: 40px;
+    width: 50px;
+    /*background-image: url('../img/socials/social.jpg');*/
+    text-indent: -9999px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    transition: none;
+}
+
+.social-facebook {
+    background-position: 0 0;
+}
+.social-twitter {
+    background-position: -50px 0;
+}
+.social-google {
+    background-position: -100px 0;
+}
 
 
 

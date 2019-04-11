@@ -117,7 +117,7 @@
                         </div>
                     </form>
 
-                    <div class="col-xs-4 col-lg-12">
+                    <div class="col-xs-12 col-lg-12">
                         <?php
                         use \App\Facebook\FacebookConnect;
                         if(!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)){

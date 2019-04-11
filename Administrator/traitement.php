@@ -117,16 +117,9 @@ GESTION DU SYSTEME D INSERTION DES SUJETS DANS LE BD
 if(isset($_GET['blog']))
 {
 
-    // Vérification de la validité des champs
-    if(!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['blogTitre']))
-    {
-        $i++;
-        $message .= "Titre Invalid<br />\n";
-    }
-    else
-    {
         $_POST['blogTitre'] = strtolower(stripslashes(htmlspecialchars($_POST['blogTitre'])));
         $_POST['blogParagraphe'] = htmlentities(nl2br((stripslashes(htmlspecialchars($_POST['blogParagraphe'])))), ENT_QUOTES);
+        $_POST['addkeyWord'] = strtolower(stripslashes(htmlspecialchars($_POST['addkeyWord'])));
 
         // Connexion à la base de données
         require '../App/Config/Config_Server.php';
@@ -209,18 +202,18 @@ if(isset($_GET['blog']))
                 }
 
 
-            $connexion->insert('INSERT INTO sujets(ref_id_blog, ref_id_categorie, ref_id_archive, titre, paragraphe, image)
-                                               VALUES(:blog, :cat, :archive, :titre, :paragraphe, :img)',
+            $connexion->insert('INSERT INTO sujets(ref_id_blog, ref_id_categorie, titre, paragraphe, mot_cles, image)
+                                               VALUES(:blog, :cat, :titre, :paragraphe, :keyword, :img)',
                                                array('blog'=>intval($_POST['id_blog']),
                                                    'cat'=>intval($_POST['blogCategorie']),
-                                                   'archive'=>0,
                                                    'titre'=>$_POST['blogTitre'],
                                                    'paragraphe'=>$_POST['blogParagraphe'],
+                                                   'keyword'=>$_POST['addkeyWord'],
                                                    'img'=>$chemin
                                                ));
             $message .= 'success';
         }
-    }
+
 
     if(isset($message)&& $message!='')
     {

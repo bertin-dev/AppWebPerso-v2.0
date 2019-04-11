@@ -5240,10 +5240,10 @@ TABLET & SMALLER LAPTOPS
   CTA
   *********/
 
-  .cta img{
+  /*.cta img{
     display: none !important;
 
-  }
+  }*/
   .cta {
     height: auto;
     width: 100%;

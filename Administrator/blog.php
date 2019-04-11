@@ -121,6 +121,14 @@ endforeach;
                             </div>
 
                             <div class="form-group">
+                                <label>AJOUT DES MOTS CLES <b>*</b></label>
+                                <input type="text" name="addkeyWord" class="form-control" required="" placeholder="AJOUT DES MOTS CLES">
+                            </div>
+                            <div class="form-group">
+                                <h6><small>Séparer chaque mot par un (;) point virgule.</small></h6>
+                            </div>
+
+                            <div class="form-group">
                                 <input id="blogEnvoi" type="submit" class="btn btn-primary btn-lg" required="" value="AJOUT SUJET">
                                 <img src="images/ajax-loader.gif" class="blogUploads" style="display:none;">
                             </div>

@@ -30,7 +30,7 @@
                         </select>
                     </form>
                 </div>
-                <a href="#" class="white-text">Statistiques du Site</a>
+                <a data-toggle="modal" href="#infos" class="white-text">Statistiques du Site</a>
             </div>
             <div class="col-xs-12 col-md-3 col-lg-3">
                 <h3 style="font-variant: small-caps;"><i class="fa fa-info"></i> <u>Informations</u></h3>
@@ -137,6 +137,7 @@
 </footer>
 
 <?php require('login.php'); ?>
+<?php require('statistiques.php'); ?>
 <!-- jQuery -->
 <script src="../Public/js/jquery.js"></script>
 
@@ -499,21 +500,17 @@ SYSTEME DE GESTION DES CHARGEMENTS CONDITIONNES EN FONCTION DES PAGES
 <?php
         //HOMEPAGE id_page=1
        if(isset($_ENV['id_page']) && $_ENV['id_page'] == 1){
-
+     ?>
 /* ==========================================================================
 SYSTEME DE VERIFICATION DU BOUTON DEVIS DE LA HOMEPAGE
    ========================================================================== */
-        if( isset($_SESSION['ID_USER']) || isset($_COOKIE['ID_USER']) )
-          {
-          ?>
           $(function () {
-              $('#devis_service').click(function () {
+              $('#devis_service').click(function (e) {
+                  e.preventDefault();
                   $(location).attr('href',"index.php?id_page=9");
               });
           });
-        <?php
-          }
-           ?>
+
 /* ==========================================================================
 SYSTEME DE CHARGEMENT AUTOMATIQUE DES DONNEES DE LA BD DANS LA HOMEPAGE SECTION REALISATION
    ========================================================================== */
@@ -1199,7 +1196,7 @@ $(window).load(function () {
         $(document).ready(function () {
              body.notif({
                  title: 'CULTURE',
-                 content: 'CE QUE J\AIME',
+                 content: 'CE QUE J\'AIME',
                  img: 'img/icons/success-notif.jpg',
                  cls: 'alert-success'
              });
@@ -1344,8 +1341,8 @@ $(function () {
 SYSTEME DE GESTION DES COMMENTAIRES UTILISATEURS DU BLOG
 ========================================================================== */
 $(function(){
-
-    $('#articles').on('keyup', '#contenuCommentaireUser', function () {
+    var content_blog = $('#articles');
+    content_blog.on('keyup', '#contenuCommentaireUser', function () {
         commentaire();
     });
 
@@ -1383,7 +1380,7 @@ $(function(){
 
 
 
-    $('#articles').on('submit', '#commentaire_user', function () {
+    content_blog.on('submit', '#commentaire_user', function () {
         var contentComments = $('#contenuCommentaireUser').val();
 
 
@@ -1471,7 +1468,7 @@ $(function(){
             data: {vue_commentaires: vue_commentaires},
             dataType: 'json',
             success: function (data) {
-                $('.commentaires-liste').html(data.notifOnComments);
+                $('.commentaires-liste').html(data.notifOnComments).delay(1000).fadeIn();
 
                 /* if (data.unseen_notification > 0) {
                      $('.count').html(data.unseen_notification);
@@ -1486,7 +1483,7 @@ $(function(){
     }
 
     //capture l'id du commentaire apres un click sur le bouton repondre du blog
-    $('#articles').on('click', '.commentaire-wrapper a', function (e) {
+    content_blog.on('click', '.commentaire-wrapper a', function (e) {
         e.preventDefault();
         var id_commentaire = $(this).attr('data');
         $.ajax({
@@ -1496,7 +1493,8 @@ $(function(){
                 id_comment: eval(id_commentaire)
             },
             dataType: 'text',
-            success:function (data) {console.log(data);                return true;
+            success:function (data) {
+            return true;
             },
             error: function(){
                 console.log('Erreur de Chargement de l\'id du commentaire créé dynamiquement dans le bouton repondre du blog');
@@ -1506,7 +1504,7 @@ $(function(){
 
 //REPONSES DES COMMENTAIRES UTILISATEURS
     var I, reponse_comment_content;
-        $('#articles').on('keyup', '.commentaire-reponses form textarea', function () {
+    content_blog.on('keyup', '.commentaire-reponses form textarea', function () {
         I = $(this).attr('data');
         reponse_comment_content = $('#reponse_commentaire_contenu' + I).val();
         reponse_commentaire();
@@ -1536,7 +1534,7 @@ $(function(){
         }
 
 
-        $('#articles').on('submit', '.commentaire-reponses form', function () {
+    content_blog.on('submit', '.commentaire-reponses form', function () {
             if (reponse_comment_content === '') {
                 $('body').notif({
                     title: 'Message d\'erreur',
@@ -1620,7 +1618,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                         'padding': 'initial',
                         'font-size': '65%'
                     }).html('Aucun résultat trouvé');
-                    $('#articles').empty();
+                    content_blog.empty();
                     /*setTimeout(function () {
                         $('#output_search').hide();
 
@@ -1633,7 +1631,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                     else
                         retour += data.compteur + ' résultats trouvés';
 
-                    $('#articles').html(data.resultat);
+                    content_blog.html(data.resultat);
                     $('#output_search').css({
                         'font-weight': 'bold',
                         'margin': 'initial',
@@ -1650,7 +1648,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
 
 
     //chargement dynamique des Articles
-    $('.link_articles').on('click', function (e) {
+    content_blog.on('click', '.link_articles', function (e) {
         e.preventDefault();
         var content = $(this).attr('data');
         var tab = content.split('&');
@@ -1668,13 +1666,13 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 $('.loader_blog').show();
             },
             success:function (data) {
-                $('#articles').html(data);
+                content_blog.html(data);
                 $('.loader_blog').hide();
             },
-            error: function(data){
+            error: function(){
                 console.log('Erreur de Chargement des Articles');
             },
-            complete: function (data) {
+            complete: function () {
                 $('.loader_blog').hide();
                 load_comments();
             }
@@ -1701,7 +1699,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 $('.loader_blog').show();
             },
             success:function (data) {
-                $('#articles').html(data);
+                content_blog.html(data);
             },
             error: function(data){
                 console.log('Erreur de Chargement des Catégories');
@@ -1734,7 +1732,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 $('.loader_blog').show();
             },
             success:function (data) {
-                $('#articles').html(data);
+                content_blog.html(data);
             },
             error: function(data){
                 console.log('Erreur de Chargement des Archives');
@@ -1768,7 +1766,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 $('.loader_blog').show();
             },
             success:function (data) {
-                $('#articles').html(data);
+                content_blog.html(data);
             },
             error: function(data){
                 console.log('Erreur de Chargement des Paginations');
@@ -1781,7 +1779,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
     });
 
     //EVENEMENT SUR LES ELEMENTS CREES DYNAMIQUE(CATEGORIES, ARCHIVES, PAGINATION) AVEC L UTILISATION DES DELEGATES DE JQUERY
-    $('#articles').on('click','.link_articles' , function (e) {
+    content_blog.on('click','.link_articles' , function (e) {
         e.preventDefault();
         var content = $(this).attr('data');
         var tab = content.split('&');
@@ -1799,7 +1797,7 @@ GESTION DU SYSTEME DE RECHERCHE INSTANTANE SUR LE BLOG
                 $('.loader_blog').show();
             },
             success:function (data) {
-                $('#articles').html(data);
+                content_blog.html(data);
             },
             error: function(data){
                 console.log('Erreur de Chargement des éléments créé dynamiquement');

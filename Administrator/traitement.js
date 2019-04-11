@@ -205,7 +205,7 @@ $(function() {
 
 
 /* ==========================================================================
-GESTION DE L'AJOUT DES SUJETS DANS LA ZONE ADMINISTRATION
+GESTION DE L'AJOUT DES SUJETS(ARTICLES) DANS LA ZONE ADMINISTRATION
 ========================================================================== */
 $(function() {
 
