@@ -123,8 +123,8 @@
                         if(!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)){
                             echo 'VOUS ÊTES HORS LIGNE !';
                         }else{
-                            $appId = '361124424614569';
-                            $appSecret = '04a4d5b4a49881e45df0bd215ae30d24';
+                            $appId = '';
+                            $appSecret = '';
                             $connect = new FacebookConnect($appId, $appSecret);
                             $user = $connect->connect('https://www.bertin-mounok.com/Public/');
                             if (is_string($user)) {
@@ -141,8 +141,8 @@
 
                             //SE CONNECTER VIA LINKEDIN
 
-                            define('CLIENT_ID', '860uswnwa074d6');
-                            define('CLIENT_SECRET', 'kDxYk5iCBtnc9UYK');
+                            define('CLIENT_ID', '');
+                            define('CLIENT_SECRET', '');
                             define('REDIRECTION_URI', 'https://www.bertin-mounok.com/Public/');
                             try {
                                 define('CSRF_TOKEN', random_int(1111111, 9999999));
@@ -165,11 +165,11 @@
                             <!--------SE CONNECTER AVEC TWITTER----->
                             <!--AJOUT D UN TWEET-->
                             <?php
-                            define('CONSUMER_KEY', 'AxSTgl8sck76P9HFW2ncgT1jF');
-                            define('CONSUMER_SECRET', '9xRqAG3EZQLbfbIgQdbbOgykGBw026YQuFOj2GnQ87L4yLPSOX');
+                            define('CONSUMER_KEY', '');
+                            define('CONSUMER_SECRET', '');
                             // ACCESS_TOKEN et  ACCESS_SECRET me permet d'interagir avec celui qui crée le compte
-                            //define('ACCESS_TOKEN', '816079663856517120-0SOQ2Z6dRSwRPT5APuQS0fx0q1Yakbk');
-                            // define('ACCESS_SECRET', 'yti17JqsXOndZtfPppTzL8sIQFw4yu31sactVnn8cHmM9');
+                            //define('ACCESS_TOKEN', '');
+                            // define('ACCESS_SECRET', '');
                             //require '../vendor/autoload.php';
 
                             $twitter = new \App\Twitter\Twitter_Connect_Post(CONSUMER_KEY, CONSUMER_SECRET);
