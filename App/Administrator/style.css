@@ -1,0 +1,268 @@
+.infobulle{
+    position: absolute;
+    background: #000000;
+    padding: 3px 7px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #d4d4d4;
+    text-align: center;
+}
+
+
+.navbarRetouche {
+    position: relative;
+    min-height: 50px;
+    border: 1px solid transparent;
+}
+
+
+.title-big {
+    border-bottom: 1px dashed #c9c9c9;
+    padding: 1rem 0;
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+
+
+/* ------------------------------------------barre de séparation verticale et a droite*/
+.right-sidebar{
+    margin-top:20px;
+    border-left:none;
+    border-left:1px dashed #c9c9c9;
+    padding:0 0 0 30px;
+}
+
+.titre{
+    margin-top: 62px;
+}
+
+/*
+.work {
+    display: block;
+    margin-bottom: 1.4rem;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+*/
+
+.survol:hover{
+    background: #222;
+    color: white;
+}
+
+
+.well:hover {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+/*-------------------------------GESTTON DE L'ENREGISTREMENT ETAPE PAR ETAPE ----------------------------*/
+
+
+/*PROGRESSBAR STEP BY STEP*/
+
+#msform{
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+#msform fieldset
+{
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0,0,0,0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    position: absolute;
+}
+
+.fs-title{
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+.fs-subtitle
+{
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+/*hide all except first fieldset*/
+#msform fieldset:not(:first-of-type)
+{
+    display: none;
+}
+
+/*input*/
+#msform input, #msform textarea, #msform select
+{
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    width: 92%;
+    box-sizing: border-box;
+    font-family: monospace;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+
+#msform .action-button{
+    width: 100px;
+    background: #FF1200;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #FF1200 ;
+}
+
+#progressbar{
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the step */
+    counter-reset: step;
+}
+
+#progressbar li
+{
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 23.33%;
+    float: left;
+    position: relative;
+}
+
+/*#progressbar li:before
+{
+    content: counter(step);
+    counter-increment: step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: #333;
+    background: white;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}*/
+
+
+/* progressbar connector*/
+#progressbar li:after
+{
+    content:"";
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it before the first number  */
+}
+
+#progressbar li:first-child:after
+{
+    /*Connector not needed before the first step  */
+    content: none;
+}
+
+/*making active/completed steps green*/
+/*#progressbar li.active:before, #progressbar li.active:after
+{
+    background: #FF1200;
+    color: white;
+}*/
+
+
+/*---------------------------------------gestion du mot de bienvenue-----------------------------*/
+
+.cta .enTeteBienvenue::before {
+    border-top: 20px solid red;
+    z-index: 99999;
+}
+.enTeteBienvenue::before {
+    content: '';
+    border-left: 27px solid transparent;
+    border-right: 0px solid transparent;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 999999;
+}
+élément {
+}
+.backgroundColor2 {
+    background-color: red !important;
+    z-index: 99999;
+}
+.couleurBlanc {
+    color: white;
+}
+.enTeteBienvenue {
+    width: 270px;
+    padding-left: 50px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: -7px;
+    z-index: 9999999;
+}
+.openSans-extrabold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+.font-size-30 {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+
+/*--------------------------barre de chargement automatique-----*/
+#progress-bar-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+}
+
+#progress-bar{
+    position: relative;
+    height: 100%;
+    background: red;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .5);
+    width: 0%;
+}
+
+#progress-bar-elements{
+    display: none;
+}

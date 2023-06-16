@@ -1,1 +1,6 @@
-/vendor/
+*.sql
+App/Config/Config_Server.php
+Pages/Services/error_log
+.idea/**
+vendor/*
+Administrator.zip

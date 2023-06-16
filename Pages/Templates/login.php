@@ -31,7 +31,7 @@
 
                     <div class="ombrage" style="background: #0f6296; border-radius: 10%; margin: 15px; text-align: center!important;">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                       <strong style="font-size:1.2em;">GENEREZ VOTRE DEVIS</strong><br>
+                       <strong style="font-size:1.2em;">GENERER VOTRE DEVIS</strong><br>
                     </div>
 
                     <!--formulaire de Connexion-->
@@ -67,7 +67,7 @@
                         </ul>
 
                         <fieldset>
-                            <h2 class="fs-title centre">IDENTIFIANT PERSONNELLE</h2>
+                            <h2 class="fs-title centre">IDENTIFIANT</h2>
                             <h3 class="fs-subtitle centre"><u>Etape 1</u></h3>
                             <div class="inputBox">
                                 <input type="text" name="nomSingUp" required="" id="nomSingUp"><em><small id="output_nomSingUp"></small></em>
@@ -81,7 +81,7 @@
                         </fieldset>
 
                         <fieldset>
-                            <h2 class="fs-title centre">IDENTIFIANT PUBLIC</h2>
+                            <h2 class="fs-title centre">IDENTIFIANT DE CONNEXION</h2>
                             <h3 class="fs-subtitle centre"><u>Etape 2 - Fin</u></h3>
                             <div class="inputBox">
                                 <input type="email" name="emailSingUp" required="" id="emailSingUp"><em><small id="output_emailSingUp"></small></em>
@@ -115,90 +115,8 @@
                             <input id="sendEmailForget" type="submit" title="Cliquez Suivant" value="ENVOYER">
                             <div id="load_data_getEmail" style="text-align: center!important;"></div>
                         </div>
-                    </form>
+                    </form>"
 
-                    <div class="col-xs-12 col-lg-12">
-                        <?php
-                        use \App\Facebook\FacebookConnect;
-                        if(!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)){
-                            echo 'VOUS ÊTES HORS LIGNE !';
-                        }else{
-                            $appId = '';
-                            $appSecret = '';
-                            $connect = new FacebookConnect($appId, $appSecret);
-                            $user = $connect->connect('https://www.bertin-mounok.com/Public/');
-                            if (is_string($user)) {
-                                echo '<a href="' . $user . '" class="waves-effect waves-light btn-customizable white-text" style="background-color: #3b5998; font-weight: bold;">
-                                  <i class="fa fa-2x fa-facebook right" title="Connectez-vous"></i> Se Connecter Via Facebook</a>';
-                            } else {
-                                //REQUETE SELECT
-                                //$facebook_id = $user->getId();
-                                //SELECT * FROM users WHERE facebook_id = $facebook_id;
-                                //INSERT INTO users SET facebook_id = $facebook_id, firstname=$profil->getFirstName();
-                                echo 'BONJOUR';
-                            }
-
-
-                            //SE CONNECTER VIA LINKEDIN
-
-                            define('CLIENT_ID', '');
-                            define('CLIENT_SECRET', '');
-                            define('REDIRECTION_URI', 'https://www.bertin-mounok.com/Public/');
-                            try {
-                                define('CSRF_TOKEN', random_int(1111111, 9999999));
-                            } catch (Exception $e) {
-                                echo $e->getMessage();
-                            }
-                            define('SCOPES', 'r_basicprofile%20r_emailaddress');
-                            $linkedin = new \App\LinkedIn\LinkedInConnect(CLIENT_ID, CLIENT_SECRET, REDIRECTION_URI, CSRF_TOKEN, SCOPES);
-                            $user = $linkedin->getCallBack();
-                            // $_SESSION['user'] = $user;
-                            //header('location: index.php?id=page=11');
-                            ?>
-                            <a class="waves-effect waves-light btn-customizable white-text"
-                               style="background-color: #007bb6; font-weight: bold"
-                               href="<?= 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=' . CLIENT_ID . '&redirect_uri=' . REDIRECTION_URI . '&state=' . CSRF_TOKEN . '&scope=' . SCOPES . '' ?>">
-                                <i class="fa fa-2x fa-linkedin right" title="Connectez-vous"></i> Se Connecter Via
-                                LinkedIn</a>
-
-
-                            <!--------SE CONNECTER AVEC TWITTER----->
-                            <!--AJOUT D UN TWEET-->
-                            <?php
-                            define('CONSUMER_KEY', '');
-                            define('CONSUMER_SECRET', '');
-                            // ACCESS_TOKEN et  ACCESS_SECRET me permet d'interagir avec celui qui crée le compte
-                            //define('ACCESS_TOKEN', '');
-                            // define('ACCESS_SECRET', '');
-                            //require '../vendor/autoload.php';
-
-                            $twitter = new \App\Twitter\Twitter_Connect_Post(CONSUMER_KEY, CONSUMER_SECRET);
-
-                            if (isset($_SESSION['authentified'])) {
-                                $oauth = new \Abraham\TwitterOAuth\TwitterOAuth(
-                                    CONSUMER_KEY,
-                                    CONSUMER_SECRET,
-                                    $_SESSION['oauth_token'],
-                                    $_SESSION['oauth_token_secret']
-                                );
-                                $account = $oauth->get('account/verify_credentials', ['include_email' => true]);
-
-                            } else if (isset($_GET['oauth_token'])) {
-                                $token = $twitter->getAccessToken($_GET['oauth_token'], $_GET['oauth_verifier']);
-                                // var_dump($twitter->verifyCredentials($token['oauth_token'], $token['oauth_token_secret']));
-
-                            } else {
-                                ?>
-                                <a class="waves-effect waves-light btn-customizable white-text"
-                                   style="background-color: #00aced; font-weight: bold"
-                                   href="<?= $twitter->getAuthentification('https://www.bertin-mounok.com/Public/') ?>">
-                                    <i class="fa fa-2x fa-twitter right" title="Connectez-vous"></i> Se Connectez via
-                                    Twitter</a>
-                                <?php
-                            }
-                        }
-                        ?>
-                    </div>
 
                 </div>
                 <div class="col-lg-3"></div>

@@ -1,0 +1,51 @@
+<article class="col-xs-12 col-md-4 col-lg-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center;">
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
+                        <small>Facteur de Motivation</small></em>abc5c852151d3136
+                </h4>
+                <div class="ombrage col-lg-3">
+                    <h1>PASSION</h1>
+                    <p>Plus qu'un métier, le développement est pour moi une passion qui me pousse à me dépasser.</p>
+                </div>
+
+                <div class="ombrage col-lg-3">
+                    <h1>QUALITE</h1>
+                    <p>Je respecte les derniers standards et les bonnes pratiques afin de produire un code de qualité</p>
+                </div>
+
+                <div class="ombrage col-lg-3">
+                    <h1>VEILLE</h1>
+                    <p>Je me tiens au courant des dernières nouveautés techniques grâce à une veille quotidienne.</p>
+                </div>
+
+                <div class="ombrage col-lg-3">
+                    <h1>POLYVALENCE</h1>
+                    <p>Familier avec plusieurs méthodes de travail et différentes technologies, je sais m'adapter aux projets.</p>
+                </div>
+
+            </article>
+
+            <article class="title-big col-xs-12 col-md-4 col-lg-12">
+                <h4 class="wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="600ms" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
+                        <small>Optez Pour des Solutions sur Mesures</small></em>
+                </h4>
+                <div class="col-lg-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="text-align: center; ">
+                    <h4>Des Solutions pour tous vos enjeux de Transformation</h4>
+                    <h5>Transformation digitale<small><em> Votre Entreprise est-elle prête ?</em></small></h5>
+                   <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
+                    <!--  <h5>Une Technologie de Pointe <small><em>Adapté pour votre entreprise</em></small></h5>-->
+                    <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Voir"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
+
+                </div>
+
+
+                <div class="right-sidebar col-lg-6 wow fadeInDown" style="text-align: center; ">
+                    <h4>Générez Dynamiquement votre Devis</h4>
+                   <p>Votre offre sans engagement dans votre boîte mail en 1 Min chrono!</p>
+
+                     <a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>
+
+
+
+                </div>
+
+            </article>

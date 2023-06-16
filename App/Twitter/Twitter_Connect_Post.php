@@ -10,6 +10,7 @@ namespace App\Twitter;
 
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Exception;
 
 class Twitter_Connect_Post
 {
@@ -22,7 +23,7 @@ class Twitter_Connect_Post
         $this->consumer_key = $consumer_key;
         $this->consumer_secret = $consumer_secret;
     }
-
+       //1
     public function getAuthentification($callback){
         $oauth = new TwitterOAuth($this->consumer_key, $this->consumer_secret);
         $response = $oauth->oauth('oauth/request_token', ['oauth_callback'=>$callback]);
@@ -32,9 +33,9 @@ class Twitter_Connect_Post
         return $url;
     }
 
+    //2
     public function getAccessToken($token, $verifier)
     {
-
         if ($token != $_SESSION['oauth_token']) {
             throw new Exception('Impossible de se connecter avec ce Token');
         } else {
@@ -46,6 +47,7 @@ class Twitter_Connect_Post
                 $_SESSION['oauth_token_secret']
             );
             $response = $oauth->oauth('oauth/access_token', ['oauth_verifier' => $verifier]);
+           // $response = $oauth->oauth('oauth/access_token', ['oauth_verifier' => $_GET['oauth_verifier']]);
 
 //etape suplémentaire pour poster un tweet
             /* $oauth = new TwitterOAuth(
@@ -62,6 +64,7 @@ class Twitter_Connect_Post
         }
     }
 
+    //optionnel
     public function verifyCredentials($token, $secret){
         $oauth = new TwitterOAuth(
             $this->consumer_key,

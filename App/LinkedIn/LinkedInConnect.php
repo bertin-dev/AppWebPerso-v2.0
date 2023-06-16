@@ -30,7 +30,7 @@ class LinkedInConnect
 
         if(isset($_REQUEST['code'])){
             $code = $_REQUEST['code'];
-            $url = 'https://www.linkdein.com/oauth/v2/accessToken';
+            $url = 'https://www.linkedin.com/oauth/v2/accessToken';
 
             $param = [
                 'client_id'=>$this->client_id,
@@ -41,8 +41,9 @@ class LinkedInConnect
             ];
             $accessToken = $this->curl($url, http_build_query($param));
             //var_dump($accessToken);
-            $accessToken = json_decode($accessToken)->$accessToken;
-            $url = 'https://api.linkedin.com/v1/people/~:(id, firstName, lastName, pictureUrls::(original), headline,publicProfileUrl, location, industry, positions, email-address)?format=json&oauth2_access_token='.$accessToken.'';
+            $accessToken = json_decode($accessToken)->access_token;
+            //$url = 'https://api.linkedin.com/v1/people/~:(id, firstName, lastName, pictureUrls::(original), headline,publicProfileUrl, location, industry, positions, email-address)?format=json&oauth2_access_token='.$accessToken;
+            $url = 'https://api.linkedin.com/v1/people/~:(id,firstName,lastName,pictureUrls::(original),headline,publicProfileUrl,location,industry,positions,email-address)?format=json&oauth2_access_token='.$accessToken;
             $user = file_get_contents($url, false);
             return json_decode($user);
         }
@@ -53,7 +54,8 @@ class LinkedInConnect
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+        curl_setopt($ch, CURLOPT_POST, 1);
         $headers = [];
         $headers[] = "Content-Type: application/x-www-form-urlencoded";
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

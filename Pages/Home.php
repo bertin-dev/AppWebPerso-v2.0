@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <article class="title-big col-lg-12">
-                <div class="col-lg-6 wow fadeInDown"><!-- data-wow-duration="1000ms" data-wow-delay="600ms"-->
+                <div class="col-lg-6"><!-- data-wow-duration="1000ms" data-wow-delay="600ms"-->
                     <div class="enTeteBienvenue backgroundColor2 openSans-extrabold couleurBlanc font-size-30" >
                         Bienvenue
                     </div>
@@ -20,12 +20,12 @@
                                                          ON images.ref_id_page=page.id_page
                                                          WHERE destination="Extreme Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $slide):
 
-                             echo '<img data-src="" alt="bertin.dev" title="'.utf8_encode($slide->title).'" class="bg img-responsive well"
+                             echo '<img data-src="" alt="bertin.dev" title="'.$slide->title.'" class="bg img-responsive well"
                                  src="'.$slide->chemin.'">';
                             endforeach;
                             ?>
                             <!--<div class="mask"> </div>-->
-                            <h3 class="text-left ecriture" style="font-size: 25px;">Sur ma Plate-forme Web. <br>Je suis Developpeur
+                            <h3 class="text-left ecriture" style="font-size: 25px;color:#1b4159;">Sur ma Plate-forme Web. <br>Je suis Developpeur
                                 <i class="fa fa-windows"></i> /
                                 <i class="fa fa-globe"></i>
                             </h3>
@@ -58,30 +58,27 @@
                             <span class="border border-4"> </span>
                         </a>
                     </div>
-
-
                 </div>
 
-                <div class="col-lg-6 wow fadeInDown" style="text-align: center;">
+                <div class="col-lg-6" style="text-align: center;">
                     <h1>Recherchez-vous un Consultant Développeur ???</h1>
                     Ça tombe bien! j'en suis un. Je suis un Geek de l'informatique depuis l'âge de 17 ans. Si mon profil
                     vous intéresse n'hésitez pas à me
-                    <a href="index.php?id_page=5" title="contactez-moi">Contacter <span class="glyphicon glyphicon-send"></span></a> ou regardez <a
-                            href="index.php?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-left"></span></a> <br>
+                    <a href="Portfolio?id_page=5" title="contactez-moi">Contacter <span class="glyphicon glyphicon-send"></span></a> ou regardez <a
+                            href="Portfolio?id_page=2" title="Mes Réalisations">Mes Réalisations <span class="glyphicon glyphicon-hand-left"></span></a> <br>
                     <!--<span href="#" data-original-title='Informaticien'>Me Suivre</span>-->
                     <details>
-                        <summary><h1 title="Solutions Informatique">TOUT PROJET EST UN CHALLENGE </h1></summary>
+                        <summary><h1 title="Solutions Informatique">CREATEUR DE VALEURS POUR LES ENTREPRISES. </h1></summary>
                         <summary><h4>Audit & Conseils</h4></summary>
                         <summary><h4>Transfert de Compétences</h4></summary>
                         <summary><h4>Analyse, Conception, Implémentation et Déploiment</h4></summary>
-
                     </details>
                 </div>
                 <!--<a class="btn btn-default page-scroll" href="#about" title="ppppppppppppppp">Click Me to Scroll Down!</a>-->
             </article>
 
-            <article class="col-xs-12 col-md-4 col-lg-12 wow fadeInDown" style="text-align: center;">
-                <h4 class="wow fadeInRightBig" style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
+            <article class="col-xs-12 col-md-4 col-lg-12" style="text-align: center;">
+                <h4 style="text-align: left; font-variant: small-caps;"><em><span class="glyphicon glyphicon-asterisk"></span> MES CONVICTIONS
                         <small>Facteur de Motivation</small></em>
                 </h4>
                 <div class="ombrage col-lg-3">
@@ -107,23 +104,23 @@
             </article>
 
             <article class="title-big col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig col-lg-6" style="font-variant: small-caps;"><i class="fa fa-ticket"></i><em> TRANSFORMATION DIGITALE
+                <h4 class="col-lg-6" style="font-variant: small-caps;"><i class="fa fa-ticket"></i><em> TRANSFORMATION DIGITALE
                         <small>Optez Pour des Solutions sur Mesures</small></em>
                 </h4>
 
-                <h4 class="wow fadeInLeft col-lg-6 text-right visible-md visible-lg" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
+                <h4 class="col-lg-6 text-right visible-md visible-lg" style="font-variant: small-caps;"><span class="glyphicon glyphicon-resize-small"></span><em> DEVIS
                         <small>au format PDF dans votre boîte mail.</small></em>
                 </h4>
 
                 <div class="col-lg-4">
                     <img src="../Public/img/icons/demain-entrepreneur.png" title="Entrepreneur de demain" class="img-responsive" alt="Entrepreneur de demain">
-                    <h5>Voua avez la possibilité de suivre l'évolution de votre projet à distance<small><em> Cliquez sur le bouton juste en dessous</em></small></h5>
+                    <h5>Vous avez la possibilité de suivre l'évolution de votre projet à distance<small><em> Cliquez sur le bouton juste en dessous</em></small></h5>
                 <div class="text-center">
-                    <a id="projet" role="button" href="#" class="btn btn-primary WOW bounceInDown animated" title="Suivez votre Projets à distance"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
+                    <a id="projet_distant" role="button" href="#" class="btn btn-primary" title="Suivez votre Projets à distance"><span class="glyphicon glyphicon-folder-open"></span> Suivez Votre Projet</a>
                 </div>
                 </div>
 
-                <div class="right-sidebar col-lg-4 wow fadeInDown text-center">
+                <div class="right-sidebar col-lg-4 text-center">
                     <h4 style="font-variant: small-caps; font-size: 22px;">Des Solutions pour tous vos enjeux de Transformation</h4>
                     <h5>Transformation digitale<small><em> Votre Entreprise est-elle prête ?</em></small></h5>
                    <h5>Performance de Vente <small><em> Muscler votre force de vente.</em></small></h5>
@@ -131,19 +128,19 @@
                 </div>
 
 
-                <div class="right-sidebar col-lg-4 wow fadeInDown">
+                <div class="right-sidebar col-lg-4">
                     <h4 style="font-variant: small-caps; font-size: 22px;">Générez Dynamiquement votre Devis</h4>
-                    <div class="col-xs-3 col-lg-3">
+                    <div class="col-xs-3 col-lg-3" style="padding:0">
                         <img src="../Public/img/Accueil/devis.png" class="img-responsive img-thumbnail" alt="dévis" title="Exemplaire de dévis">
                     </div>
-                    <div class="col-xs-9 col-lg-9">
+                    <div class="col-xs-9 col-lg-9" style="padding:5px">
                         <h5>Votre offre sans engagement<small><em> dans votre boîte mail en 1 Min chrono!</em></small></h5>
                         <?php
                         if( isset($_SESSION['ID_USER']) || isset($_COOKIE['ID_USER']) )
                         {
-                        echo '<a id="devis_service" href="#" class="btn btn-primary WOW bounceInDown animated" title="Connexion"><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>';
+                        echo '<a id="devis_service" href="#" class="btn btn-primary" title="Connexion"><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>';
                         }else{
-                            echo '<a href="#" onclick="return false;" class="btn btn-primary WOW bounceInDown animated" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>';
+                            echo '<a href="#" onclick="return false;" class="btn btn-primary" title="Connexion" data-toggle="modal" data-target="#login_1" ><span class="glyphicon glyphicon-modal-window"></span> Demander un Dévis</a>';
                         }
                         ?>
                     </div>
@@ -152,17 +149,17 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-home"></span><em> ENTREPRISE
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-home"></span><em> ENTREPRISE
                         <small>L'innovation Technologique</small></em>
                 </h4>
-                <div class="col-lg-12 wow fadeInDown">
+                <div class="col-lg-12">
                     <?php
                     $i=0;
                     foreach (App::getDB()->query('SELECT title, description, chemin FROM images
                                                          INNER JOIN page
                                                          ON images.ref_id_page=page.id_page
                                                          WHERE destination="Haut" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 3') AS $entreprise):
-                        $enterprise = explode('-', utf8_encode($entreprise->description));
+                        $enterprise = explode('-', $entreprise->description);
                         echo '<div class="col-lg-4">
                         <div class="card card-image mb-3" style="background-image: url('.$entreprise->chemin.');">
                             <!-- Content -->
@@ -181,7 +178,7 @@
                                     }
                                         echo ' '.$enterprise[0].'</h5>
                                     <h3 class="card-title pt-2">
-                                        <strong>'.utf8_encode(strtoupper($entreprise->title)).'</strong>
+                                        <strong>'.strtoupper($entreprise->title).'</strong>
                                     </h3>
                                     <p>'.$enterprise[1].'</p>
                                     <a class="btn-pink waves-effect waves-light btn-customizable"
@@ -199,16 +196,16 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
-                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-transfer"></span><em> QUALIFICATIONS
-                        <small>Mon Périmètre de Compétence s'Articule Autour de</small></em>
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-transfer"></span><em> QUALIFICATIONS
+                        <small>Mon Périmètre de Compétence s'Articule Autour de quelques services</small></em>
                 </h4>
-                <div class="col-lg-8 wow fadeInLeft">
+                <div class="col-lg-8">
                     <div class = "panel panel-primary" style="background-color: inherit;">
                         <div class = "panel-heading">
                             <h3 class = "panel-title">SERVICES DISPONIBLE</h3>
                         </div>
 
-                        <div id="last_qualification" class="panel-body">
+                        <div id="last_qualification" class="panel-body" style="max-height: 250px;display: block;overflow-y: auto;">
                                 <div id="loader_qualification" style="display: none;text-align: center!important;">
                                     <span class="loader loader-circle"></span>
                                     Chargement......
@@ -217,12 +214,12 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 wow fadeInRight">
+                <div class="col-lg-4">
                     <div class = "panel panel-primary" style="background-color: inherit;">
                         <div class = "panel-heading">
-                            <h3 class = "panel-title">FONCTIONNALITES METIERS DEPLOYES</h3>
+                            <h3 class = "panel-title">SOLUTIONS ET MODULES DEPLOYES</h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="max-height: 250px;display: block;overflow-y: auto;">
                             <div class="panel-group last_fonctionnality" id="accordion">
                                     <div id="loader_fonctionnality" style="display: none;text-align: center!important;">
                                         <span class="loader loader-circle"></span>
@@ -235,10 +232,10 @@
             </article>
 
             <article class="col-xs-12 col-md-4 col-lg-12">
-                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> MES DERNIERES REALISATIONS
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> MES DERNIERES REALISATIONS
                         <small> → Derniers Projets</small></em>
                 </h4>
-                <div id="last_realisation" class="wow fadeInUp">
+                <div id="last_realisation">
                         <div id="loader_realisation" style="display: none;text-align: center!important;">
                             <span class="loader loader-circle"></span>
                             Chargement......
@@ -249,6 +246,16 @@
                         <i class="fa fa-play left"></i> Voir Plus De Réalisations
                         </a>
                     </div>
+
+            </article>
+
+            <article class="col-xs-12 col-md-4 col-lg-12">
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-play"></span><em> DIAPORAMA
+                        <small> → Travaux Effectués</small></em>
+                </h4>
+                <div class="text-center" style="margin-bottom: initial; padding-bottom: initial;">
+                 <?php require ('Home_Slide.php');?>
+                </div>
 
             </article>
         </div>
@@ -263,7 +270,7 @@ foreach (App::getDB()->query('SELECT title, chemin FROM images
                                                          WHERE destination="Milieu" AND id_page='.$_ENV['id_page'].' ORDER BY id_page DESC LIMIT 1') AS $parallax):
       $title = explode('-', $parallax->title);
     echo '<div class="parallax" style="background: url('.$parallax->chemin.') no-repeat center;background-size: cover;background-attachment: fixed;height: 200px;text-align: center">
-          <h1 class="WOW bounceInDown animated" style="position: relative; top: 80px; font-variant: small-caps;">'.strtoupper(utf8_encode($title[0])). '<br>'.strtoupper(utf8_encode($title['1'])).'</h1>
+          <h1 style="position: relative; top: 80px; font-variant: small-caps;">'.strtoupper($title[0]). '<br>'.strtoupper($title['1']).'</h1>
           </div>';
 endforeach;
 ?>
@@ -275,12 +282,12 @@ endforeach;
     <div class="container">
         <div class="row">
             <article class="col-xs-12 col-md-8 col-lg-9">
-                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-book"></span><em> CITATIONS
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-book"></span><em> CITATIONS
                         <small>Sur la Vie</small></em>
                 </h4>
                 <div class="col-xs-12 col-lg-12 ombrage2" style="margin-bottom: 20px;">
 <!-------->
-                                <div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="180000">
+                                <div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="10000">
                                     <!-- Carousel Slides / Quotes -->
                                     <div class="carousel-inner text-center">
                                         <!-- Quote 1 -->
@@ -292,8 +299,8 @@ endforeach;
                                             echo '<div class="item">
                                             <blockquote>
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2"><p>'.utf8_encode($citations->description).'</p>
-                                                            <small>'.strtoupper(utf8_encode($citations->title)).'</small>
+                                                    <div class="col-sm-8 col-sm-offset-2"><p>'.$citations->description.'</p>
+                                                            <small>'.strtoupper($citations->title).'</small>
                                                     </div>
                                                 </div>
                                             </blockquote>
@@ -318,25 +325,25 @@ endforeach;
                                     <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-lg"><i class="fa fa-chevron-left"></i></a>
                                     <a data-slide="next" href="#quote-carousel" class="right carousel-control visible-lg"><i class="fa fa-chevron-right"></i></a>
                                 </div>
-                        <a class="btn btn-primary" href="index.php?id_page=6" title="Cliquez"><i class="fa fa-arrow-right"></i> Me Suivre</a>
+                        <a class="btn btn-primary" href="Portfolio?id_page=6" title="Cliquez"><i class="fa fa-arrow-right"></i> Me Suivre</a>
 <!-------->
                 </div>
 
-                <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-new-window"></span><em> NOUVEAUTES
-                        <small>Dernières Technologies Déployés par Microsoft & Xamarin</small></em>
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-dashboard"></span><em> OPTIMISATION
+                        <small>Reporting pour décideurs & tableaux de bord pour manager</small></em>
                 </h4>
-                <div class="col-xs-12 col-lg-12 view peach-gradient wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" style="margin-bottom: 20px;">
+                <div class="col-xs-12 col-lg-12 view peach-gradient" style="margin-bottom: 20px;">
                 <div class="col-xs-12 col-lg-5">
                         <ul style="text-align: center; padding: initial; margin: initial">
-                        <li>Il y a tout juste <?= date('Y')-2018;?> an que j'utilise cette techno mais putin je suis hyper faciné par cette dernière.
-                            Les applications universelles (Windows 10, windows 10 Mobile) et Xamarin
-                            m'ont permis de déployer quelques applications crossplate-forme
+                        <li>Grâce à l’intégration des solutions innovantes et extensibles (pour la plupart OpenSource),
+                            nous réduisons considérablement le temps de mis en service des SI en les rendant financièrement
+                            accessible aux entreprises de toute taille.
                         </li>
                         </ul>
                 </div>
 
                  <div class = "col-xs-6 col-lg-3" style="text-align: center; padding: initial; margin: initial">
-                     <img src="img/Accueil/xamarin-native.png" class="img-responsive"  alt="">
+                     <img src="img/Accueil/reporting.jpg" class="img-responsive"  alt="">
                  </div>
 
                 <div class="col-xs-6 col-lg-4" style="text-align: center; padding: initial; margin: initial">
@@ -344,9 +351,9 @@ endforeach;
                 </div>
                 </div>
 
-                <div class="col-xs-12 col-lg-12 wow fadeInDown" style="margin-bottom: 20px;">
-                    <h4 class="wow fadeInRightBig" style="font-variant: small-caps;"><span class="glyphicon glyphicon-cloud-download"></span><em> CLOUD
-                            <small>Traitement, Stockage, Restoration des Données Distantes</small></em>
+                <div class="col-xs-12 col-lg-12" style="margin-bottom: 20px;">
+                    <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-cloud-download"></span><em> FACILITER L'INNOVATION
+                            <small>Processus Métier et Système d’Information</small></em>
                     </h4>
                     <?php
                     foreach (App::getDB()->query('SELECT chemin, title, description FROM images
@@ -358,14 +365,14 @@ endforeach;
                         <!-- Card -->
                         <div class="card card-cascade narrower">
                             <!-- Card image -->
-                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;">
-                                <img src="'.$facteur->chemin.'" title="'.utf8_encode($facteur->title).'" class="img-responsive" alt="">
+                            <div class="view view-cascade gradient-card-header purple-gradient" style="background-image: initial;text-align: center">
+                                <img src="'.$facteur->chemin.'" title="'.$facteur->title.'" class="img-responsive" alt="'.$facteur->title.'">
                             </div>
 
                             <!-- Card content -->
                             <div class="card-body card-body-cascade text-center">
                                 <!-- Text -->
-                                <p class="card-text" style="font-size: 15px">'.utf8_encode($facteur->description).'</p>
+                                <p class="card-text" style="font-size: 15px">'.$facteur->description.'</p>
                             </div>
 
                         </div>
@@ -376,19 +383,7 @@ endforeach;
                 </div>
 
 
-                <?php
-                //$Cache->inc(ROOT.'/twitter.php');
-                if(!$variable = $Cache->read('variable')){
-                    sleep(1);
-                    $variable = "ici mon text";
-                    $Cache->write('variable', $variable);
-                }
 
-                echo $variable;
-                ?>
-                <div class="col-lg-12">
-                    <p>la page a mis <span class="label secondary"><?= round(microtime(TRUE) - $_SESSION['time'], 3); ?>s</span> à se générer à peu près</p>
-                </div>
 
             </article>
 
@@ -414,7 +409,7 @@ endforeach;
                                             App::getDB()->delete('DELETE FROM agenda WHERE debut =:date_D', ['date_D' => $projet->debut]);
                                             $evenement .= $projet->titre_programme;
                                         }else{
-                                            $evenement .= utf8_encode(strtoupper($projet->titre_programme));
+                                            $evenement .= strtoupper($projet->titre_programme);
                                         }
                                     }
                                 endforeach;
@@ -427,7 +422,7 @@ endforeach;
                                 ?>
                         </div>
                         <!-- Card content -->
-                        <div class="card-body card-body-cascade text-center">
+                        <div class="card-body card-body-cascade text-center" style="margin-top: 25px;">
                             <marquee id="last_agenda" class="text-center" behavior="" direction="UP" scrollamount="1" height="50">
                                     <div id="loader_agenda" style="display: none; text-align: center!important;">
                                         <span class="loader loader-circle"></span>
@@ -439,7 +434,7 @@ endforeach;
                     <!-- Card -->
 
 
-                <h5 class="titreWidget" style="font-variant: small-caps"><span class="glyphicon glyphicon-pushpin"></span><em> Article Publié <small>
+                <h5 class="titreWidget" style="font-variant: small-caps;margin-top: 22px;"><span class="glyphicon glyphicon-pushpin"></span><em> Article Publié <small>
                             <!--il y a-->
                             <?php
                             $now = time();

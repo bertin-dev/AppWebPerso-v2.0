@@ -60,6 +60,35 @@ require_once('page_number.php');
 
                                 </div>
 
+                                <div class="col-xs-12 col-sm-12 col-lg-12">
+                                    <div class="col-xs-6 col-sm-3 col-lg-3"><p><strong>VITA'A</strong><br><span title="Vita'a"
+                                                                                                                       style="color: #8d8f92; font-size: 11px;">Musique Française</span>
+                                        </p><a href="#" title="VITA'A"><img class="img-responsive"
+                                                                                   src="../Public/img/culture/musique/vitaa.jpg"
+                                                                                   alt="VITA'A"
+                                                                                   title="VITA'A"> </a></div>
+                                    <div class="col-xs-6 col-sm-3 col-lg-3"><p><strong>ARMEL BENT</strong><br><span title="ARMEL BENT"
+                                                                                                                   style="color: #8d8f92; font-size: 11px;">Musique Française</span>
+                                        </p><a href="#" title="ARMEL BENT"><img class="img-responsive"
+                                                                               src="../Public/img/culture/musique/armel bent.jpg"
+                                                                               alt="ARMEL BENT"
+                                                                               title="ARMEL BENT"> </a></div>
+                                    <div class="col-xs-6 col-sm-3 col-lg-3"><p><strong>DIAM'S</strong><br><span title="Samy Diko"
+                                                                                                                   style="color: #8d8f92; font-size: 11px;">Musique Française</span>
+                                        </p><a href="#" title="DIAM'S"><img class="img-responsive"
+                                                                               src="../Public/img/culture/musique/diams.jpg"
+                                                                               alt="DIAM'S"
+                                                                               title="DIAM'S"> </a></div>
+                                    <!---->
+                                    <div class="col-xs-6 col-sm-3 col-lg-3"><p><strong>NOUSSI LOIC</strong><br><span title="NOUSSI LOIC"
+                                                                                                                           style="color: #8d8f92; font-size: 11px;">Musique KMER</span>
+                                        </p><a href="#" title="NOUSSI LOIC"><img class="img-responsive"
+                                                                                       src="../Public/img/culture/musique/loic.jpeg"
+                                                                                       alt="NOUSSI LOIC"
+                                                                                       title="NOUSSI LOIC"> </a></div>
+
+                                </div>
+
 
 
                                 <div class="col-xs-12 col-sm-12 col-lg-12">

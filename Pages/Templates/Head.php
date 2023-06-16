@@ -21,7 +21,7 @@
                     <!--Gestion du Logo-->
                     <a class="navbar-brand page-scroll" href="#page-top">
                         <img style="float: left; width: 50px; position: relative; top: -15px;" class="img-rounded"
-                             alt="Bertin-Mounok" src="<?= $_ENV['logo']; ?>" title="Logo bertin.dev"/>
+                             alt="Bertin-Mounok" src="<?= isset($_ENV['logo']) ? $_ENV['logo']: '../Public/img/bertin-mounok.png'; ?>" title="bertin.dev"/>
                         <span title="bertin.dev"
                               style="font-size: 9px; position: relative; top: 17px;">Bertin Mounok</span>
                     </a>
@@ -45,20 +45,20 @@
                                                                                src="../Public/img/socials/home.png"></a>
                         </li>
                         <li class="active">
-                            <small><em> <?php if ($_ENV['titre'] == "Accueil"){
+                            <small><em> <?php if (isset($_ENV['titre']) && $_ENV['titre'] == "Accueil"){
                                 $projet = App::getDB()->prepare_request('SELECT titre FROM projets_encours ORDER BY id_projet DESC LIMIT 1', array());
-                                echo 'Projet Encours... : '.utf8_encode($projet['titre']);
+                                echo '<span style="font-size:10px;">Projet Encours... : '.$projet['titre'].'</span>';
                             }
-                                    else if ($_ENV['titre'] == "Portfolio") echo utf8_encode($_ENV['titre']) . ' → Mes Réalisations.';
-                                    else if (utf8_encode($_ENV['titre']) == "Compétences") echo 'Mes ' . utf8_encode($_ENV['titre']) . ' → Ce que je sais faire.';
-                                    else if ($_ENV['titre'] == "Culture") echo utf8_encode($_ENV['titre']) . ' → Ce que J\'aime.';
-                                    else if ($_ENV['titre'] == 'Contact') echo utf8_encode($_ENV['titre']) . ' → M\'envoyer un Email.';
-                                    else if ($_ENV['titre'] == 'A Propos') echo utf8_encode($_ENV['titre']) . ' → Je parle de moi.';
-                                    else if ($_ENV['titre'] == 'Blog') echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
-                                    else if ($_ENV['titre'] == 'Applications Web') echo utf8_encode($_ENV['titre']) . ' → Générez votre Dévis.';
-                                    else if ($_ENV['titre'] == 'Services') echo utf8_encode($_ENV['titre']) . ' → Mes prestations.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == "Portfolio") echo $_ENV['titre'] . ' → Mes Réalisations.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == "Compétences") echo 'Mes ' . $_ENV['titre'] . ' → Ce que je sais faire.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == "Culture") echo $_ENV['titre'] . ' → Ce que J\'aime.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == 'Contact') echo $_ENV['titre'] . ' → M\'envoyer un Email.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == 'A Propos') echo $_ENV['titre'] . ' → Je parle de moi.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == 'Blog') echo $_ENV['titre'] . ' → Bienvenue sur Mon Espace Interactif.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == 'Applications Web') echo $_ENV['titre'] . ' → Générez votre Dévis.';
+                                    else if (isset($_ENV['titre']) && $_ENV['titre'] == 'Services') echo $_ENV['titre'] . ' → Mes prestations.';
                                     else if (!isset($_ENV['titre']) OR empty($_ENV['titre'])) echo ' → Page Introuvable.';
-                                   // else echo utf8_encode($_ENV['titre']) . ' → Bienvenue sur Mon Espace Interactif.';
+                                   // else echo $_ENV['titre'] . ' → Bienvenue sur Mon Espace Interactif.';
                                     ?>
                                 </em></small>
                         </li>

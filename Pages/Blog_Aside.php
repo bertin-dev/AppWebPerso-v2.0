@@ -23,7 +23,7 @@
             <?php
             foreach (App::getDB()->query('SELECT id_categorie, libelle FROM categorie ORDER BY id_categorie DESC') AS $cat):
                 echo '<li>
-                    <a class="categorie" data="cat='. $cat->id_categorie. '" href="#">'.
+                    <a class="categorie"  data="cat='. $cat->id_categorie. '" href="#">'.
                     $cat->libelle
                     .'<span class="counter">'. App::getDB()->rowCount('SELECT id_categorie, ref_id_categorie FROM sujets 
                                                               INNER JOIN categorie

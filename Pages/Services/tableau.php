@@ -7,195 +7,397 @@
  */
 //en cas d'absence de la BD
 //extract(unserialize(file_get_contents('tbleau.txt')));
+define('MAINTENANCE', 1);
+define('FONCTIONNALITES', 2);
+define('WEBMARKETING', 3);
+define('GESTION_DES_PROJETS', 4);
+define('DESIGN_ET_MISE_EN_PAGE', 5);
+define('TECHNOLOGIES_UTILISEES', 6);
+
+$totalMaintenance = 0;
+$totalFonctionnalites = 0;
+$totalWebMarketing = 0;
+$totalGestionProjets = 0;
+$totalDesign = 0;
+$totalTechnologies = 0;
+$total = 0;
 ?>
 
-<table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
+<table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline tab1 tab-min" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
+    <!--<tr class="gradeA even" role="row">-->
+    <?php
+    if(isset($_SESSION['ID_USER'])) $compte = intval($_SESSION['ID_USER']);
+    else if(isset($_COOKIE['ID_USER'])) $compte = intval($_COOKIE['ID_USER']);
+    else $compte = 0;
+    $connexion = App::getDB();
+           $maintenance = 'SELECT DISTINCT id_services, id_module_client, module_client.unites FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte="'.$compte.'" AND module_client.ref_id_cat_module_client='.MAINTENANCE;
+
+
+
+           $fonctionnalites = 'SELECT DISTINCT id_services, id_module_client, module_client.unites FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte="'.$compte.'" AND module_client.ref_id_cat_module_client='.FONCTIONNALITES;
+
+
+           $webmarketing = 'SELECT DISTINCT id_services, id_module_client, module_client.unites FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte="'.$compte.'" AND module_client.ref_id_cat_module_client='.WEBMARKETING;
+
+           $gestion_des_projets = 'SELECT DISTINCT id_services, id_module_client, module_client.unites FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte="'.$compte.'" AND module_client.ref_id_cat_module_client='.GESTION_DES_PROJETS;
+
+           $design_et_mise_en_page = 'SELECT DISTINCT id_services, id_module_client, module_client.unites FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte="'.$compte.'" AND module_client.ref_id_cat_module_client='.DESIGN_ET_MISE_EN_PAGE;
+
+           $technologies_utilisees = 'SELECT DISTINCT id_services, id_module_client, module_client.unites FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte="'.$compte.'" AND module_client.ref_id_cat_module_client='.TECHNOLOGIES_UTILISEES;
+           ?>
     <thead>
     <tr role="row">
-        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 162px;"></th>
-        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 197px;">Intitulé</th>
-        <th class="sorting_desc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 180px;" aria-sort="descending">Estimation</th>
+        <th class="sorting text-center" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" style="width: 162px;">PROJET</th>
+        <th class="sorting text-center" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 197px;">DESIGNATION</th>
+        <th class="sorting_desc text-center" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 180px;" aria-sort="descending">ESTIMATION</th>
 
     </tr>
     </thead>
 
+    <tbody>
     <?php
-    if(isset($_GET['AddServ']) && !empty(intval($_GET['AddServ'])))
-    {
-        $con = App::getDB();
+    //BLOC 1 MAINTENANCE
+    if(isset($maintenance) && $connexion->rowCount($maintenance)!= 0){
+        ?>
+        <tr id="blocG1" class="gradeC odd" role="row">
+            <td rowspan="<?=$connexion->rowCount($maintenance)+1;?>" class="text-center">
+                <?php
+                $resultats = $connexion->prepare_request('
+SELECT DISTINCT id_services, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ', array('compte'=>$compte, 'id_cat_mod'=>MAINTENANCE));
+                echo strtoupper($resultats['model']);
+                ?>
+            </td>
+        </tr>
 
-        $result = $con->rowCount('SELECT ref_id_services FROM `_tmp` WHERE ref_id_services="'.intval($_GET['AddServ']).'"');
-
-        // Si une erreur survient
-        if($result > 0 )
-        {
-            echo '<script>alert("Vous avez déjà ajouté cette Fonctionnalité !");</script>';
+        <?php
+        $retour1 = App::getDB()->compteur_start_end(' 
+SELECT DISTINCT id_services, id_module_client, module_client.libelle AS titre, module_client.description AS descript, module_client.estimation, module_client.unites, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ');
+        $retour1->execute(array('compte'=>$compte, 'id_cat_mod'=>MAINTENANCE));
+        while ($retour2 = $retour1->fetch()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $retour2['titre'];?></td>
+                <td class="text-center"><?php $totalMaintenance = $totalMaintenance + intval($retour2['estimation']);  echo number_format($retour2['estimation'], 1, ',',  ' ');?></td>
+                <td colspan="2" class="sorting_1"><a href="#" data="del=<?=$retour2['id_module_client'].'&idServ='.$retour2['id_services'];?>" class="delElementTab">Supp</a></td>
+            </tr>
+            <?php
         }
-        else{
-            $serv_compteur = $con->prepare_request('SELECT id_services, services.libelle AS libel_Serv, description, estimation, unites, model.libelle AS model_libel FROM services
-                                                                                INNER JOIN model
-                                                                                ON services.ref_id_model=model.id_model
-                                                                                WHERE id_services=:serv ORDER BY id_model DESC', ['serv'=>intval($_GET['AddServ'])]);
-
-            $con->insert('INSERT INTO `_tmp` (ref_id_services, titre_tmp, description_tmp, estimation_tmp, unites_tmp, model_tmp, date_tmp) VALUES (:id_services, :titre_tmp, :description_tmp, :estimation_tmp, :unites_tmp, :model_tmp, :date_tmp)',
-                [
-                    'id_services'=>$serv_compteur['id_services'],
-                    'titre_tmp'=>$serv_compteur['libel_Serv'],
-                    'description_tmp'=>$serv_compteur['description'],
-                    'estimation_tmp'=>$serv_compteur['estimation'],
-                    'unites_tmp'=>$serv_compteur['unites'],
-                    'model_tmp'=>$serv_compteur['model_libel'],
-                    'date_tmp'=>time()
-                ]);
-            $_SESSION['model'] = $serv_compteur['model_libel'];
-        }
+        //******FIN DE LA CONDITION *****
     }
+    //BLOC 2 FONCTIONNALITES
+    if(isset($fonctionnalites) && $connexion->rowCount($fonctionnalites)!= 0){
+        ?>
+        <tr id="blocG1" class="gradeC odd" role="row">
+            <td rowspan="<?=$connexion->rowCount($fonctionnalites)+1;?>" class="text-center">
+                <?php
+                $resultats = $connexion->prepare_request('
+SELECT DISTINCT id_services, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ', array('compte'=>$compte, 'id_cat_mod'=>FONCTIONNALITES));
+                echo strtoupper($resultats['model']);
+                ?>
+            </td>
+        </tr>
 
-//lorque le bouton supprier a été pressé
-    if(isset($_GET['del']) && !empty(intval($_GET['del'])))
-    {
-        //on verifi s 'il existe uniquement un model dans la BD
-        $tmp_compteur = App::getDB()->rowCount('SELECT id_tmp FROM `_tmp` WHERE model_tmp="'.$_GET['ref_model'].'"');
-     //si oui alors
-        if($tmp_compteur==1){
-            //On recupere ce seul model pour l'assigner a une variable de session
-            $uniq_model = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp=:tmp ', ['tmp'=>$_GET['ref_model']]);
-          $_SESSION['uniq_model'] = $uniq_model['model_tmp'];
+        <?php
+        $retour1 = App::getDB()->compteur_start_end(' 
+SELECT DISTINCT id_services, id_module_client, module_client.libelle AS titre, module_client.description AS descript, module_client.estimation, module_client.unites, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ');
+        $retour1->execute(array('compte'=>$compte, 'id_cat_mod'=>FONCTIONNALITES));
+        while ($retour2 = $retour1->fetch()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $retour2['titre'];?></td>
+                <td class="text-center"><?php $totalFonctionnalites = $totalFonctionnalites + intval($retour2['estimation']); echo number_format($retour2['estimation'], 1, ',',  ' ');?></td>
+                <td colspan="2" class="sorting_1"><a data="del=<?=$retour2['id_module_client'].'&idServ='.$retour2['id_services'];?>" href="#" class="delElementTab">Supp</a></td>
+            </tr>
+            <?php
         }
+        //******FIN DE LA CONDITION *****
+    }
+    //BLOC 3 WEBMARKETING
+    if(isset($webmarketing) && $connexion->rowCount($webmarketing)!= 0){
+        ?>
+        <tr id="blocG1" class="gradeC odd" role="row">
+            <td rowspan="<?=$connexion->rowCount($webmarketing)+1;?>" class="text-center">
+                <?php
+                $resultats = $connexion->prepare_request('
+SELECT DISTINCT id_services, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ', array('compte'=>$compte, 'id_cat_mod'=>WEBMARKETING));
+                echo strtoupper($resultats['model']);
+                ?>
+            </td>
+        </tr>
 
-        //puis on supprime cet unique ou alors le model concerné
-        App::getDB()->delete('DELETE FROM `_tmp` WHERE id_tmp=:id', ['id'=>$_GET['del']]);
-        //header('location: index.php?id_page='.$_ENV['id_page']);
+        <?php
+        $retour1 = App::getDB()->compteur_start_end('
+SELECT DISTINCT id_services, id_module_client, module_client.libelle AS titre, module_client.description AS descript, module_client.estimation, module_client.unites, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ');
+        $retour1->execute(array('compte'=>$compte, 'id_cat_mod'=>WEBMARKETING));
+        while ($retour2 = $retour1->fetch()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $retour2['titre'];?></td>
+                <td class="text-center"><?php $totalWebMarketing = $totalWebMarketing + intval($retour2['estimation']);  echo number_format($retour2['estimation'], 1, ',',  ' ');?></td>
+                <td colspan="2" class="sorting_1"><a href="#" data="del=<?=$retour2['id_module_client'].'&idServ='.$retour2['id_services'];?>" class="delElementTab">Supp</a></td>
+            </tr>
+            <?php
+        }
+        //******FIN DE LA CONDITION *****
+    }
+    //BLOC 4 GESTION DES PROJETS
+    if(isset($gestion_des_projets) && $connexion->rowCount($gestion_des_projets)!= 0){
+        ?>
+        <tr id="blocG1" class="gradeC odd" role="row">
+            <td rowspan="<?=$connexion->rowCount($gestion_des_projets)+1;?>" class="text-center">
+                <?php
+                $resultats = $connexion->prepare_request('
+SELECT DISTINCT id_services, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ', array('compte'=>$compte, 'id_cat_mod'=>GESTION_DES_PROJETS));
+                echo strtoupper($resultats['model']);
+                ?>
+            </td>
+        </tr>
+
+        <?php
+        $retour1 = App::getDB()->compteur_start_end('
+SELECT DISTINCT id_services, id_module_client, module_client.libelle AS titre, module_client.description AS descript, module_client.estimation, module_client.unites, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ');
+        $retour1->execute(array('compte'=>$compte, 'id_cat_mod'=>GESTION_DES_PROJETS));
+        while ($retour2 = $retour1->fetch()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $retour2['titre'];?></td>
+                <td class="text-center"><?php $totalGestionProjets = $totalGestionProjets + intval($retour2['estimation']); echo number_format($retour2['estimation'], 1, ',',  ' ');?></td>
+                <td colspan="2" class="sorting_1"><a href="#" data="del=<?=$retour2['id_module_client'].'&idServ='.$retour2['id_services'];?>" class="delElementTab">Supp</a></td>
+            </tr>
+            <?php
+        }
+        //******FIN DE LA CONDITION *****
+    }
+    //BLOC 5 DESIGN ET MISE EN PAGE
+    if(isset($design_et_mise_en_page) && $connexion->rowCount($design_et_mise_en_page)!= 0){
+        ?>
+        <tr id="blocG1" class="gradeC odd" role="row">
+            <td rowspan="<?=$connexion->rowCount($design_et_mise_en_page)+1;?>" class="text-center">
+                <?php
+                $resultats = $connexion->prepare_request('
+SELECT DISTINCT id_services, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ', array('compte'=>$compte, 'id_cat_mod'=>DESIGN_ET_MISE_EN_PAGE));
+                echo strtoupper($resultats['model']);
+                ?>
+            </td>
+        </tr>
+
+        <?php
+        $retour1 = App::getDB()->compteur_start_end(' 
+SELECT DISTINCT id_services, id_module_client, module_client.libelle AS titre, module_client.description AS descript, module_client.estimation, module_client.unites, cat_module_client.libelle AS model FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ');
+        $retour1->execute(array('compte'=>$compte, 'id_cat_mod'=>DESIGN_ET_MISE_EN_PAGE));
+        while ($retour2 = $retour1->fetch()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $retour2['titre'];?></td>
+                <td class="text-center"><?php $totalDesign = $totalDesign + intval($retour2['estimation']); echo number_format($retour2['estimation'], 1, ',',  ' ');?></td>
+                <td colspan="2" class="sorting_1"><a href="#" data="del=<?=$retour2['id_module_client'].'&idServ='.$retour2['id_services'];?>" class="delElementTab">Supp</a></td>
+            </tr>
+            <?php
+        }
+        //******FIN DE LA CONDITION *****
+    }
+    //BLOC 6 TECHNOLOGIES UTILISEES
+    if(isset($technologies_utilisees) && $connexion->rowCount($technologies_utilisees)!= 0){
+        ?>
+        <tr id="blocG1" class="gradeC odd" role="row">
+            <td rowspan="<?=$connexion->rowCount($technologies_utilisees)+1;?>" class="text-center">
+                <?php
+                $resultats = $connexion->prepare_request(' 
+SELECT DISTINCT id_services, cat_module_client.libelle AS model 
+FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ', array('compte'=>$compte, 'id_cat_mod'=>TECHNOLOGIES_UTILISEES));
+                echo strtoupper($resultats['model']);
+                ?>
+            </td>
+        </tr>
+
+        <?php
+        $retour1 = App::getDB()->compteur_start_end('
+SELECT DISTINCT id_services, id_module_client, module_client.libelle AS titre, module_client.description AS descript, module_client.estimation, module_client.unites, cat_module_client.libelle AS model 
+FROM module_client, cat_module_client, compte, module_admin, module_outils, outils_technique, services
+WHERE module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client  
+AND module_client.ref_id_compte=compte.id_compte
+AND module_client.ref_id_module_admin=module_admin.id_module_admin
+AND module_admin.id_module_admin=module_outils.ref_id_module_admin
+AND module_outils.ref_id_outils_tech=outils_technique.id_outils
+AND outils_technique.ref_id_services=services.id_services
+AND services.id_services="'.intval($_GET['service']).'"
+AND id_compte=:compte AND module_client.ref_id_cat_module_client=:id_cat_mod ');
+        $retour1->execute(array('compte'=>$compte, 'id_cat_mod'=>TECHNOLOGIES_UTILISEES));
+        while ($retour2 = $retour1->fetch()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $retour2['titre'];?></td>
+                <td class="text-center"><?php $totalTechnologies = $totalTechnologies + intval($retour2['estimation']); echo number_format($retour2['estimation'], 1, ',',  ' ');?></td>
+                <td colspan="2" class="sorting_1"><a href="#" data="del=<?=$retour2['id_module_client'].'&idServ='.$retour2['id_services'];?>" class="delElementTab">Supp</a></td>
+            </tr>
+            <?php
+        }
+        //******FIN DE LA CONDITION *****
     }
     ?>
-    <tbody id="tab1"><!--<tr class="gradeA even" role="row">-->
-    <?php
-
-    //Bloc 1
-    echo '<tr id="blocG1" class="gradeC odd collapse" role="row">
-        <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Gestion de Projets"')
-            .'" class="text-center">';
-    $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Gestion de Projets"', []);
-    echo strtoupper(utf8_encode($retour['model_tmp']));
-    echo '</td>';
-
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
-    $retour1->execute(array('abc'=>"Gestion de Projets"));
-    while ($retour2 = $retour1->fetch())
-    {
-        echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
-                                            <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
-                                            </tr>';
-    }
-
-
-    //Bloc 2
-    echo '<tr id="blocD2" class="gradeC odd collapse" role="row">
-        <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Design et Mise en Page"')
-            .'" class="text-center">';
-    $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Design et Mise en Page"', []);
-    echo strtoupper(utf8_encode($retour['model_tmp']));
-    echo '</td>';
-
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
-    $retour1->execute(array('abc'=>"Design et Mise en Page"));
-    while ($retour2 = $retour1->fetch())
-    {
-        echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
-                                            <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
-                                            </tr>';
-    }
-
-               //Bloc 3
-        echo '<tr id="blocF3" class="gradeC odd" role="row">
-        <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Fonctionnalite"')
-        .'" class="text-center">';
-        $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Fonctionnalite"', []);
-        echo strtoupper(utf8_encode($retour['model_tmp']));
-        echo '</td>';
-
-        $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
-        $retour1->execute(array('abc'=>"Fonctionnalite"));
-        while ($retour2 = $retour1->fetch())
-        {
-        echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
-                                            <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
-                                            </tr>';
-        }
-
-    //Bloc 4
-    echo '<tr id="blocM4" class="gradeC odd" role="row">
-        <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Maintenance"')
-            .'" class="text-center">';
-    $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Maintenance"', []);
-    echo strtoupper(utf8_encode($retour['model_tmp']));
-    echo '</td>';
-
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
-    $retour1->execute(array('abc'=>"Maintenance"));
-    while ($retour2 = $retour1->fetch())
-    {
-        echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
-                                            <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
-                                            </tr>';
-    }
-
-
-    //Bloc 5
-    echo '<tr id="blocW5" class="gradeC odd collapse" role="row">
-        <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Webmarketing"')
-            .'" class="text-center">';
-    $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Webmarketing"', []);
-    echo strtoupper(utf8_encode($retour['model_tmp']));
-    echo '</td>';
-
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
-    $retour1->execute(array('abc'=>"Webmarketing"));
-    while ($retour2 = $retour1->fetch())
-    {
-        echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
-                                            <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
-                                            </tr>';
-    }
-
-
-
-    //Bloc 6
-    echo '<tr id="blocT6" class="gradeC odd collapse" role="row">
-        <td rowspan="'.$retour = App::getDB()->rowCount('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Technologies utilisees"')
-            .'" class="text-center">';
-    $retour = App::getDB()->prepare_request('SELECT model_tmp FROM `_tmp` WHERE model_tmp="Technologies utilisees"', []);
-    echo strtoupper(utf8_encode($retour['model_tmp']));
-    echo '</td>';
-
-    $retour1 = App::getDB()->compteur_start_end('SELECT id_tmp, titre_tmp, estimation_tmp, unites_tmp, model_tmp FROM `_tmp` WHERE model_tmp=:abc');
-    $retour1->execute(array('abc'=>"Technologies utilisees"));
-    while ($retour2 = $retour1->fetch())
-    {
-        echo '<td class="">'.utf8_encode($retour2['titre_tmp']).'</td>
-                                            <td class="sorting_1">'.number_format($retour2['estimation_tmp'], 1).' '.strtoupper($retour2['unites_tmp']).'</td>
-                                            <td class="center"><a href="index.php?id_page=11&del='.$retour2['id_tmp'].'&ref_model='.$retour2['model_tmp'].'">Supprimer</a></td>
-                                            </tr>';
-    }
-    ?>
-
-
     </tbody>
-
     <tfoot>
     <tr class="gradeA odd" role="row">
         <th colspan="2" class="text-center">ESTIMATION DU BUDGET TOTAL</th>
         <th colspan="2" class="text-center">
-            <?php $nbre = App::getDB()->prepare_request('SELECT SUM(_tmp.estimation_tmp) AS total, unites_tmp FROM _tmp', []);
-             echo number_format($nbre['total'], 2).' '.$nbre['unites_tmp'];?>
-        </th>
+            <?php
+            $requete = '
+SELECT SUM(module_client.estimation) AS total, module_client.unites FROM module_client
+INNER JOIN cat_module_client
+ON module_client.ref_id_cat_module_client=cat_module_client.id_cat_module_client
+INNER JOIN compte
+ON module_client.ref_id_compte=compte.id_compte
+INNER JOIN module_admin
+ON module_client.ref_id_module_admin=module_admin.id_module_admin
+WHERE compte.id_compte=:compte';
+            $nbre = App::getDB()->prepare_request($requete, ['compte' => $compte]);
 
+$total = $totalMaintenance + $totalFonctionnalites + $totalWebMarketing + $totalGestionProjets + $totalDesign + $totalTechnologies;
+			echo number_format($total, 1, ',', ' ') . ' ' . $nbre['unites'];
+			
+           // echo number_format($nbre['total'], 1, ',', ' ') . ' ' . $nbre['unites'];
+            ?>
+        </th>
     </tr>
     </tfoot>
+
+
+
 
 </table>

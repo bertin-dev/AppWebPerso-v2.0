@@ -12,7 +12,6 @@ use \PDO;
 class Database
 {
 
-
     private $db_host1;
     private $db_name1;
     private $db_user1;
@@ -158,6 +157,10 @@ class Database
     }
 
 
-
+    // Récupère les informations dans sous forme de tableau associatif
+    public function getTabAssociatif($statement){
+        $req = $this->getPDO()->query($statement);
+        return $req;
+    }
 
 }

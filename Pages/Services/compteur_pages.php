@@ -10,7 +10,7 @@ require '../Core/Controller/Controller.php';
 use Core\Controller\Controller;
 
 // Active tous les warning. Utile en phase de développement. En phase de production, remplacer E_ALL par 0
-error_reporting(E_ALL);
+error_reporting(0);
 
 // Définit l'Id de la page d'accueil (1 dans cet exemple)
 $id_page_accueil = 1;

@@ -8,11 +8,10 @@
 ?>
 <?php
 require_once('page_number.php');
-require ('../App/jBBCode/Parser.php');
-use \JBBCode\Parser;
-use \JBBCode\DefaultCodeDefinitionSet;
-$parser = new Parser();
-$parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
+require ('../vendor/autoload.php');
+$parser = new \JBBCode\Parser();
+//$parser->addCodeDefinitionSet(new \JBBCode\DefaultCodeDefinitionSet());
+
 ?>
 
 <section id="blog" class="blog-section">
@@ -44,12 +43,26 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
           <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
             <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" class="link_articles" title="' . $blog_item['titre'] . '">' .
-                    $blog_item['id_sujet'].'# '.utf8_encode($blog_item['titre'])
+                    $blog_item['id_sujet'].'# '.$blog_item['titre']
                     . '</a>
         </h1>
             <p class="blog-article-1-p-1">';
-                $parser->parse(substr(utf8_encode($blog_item['paragraphe']), MIN_CHARACTER, MAX_CHARACTER));
-                echo \App\Twitter\Twitter::autolink($parser->getAsHTML());
+                $parser->addBBCode("quote", '<div class="quote">{param}</div>', true, true);
+                $parser->addBBCode("quote", '<div class="quote">{param}</div>', false, false);
+                $parser->addBBCode("size", '<span style="font-size:{option}%;">{param}</span>', true, true);
+                $parser->addBBCode("code", '<pre class="code">{param}</pre>', false, false, 1);
+                $parser->addBBCode("video", '<div style="overflow:hidden; "><iframe width="300" height="200" src="http://www.youtube.com/embed/{param}" frameborder="0" allowfullscreen></iframe></div>', false, false, 1);
+                $parser->addBBCode("img", '<a href="{param}" class="imagebox" rel="imagebox" style="overflow: hidden;"><img class="bbimage" alt="" width="525px" src="{param}"></a>');
+                $parser->addBBCode("url", '<a href="{param}" target="_blank" rel="nofollow">{param}</a>', false, false);
+                $parser->addBBCode("url", '<a href="{option}" target="_blank" rel="nofollow">{param}</a>', true, true);
+                $parser->addBBCode("center", '<div align="center">{param}</div>');
+                $parser->addBBCode("left", '<div align="left">{param}</div>');
+                $parser->addBBCode("right", '<div align="right">{param}</div>');
+                $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
+                $resultatEncode= str_replace("&lt;br /&gt;", " ", nl2br($blog_item['paragraphe']));
+                $parser->parse($resultatEncode);
+                $parser->parse(substr($resultatEncode, MIN_CHARACTER, MAX_CHARACTER));
+                echo $parser->getAsHTML(); //\App\Link\Parser_Link::urllink()
                echo '</p>';
          echo '<p class="blog-article-1-p-2">
             <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" class="link_articles" tabindex="-1" title="' . $blog_item['titre'] . '">Lire la suite</a>
@@ -71,7 +84,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
         </div>
         <div class="col-lg-12">
 <!--cette partie est a gerer-->
-        <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie '.utf8_encode($blog_item['libelle']).'">'.utf8_encode($blog_item['libelle']).'</a>
+        <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie '.$blog_item['libelle'].'">'.$blog_item['libelle'].'</a>
         <a data="articles=' . intval($blog_item['id_sujet']) . '" href="#" data-title="Lire Les commentaires" class="comments link_articles">';
                 $totalComments = App::getDB()->rowCount('SELECT * FROM comments
                                                      INNER JOIN compte
@@ -107,8 +120,8 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
         <div class="tags-container">
             <p class="tags">
                 <span class="tags-label">Mots-clés : </span><br>
-                <a href="onclick: return false;" class="nav-js" data-destination="blog" data-title="'.utf8_encode($blog_item['titre']).'">';
-                $keyword = explode(';', utf8_encode($blog_item['mot_cles']));
+                <a href="onclick: return false;" class="nav-js" data-destination="blog" data-title="'.$blog_item['titre'].'">';
+                $keyword = explode(';', $blog_item['mot_cles']);
                 for($j=0; $j<count($keyword); $j++)
                     echo '#'.$keyword[$j].'<br>';
               echo '</a>
@@ -143,19 +156,48 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
                        <!--BLOC 1-->
             <div class="col-xs-12 col-sm-7 col-lg-6 blog-article-1"> 
         <h1 class="blog-article-1-h1">
-            <a data="articles='.intval($blog_item->id_sujet) . '" href="#" class="link_articles" title="'.utf8_encode($blog_item->titre).'">'.
-                        $blog_item->id_sujet.'# '.utf8_encode($blog_item->titre)
+            <a data="articles='.intval($blog_item->id_sujet) . '" href="#" class="link_articles" title="'.$blog_item->titre.'">'.
+                        $blog_item->id_sujet.'# '.$blog_item->titre
                         .'</a>
         </h1>
             <p class="blog-article-1-p-1">';
+                    /* $blog_item['paragraphe'] = preg_replace("!\[liste\](.+)\[/liste\]!Umis","<ul class=\"bbcode_ul\">$1</ul>",$blog_item['paragraphe']);
+                   $blog_item['paragraphe'] = preg_replace("!\[liste=(i|I|1|a|A)\](.+)\[/liste\]!Umis","<ol class=\"bbcode_ul_$1\">$2</ol>",$blog_item['paragraphe']);
+                   $blog_item['paragraphe'] = preg_replace("!\[puce\](.+)\[/puce\]!Umis","<li><span>$1</span></li>",$blog_item['paragraphe']);
+   */
+                    /*$blog_item['paragraphe'] = str_replace("[liste]", "<ul class=\"bbcode_ul\">", $blog_item['paragraphe']);
+                    $blog_item['paragraphe'] = str_replace("[/liste]", "</ul>", $blog_item['paragraphe']);
+                    $blog_item['paragraphe'] = str_replace("[puce]", "<li><span>", $blog_item['paragraphe']);
+                    $blog_item['paragraphe'] = str_replace("[/puce]", "</span></li>", $blog_item['paragraphe']);*/
+
+                    /*function nobr($match)
+                    {return $match[1].trim(preg_replace('#\]\s*\[#is','][',$match[2])).$match[3];}
+                    $blog_item['paragraphe']=preg_replace_callback('`(\[liste])(.+?)(\[/liste])`si','nobr',$blog_item['paragraphe']);
+                    $debut=array('[liste]','[/liste]','[puce]','[/puce]');
+                    $fin=array('<ul>','</ul>','<li>','</li>');
+                    $blog_item['paragraphe'] = str_replace($debut,$fin,$blog_item['paragraphe']);*/
+
+                    // require_once '../vendor/jbbcode/jbbcode/JBBCode/Parser.php';
+                    //$parser = new JBBCode\Parser();
+                    /*$parser->addBBCode("quote", '<div class="quote">{param}</div>', true, true);
+                    $parser->addBBCode("quote", '<div class="quote">{param}</div>', false, false);
+                    $parser->addBBCode("size", '<span style="font-size:{option}%;">{param}</span>', true, true);
+                    $parser->addBBCode("code", '<pre class="code">{param}</pre>', false, false, 1);
+                    $parser->addBBCode("video", '<div style="overflow:hidden; "><iframe width="300" height="200" src="http://www.youtube.com/embed/{param}" frameborder="0" allowfullscreen></iframe></div>', false, false, 1);
+                    //$parser->addBBCode("img", '<a href="{param}" class="imagebox" rel="imagebox" style="overflow: hidden;"><img class="bbimage" alt="" width="' . $width . '" src="{param}"></a>');
+                    $parser->addBBCode("url", '<a href="{param}" target="_blank" rel="nofollow">{param}</a>', false, false);
+                    $parser->addBBCode("url", '<a href="{option}" target="_blank" rel="nofollow">{param}</a>', true, true);
+                    $parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());*/
+
+
                     $parser->parse($blog_item->paragraphe);
-                    echo \App\Twitter\Twitter::autolink($parser->getAsHTML());
+                    echo \App\Link\Parser_Link::urllink($parser->getAsHTML());
                     echo '</p>
         <aside class="social">
                     Par <cite itemprop="author">bertin.dev <span class="screen">(Bertin Mounok)</span></cite>
-                    <a target="_blank" class="social-facebook share_facebook" href="" data-url="https://www.bertin-mounok.com/Public/index.php?id_page=7&article='.intval($blog_item->id_sujet) . '" title="partager sur Facebook">Facebook</a> 
-                    <a target="_blank" class="social-twitter share_twitter" href="" data-url="https://www.bertin-mounok.com/Public/index.php?id_page=7&article='.intval($blog_item->id_sujet) . '" title="partager sur Twitter">Twitter</a> 
-                    <a target="_blank" class="social-google share_gplus" href="" data-url="https://www.bertin-mounok.com/Public/index.php?id_page=7&article='.intval($blog_item->id_sujet) . '" title="partager sur Google+">Google+</a> 
+                    <a target="_blank" class="social-facebook share_facebook" href="" data-url="https://www.bertin-mounok.com/Public/Portfolio?id_page=7&article='.intval($blog_item->id_sujet) . '" title="partager sur Facebook">Facebook</a> 
+                    <a target="_blank" class="social-twitter share_twitter" href="" data-url="https://www.bertin-mounok.com/Public/Portfolio?id_page=7&article='.intval($blog_item->id_sujet) . '" title="partager sur Twitter">Twitter</a> 
+                    <a target="_blank" class="social-google share_gplus" href="" data-url="https://www.bertin-mounok.com/Public/Portfolio?id_page=7&article='.intval($blog_item->id_sujet) . '" title="partager sur Google+">Google+</a> 
          </aside>
         </div>
                        <!--BLOC 2-->
@@ -174,7 +216,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
         </div>
         <div class="col-lg-12">
 <!--cette partie est a gerer-->
-        <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie '.utf8_encode($blog_item->libelle).'">'.utf8_encode($blog_item->libelle).'</a>
+        <a href="#" class="nav-js category" data-destination="blog" data-title="Aller à la catégorie '.$blog_item->libelle.'">'.$blog_item->libelle.'</a>
    
 
         <a data="articles=' . intval($blog_item->id_sujet) . '" data-title="Lire les Commentaires" href="#" class="comments link_articles">';
@@ -210,8 +252,8 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
           <div class="tags-container">
             <p class="tags">
                 <span class="tags-label">Mots-clés : </span><br>
-              <a href="#" onclick="return false;" class="nav-js" data-destination="blog" data-title="'.utf8_encode($blog_item->titre).'">';
-                    $keyword = explode(';', utf8_encode($blog_item->mot_cles));
+              <a href="#" onclick="return false;" class="nav-js" data-destination="blog" data-title="'.$blog_item->titre.'">';
+                    $keyword = explode(';', $blog_item->mot_cles);
                     for($j=0; $j<count($keyword); $j++)
                         echo '#'.$keyword[$j].'<br>';
                     echo '</a>
@@ -224,7 +266,7 @@ $parser->addCodeDefinitionSet(new DefaultCodeDefinitionSet());
                       <!--BLOC 3-->
             <div class="col-xs-12 col-sm-3 col-lg-4 illu-article">
             <a data="articles=' . intval($blog_item->id_sujet) . '" class="link_articles" href="#" tabindex="-1">
-                <img class="img-responsive" src="'.$blog_item->image.'" alt="'.utf8_encode($blog_item->titre).'" title="'.utf8_encode($blog_item->titre).'">
+                <img class="img-responsive" src="'.$blog_item->image.'" alt="'.$blog_item->titre.'" title="'.$blog_item->titre.'">
             </a>
             <!----------------->
          
