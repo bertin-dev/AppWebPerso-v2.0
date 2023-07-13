@@ -14,6 +14,12 @@ solving relevant technology-related problems.
 
 
 
+# Version
+- **[V1.0]** Complete successful
+
+
+
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within AppWebPerso, please send an e-mail to bertin.dev via 
