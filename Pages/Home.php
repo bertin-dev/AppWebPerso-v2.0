@@ -195,6 +195,277 @@
                 </div>
             </article>
 
+
+            <article class="col-xs-12 col-md-4 col-lg-12 title-big">
+                <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-certificate"></span><em> MES CERTIFICATIONS
+                        <small> → Derniers cours suivi</small></em>
+                </h4>
+                <!--<div id="last_realisation">
+                    <div id="loader_realisation" style="display: none;text-align: center!important;">
+                        <span class="loader loader-circle"></span>
+                        Chargement......
+                    </div>
+                </div>-->
+
+                <div class="sliderCertification">
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/918836/918836_teaser_picture_1680854700.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Concevez votre site web avec PHP et MySQL </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/5134573127" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/1603881/1603881_teaser_picture_1680854710.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Créez votre site web avec HTML5 et CSS3 </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/4024995037" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/1665806/1665806_teaser_picture_1680854720.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Programmez en orienté objet en PHP </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/6463447382" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/2035766/2035766_teaser_picture_1680854470.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Optimisez votre déploiement en créant des conteneurs avec Docker </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/1075090089" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/3504441/3504441_teaser_picture_1680854812.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Introduction à jQuery </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/2370983318" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/0/4482986.png?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Quel parcours est fait pour vous ? </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/4602511733" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/5011666/5011666_teaser_picture_1680856272.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Quel métier du web est fait pour vous ?</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/9853485767" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/5559091/5559091_teaser_picture_1680854681.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Déboguez vos applications C# </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/7765376585" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/5641796/5641796_teaser_picture_1680858178.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Adoptez Visual Studio comme environnement de développement </p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/9069949915" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/6173491/6173491_teaser_picture_1680857143.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Apprenez à utiliser la ligne de commande dans un terminal</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/3238267186" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/6204541/6204541_teaser_picture_1680858147.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Initiez-vous à Python pour l'analyse de données</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/1917986200" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/6971126/6971126_teaser_picture_1680858589.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Implémentez vos bases de données relationnelles avec SQL</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/6113682008" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7162856/7162856_teaser_picture_1680858619.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Gérez du code avec Git et GitHub</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/2949519568" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7168871/7168871_teaser_picture_1687249906.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Apprenez les bases du langage Python</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/7163418582" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7192596/7192596_teaser_picture_1680859337.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Mettez en ligne votre site web</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/7733720433" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7688581/7688581_teaser_picture_1680859417.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Devenez un expert de Git et GitHub</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/8761567374" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7818671/7818671_teaser_picture_1680859310.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Requêtez une base de données avec SQL</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/6276227897" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7959326/7959326_teaser_picture_1680859849.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Écrivez du code C# maintenable avec MVC et SOLID</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/1006621594" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/7973891/7973891_teaser_picture_1680859812.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Apprenez à programmer en C#</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/1997120941" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/8028391/8028391_teaser_picture_1680860095.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Développez une application ASP.NET Core avec le modèle MVC</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/6154306348" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/8028921/8028921_teaser_picture_1680860057.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Sécurisez votre application .NET</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/6812025222" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://oc-course.imgix.net/courses/8039181/8039181_teaser_picture_1681717998.jpg?auto=compress,format&q=80" alt="">
+                        <span class="courseHit__author">
+                            <span class="courseHit__authorOriginal">Original</span>
+                            <span class="courseHit__authorOC">OpenClassrooms</span>
+                       </span>
+                        <p> Implémentez votre base de données relationnelle avec ASP.NET Core</p>
+                        <div class="showCertification">
+                            <span><a href="https://openclassrooms.com/fr/course-certificates/share/7238558083" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+                    <div class="itemCertification">
+                        <img class="img-responsive" src="https://assets-global.website-files.com/60870cca519aca7849a9262d/60f942de994bfc4a31c57acf_545b62da-7847-4ab7-87bc-a48b61fe9d4b_Testdome.png" alt="">
+                        <p> Android Developer</p>
+                        <div class="showCertification">
+                            <span><a href="https://app.testdome.com/cert/cbf3b1492dd64f5baae2d6c8913fd788" target="_blank">Voir le certificat</a></span>
+                        </div>
+                    </div>
+
+                    <button id="nextCertification">></button>
+                    <button id="prevCertification"><</button>
+                </div>
+
+            </article>
+
+
+
             <article class="col-xs-12 col-md-4 col-lg-12 title-big">
                 <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-transfer"></span><em> QUALIFICATIONS
                         <small>Mon Périmètre de Compétence s'Articule Autour de quelques services</small></em>
@@ -231,7 +502,7 @@
                 </div>
             </article>
 
-            <article class="col-xs-12 col-md-4 col-lg-12">
+            <article class="col-xs-12 col-md-4 col-lg-12 title-big">
                 <h4 style="font-variant: small-caps;"><span class="glyphicon glyphicon-floppy-saved"></span><em> MES DERNIERES REALISATIONS
                         <small> → Derniers Projets</small></em>
                 </h4>
